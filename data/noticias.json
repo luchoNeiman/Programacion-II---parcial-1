@@ -1,0 +1,42 @@
+[
+    {
+        "noticia_id": 1,
+        "titulo": "'Manu' Ginóbili sigue rompiendo récords",
+        "sinopsis": "Emanuel 'Manu' Ginóbili viene rompiendo algunos récords tanto de su equipo como de la liga.",
+        "cuerpo": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum, exercitationem ab est dolore quae repellendus! Nobis aliquid omnis similique, repellat sequi perferendis suscipit non illum culpa incidunt perspiciatis. Officiis, optio!",
+        "imagen": "manu.jpg",
+        "imagen_descripcion": "Manu Ginóbili"
+    },
+    {
+        "noticia_id": 2,
+        "titulo": "Houston Rockets lidera la conferencia",
+        "sinopsis": "De la mano de James Harden, los Rockets se apuntan como candidatos para ganar los playoff.",
+        "cuerpo": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Hic suscipit ipsum unde maxime rem temporibus quo. Expedita doloremque quia repellat, sapiente facilis numquam neque velit ipsam distinctio odit modi iusto?",
+        "imagen": "rockets-logo.jpg",
+        "imagen_descripcion": "Houston Rockets Logo"
+    },
+    {
+        "noticia_id": 3,
+        "titulo": "Toronto Raptors queda primero en el Este",
+        "sinopsis": "Los Raptors de Lowry y DeRozan se quedan con el primer lugar de su conferencia.",
+        "cuerpo": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Perferendis incidunt voluptate assumenda provident dignissimos non labore perspiciatis fugit tempora, ab soluta quibusdam, laborum magnam id nostrum suscipit ea? Culpa, tenetur!",
+        "imagen": "raptors-logo.jpg",
+        "imagen_descripcion": "Toronto Raptors Logo"
+    },
+    {
+        "noticia_id": 4,
+        "titulo": "Denver se queda corto por un partido",
+        "sinopsis": "Quedó a una victoria y media de clasificar a los playoff.",
+        "cuerpo": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius error ex sapiente adipisci consectetur. Sit aliquam ea labore optio enim velit nulla vel, in ad! Harum dolores et itaque eveniet?",
+        "imagen": "nuggets-logo.jpg",
+        "imagen_descripcion": "Denver Nuggets Logo"
+    },
+    {
+        "noticia_id": 5,
+        "titulo": "Nueva noticia sobre Ginóbili",
+        "sinopsis": "Otra noticia que habla de \"Manu\" Ginóbili.",
+        "cuerpo": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique at excepturi quia beatae autem aliquam tempora, commodi, nihil perferendis voluptatum ab necessitatibus doloribus perspiciatis nulla quo vel qui ipsa quaerat?",
+        "imagen": "manu.jpg",
+        "imagen_descripcion": "Manu Ginóbili"
+    }
+]
