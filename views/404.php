@@ -6,6 +6,5 @@
 
     <ul>
         <li><a href="index.php?seccion=home">Volver a la página principal</a></li>
-        <li><a href="index.php?seccion=noticias">Enterarme de las últimas novedades del mundo basquetbolístico</a></li>
     </ul>
 </section>

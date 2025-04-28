@@ -1,0 +1,21 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #fafafa;
+    display: grid;
+    height: 100dvh;
+    grid-template-rows: auto 1fr auto;
+}
+
+.banner {
+    background-image: url('placeholder-banner.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 50vh;
+}
+
+

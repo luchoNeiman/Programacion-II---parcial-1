@@ -1,134 +1,134 @@
 [
-    {
-        "producto_id": 1,
-        "titulo": "Figura de acción Goku Super Saiyan",
-        "descripcion": "Figura coleccionable de Goku en su forma Super Saiyan, con detalles de alta calidad.",
-        "precio": 29.99,
-        "imagen": "goku-ssj.jpg",
-        "imagen_descripcion": "Figura de Goku Super Saiyan",
-        "franquicia": "Dragon Ball Z",
-        "tipo_producto": "Figura de acción",
-        "edicion": "Edición estándar"
-    },
-    {
-        "producto_id": 2,
-        "titulo": "Camiseta de Luffy - One Piece",
-        "descripcion": "Camiseta de algodón con diseño de Luffy, el protagonista de One Piece.",
-        "precio": 19.99,
-        "imagen": "luffy-shirt.jpg",
-        "imagen_descripcion": "Camiseta de Luffy",
-        "franquicia": "One Piece",
-        "tipo_producto": "Ropa",
-        "edicion": "Edición estándar"
-    },
-    {
-        "producto_id": 3,
-        "titulo": "Taza de Naruto Uzumaki",
-        "descripcion": "Taza de cerámica con diseño de Naruto Uzumaki y el símbolo de Konoha.",
-        "precio": 12.99,
-        "imagen": "naruto-taza.jpg",
-        "imagen_descripcion": "Taza de Naruto Uzumaki",
-        "franquicia": "Naruto",
-        "tipo_producto": "Taza",
-        "edicion": "Edición estándar"
-    },
-    {
-        "producto_id": 4,
-        "titulo": "Póster de Attack on Titan",
-        "descripcion": "Póster de alta calidad con diseño del Escuadrón de Reconocimiento.",
-        "precio": 9.99,
-        "imagen": "aot-poster.jpg",
-        "imagen_descripcion": "Póster de Attack on Titan",
-        "franquicia": "Attack on Titan",
-        "tipo_producto": "Póster",
-        "edicion": "Edición limitada"
-    },
-    {
-        "producto_id": 5,
-        "titulo": "Llavero de Pikachu",
-        "descripcion": "Llavero metálico con diseño de Pikachu, ideal para fans de Pokémon.",
-        "precio": 5.99,
-        "imagen": "pikachu-llavero.jpg",
-        "imagen_descripcion": "Llavero de Pikachu",
-        "franquicia": "Pokémon",
-        "tipo_producto": "Llavero",
-        "edicion": "Edición estándar"
-    },
-    {
-        "producto_id": 6,
-        "titulo": "Figura de acción Levi Ackerman",
-        "descripcion": "Figura articulada de Levi Ackerman con accesorios intercambiables.",
-        "precio": 34.99,
-        "imagen": "levi-figura.jpg",
-        "imagen_descripcion": "Figura de Levi Ackerman",
-        "franquicia": "Attack on Titan",
-        "tipo_producto": "Figura de acción",
-        "edicion": "Edición coleccionista"
-    },
-    {
-        "producto_id": 7,
-        "titulo": "Sudadera de My Hero Academia",
-        "descripcion": "Sudadera con capucha con diseño de la UA Academy.",
-        "precio": 39.99,
-        "imagen": "mha-sudadera.jpg",
-        "imagen_descripcion": "Sudadera de My Hero Academia",
-        "franquicia": "My Hero Academia",
-        "tipo_producto": "Ropa",
-        "edicion": "Edición estándar"
-    },
-    {
-        "producto_id": 8,
-        "titulo": "Peluche de Totoro",
-        "descripcion": "Peluche suave y adorable de Totoro, ideal para coleccionistas.",
-        "precio": 24.99,
-        "imagen": "totoro-peluche.jpg",
-        "imagen_descripcion": "Peluche de Totoro",
-        "franquicia": "My Neighbor Totoro",
-        "tipo_producto": "Peluche",
-        "edicion": "Edición estándar"
-    },
-    {
-        "producto_id": 9,
-        "titulo": "Set de pines de Demon Slayer",
-        "descripcion": "Set de pines metálicos con diseños de los personajes principales de Demon Slayer.",
-        "precio": 14.99,
-        "imagen": "demon-slayer-pines.jpg",
-        "imagen_descripcion": "Set de pines de Demon Slayer",
-        "franquicia": "Demon Slayer",
-        "tipo_producto": "Accesorios",
-        "edicion": "Edición limitada"
-    },
-    {
-        "producto_id": 10,
-        "titulo": "Reloj de bolsillo Fullmetal Alchemist",
-        "descripcion": "Réplica del reloj de bolsillo de Edward Elric.",
-        "precio": 19.99,
-        "imagen": "fma-reloj.jpg",
-        "imagen_descripcion": "Reloj de bolsillo Fullmetal Alchemist",
-        "franquicia": "Fullmetal Alchemist",
-        "tipo_producto": "Reloj",
-        "edicion": "Edición coleccionista"
-    },
-    {
-        "producto_id": 11,
-        "titulo": "Almohada de Nezuko Kamado",
-        "descripcion": "Almohada decorativa con diseño de Nezuko Kamado.",
-        "precio": 17.99,
-        "imagen": "nezuko-almohada.jpg",
-        "imagen_descripcion": "Almohada de Nezuko Kamado",
-        "franquicia": "Demon Slayer",
-        "tipo_producto": "Decoración",
-        "edicion": "Edición estándar"
-    },
-    {
-        "producto_id": 12,
-        "titulo": "Gorra de Ash Ketchum",
-        "descripcion": "Gorra oficial con diseño de Ash Ketchum de Pokémon.",
-        "precio": 14.99,
-        "imagen": "ash-gorra.jpg",
-        "imagen_descripcion": "Gorra de Ash Ketchum",
-        "franquicia": "Pokémon",
-        "tipo_producto": "Ropa",
-        "edicion": "Edición estándar"
-    }
+  {
+    "producto_id": 1,
+    "titulo": "Figura de acción Goku Super Saiyan",
+    "descripcion": "Figura coleccionable de Goku en su forma Super Saiyan, con detalles de alta calidad.",
+    "precio": 29.99,
+    "imagen": "imgs/prueba.png",
+    "imagen_descripcion": "Figura de Goku Super Saiyan",
+    "franquicia": "Dragon Ball Z",
+    "tipo_producto": "Figura de acción",
+    "edicion": "Edición estándar"
+  },
+  {
+    "producto_id": 2,
+    "titulo": "Camiseta de Luffy - One Piece",
+    "descripcion": "Camiseta de algodón con diseño de Luffy, el protagonista de One Piece.",
+    "precio": 19.99,
+    "imagen": "imgs/prueba.png",
+    "imagen_descripcion": "Camiseta de Luffy",
+    "franquicia": "One Piece",
+    "tipo_producto": "Ropa",
+    "edicion": "Edición estándar"
+  },
+  {
+    "producto_id": 3,
+    "titulo": "Taza de Naruto Uzumaki",
+    "descripcion": "Taza de cerámica con diseño de Naruto Uzumaki y el símbolo de Konoha.",
+    "precio": 12.99,
+    "imagen": "imgs/prueba.png",
+    "imagen_descripcion": "Taza de Naruto Uzumaki",
+    "franquicia": "Naruto",
+    "tipo_producto": "Taza",
+    "edicion": "Edición estándar"
+  },
+  {
+    "producto_id": 4,
+    "titulo": "Póster de Attack on Titan",
+    "descripcion": "Póster de alta calidad con diseño del Escuadrón de Reconocimiento.",
+    "precio": 9.99,
+    "imagen": "imgs/prueba.png",
+    "imagen_descripcion": "Póster de Attack on Titan",
+    "franquicia": "Attack on Titan",
+    "tipo_producto": "Póster",
+    "edicion": "Edición limitada"
+  },
+  {
+    "producto_id": 5,
+    "titulo": "Llavero de Pikachu",
+    "descripcion": "Llavero metálico con diseño de Pikachu, ideal para fans de Pokémon.",
+    "precio": 5.99,
+    "imagen": "imgs/prueba.png",
+    "imagen_descripcion": "Llavero de Pikachu",
+    "franquicia": "Pokémon",
+    "tipo_producto": "Llavero",
+    "edicion": "Edición estándar"
+  },
+  {
+    "producto_id": 6,
+    "titulo": "Figura de acción Levi Ackerman",
+    "descripcion": "Figura articulada de Levi Ackerman con accesorios intercambiables.",
+    "precio": 34.99,
+    "imagen": "imgs/prueba.png",
+    "imagen_descripcion": "Figura de Levi Ackerman",
+    "franquicia": "Attack on Titan",
+    "tipo_producto": "Figura de acción",
+    "edicion": "Edición coleccionista"
+  },
+  {
+    "producto_id": 7,
+    "titulo": "Sudadera de My Hero Academia",
+    "descripcion": "Sudadera con capucha con diseño de la UA Academy.",
+    "precio": 39.99,
+    "imagen": "imgs/prueba.png",
+    "imagen_descripcion": "Sudadera de My Hero Academia",
+    "franquicia": "My Hero Academia",
+    "tipo_producto": "Ropa",
+    "edicion": "Edición estándar"
+  },
+  {
+    "producto_id": 8,
+    "titulo": "Peluche de Totoro",
+    "descripcion": "Peluche suave y adorable de Totoro, ideal para coleccionistas.",
+    "precio": 24.99,
+    "imagen": "imgs/prueba.png",
+    "imagen_descripcion": "Peluche de Totoro",
+    "franquicia": "My Neighbor Totoro",
+    "tipo_producto": "Peluche",
+    "edicion": "Edición estándar"
+  },
+  {
+    "producto_id": 9,
+    "titulo": "Set de pines de Demon Slayer",
+    "descripcion": "Set de pines metálicos con diseños de los personajes principales de Demon Slayer.",
+    "precio": 14.99,
+    "imagen": "imgs/prueba.png",
+    "imagen_descripcion": "Set de pines de Demon Slayer",
+    "franquicia": "Demon Slayer",
+    "tipo_producto": "Accesorios",
+    "edicion": "Edición limitada"
+  },
+  {
+    "producto_id": 10,
+    "titulo": "Reloj de bolsillo Fullmetal Alchemist",
+    "descripcion": "Réplica del reloj de bolsillo de Edward Elric.",
+    "precio": 19.99,
+    "imagen": "imgs/prueba.png",
+    "imagen_descripcion": "Reloj de bolsillo Fullmetal Alchemist",
+    "franquicia": "Fullmetal Alchemist",
+    "tipo_producto": "Reloj",
+    "edicion": "Edición coleccionista"
+  },
+  {
+    "producto_id": 11,
+    "titulo": "Almohada de Nezuko Kamado",
+    "descripcion": "Almohada decorativa con diseño de Nezuko Kamado.",
+    "precio": 17.99,
+    "imagen": "imgs/prueba.png",
+    "imagen_descripcion": "Almohada de Nezuko Kamado",
+    "franquicia": "Demon Slayer",
+    "tipo_producto": "Decoración",
+    "edicion": "Edición estándar"
+  },
+  {
+    "producto_id": 12,
+    "titulo": "Gorra de Ash Ketchum",
+    "descripcion": "Gorra oficial con diseño de Ash Ketchum de Pokémon.",
+    "precio": 14.99,
+    "imagen": "imgs/prueba.png",
+    "imagen_descripcion": "Gorra de Ash Ketchum",
+    "franquicia": "Pokémon",
+    "tipo_producto": "Ropa",
+    "edicion": "Edición estándar"
+  }
 ]
