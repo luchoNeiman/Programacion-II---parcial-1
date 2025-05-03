@@ -1,6 +1,6 @@
 <?php
 
-$rutas = [
+$rutas = [ // Define un array de rutas con sus respectivos títulos.
     'home' => [
         'titulo' => 'Página principal',
     ],
@@ -8,8 +8,8 @@ $rutas = [
         'titulo' => 'Productos',
     ],
     'detalle-producto'     => [
-            'titulo' => 'Detalle Producto',
-        ],
+        'titulo' => 'Detalle Producto',
+    ],
     'contacto' => [
         'titulo' => 'Contacto',
     ],
@@ -18,10 +18,10 @@ $rutas = [
     ],
 ];
 
-$seccion = $_GET['seccion'] ?? 'home';
+$seccion = $_GET['seccion'] ?? 'home'; // Obtiene el valor de 'seccion' desde la URL, o asigna 'home' como valor por defecto.
 
-if (!isset($rutas[$seccion])) {
-    $seccion = '404';
+if (!isset($rutas[$seccion])) { // Verifica si la sección solicitada no existe en el array de rutas.
+    $seccion = '404'; // Si no existe, asigna '404' como sección actual.
 }
 
 $rutaConfig = $rutas[$seccion];
@@ -32,7 +32,7 @@ $rutaConfig = $rutas[$seccion];
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title><?= $rutaConfig['titulo']; ?> - Otaku Mania</title>
+    <title><?= $rutaConfig['titulo']; ?> - Otaku Mania</title><!-- Muestra el título de la página dinámica basado en la sección actual -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="assets/css/estilos.css">
     <link href="assets/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
@@ -61,7 +61,8 @@ $rutaConfig = $rutas[$seccion];
     </header>
     <main>
         <?php
-        require_once __DIR__ . '/views/' . $seccion . '.php';
+// Incluye el archivo correspondiente a la sección actual desde la carpeta "views"
+require_once __DIR__ . '/views/' . $seccion . '.php';
         ?>
     </main>
     <footer class="main-footer bg-dark text-white py-3">

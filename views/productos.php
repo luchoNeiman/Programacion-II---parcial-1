@@ -3,6 +3,7 @@
  require_once __DIR__ . '/../classes/Producto.php';
 
 /* $productos = obtenerproductos(); */
+// Esta línea crea una nueva instancia de la clase Producto y llama al método todosProductos() para obtener la lista de todos los productos.
 $productos = (new Producto)->todosProductos();
 ?>
 <section class="news">

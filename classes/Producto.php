@@ -13,7 +13,14 @@ class Producto
     public string $tipo_producto = "";
     public string $edicion = "";
 
-    public function cargarDatosArrray(array $data):void
+    /**
+     * Carga los datos de un producto desde un array asociativo.
+     *
+     * @param array $data Array asociativo con los datos del producto. 
+     *
+     * @return void no devuelve nada
+     */
+    public function cargarDatosArray(array $data): void
     {
         $this->producto_id          = $data['producto_id'];
         $this->titulo               = $data['titulo'];
@@ -26,32 +33,46 @@ class Producto
         $this->edicion              = $data['edicion'];
     }
 
-public function todosProductos(): array
-{
-    $productoJson = json_decode(file_get_contents(__DIR__ . '/../data/' . PRODUCTOS_JSON), true);
+    /**
+     * Recupera y devuelve todos los productos desde un archivo JSON.
+     *
+     * @return Producto[] Lista de objetos Producto que representan todos los productos disponibles.
+     */
+    public function todosProductos(): array
+    {
+        $productoJson = json_decode(file_get_contents(__DIR__ . '/../data/' . PRODUCTOS_JSON), true); 
+        // Leer el archivo JSON que contiene todos los productos y convertir su contenido en un array asociativo.
 
-    $productos = [];
+        $productos = []; // array donde se almacena todos los objetos Producto.
 
-    foreach ($productoJson as $unProductoJson) {
-        $producto = new Producto;
-        $producto->cargarDatosArrray($unProductoJson);
+        foreach ($productoJson as $unProductoJson) {
+            $producto = new self; // Crear una nueva instancia de la clase Producto.
+            $producto->cargarDatosArray($unProductoJson); // Cargar los datos del producto.
 
-        $productos[] = $producto;
-    }
-
-    return $productos;
-}
-
-public function porId(int $id): ?Producto
-{
-    $productos = $this->todosProductos();
-
-    foreach ($productos as $unProducto) {
-        if ($unProducto->producto_id == $id) {
-            return $unProducto;
+            $productos[] = $producto; // Añadir el objeto Producto al array.
         }
-    }
-    return null;
-}
-}
 
+        return $productos;
+    }
+
+    /**
+     * Busca y devuelve un producto específico por su ID.
+     *
+     * @param int $id El ID del producto a buscar.
+     *
+     * @return self|null Devuelve una instancia de Producto si el ID coincide, o null si no se encuentra.
+     */
+    public function porId(int $id): ?self
+    {
+        // Busca y devuelve un producto específico por su ID, o null si no existe.
+        $productos = $this->todosProductos(); // Obtiene todos los productos.
+
+        foreach ($productos as $unProducto) {
+            if ($unProducto->producto_id == $id) {
+                // Si el ID coincide con el buscado.
+                return $unProducto;
+            }
+        }
+        return null;
+    }
+}

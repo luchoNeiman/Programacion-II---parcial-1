@@ -1,6 +1,10 @@
 <?php
 require_once __DIR__ . '/../classes/Producto.php';
+
+// Obtiene el ID enviado como parámetro en la URL (método GET)
 $id = $_GET['id'];
+
+// Crea una nueva instancia de la clase Producto y busca un producto por su ID
 $producto = (new Producto)->porId($id);
 ?>
 
