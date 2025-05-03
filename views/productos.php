@@ -1,7 +1,9 @@
 <?php
-require_once __DIR__ . '/../bibliotecas/productos.php';
+/* require_once __DIR__ . '/../bibliotecas/productos.php'; */
+ require_once __DIR__ . '/../classes/Producto.php';
 
-$productos = obtenerproductos();
+/* $productos = obtenerproductos(); */
+$productos = (new Producto)->todosProductos();
 ?>
 <section class="news">
     <div>
@@ -15,10 +17,10 @@ $productos = obtenerproductos();
             <div class="card">
                 <article class="news-item">
                     <div class="news-item_content card-body">
-                        <a href="index.php?seccion=detalle-producto&id=<?= $producto->producto_id ?>">
-                            <h2><?= $producto->titulo ?></h2>
+                        <a href="index.php?seccion=detalle-producto&id=<?= $producto->producto_id;?>">
+                            <h2><?= $producto->titulo;?></h2>
                         </a>
-                        <p><?= $producto->descripcion ?></p>
+                        <p><?= $producto->descripcion;?></p>
                     </div>
                 </article>
             </div>

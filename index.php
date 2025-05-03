@@ -7,6 +7,9 @@ $rutas = [
     'productos' => [
         'titulo' => 'Productos',
     ],
+    'detalle-producto'     => [
+            'titulo' => 'Detalle Producto',
+        ],
     'contacto' => [
         'titulo' => 'Contacto',
     ],
