@@ -42,15 +42,15 @@ $rutaConfig = $rutas[$seccion];
 
 <body>
     <header class="main-header">
-        <nav class="navbar navbar-expand-lg bg-primary text-white " data-bs-theme="dark">
-            <div class="container-fluid">
-                <a class="navbar-brand text-white" href="#">Logo</a>
+        <nav class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
+            <div class="container-fluid ">
+                <a class="navbar-brand text-white" href="#">Otaku Mania</a>
                 <button class="navbar-toggler white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
                     aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                     <i class="bi bi-xl bi-list text-white"></i>
                 </button>
-                <div class="collapse navbar-collapse text-white" id="navbarNavAltMarkup">
-                    <div class="navbar-nav">
+                <div class="collapse navbar-collapse  text-white" id="navbarNavAltMarkup">
+                    <div class="navbar-nav ms-auto">
                         <a class="nav-link active text-white" aria-current="page" href="index.php?seccion=home">Inicio</a>
                         <a class="nav-link text-white" href="index.php?seccion=productos">Productos</a>
                         <a class="nav-link text-white" href="index.php?seccion=contacto">Contacto</a>
