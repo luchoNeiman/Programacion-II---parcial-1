@@ -12,4 +12,3 @@ class Producto
     public string $tipo_producto = "";
     public string $edicion = "";
 }
-?>

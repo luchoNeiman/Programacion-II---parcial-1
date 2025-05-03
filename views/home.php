@@ -1,4 +1,4 @@
-<div class="banner bg-dark text-white py-2 text-center" >
+<div class="banner bg-dark text-white py-2 text-center">
     <p class="mb-0" style="background: rgba(0, 0, 0, 0.5); padding: 10px;">¡Oferta especial! ¡Envió gratis en pedidos superiores a $50! </p>
 </div>
 <div class="container-fluid mt-5">
