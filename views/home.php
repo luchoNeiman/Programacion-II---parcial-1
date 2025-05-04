@@ -3,9 +3,11 @@ require_once __DIR__ . '/../classes/Producto.php';
 $productos = (new Producto)->todosProductos();
 ?>
 
-<div class="banner"></div>
+<section>
+    <img src="assets/imgs/Banners/banner-principal.webp" alt="Banner principal" height="450" class="img-fluid">
+</section>
 <section class="container text-center">
-    <div class="row mb-5">
+    <div class="row my-5">
         <div class="col-md-12">
             <h1 class=" mb-4">¡Bienvenido a Otaku Mania!</h1>
             <p class="fs-5"><strong>Somos tu tienda de confianza</strong> dedicada a todos los fans del anime, manga
@@ -31,14 +33,15 @@ $productos = (new Producto)->todosProductos();
                         <div class="col-12 col-sm-6 col-md-6 col-lg-3">
                             <article class="card h-100 shadow-sm">
                                 <img src="assets/imgs/products/<?= $producto->imagen; ?>"
-                                    class="card-img-top img-fluid"
-                                    alt="<?= $producto->imagen_descripcion; ?>">
+                                     class="card-img-top img-fluid"
+                                     alt="<?= $producto->imagen_descripcion; ?>">
                                 <div class="card-body d-flex flex-column">
                                     <h2 class="card-title fs-5"><?= $producto->titulo; ?></h2>
                                     <p class="card-text"><?= $producto->descripcion; ?></p>
-                                    <p class="card-text fw-bold text-primary mt-auto">$<?= number_format($producto->precio, 2, ',', '.'); ?></p>
+                                    <p class="card-text fw-bold text-primary mt-auto">
+                                        $<?= number_format($producto->precio, 2, ',', '.'); ?></p>
                                     <a href="index.php?seccion=detalle-producto&id=<?= $producto->producto_id; ?>"
-                                        class="btn btn-outline-dark mt-2 w-100">Ver más</a>
+                                       class="btn btn-outline-dark mt-2 w-100">Ver más</a>
                                 </div>
                             </article>
                         </div>

@@ -1,27 +1,26 @@
 <?php
 
-$rutas = [ // Define un array de rutas con sus respectivos títulos.
+$rutas = [
     'home' => [
         'titulo' => 'Página principal',
     ],
     'productos' => [
         'titulo' => 'Productos',
     ],
-    'detalle-producto'     => [
+    'detalle-producto' => [
         'titulo' => 'Detalle Producto',
     ],
     'contacto' => [
         'titulo' => 'Contacto',
     ],
-    '404'  => [
+    '404' => [
         'titulo' => 'Página no encontrada',
     ],
 ];
 
-$seccion = $_GET['seccion'] ?? 'home'; // Obtiene el valor de 'seccion' desde la URL, o asigna 'home' como valor por defecto.
-
-if (!isset($rutas[$seccion])) { // Verifica si la sección solicitada no existe en el array de rutas.
-    $seccion = '404'; // Si no existe, asigna '404' como sección actual.
+$seccion = $_GET['seccion'] ?? 'home';
+if (!isset($rutas[$seccion])) {
+    $seccion = '404';
 }
 
 $rutaConfig = $rutas[$seccion];
@@ -32,7 +31,8 @@ $rutaConfig = $rutas[$seccion];
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title><?= $rutaConfig['titulo']; ?> - Otaku Mania</title><!-- Muestra el título de la página dinámica basado en la sección actual -->
+    <title><?= $rutaConfig['titulo']; ?> - Otaku Mania</title>
+
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="assets/css/estilos.css">
     <link href="assets/css/bootstrap.min.css" rel="stylesheet">
@@ -44,8 +44,11 @@ $rutaConfig = $rutas[$seccion];
     <header class="main-header">
         <nav class="navbar navbar-expand-lg bg-dark fixed-top" data-bs-theme="dark">
             <div class="container-fluid ">
-                <a class="navbar-brand text-white" href="#">Otaku Mania</a>
-                <button class="navbar-toggler white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+                <a class="navbar-brand text-white" href="index.php?seccion=home">
+                    <img src="assets/imgs/logo.webp" alt="Otaku Mania Logo" height="30" class="me-2">
+                </a>
+                <button class="navbar-toggler white" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarNavAltMarkup"
                     aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                     <i class="bi bi-xl bi-list text-white"></i>
                 </button>
