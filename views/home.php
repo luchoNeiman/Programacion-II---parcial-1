@@ -9,7 +9,7 @@ $productos = (new Producto)->todosProductos();
 <section class="container text-center">
     <div class="row my-5">
         <div class="col-md-12">
-            <h1 class=" mb-4">¡Bienvenido a Otaku Mania!</h1>
+            <h1 class=" mb-4">¡Bienvenido!</h1>
             <p class="fs-5"><strong>Somos tu tienda de confianza</strong> dedicada a todos los fans del anime, manga
                 y la cultura japonesa. Aquí encontrarás todo lo que necesitas para disfrutar de tu pasión por el
                 mundo otaku.</p>
@@ -59,9 +59,9 @@ $productos = (new Producto)->todosProductos();
                     <div class="card-body d-flex flex-column align-items-center">
                         <h2 class="mb-4">¡Oferta Especial!</h2>
                         <img class="w-50" src="assets/imgs/Banners/descuento.png" alt="Descuento especial 20% off">
-                        <p class="fs-4 mb-4">No te pierdas esta increíble oportunidad. ¡Obtené un cupón del 20% de
+                        <p class="fs-4 texte-center mb-4">No te pierdas esta increíble oportunidad. ¡Obtené un cupón del 20% de
                             descuento!</p>
-                        <a href="index.php?seccion=contacto" class="btn btn-dark  btn-lg">¡Obtené tu cúpon!</a>
+                        <a href="index.php?seccion=contacto" class="btn btn-dark mb-3 btn-lg">¡Obtené tu cúpon!</a>
                     </div>
                 </div>
             </div>
