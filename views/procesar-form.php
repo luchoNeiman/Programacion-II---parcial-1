@@ -12,7 +12,7 @@ $m = $_POST['mensaje'];
 
 <section class="container mt-5 mb-5">
     <?php
-    
+
 
     // Variables para mostrar mensaje
     $mensaje = "";
@@ -32,24 +32,25 @@ $m = $_POST['mensaje'];
             $error = true;
             $mensaje = "El email ingresado no es válido.";
     ?>
-            <img src="assets/imgs/validaciones/validacionNO" alt="Error" class="img-fluid">
+            <img src="assets/imgs/validaciones/narutoOK.png" alt="Éxito" class="img-fluid" style="width: 200px;">
         <?php
         } elseif (preg_match('/\d/', $nombre)) { // Verifica si el nombre contiene números
             $error = true;
             $mensaje = "El nombre no puede contener números.";
         ?>
-            <img src="assets/imgs/validaciones/validacionNO" alt="Error" class="img-fluid">
+            <img src="assets/imgs/validaciones/narutoOK.png" alt="Éxito" class="img-fluid" style="width: 200px;">
         <?php
         } elseif (!preg_match('/^\d+$/', $telefono)) { // Verifica si el teléfono contiene solo números
             $error = true;
             $mensaje = "El teléfono solo puede contener números.";
         ?>
-            <img src="assets/imgs/validaciones/validacionNO" alt="Error" class="img-fluid">
+            <img src="assets/imgs/validaciones/narutoOK.png" alt="Éxito" class="img-fluid" style="width: 200px;">
         <?php
         } else {
-            $mensaje = "¡Gracias por contactarnos, $nombre! Te responderemos pronto.";
+            $mensaje = "¡Gracias por contactarnos, $nombre! En breve recibiras un mail para confirmar tu cupón.";
+            echo "<h2>Datos recibidos:</h2>";
         ?>
-            <img src="assets/imgs/validaciones/validacionOK" alt="Éxito" class="img-fluid">
+            <img src="assets/imgs/validaciones/narutoOK.png" alt="Éxito" class="img-fluid" style="width: 200px;">
     <?php
         }
     }
