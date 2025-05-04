@@ -89,7 +89,7 @@ class Producto
     {
         $productos = $this->todosProductos();
 
-        // Si no se especifica ninguna edición, devolver edición estándar
+        // si no se pasa ningun parametro, devvuelve edición estándar
         if ($edicion1 === null && $edicion2 === null) {
             $filtrados = array_filter($productos, function ($producto) {
                 return $producto->edicion === "Estándar";

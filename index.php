@@ -44,39 +44,40 @@ $rutaConfig = $rutas[$seccion];
 </head>
 
 <body>
-    <header class="main-header">
-        <nav class="navbar navbar-expand-lg bg-dark fixed-top" data-bs-theme="dark">
-            <div class="container-fluid ">
-                <a class="navbar-brand text-white" href="index.php?seccion=home">
-                    <img src="assets/imgs/logo.webp" alt="Otaku Mania Logo" height="30" class="me-2">
-                </a>
-                <button class="navbar-toggler white" type="button" data-bs-toggle="collapse"
+<header class="main-header">
+    <nav class="navbar navbar-expand-lg bg-dark fixed-top" data-bs-theme="dark">
+        <div class="container-fluid ">
+            <a class="navbar-brand text-white" href="index.php?seccion=home">
+                <img src="assets/imgs/logo.webp" alt="Otaku Mania Logo" height="30" class="me-2">
+            </a>
+            <button class="navbar-toggler white" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarNavAltMarkup"
                     aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                    <i class="bi bi-xl bi-list text-white"></i>
-                </button>
-                <div class="collapse navbar-collapse  text-white" id="navbarNavAltMarkup">
-                    <div class="navbar-nav ms-auto">
-                        <a class="nav-link active text-white" aria-current="page" href="index.php?seccion=home">Inicio</a>
-                        <a class="nav-link text-white" href="index.php?seccion=productos">Productos</a>
-                        <a class="nav-link text-white" href="index.php?seccion=contacto">Contacto</a>
-                    </div>
+                <i class="bi bi-xl bi-list text-white"></i>
+            </button>
+            <div class="collapse navbar-collapse text-white" id="navbarNavAltMarkup">
+                <div class="navbar-nav ms-auto">
+                    <a class="nav-link active text-white fs-5" aria-current="page" href="index.php?seccion=home"><i
+                                class="bi bi-house-door me-2"></i>Inicio</a>
+                    <a class="nav-link text-white fs-5" href="index.php?seccion=productos">Productos</a>
+                    <!--<a class="nav-link text-white" href="index.php?seccion=contacto">Contacto</a>-->
                 </div>
             </div>
-        </nav>
-    </header>
-    <main class="pt-5">
-        <?php
-        require_once __DIR__ . '/views/' . $seccion . '.php';
-        ?>
-    </main>
-    <footer class="main-footer bg-dark text-white py-3">
-        <div class="container text-center">
-            <p class="mb-1">&copy; Da Vinci - 2025</p>
-            <p class="mb-1">Alumnos: Ricardo Garcia, Luciano Neimán</p>
-            <p class="mb-0">Profesor: Santiago Gallino - Materia: Programación 2</p>
         </div>
-    </footer>
+    </nav>
+</header>
+<main class="pt-5">
+    <?php
+    require_once __DIR__ . '/views/' . $seccion . '.php';
+    ?>
+</main>
+<footer class="main-footer bg-dark text-white py-3">
+    <div class="container text-center">
+        <p class="mb-1">&copy; Da Vinci - 2025</p>
+        <p class="mb-1">Alumnos: Ricardo Garcia, Luciano Neimán</p>
+        <p class="mb-0">Profesor: Santiago Gallino - Materia: Programación 2</p>
+    </div>
+</footer>
 
 
 </body>
