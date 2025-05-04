@@ -1,40 +1,37 @@
-<div class="container mt-5">
-    <div class="row">
-        <div class="col-md-12 text-center">
-            <h1 class="mb-4">Contáctanos</h1>
-            <p class="lead">
-                Estamos aquí para ayudarte. Si tienes alguna pregunta, comentario o necesitas más información, no dudes en ponerte en contacto con nosotros.
-            </p>
-            <p>
-                A continuación, te brindamos los detalles para que puedas comunicarte con nuestro equipo:
-            </p>
-        </div>
+<main class="container mt-5 mb-5">
+
+    <div class="col-md-12 text-center">
+        <h1 class="mb-4 tex-center">Contáctanos</h1>
+        <p class="lead">
+            Estamos aquí para ayudarte. Si tienes alguna pregunta, comentario o necesitas más información, no dudes en ponerte en contacto con nosotros. Ademas completa el formulario para recibir un cupón de descuento del 35% off.
+        </p>
     </div>
-    <div class="row mt-4">
-        <div class="col-md-6">
-            <h3>Email</h3>
-            <p>Envíanos un correo electrónico y te responderemos a la brevedad.</p>
-            <p><strong>Email:</strong> contacto@otakumania.com</p>
+
+
+
+    <form method="POST" action="index.php?seccion=procesar-form" class="mx-auto" style="max-width: 600px;">
+        <div class="mb-3">
+            <label for="nombre" class="form-label">Nombre completo</label>
+            <input type="text" class="form-control" id="nombre" name="nombre" value="<?= $_POST['nombre'] ?? '' ?>">
         </div>
-        <div class="col-md-6">
-            <h3>Teléfono</h3>
-            <p>Si prefieres hablar con nosotros, puedes llamarnos en nuestro horario de atención.</p>
-            <p><strong>Teléfono:</strong> +34 123 456 789</p>
+        <div class="mb-3">
+            <label for="email" class="form-label">Correo electrónico</label>
+            <input type="email" class="form-control" id="email" name="email" value="<?= $_POST['email'] ?? '' ?>">
         </div>
-    </div>
-    <div class="row mt-4">
-        <div class="col-md-12">
-            <h3>Horario de Atención</h3>
-            <p>Lunes a Viernes: 10:00 AM - 7:00 PM</p>
-            <p>Sábados: 10:00 AM - 3:00 PM</p>
-            <p>Domingos y Festivos: Cerrado</p>
+        <div class="mb-3">
+            <label for="telefono" class="form-label">Teléfono</label>
+            <input type="tel" class="form-control" id="telefono" name="telefono" value="<?= $_POST['telefono'] ?? '' ?>">
         </div>
-    </div>
-    <div class="row mt-4">
-        <div class="col-md-12">
-            <h3>Dirección</h3>
-            <p>Visítanos en nuestra tienda física:</p>
-            <p>123 Calle Otaku, Ciudad Anime, Japón</p>
+
+        <div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input" id="check" name="check" <?= isset($_POST['check']) ? 'checked' : '' ?>>
+            <label class="form-check-label" for="check">Quiero recibir notificaciones</label>
         </div>
-    </div>
-</div>
+
+        <div class="mb-3">
+            <label for="mensaje" class="form-label">Mensaje</label>
+            <textarea class="form-control" id="mensaje" name="mensaje" rows="5"><?= $_POST['mensaje'] ?? '' ?></textarea>
+        </div>
+        <button type="submit" class="btn btn-dark">Enviar</button>
+    </form>
+</main>

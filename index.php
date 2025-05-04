@@ -13,6 +13,9 @@ $rutas = [
     'contacto' => [
         'titulo' => 'Contacto',
     ],
+    'procesar-form' => [
+        'titulo' => 'Procesar Formulario',
+    ],
     '404' => [
         'titulo' => 'Página no encontrada',
     ],
