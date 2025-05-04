@@ -12,7 +12,7 @@ $productos = (new Producto)->todosProductos();
         <p class="lead text-center mb-5">Los mejores artículos de tus series favoritas</p>
         <div class="row g-4">
             <?php foreach ($productos as $producto): ?>
-                <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                <div class="col-12 col-sm-6 col-md-6 col-lg-3">
                     <article class="card h-100 shadow-sm">
                         <img src="assets/imgs/products/<?= $producto->imagen; ?>"
                             class="card-img-top img-fluid"
