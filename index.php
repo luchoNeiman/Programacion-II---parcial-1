@@ -42,7 +42,7 @@ $rutaConfig = $rutas[$seccion];
 
 <body>
     <header class="main-header">
-        <nav class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
+        <nav class="navbar navbar-expand-lg bg-dark fixed-top" data-bs-theme="dark">
             <div class="container-fluid ">
                 <a class="navbar-brand text-white" href="#">Otaku Mania</a>
                 <button class="navbar-toggler white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
@@ -61,8 +61,7 @@ $rutaConfig = $rutas[$seccion];
     </header>
     <main>
         <?php
-// Incluye el archivo correspondiente a la sección actual desde la carpeta "views"
-require_once __DIR__ . '/views/' . $seccion . '.php';
+        require_once __DIR__ . '/views/' . $seccion . '.php';
         ?>
     </main>
     <footer class="main-footer bg-dark text-white py-3">
