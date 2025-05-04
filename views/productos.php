@@ -17,10 +17,10 @@ $productos = (new Producto)->todosProductos();
             ?>
                 <div class="col-12 col-sm-6 col-md-3 mb-4">
                     <article class="card h-100">
-                        <img src="assets/imgs/products/<?= htmlspecialchars($producto->imagen); ?>" class="card-img-top" alt="<?= htmlspecialchars($producto->imagen_descripcion); ?>">
+                        <img src="assets/imgs/products/<?=$producto->imagen;?>" class="card-img-top" alt="<?=$producto->imagen_descripcion; ?>">
                         <div class="card-body d-flex flex-column">
-                            <h2 class="card-title fs-5"><?= htmlspecialchars($producto->titulo); ?></h2>
-                            <p class="card-text"><?= htmlspecialchars($producto->descripcion); ?></p>
+                            <h2 class="card-title fs-5"><?= $producto->titulo; ?></h2>
+                            <p class="card-text"><?= $producto->descripcion; ?></p>
                             <p class="card-text fw-bold text-primary mt-auto">$<?= number_format($producto->precio, 2, ',', '.'); ?></p>
                             <a href="index.php?seccion=detalle-producto&id=<?= $producto->producto_id; ?>" class="btn btn-outline-dark mt-2">Ver más</a>
                         </div>
