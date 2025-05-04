@@ -23,16 +23,16 @@ class Producto
      */
     public function cargarDatosArray(array $data): void
     {
-        $this->producto_id          = $data['producto_id'];
-        $this->titulo               = $data['titulo'];
-        $this->descripcion          = $data['descripcion'];
-        $this->precio               = $data['precio'];
-        $this->imagen               = $data['imagen'];
-        $this->imagen_descripcion   = $data['imagen_descripcion'];
-        $this->franquicia           = $data['franquicia'];
-        $this->tipo_producto        = $data['tipo_producto'];
-        $this->edicion              = $data['edicion'];
-        $this->caracteristicas      = $data['caracteristicas'];
+        $this->producto_id = $data['producto_id'];
+        $this->titulo = $data['titulo'];
+        $this->descripcion = $data['descripcion'];
+        $this->precio = $data['precio'];
+        $this->imagen = $data['imagen'];
+        $this->imagen_descripcion = $data['imagen_descripcion'];
+        $this->franquicia = $data['franquicia'];
+        $this->tipo_producto = $data['tipo_producto'];
+        $this->edicion = $data['edicion'];
+        $this->caracteristicas = $data['caracteristicas'];
     }
 
     /**
@@ -77,4 +77,38 @@ class Producto
         }
         return null;
     }
+
+    /**
+     * Recupera productos filtrados por tipo de edición (máximo 4 productos).
+     *
+     * @param string|null $edicion1 Primera edición a filtrar (opcional)
+     * @param string|null $edicion2 Segunda edición a filtrar (opcional)
+     * @return Producto[] Lista de productos filtrados (máximo 4)
+     */
+    public function obtenerPorEdicion(?string $edicion1 = null, ?string $edicion2 = null): array
+    {
+        $productos = $this->todosProductos();
+
+        // Si no se especifica ninguna edición, devolver edición estándar
+        if ($edicion1 === null && $edicion2 === null) {
+            $filtrados = array_filter($productos, function ($producto) {
+                return $producto->edicion === "Estándar";
+            });
+        } // Si solo se especifica una edición
+        else if ($edicion2 === null) {
+            $filtrados = array_filter($productos, function ($producto) use ($edicion1) {
+                return $producto->edicion === $edicion1;
+            });
+        } // Si se especifican dos ediciones
+        else {
+            $filtrados = array_filter($productos, function ($producto) use ($edicion1, $edicion2) {
+                return $producto->edicion === $edicion1 || $producto->edicion === $edicion2;
+            });
+        }
+
+        // Convertir a array indexado y obtener solo los primeros 4 elementos
+        return array_slice(array_values($filtrados), 0, 4);
+    }
+
+
 }

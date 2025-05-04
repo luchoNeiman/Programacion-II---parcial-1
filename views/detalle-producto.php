@@ -63,5 +63,37 @@ $producto = (new Producto)->porId($id);
                 </div>
             </div>
         </div>
+
+    </div>
+</section>
+<section>
+    <div class="container mb-5">
+        <div class="row">
+            <div class="col-md-12">
+                <h2 class="mb-4"> Productos Similares</h2>
+                <div class="row g-4">
+                    <?php
+                    // variable para poder filtrar por tipo de edicion
+                    $productosSimilares = (new Producto())->obtenerPorEdicion($producto->edicion);
+
+                    foreach ($productosSimilares as $productoEdicion): ?>
+                        <div class="col-12 col-sm-6 col-md-6 col-lg-3">
+                            <article class="card h-100 shadow-sm">
+                                <img src="assets/imgs/products/<?= $productoEdicion->imagen; ?>"
+                                     class="card-img-top img-fluid"
+                                     alt="<?= $productoEdicion->imagen_descripcion; ?>">
+                                <div class="card-body d-flex flex-column">
+                                    <h2 class="card-title fs-5"><?= $productoEdicion->titulo; ?></h2>
+                                    <p class="card-text fw-bold text-primary mt-auto">
+                                        $<?= number_format($productoEdicion->precio, 2, ',', '.'); ?></p>
+                                    <a href="index.php?seccion=detalle-producto&id=<?= $productoEdicion->producto_id; ?>"
+                                       class="btn btn-outline-dark mt-2 w-100">Ver más</a>
+                                </div>
+                            </article>
+                        </div>
+                    <?php endforeach; ?>
+                </div>
+            </div>
+        </div>
     </div>
 </section>
