@@ -59,7 +59,7 @@ $rutaConfig = $rutas[$seccion];
             </div>
         </nav>
     </header>
-    <main class="container-fluid pt-5">
+    <main class="pt-5">
         <?php
         require_once __DIR__ . '/views/' . $seccion . '.php';
         ?>
