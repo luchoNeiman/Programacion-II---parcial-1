@@ -12,11 +12,12 @@ class Producto
     public string $franquicia = "";
     public string $tipo_producto = "";
     public string $edicion = "";
+    public string $caracteristicas = "";
 
     /**
      * Carga los datos de un producto desde un array asociativo.
      *
-     * @param array $data Array asociativo con los datos del producto. 
+     * @param array $data Array asociativo con los datos del producto.
      *
      * @return void no devuelve nada
      */
@@ -31,6 +32,7 @@ class Producto
         $this->franquicia           = $data['franquicia'];
         $this->tipo_producto        = $data['tipo_producto'];
         $this->edicion              = $data['edicion'];
+        $this->caracteristicas      = $data['caracteristicas'];
     }
 
     /**
@@ -40,7 +42,7 @@ class Producto
      */
     public function todosProductos(): array
     {
-        $productoJson = json_decode(file_get_contents(__DIR__ . '/../data/' . PRODUCTOS_JSON), true); 
+        $productoJson = json_decode(file_get_contents(__DIR__ . '/../data/' . PRODUCTOS_JSON), true);
         // Leer el archivo JSON que contiene todos los productos y convertir su contenido en un array asociativo.
 
         $productos = []; // array donde se almacena todos los objetos Producto.

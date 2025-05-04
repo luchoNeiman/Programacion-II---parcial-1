@@ -8,7 +8,8 @@
     "imagen_descripcion": "Figura de Goku Super Saiyan",
     "franquicia": "Dragon Ball Z",
     "tipo_producto": "Figura de acción",
-    "edicion": "Edición estándar"
+    "edicion": "Edición estándar",
+    "caracteristicas": "Altura: 18 cm, Material: PVC de alta resistencia, Articulaciones móviles en brazos, piernas y torso, Acabado detallado en el cabello y vestimenta, Incluye base para exhibición, Pintado a mano"
   },
   {
     "producto_id": 2,
@@ -19,7 +20,8 @@
     "imagen_descripcion": "Camiseta de Luffy",
     "franquicia": "One Piece",
     "tipo_producto": "Ropa",
-    "edicion": "Edición estándar"
+    "edicion": "Edición estándar",
+    "caracteristicas": "Material: 100% algodón, Estampa frontal con diseño Wanted de Monkey D. Luffy, Cuello redondo reforzado, Costuras dobles para mayor durabilidad, Tacto suave y liviano, Disponible en talles S a XXL"
   },
   {
     "producto_id": 3,
@@ -30,7 +32,8 @@
     "imagen_descripcion": "Taza de Naruto Uzumaki",
     "franquicia": "Naruto",
     "tipo_producto": "Taza",
-    "edicion": "Edición estándar"
+    "edicion": "Edición estándar",
+    "caracteristicas": "Capacidad: 350 ml, Material: Cerámica de alta calidad, Apta para microondas y lavavajillas, Estampa envolvente con diseño del Equipo 7 (Naruto, Sasuke, Sakura y Kakashi), Acabado brillante, Colores resistentes al desgaste"
   },
   {
     "producto_id": 4,
@@ -41,7 +44,8 @@
     "imagen_descripcion": "Póster de Attack on Titan",
     "franquicia": "Attack on Titan",
     "tipo_producto": "Póster",
-    "edicion": "Edición limitada"
+    "edicion": "Edición limitada",
+    "caracteristicas": "Capacidad: 350 ml, Material: Cerámica de alta calidad, Apta para microondas y lavavajillas, Estampa envolvente con diseño del Equipo 7 (Naruto, Sasuke, Sakura y Kakashi), Acabado brillante, Colores resistentes al desgaste"
   },
   {
     "producto_id": 5,
@@ -52,7 +56,9 @@
     "imagen_descripcion": "Llavero de Pikachu",
     "franquicia": "Pokémon",
     "tipo_producto": "Llavero",
-    "edicion": "Edición estándar"
+    "edicion": "Edición estándar",
+    "caracteristicas": "Material: Silicona y metal, Incluye figura 3D de Pikachu + correa con logo de Pokémon, Anillo metálico resistente, Tamaño aproximado: 8 cm, Suave al tacto, Ideal para mochilas, llaves o bolsos"
+
   },
   {
     "producto_id": 6,
@@ -63,7 +69,9 @@
     "imagen_descripcion": "Figura de Levi Ackerman",
     "franquicia": "Attack on Titan",
     "tipo_producto": "Figura de acción",
-    "edicion": "Edición coleccionista"
+    "edicion": "Edición coleccionista",
+    "caracteristicas": "Altura: 10 cm, Material: Vinilo premium, Estilo chibi con diseño de limpieza (Cleaning Levi), Incluye caja ilustrada para colección, Detalles pintados a mano, Edición de coleccionista YouTooz"
+
   },
   {
     "producto_id": 7,
@@ -74,7 +82,9 @@
     "imagen_descripcion": "Sudadera de My Hero Academia",
     "franquicia": "My Hero Academia",
     "tipo_producto": "Ropa",
-    "edicion": "Edición estándar"
+    "edicion": "Edición estándar",
+    "caracteristicas": "Material: Algodón y poliéster, Estampa frontal con personajes de la UA Academy (Deku, Todoroki, Bakugo), Interior frizado, Capucha con cordones ajustables, Puños y cintura elastizados, Disponible en talles S a XXL"
+
   },
   {
     "producto_id": 8,
@@ -85,7 +95,9 @@
     "imagen_descripcion": "Juguete de backugan",
     "franquicia": "Backugan",
     "tipo_producto": "Juguete",
-    "edicion": "Edición estándar"
+    "edicion": "Edición estándar",
+    "caracteristicas": "Modelo: Ultimate Viloch, Incluye 2 bakuganes + 8 cartas exclusivas, Figuras transformables de acción, Ideal para batallas y colección, Material: plástico resistente, Apto para mayores de 6 años"
+
   },
   {
     "producto_id": 9,
@@ -96,7 +108,9 @@
     "imagen_descripcion": "Set de pines de Demon Slayer",
     "franquicia": "Demon Slayer",
     "tipo_producto": "Accesorios",
-    "edicion": "Edición limitada"
+    "edicion": "Edición limitada",
+    "caracteristicas": "Incluye 5 pines metálicos, Diseño chibi de personajes: Nezuko, Tanjiro, Inosuke, Zenitsu y Rengoku, Acabado brillante con cierre de mariposa, Tamaño por pin: 3 cm aprox, Edición limitada, Ideal para mochilas o ropa"
+
   },
   {
     "producto_id": 18000,
@@ -107,7 +121,9 @@
     "imagen_descripcion": "Reloj de bolsillo Fullmetal Alchemist",
     "franquicia": "Fullmetal Alchemist",
     "tipo_producto": "Reloj",
-    "edicion": "Edición coleccionista"
+    "edicion": "Edición coleccionista",
+    "caracteristicas": "Material: Aleación metálica, Color: plateado envejecido, Grabado con el símbolo de los alquimistas estatales, Apertura con botón de resorte, Incluye cadena desmontable, Réplica oficial de Edward Elric"
+
   },
   {
     "producto_id": 11,
@@ -118,7 +134,9 @@
     "imagen_descripcion": "Almohada de Nezuko Kamado",
     "franquicia": "Demon Slayer",
     "tipo_producto": "Decoración",
-    "edicion": "Edición estándar"
+    "edicion": "Edición estándar",
+    "caracteristicas": "Tamaño: 40 x 40 cm, Funda con cierre, Estampa colorida de Nezuko con fondo de sakura, Material: poliéster suave, Apta para lavarropas, Relleno incluido, Ideal para decorar tu cama o sillón"
+
   },
   {
     "producto_id": 12,
@@ -129,6 +147,8 @@
     "imagen_descripcion": "Gorra de Ash Ketchum",
     "franquicia": "Pokémon",
     "tipo_producto": "Ropa",
-    "edicion": "Edición estándar"
+    "edicion": "Edición estándar",
+    "caracteristicas": "Material: Poliéster y red tipo trucker, Talle único con cierre ajustable, Estilo clásico con logo blanco, Liviana y cómoda, Ideal para cosplay o uso diario, Inspirada en la gorra original de Ash"
+
   }
 ]
