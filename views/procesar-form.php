@@ -9,7 +9,7 @@
     ?>
         <h2>¡Gracias por contactarnos, <?= $nombre ?>!</h2>
         <div class="alert alert-success" role="alert">
-            <p class="text-center">¡Se recibió el formulario correctamente! En breve recibirás un correo en <strong><?= $mail ?></strong> para confirmar tu cupón de descuento del 35%.</p>
+            <p class="text-center text-black">¡Se recibió el formulario correctamente! En breve recibirás un correo en <strong><?= $mail ?></strong> para confirmar tu cupón de descuento del 35%.</p>
         </div>
         <div class="d-flex justify-content-center align-items-center">
             <img src="assets/imgs/validaciones/narutoOK.png" alt="Éxito" class="img-fluid" style="width: 400px;">

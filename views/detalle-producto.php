@@ -13,16 +13,16 @@ $producto = (new Producto)->porId($id);
         <!-- Imagen -->
         <div class="col-12 col-md-6 mb-4 mb-md-0">
             <img src="assets/imgs/products/<?= $producto->imagen; ?>"
-                 alt="<?= $producto->imagen_descripcion; ?>"
-                 class="img-hover img-fluid rounded shadow-sm"
-                 style="max-height: 450px; object-fit: cover;">
+                alt="<?= $producto->imagen_descripcion; ?>"
+                class="img-hover img-fluid rounded shadow-sm"
+                style="max-height: 450px; object-fit: cover;">
         </div>
 
         <!-- Información del producto -->
         <div class="col-12 col-md-6">
             <h1 class="display-6 mb-3"><?= $producto->titulo; ?></h1>
             <p class="lead"><?= $producto->descripcion; ?></p>
-            <h2 class="text-primary fw-bold mt-4 mb-3">
+            <h2 class="text-success fw-bold mt-4 mb-3">
                 $<?= number_format($producto->precio, 2, ',', '.'); ?>
             </h2>
             <p class="text-naranja-tostado">Hasta 3 cuotas sin interés</p>
@@ -30,8 +30,8 @@ $producto = (new Producto)->porId($id);
 
             <p class="fw-bold">Stock disponible</p>
             <div class="d-flex align-items-center flex-wrap mb-3">
-                <label for="cantidadModal" class="me-2">Cantidad:</label>
-                <select id="cantidadModal" class="form-select me-2" style="width: auto;">
+                <label for="cantidadModal text-white" class="me-2">Cantidad:</label>
+                <select id="cantidadModal" class="form-select me-2 texto-color" style="width: auto;">
                     <option value="1">1 unidad</option>
                     <option value="2">2 unidades</option>
                     <option value="3">3 unidades</option>
@@ -39,12 +39,12 @@ $producto = (new Producto)->porId($id);
                     <option value="5">5 unidades</option>
                     <option value="6">6 unidades</option>
                 </select>
-                <small class="text-muted mt-1">(+10 disponibles)</small>
+                <small class="text-white mt-1">(+10 disponibles)</small>
             </div>
-            <a href="index.php?seccion=productos" class="btn btn-outline-secondary me-2">
+            <a href="index.php?seccion=productos" class="btn btn-light me-2 ">
                 ← Volver a productos
             </a>
-            <a href="#" class="btn btn-dark">
+            <a href="#" class="btn btn-dark border-light">
                 Comprar ahora
             </a>
         </div>
@@ -53,8 +53,8 @@ $producto = (new Producto)->porId($id);
         <div class="col-12 mb-4">
             <div class="card p-3 -sm">
                 <div class="container">
-                    <h2 class="fs-4">Características principales</h2>
-                    <ul class="list-unstyled">
+                    <h2 class="fs-4 text-black">Características principales</h2>
+                    <ul class="list-unstyled text-color">
                         <li><?= $producto->caracteristicas ?></li>
                         <li><strong>Franquicia:</strong> <?= $producto->franquicia ?></li>
                         <li><strong>Tipo de producto:</strong> <?= $producto->tipo_producto ?></li>
@@ -80,14 +80,14 @@ $producto = (new Producto)->porId($id);
                         <div class="col-12 col-sm-6 col-md-6 col-lg-3">
                             <article class="card h-100 shadow-sm">
                                 <img src="assets/imgs/products/<?= $productoEdicion->imagen; ?>"
-                                     class="card-img-top img-fluid"
-                                     alt="<?= $productoEdicion->imagen_descripcion; ?>">
+                                    class="card-img-top img-fluid"
+                                    alt="<?= $productoEdicion->imagen_descripcion; ?>">
                                 <div class="card-body d-flex flex-column">
                                     <h2 class="card-title fs-5"><?= $productoEdicion->titulo; ?></h2>
                                     <p class="card-text fw-bold text-primary mt-auto">
                                         $<?= number_format($productoEdicion->precio, 2, ',', '.'); ?></p>
                                     <a href="index.php?seccion=detalle-producto&id=<?= $productoEdicion->producto_id; ?>"
-                                       class="btn btn-outline-dark mt-2 w-100">Ver más</a>
+                                        class="btn btn-outline-dark mt-2 w-100">Ver más</a>
                                 </div>
                             </article>
                         </div>

@@ -3,12 +3,12 @@
         <div class="col-md-12">
             <h1 class="mb-4 text-center">Reclamá el cupón</h1>
             <p class="mb-4">
-                Estamos aquí para ayudarte. Si tienes alguna pregunta, comentario o necesitas más información, no dudes en <strong>ponerte en contacto</strong> con nosotros. Además, completa el formulario para recibir un cupón de <strong>descuento del 35% off</strong>.
+                Estamos aquí para ayudarte. Si tienes alguna pregunta, comentario o necesitas más información, no dudes en <strong class="text-white">ponerte en contacto</strong> con nosotros. Además, completa el formulario para recibir un cupón de <strong class="text-white">descuento del 35% off</strong>.
             </p>
         </div>
     
         <div class="col-md-3">
-            <div class="card text-center">
+            <div class="card text-center d-none d-md-flex">
                 <div class="card-body ">
                     <img class="w-100 img-fluid" src="assets/imgs/Banners/banner-descuento.webp"
                         alt="Descuento especial 35% off">
@@ -16,9 +16,9 @@
             </div>
         </div>
 
-        <div class="col-md-6 card shadow">
+        <div class="col-md-6 card shadow mb-3">
             <div class="card-body">
-                <form method="POST" action="index.php?seccion=procesar-form" class="mx-auto" style="max-width: 600px;">
+                <form method="POST" action="index.php?seccion=procesar-form" class="mx-auto texto-color" style="max-width: 600px;">
                     <div class="mb-3">
                         <label for="nombre" class="form-label">Nombre completo</label>
                         <input type="text" class="form-control" id="nombre" name="nombre" required>
@@ -38,7 +38,7 @@
                         <textarea class="form-control" id="mensaje" name="mensaje" rows="5"></textarea>
                     </div>
                     <div class="d-flex justify-content-center align-items-center">
-                        <button type="submit" class="btn btn-dark">Enviar</button>
+                        <button type="submit" class="btn btn-dark ">Enviar</button>
                     </div>
                 </form>
             </div>

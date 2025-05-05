@@ -3,6 +3,7 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Roboto', sans-serif; 
+    color: white;
 }
 
 body {
@@ -24,5 +25,13 @@ body {
 }
 .card, .img-hover {
     transition: all 0.3s ease;
+}
+
+.contacto-section {
+    background-color: #131313;
+}
+
+.texto-color option, li, .texto-color label, strong {
+    color: #000000;
 }
 

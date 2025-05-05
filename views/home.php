@@ -10,11 +10,11 @@ require_once __DIR__ . '/../classes/Producto.php';
     <div class="row my-5">
         <div class="col-md-12">
             <h1 class=" mb-4">¡Bienvenido!</h1>
-            <p class="fs-5"><strong>Somos tu tienda de confianza</strong> dedicada a todos los fans del anime, manga
+            <p class="fs-5"><strong class="text-white">Somos tu tienda de confianza</strong> dedicada a todos los fans del anime, manga
                 y la cultura japonesa. Aquí encontrarás todo lo que necesitas para disfrutar de tu pasión por el
                 mundo otaku.</p>
             <p class="fs-5">
-                Descubre <strong>figuras coleccionables</strong>, <strong>ropa temática</strong>, <strong>accesorios
+                Descubre <strong class="text-white">figuras coleccionables</strong>, <strong class="text-white">ropa temática</strong>, <strong class="text-white">accesorios
                     exclusivos</strong> y mucho más.
                 Nuestro objetivo es ofrecer productos de calidad para que vivas al máximo tu afición con artículos
                 que realmente te encanten.
@@ -55,7 +55,7 @@ require_once __DIR__ . '/../classes/Producto.php';
         </div>
     </div>
 </section>
-<section class="py-5 bg-light">
+<section class="py-5">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-3 col-lg-4 d-none d-md-flex justify-content-start align-items-center">
@@ -71,7 +71,7 @@ require_once __DIR__ . '/../classes/Producto.php';
                              alt="Descuento especial 35% off">
                     </div>
                     <div class="card-text justify-content-center">
-                        <p class="fs-4 text-center px-2 mb-4">No te pierdas esta increíble oportunidad. ¡Obtené un cupón del
+                        <p class="fs-4 text-center px-2 mb-4 text-black">No te pierdas esta increíble oportunidad. ¡Obtené un cupón del
                             35% de descuento!</p>
                     </div>
                     <div class="card-footer">

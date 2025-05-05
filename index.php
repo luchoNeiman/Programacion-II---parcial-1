@@ -60,13 +60,12 @@ $rutaConfig = $rutas[$seccion];
                     <a class="nav-link active text-white fs-5" aria-current="page" href="index.php?seccion=home"><i
                                 class="bi bi-house-door me-2"></i>Inicio</a>
                     <a class="nav-link text-white fs-5" href="index.php?seccion=productos">Productos</a>
-                    <!--<a class="nav-link text-white" href="index.php?seccion=contacto">Contacto</a>-->
                 </div>
             </div>
         </div>
     </nav>
 </header>
-<main class="pt-5">
+<main class="pt-5 contacto-section">
     <?php
     require_once __DIR__ . '/views/' . $seccion . '.php';
     ?>
