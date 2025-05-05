@@ -24,7 +24,7 @@ require_once __DIR__ . '/../classes/Producto.php';
 
 </section>
 
-<section class="bg-dark py-5">
+<section class="bg-dark py-5  border-top  border-bottom border-light">
     <div class="container">
         <div class="row">
             <div class="col-md-12">

@@ -34,4 +34,7 @@ body {
 .texto-color option, li, .texto-color label, strong {
     color: #000000;
 }
+navbar {
+    border: 1px solid #ffffff;
+}
 
