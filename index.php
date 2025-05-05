@@ -35,7 +35,7 @@ $rutaConfig = $rutas[$seccion];
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title><?= $rutaConfig['titulo']; ?> - Otaku Mania</title>
-
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="assets/css/estilos.css">
     <link href="assets/css/bootstrap.min.css" rel="stylesheet">
@@ -59,7 +59,8 @@ $rutaConfig = $rutas[$seccion];
                 <div class="navbar-nav ms-auto">
                     <a class="nav-link active text-white fs-5" aria-current="page" href="index.php?seccion=home"><i
                                 class="bi bi-house-door me-2"></i>Inicio</a>
-                    <a class="nav-link text-white fs-5" href="index.php?seccion=productos">Productos</a>
+                    <a class="nav-link text-white fs-5" href="index.php?seccion=productos"><i
+                                class="bi bi-bag me-2"></i>Productos</a>
                 </div>
             </div>
         </div>
