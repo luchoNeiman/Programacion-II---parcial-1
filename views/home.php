@@ -3,7 +3,7 @@ require_once __DIR__ . '/../classes/Producto.php';
 
 ?>
 
-<section>
+<section class="border-bottom border-light">
     <img src="assets/imgs/Banners/banner-principal.webp" alt="Banner principal" height="450" class="img-fluid">
 </section>
 <section class="container text-center">
