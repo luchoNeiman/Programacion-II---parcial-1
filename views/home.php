@@ -24,11 +24,11 @@ require_once __DIR__ . '/../classes/Producto.php';
 
 </section>
 
-<section class="bg-dark py-5  border-top  border-bottom border-light">
+<section class="py-5 border-top border-bottom border-light seccion-productos">
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h2 class="mb-4 text-white"> Imperdibles del mes</h2>
+                <h2 class="mb-4 text-black"> Imperdibles del mes</h2>
                 <div class="row g-4">
                     <?php
                     // variable para poder filtrar por tipo de edicion
@@ -36,7 +36,7 @@ require_once __DIR__ . '/../classes/Producto.php';
                     );
                     foreach ($productosDestacados as $producto): ?>
                         <div class="col-12 col-sm-6 col-md-6 col-lg-3">
-                            <article class="card h-100 shadow-sm">
+                            <article class="card h-100 shadow">
                                 <img src="assets/imgs/products/<?= $producto->imagen; ?>"
                                      class="card-img-top img-fluid"
                                      alt="<?= $producto->imagen_descripcion; ?>">
@@ -71,8 +71,8 @@ require_once __DIR__ . '/../classes/Producto.php';
                              alt="Descuento especial 35% off">
                     </div>
                     <div class="card-text justify-content-center">
-                        <p class="fs-4 text-center px-2 mb-4 text-black">No te pierdas esta increíble oportunidad. ¡Obtené un cupón del
-                            35% de descuento!</p>
+                        <p class="fs-4 text-center px-2 mb-4 text-black">No te pierdas esta increíble oportunidad. <strong>¡Obtené un cupón del
+                            35% de descuento!</strong></p>
                     </div>
                     <div class="card-footer">
                         <a href="index.php?seccion=contacto" class="btn btn-dark btn-lg">¡Obtené tu cúpon!</a>

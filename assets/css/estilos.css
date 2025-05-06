@@ -34,7 +34,8 @@ body {
 .texto-color option, li, .texto-color label, strong {
     color: #000000;
 }
-input {
 
+.seccion-productos {
+    background-color: #f5f5f5;
 }
 
