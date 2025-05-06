@@ -22,8 +22,8 @@ $producto = (new Producto)->porId($id);
         <div class="col-12 col-md-6">
             <h1 class="display-6 mb-3"><?= $producto->titulo; ?></h1>
             <p class="lead"><?= $producto->descripcion; ?></p>
-            <h2 class="text-success fw-bold mt-4 mb-3">
-                $<?= number_format($producto->precio, 2, ',', '.'); ?>
+            <h2 class="mt-4 mb-3">
+                <strong class="text-white">$<?= number_format($producto->precio, 2, ',', '.'); ?></strong>
             </h2>
             <p class="text-naranja-tostado">Hasta 3 cuotas sin interés</p>
             <p class="text-naranja-tostado">Llega gratis el lunes</p>
@@ -51,7 +51,7 @@ $producto = (new Producto)->porId($id);
     </div>
     <div class="row mt-4">
         <div class="col-12 mb-4">
-            <div class="card p-3 -sm">
+            <div class="card p-3 -sm detalle-caracteristicas-producto">
                 <div class="container">
                     <h2 class="fs-4 text-black">Características principales</h2>
                     <ul class="list-unstyled text-color">
@@ -85,7 +85,7 @@ $producto = (new Producto)->porId($id);
                                 <div class="card-body d-flex flex-column">
                                     <h2 class="card-title fs-5"><?= $productoEdicion->titulo; ?></h2>
                                     <p class="card-text fw-bold text-primary mt-auto">
-                                        $<?= number_format($productoEdicion->precio, 2, ',', '.'); ?></p>
+                                        <strong class="text-black">$<?= number_format($productoEdicion->precio, 2, ',', '.'); ?></strong></p>
                                     <a href="index.php?seccion=detalle-producto&id=<?= $productoEdicion->producto_id; ?>"
                                         class="btn btn-outline-dark mt-2 w-100">Ver más</a>
                                 </div>
