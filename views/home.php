@@ -55,7 +55,7 @@ require_once __DIR__ . '/../classes/Producto.php';
         </div>
     </div>
 </section>
-<section class="py-5">
+<section class="py-5 fondo-promo">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-3 col-lg-4 d-none d-md-flex justify-content-start align-items-center">
@@ -64,25 +64,25 @@ require_once __DIR__ . '/../classes/Producto.php';
                      class="img-fluid w-100">
             </div>
             <div class="col-md-6 col-lg-4">
-                <h2 class="mb-4 text-center">¡Oferta Especial!</h2>
                 <div class="card text-center">
-                    <div class="card-body ">
+                    <div class="card-body bg-dark">
                         <img class="w-75 img-fluid" src="assets/imgs/Banners/banner-descuento.webp"
                              alt="Descuento especial 35% off">
                     </div>
-                    <div class="card-text justify-content-center">
-                        <p class="fs-4 text-center px-2 mb-4 text-black">No te pierdas esta increíble oportunidad. <strong>¡Obtené un cupón del
+                    <div class="card-text justify-content-center bg-dark">
+                        <h2 class="mb-4 text-center">¡Promo Especial!</h2>
+                        <p class="fs-4 text-center px-2 mb-4">No te pierdas esta increíble oportunidad. <strong class="text-white">¡Obtené un cupón del
                             35% de descuento!</strong></p>
                     </div>
-                    <div class="card-footer">
-                        <a href="index.php?seccion=contacto" class="btn btn-dark btn-lg">¡Obtené tu cúpon!</a>
+                    <div class="card-footer bg-dark">
+                        <a href="index.php?seccion=contacto" class="btn btn-light btn-lg">¡Obtené tu cúpon!</a>
                     </div>
                 </div>
             </div>
             <div class="col-md-3 col-lg-4 d-none d-md-flex justify-content-center align-items-center">
-                <img src="assets/imgs/fondos/fondo-light.webp"
+                <img src="assets/imgs/fondos/fondo-riuk.webp"
                      alt="Imagen del personaje Light de Death Note"
-                     class="img-fluid w-50">
+                     class="img-fluid w-75">
             </div>
         </div>
     </div>

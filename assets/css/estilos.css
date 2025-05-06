@@ -39,3 +39,8 @@ body {
     background-color: #f5f5f5;
 }
 
+.fondo-promo {
+    background: url("../imgs/Fondos/fondo.webp") no-repeat center;
+    background-size: cover;
+}
+
