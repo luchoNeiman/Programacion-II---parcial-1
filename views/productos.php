@@ -17,7 +17,7 @@ $productos = (new Producto)->todosProductos();
                         <div class="card-body d-flex flex-column">
                             <h2 class="card-title fs-5"><?= $producto->titulo; ?></h2>
                             <p class="card-text text-black"><?= $producto->descripcion; ?></p>
-                            <p class="card-text fw-bold text-primary mt-auto">$<?= number_format($producto->precio, 2, ',', '.'); ?></p>
+                            <p class="card-text fw-bold text-primary mt-auto"><strong class="text-black">$<?= number_format($producto->precio, 2, ',', '.'); ?></strong></p>
                             <a href="index.php?seccion=detalle-producto&id=<?= $producto->producto_id; ?>"
                                 class="btn btn-outline-dark mt-2 w-100">Ver más</a>
                         </div>
