@@ -69,8 +69,8 @@ require_once __DIR__ . '/../classes/Producto.php';
                      alt="Imagen del personaje Ace de One Piece"
                      class="img-fluid w-100">
             </div>
-            <div class="col-md-6 col-lg-4">
-                <div class="card text-center">
+            <div class="col-md-6 col-lg-4 ">
+                <div class="card text-center border-5">
                     <div class="card-body bg-morado">
                         <img class="w-75 img-fluid" src="assets/imgs/Banners/banner-descuento.webp"
                              alt="Descuento especial 35% off">
@@ -81,7 +81,7 @@ require_once __DIR__ . '/../classes/Producto.php';
                                     class="text-white">¡Obtené un cupón del
                                 35% de descuento!</strong></p>
                     </div>
-                    <div class="card-footer bg-morado my-5">
+                    <div class="bg-morado pt-3 pb-5">
                         <a href="index.php?seccion=contacto" class="btn-azul mb-3">¡Obtené tu cúpon!</a>
                     </div>
 
