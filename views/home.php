@@ -89,7 +89,7 @@ require_once __DIR__ . '/../classes/Producto.php';
             </div>
             <div class="col-md-3 col-lg-4 d-none d-md-flex justify-content-center align-items-center">
                 <img src="assets/imgs/fondos/fondo-riuk.webp"
-                     alt="Imagen del personaje Light de Death Note"
+                     alt="Imagen del personaje ryuk de Death Note"
                      class="img-fluid w-75">
             </div>
         </div>
