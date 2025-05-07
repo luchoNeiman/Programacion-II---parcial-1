@@ -1,14 +1,11 @@
 <?php
 require_once __DIR__ . '/../classes/Producto.php';
 
-// Obtiene el ID enviado como parámetro en la URL (método GET)
 $id = $_GET['id'];
-
-// Crea una nueva instancia de la clase Producto y busca un producto por su ID
 $producto = (new Producto)->porId($id);
 ?>
 
-<section class="container my-5">
+<section class="container my-5 " >
     <div class="row align-items-center">
         <!-- Imagen -->
         <div class="col-12 col-md-6 mb-4 mb-md-0">
@@ -66,8 +63,7 @@ $producto = (new Producto)->porId($id);
 
     </div>
 </section>
-<section>
-    <div class="container mb-5">
+<section class="container mb-5">
         <div class="row">
             <div class="col-md-12">
                 <h2 class="mb-4"> Productos Similares</h2>
@@ -95,5 +91,4 @@ $producto = (new Producto)->porId($id);
                 </div>
             </div>
         </div>
-    </div>
 </section>

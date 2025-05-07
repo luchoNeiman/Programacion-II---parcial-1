@@ -1,3 +1,51 @@
+
+:root {
+
+    --color-morado-oscuro: #1E032B;
+    --color-morado-intenso: #7907AD;
+    --color-lila: #9B4DCA;
+    --color-lila-claro: #BE7DEB;
+    --color-morado-gris: #6B4D7B;
+    --color-azul-oscuro: #001E45;
+    --color-azul-claro: #0048A3;
+
+}
+
+/* Clases de background */
+.bg-degrade {
+    background: linear-gradient(to bottom, #1E032B, rgba(94, 13, 134, 0.75));
+}
+
+
+.bg-morado {
+    background-color: var(--color-morado-oscuro);
+}
+
+.bg-morado-2 {
+    background-color: var(--color-morado-intenso);
+}
+
+.bg-lila {
+    background-color: var(--color-lila);
+}
+
+.bg-lila-2 {
+    background-color: var(--color-lila-claro);
+}
+
+.bg-morado-3 {
+    background-color: var(--color-morado-gris);
+}
+
+.bg-azul {
+    background: linear-gradient(to bottom, #001E45, rgb(0, 72, 163));
+}
+
+.bg-azul-2 {
+    background-color: var(--color-azul-claro);
+}
+
+
 * {
     margin: 0;
     padding: 0;
@@ -28,7 +76,7 @@ body {
 }
 
 .contacto-section {
-    background-color: #131313;
+    background-color: var(--color-primary);
 }
 
 .texto-color option, li, .texto-color label, strong {
@@ -40,10 +88,23 @@ body {
 }
 
 .fondo-promo {
-    background: url("../imgs/Fondos/fondo.webp") no-repeat center;
+    background: url("../imgs/Fondos/fondo2.webp") no-repeat center;
     background-size: cover;
 }
 
 .detalle-caracteristicas-producto {
     background-color: #f5f5f5;
+}
+.btn-azul {
+    background-color: transparent;
+    color: white;
+    border: 1px solid white;
+    padding: 0.75rem 1.5rem;
+    font-size: 1.1rem;
+    border-radius: 0.5rem;
+    transition: all 0.3s ease;
+}
+.btn-azul:hover {
+    background-color: #000000;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }

@@ -45,7 +45,7 @@ $rutaConfig = $rutas[$seccion];
 
 <body>
 <header class="main-header">
-    <nav class="navbar navbar-expand-lg bg-dark fixed-top border-bottom border-light" data-bs-theme="dark">
+    <nav class="navbar navbar-expand-lg bg-azul fixed-top border-bottom border-light" data-bs-theme="dark">
         <div class="container-fluid ">
             <a class="navbar-brand text-white" href="index.php?seccion=home">
                 <img src="assets/imgs/logo.webp" alt="Otaku Mania Logo" height="30" class="me-2">
@@ -66,12 +66,12 @@ $rutaConfig = $rutas[$seccion];
         </div>
     </nav>
 </header>
-<main class="pt-5 contacto-section">
+<main class="pt-5 bg-degrade">
     <?php
     require_once __DIR__ . '/views/' . $seccion . '.php';
     ?>
 </main>
-<footer class="main-footer bg-dark text-white py-3  border-top border-light">
+<footer class="main-footer bg-azul text-white py-3  border-top border-light">
     <div class="container text-center">
         <p class="mb-1">&copy; Da Vinci - 2025</p>
         <p class="mb-1">Alumnos: Ricardo Garcia, Luciano Neimán</p>
