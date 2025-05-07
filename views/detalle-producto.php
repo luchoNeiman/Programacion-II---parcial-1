@@ -39,7 +39,7 @@ $producto = (new Producto)->porId($id);
                 <small class="text-white mt-1">(+10 disponibles)</small>
             </div>
             <a href="index.php?seccion=productos" class="btn btn-light me-2 ">
-                ← Volver a productos
+                <i class="bi bi-arrow-left bi-lg text-dark ms-2"></i> Volver a productos
             </a>
             <a href="#" class="btn btn-dark border-light">
                 Comprar ahora
