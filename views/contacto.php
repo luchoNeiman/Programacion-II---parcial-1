@@ -18,7 +18,7 @@
 
         <div class="col-md-6 card shadow mb-3">
             <div class="card-body">
-                <form method="POST" action="index.php?seccion=procesar-form" class="mx-auto texto-color" style="max-width: 600px;">
+                <form method="POST" action="index.php?seccion=procesar-form" class="mx-auto texto-color">
                     <div class="mb-3">
                         <label for="nombre" class="form-label">Nombre completo</label>
                         <input type="text" class="form-control border-secondary" id="nombre" name="nombre" required>

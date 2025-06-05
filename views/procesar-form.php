@@ -1,4 +1,3 @@
-<section class="container mt-5 mb-5 text-center">
     <?php
     $nombre = $_POST['nombre'] ?? '';
     $mail = $_POST['email'] ?? '';
@@ -7,12 +6,13 @@
 
     if ($nombre):
     ?>
+    <section class="container mt-5 mb-5 text-center">
         <h2>¡Gracias por contactarnos, <?= $nombre ?>!</h2>
         <div class="alert alert-success" role="alert">
             <p class="text-center text-black">¡Se recibió el formulario correctamente! En breve recibirás un correo en <strong><?= $mail ?></strong> para confirmar tu cupón de descuento del 35%.</p>
         </div>
         <div class="d-flex justify-content-center align-items-center">
-            <img src="assets/imgs/validaciones/narutoOK.png" alt="Éxito" class="img-fluid" style="width: 400px;">
+            <img src="assets/imgs/validaciones/narutoOK.png" alt="Éxito" class="img-fluid w-25">
         </div>
     <?php else: ?>
         <div class="alert alert-warning" role="alert">

@@ -9,10 +9,9 @@ $producto = (new Producto)->porId($id);
     <div class="row align-items-center">
         <!-- Imagen -->
         <div class="col-12 col-md-6 mb-4 mb-md-0">
-            <img src="assets/imgs/products/<?= $producto->imagen; ?>"
+            <img src="assets/imgs/productos/<?= $producto->imagen; ?>"
                 alt="<?= $producto->imagen_descripcion; ?>"
-                class="img-hover img-fluid rounded shadow-sm"
-                style="max-height: 450px; object-fit: cover;">
+                class="imagen-producto img-hover img-fluid rounded shadow-sm">
         </div>
 
         <!-- Información del producto -->
@@ -27,8 +26,8 @@ $producto = (new Producto)->porId($id);
 
             <p class="fw-bold">Stock disponible</p>
             <div class="d-flex align-items-center flex-wrap mb-3">
-                <label for="cantidadModal text-white" class="me-2">Cantidad:</label>
-                <select id="cantidadModal" class="form-select me-2 texto-color" style="width: auto;">
+                <label for="cantidadModal" class="me-2">Cantidad:</label>
+                <select id="cantidadModal" class="form-select me-2 texto-color w-auto">
                     <option value="1">1 unidad</option>
                     <option value="2">2 unidades</option>
                     <option value="3">3 unidades</option>
@@ -75,7 +74,7 @@ $producto = (new Producto)->porId($id);
                     foreach ($productosSimilares as $productoEdicion): ?>
                         <div class="col-12 col-sm-6 col-md-6 col-lg-3">
                             <article class="card h-100 shadow-sm">
-                                <img src="assets/imgs/products/<?= $productoEdicion->imagen; ?>"
+                                <img src="assets/imgs/productos/<?= $productoEdicion->imagen; ?>"
                                     class="card-img-top img-fluid"
                                     alt="<?= $productoEdicion->imagen_descripcion; ?>">
                                 <div class="card-body d-flex flex-column">

@@ -3,14 +3,14 @@ require_once __DIR__ . '/../classes/Producto.php';
 
 ?>
 
-<section class="border-bottom border-light">
-    <img src="assets/imgs/Banners/banner-principal.webp" alt="Banner principal" height="450" class="img-fluid">
-</section>
-<section class="text-center">
+<div class="border-bottom border-light">
+    <img src="assets/imgs/Banners/banner-principal.webp" alt="OTAKUMANIA - Merchandaising y Figuras" height="450" class="img-fluid">
+</div>
+<section class="">
     <div class="container">
         <div class="row py-5">
             <div class="col-md-12">
-                <h1 class=" mb-4">¡Bienvenido!</h1>
+                <h1 class=" text-center mb-4">¡Bienvenido!</h1>
                 <p class="fs-5 mb-5"><strong class="text-white">Somos tu tienda de confianza</strong> dedicada a todos los
                     fans del anime, manga
                     y la cultura japonesa. Aquí encontrarás todo lo que necesitas para disfrutar de tu pasión por el
@@ -42,11 +42,11 @@ require_once __DIR__ . '/../classes/Producto.php';
                     foreach ($productosDestacados as $producto): ?>
                         <div class="col-12 col-sm-6 col-md-6 col-lg-3">
                             <article class="card h-100 shadow">
-                                <img src="assets/imgs/products/<?= $producto->imagen; ?>"
+                                <img src="assets/imgs/productos/<?= $producto->imagen; ?>"
                                      class="card-img-top img-fluid"
                                      alt="<?= $producto->imagen_descripcion; ?>">
                                 <div class="card-body d-flex flex-column">
-                                    <h2 class="card-title fs-5"><?= $producto->titulo; ?></h2>
+                                    <h3 class="card-title fs-5"><?= $producto->titulo; ?></h3>
                                     <p class="card-text fw-bold text-primary mt-auto"><strong
                                                 class="text-black">$<?= number_format($producto->precio, 2, ',', '.'); ?></strong>
                                     </p>
@@ -66,7 +66,7 @@ require_once __DIR__ . '/../classes/Producto.php';
         <div class="row justify-content-center">
             <div class="col-md-3 col-lg-4 d-none d-md-flex justify-content-start align-items-center">
                 <img src="assets/imgs/fondos/fondo-ace.webp"
-                     alt="Imagen del personaje Ace de One Piece"
+                     alt="Personaje Ace de One Piece"
                      class="img-fluid w-100">
             </div>
             <div class="col-md-6 col-lg-4 ">
@@ -82,20 +82,16 @@ require_once __DIR__ . '/../classes/Producto.php';
                                 35% de descuento!</strong></p>
                     </div>
                     <div class="bg-morado pt-3 pb-5">
-                        <a href="index.php?seccion=contacto" class="btn-azul mb-3">¡Obtené tu cúpon!</a>
+                        <a href="index.php?seccion=contacto" class="btn-azul mb-3 text-decoration-none">¡Obtené tu cúpon!</a>
                     </div>
 
                 </div>
             </div>
             <div class="col-md-3 col-lg-4 d-none d-md-flex justify-content-center align-items-center">
                 <img src="assets/imgs/fondos/fondo-riuk.webp"
-                     alt="Imagen del personaje ryuk de Death Note"
+                     alt="Personaje ryuk de Death Note"
                      class="img-fluid w-75">
             </div>
         </div>
-    </div>s
-</section>
-
-<section>
-
+    </div>
 </section>

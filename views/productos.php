@@ -11,7 +11,7 @@ $productos = (new Producto)->todosProductos();
             <?php foreach ($productos as $producto): ?>
                 <div class="col-12 col-sm-6 col-md-6 col-lg-3">
                     <article class="card h-100 shadow-sm">
-                        <img src="assets/imgs/products/<?= $producto->imagen; ?>"
+                        <img src="assets/imgs/productos/<?= $producto->imagen; ?>"
                             class="card-img-top img-fluid"
                             alt="<?= $producto->imagen_descripcion; ?>">
                         <div class="card-body d-flex flex-column">
