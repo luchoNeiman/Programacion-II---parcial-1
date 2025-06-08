@@ -9,17 +9,17 @@ $producto = (new Producto)->porId($id);
     <div class="row align-items-center">
         <!-- Imagen -->
         <div class="col-12 col-md-6 mb-4 mb-md-0">
-            <img src="assets/imgs/productos/<?= $producto->imagen; ?>"
-                alt="<?= $producto->imagen_descripcion; ?>"
+            <img src="assets/imgs/productos/<?= $producto->getImagen(); ?>"
+                alt="<?= $producto->getImagenDescripcion(); ?>"
                 class="imagen-producto img-hover img-fluid rounded shadow-sm">
         </div>
 
         <!-- Información del producto -->
         <div class="col-12 col-md-6">
-            <h1 class="display-6 mb-3"><?= $producto->titulo; ?></h1>
-            <p class="lead"><?= $producto->descripcion; ?></p>
+            <h1 class="display-6 mb-3"><?= $producto->getTitulo(); ?></h1>
+            <p class="lead"><?= $producto->getDescripcion(); ?></p>
             <h2 class="mt-4 mb-3">
-                <strong class="text-white">$<?= number_format($producto->precio, 2, ',', '.'); ?></strong>
+                <strong class="text-white">$<?= number_format($producto->getPrecio(), 2, ',', '.'); ?></strong>
             </h2>
             <p class="text-naranja-tostado">Hasta 3 cuotas sin interés</p>
             <p class="text-naranja-tostado">Llega gratis el lunes</p>
@@ -51,8 +51,8 @@ $producto = (new Producto)->porId($id);
                 <div class="container">
                     <h2 class="fs-4 text-black">Características principales</h2>
                     <ul class="list-unstyled text-color">
-                        <li><?= $producto->caracteristicas ?></li>
-                        <li><strong>Franquicia:</strong> <?= $producto->franquicia ?></li>
+                        <li><?= $producto->getCaracteristicas() ?></li>
+                        <li><strong>Franquicia:</strong> <?= $producto->getFranquicia() ?></li>
                     </ul>
                 </div>
             </div>
@@ -68,19 +68,19 @@ $producto = (new Producto)->porId($id);
                 <div class="row g-4">
                     <?php
                     // variable para poder filtrar por tipo de categoria
-                    $productosSimilares = (new Producto())->obtenerPorCategoria($producto->categoria);
+                    $productosSimilares = (new Producto())->obtenerPorCategoria($producto->getCategoria());
 
                     foreach ($productosSimilares as $productoCategoria): ?>
                         <div class="col-12 col-sm-6 col-md-6 col-lg-3">
                             <article class="card h-100 shadow-sm">
-                                <img src="assets/imgs/productos/<?= $productoCategoria->imagen; ?>"
+                                <img src="assets/imgs/productos/<?= $productoCategoria->getImagen(); ?>"
                                     class="card-img-top img-fluid"
-                                    alt="<?= $productoCategoria->imagen_descripcion; ?>">
+                                    alt="<?= $productoCategoria->getImagenDescripcion(); ?>">
                                 <div class="card-body d-flex flex-column">
-                                    <h2 class="card-title fs-5"><?= $productoCategoria->titulo; ?></h2>
+                                    <h2 class="card-title fs-5"><?= $productoCategoria->getTitulo(); ?></h2>
                                     <p class="card-text fw-bold text-primary mt-auto">
-                                        <strong class="text-black">$<?= number_format($productoCategoria->precio, 2, ',', '.'); ?></strong></p>
-                                    <a href="index.php?seccion=detalle-producto&id=<?= $productoCategoria->producto_id; ?>"
+                                        <strong class="text-black">$<?= number_format($productoCategoria->getPrecio(), 2, ',', '.'); ?></strong></p>
+                                    <a href="index.php?seccion=detalle-producto&id=<?= $productoCategoria->getProductoId(); ?>"
                                         class="btn btn-outline-dark mt-2 w-100">Ver más</a>
                                 </div>
                             </article>

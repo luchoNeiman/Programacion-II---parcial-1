@@ -11,14 +11,14 @@ $productos = (new Producto)->todosProductos();
             <?php foreach ($productos as $producto): ?>
                 <div class="col-12 col-sm-6 col-md-6 col-lg-3">
                     <article class="card h-100 shadow-sm">
-                        <img src="assets/imgs/productos/<?= $producto->imagen; ?>"
+                        <img src="assets/imgs/productos/<?= $producto->getImagen(); ?>"
                             class="card-img-top img-fluid"
-                            alt="<?= $producto->imagen_descripcion; ?>">
+                            alt="<?= $producto->getImagenDescripcion(); ?>">
                         <div class="card-body d-flex flex-column">
-                            <h2 class="card-title fs-5"><?= $producto->titulo; ?></h2>
-                            <p class="card-text text-black"><?= $producto->descripcion; ?></p>
-                            <p class="card-text fw-bold text-primary mt-auto"><strong class="text-black">$<?= number_format($producto->precio, 2, ',', '.'); ?></strong></p>
-                            <a href="index.php?seccion=detalle-producto&id=<?= $producto->producto_id; ?>"
+                            <h2 class="card-title fs-5"><?= $producto->getTitulo(); ?></h2>
+                            <p class="card-text text-black"><?= $producto->getDescripcion(); ?></p>
+                            <p class="card-text fw-bold text-primary mt-auto"><strong class="text-black">$<?= number_format($producto->getPrecio(), 2, ',', '.'); ?></strong></p>
+                            <a href="index.php?seccion=detalle-producto&id=<?= $producto->getProductoId(); ?>"
                                 class="btn btn-outline-dark mt-2 w-100">Ver más</a>
                         </div>
                     </article>

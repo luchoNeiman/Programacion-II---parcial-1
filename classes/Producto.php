@@ -25,7 +25,7 @@ class Producto
      */
     public function cargarDatosArray(array $data): void
     {
-        $this->producto_id              = $data['id'];
+        $this->producto_id              = $data['producto_id'];
         $this->titulo                   = $data['titulo'];
         $this->descripcion              = $data['descripcion'];
         $this->precio                   = $data['precio'];
@@ -190,23 +190,6 @@ class Producto
     {
         $this->caracteristicas = $caracteristicas;
     }
-
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     
     /**
      * Recupera productos filtrados por tipo de edición (máximo 4 productos).
