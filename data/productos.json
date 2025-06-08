@@ -7,7 +7,7 @@
     "imagen": "gokuSSY.jpg",
     "imagen_descripcion": "Figura de Goku Super Saiyan",
     "franquicia": "Dragon Ball Z",
-    "tipo_producto": "Figura de acción",
+    "categoria": "Figura de acción",
     "edicion": "Edición estándar",
     "caracteristicas": "Esta figura coleccionable de Goku en su forma Super Saiyan tiene una altura de 18 cm y está fabricada en PVC de alta resistencia. Posee articulaciones móviles en brazos, piernas y torso, y un acabado detallado en el cabello y vestimenta. Incluye una base para exhibición y ha sido pintada a mano."
   },
@@ -19,7 +19,7 @@
     "imagen": "camisetaLuffy.jpg",
     "imagen_descripcion": "Camiseta de Luffy",
     "franquicia": "One Piece",
-    "tipo_producto": "Ropa",
+    "categoria": "Ropa",
     "edicion": "Edición estándar",
     "caracteristicas": "Confeccionada en 100% algodón, esta camiseta presenta una estampa frontal con diseño Wanted de Monkey D. Luffy. Tiene cuello redondo reforzado, costuras dobles para mayor durabilidad y un tacto suave y liviano. Está disponible en talles S a XXL."
   },
@@ -31,7 +31,7 @@
     "imagen": "tazaNaruto.webp",
     "imagen_descripcion": "Taza de Naruto Uzumaki",
     "franquicia": "Naruto",
-    "tipo_producto": "Taza",
+    "categoria": "Taza",
     "edicion": "Edición estándar",
     "caracteristicas": "Cuenta con una capacidad de 350 ml y está fabricada en cerámica de alta calidad. Es apta para microondas y lavavajillas, y posee una estampa envolvente con el diseño del Equipo 7 (Naruto, Sasuke, Sakura y Kakashi). Tiene un acabado brillante y colores resistentes al desgaste."
   },
@@ -43,7 +43,7 @@
     "imagen": "posterAttackOnTitan.webp",
     "imagen_descripcion": "Póster de Attack on Titan",
     "franquicia": "Attack on Titan",
-    "tipo_producto": "Póster",
+    "categoria": "Póster",
     "edicion": "Edición limitada",
     "caracteristicas": "Este póster de alta calidad presenta una estampa envolvente con diseño del Equipo 7 (Naruto, Sasuke, Sakura y Kakashi), tiene un acabado brillante, está hecho en cerámica de alta calidad y es apto para microondas y lavavajillas. (Nota: parece haber un error en los datos originales; se repiten las características de la taza de Naruto)."
   },
@@ -55,7 +55,7 @@
     "imagen": "llaveroPikachu.webp",
     "imagen_descripcion": "Llavero de Pikachu",
     "franquicia": "Pokémon",
-    "tipo_producto": "Llavero",
+    "categoria": "Llavero",
     "edicion": "Edición estándar",
     "caracteristicas": "Fabricado en silicona y metal, incluye una figura 3D de Pikachu junto con una correa con el logo de Pokémon. Su anillo metálico es resistente y tiene un tamaño aproximado de 8 cm. Es suave al tacto e ideal para mochilas, llaves o bolsos."
 
@@ -68,7 +68,7 @@
     "imagen": "leviAckerman.webp",
     "imagen_descripcion": "Figura de Levi Ackerman",
     "franquicia": "Attack on Titan",
-    "tipo_producto": "Figura de acción",
+    "categoria": "Figura de acción",
     "edicion": "Edición coleccionista",
     "caracteristicas": "Tiene una altura de 10 cm y está fabricado en vinilo premium. Su estilo es chibi y representa a Levi en su versión de limpieza (Cleaning Levi). Incluye una caja ilustrada para colección, detalles pintados a mano y pertenece a la edición de coleccionista YouTooz."
 
@@ -81,7 +81,7 @@
     "imagen": "buzoMyHeroAcademy.jpg",
     "imagen_descripcion": "Sudadera de My Hero Academia",
     "franquicia": "My Hero Academia",
-    "tipo_producto": "Ropa",
+    "categoria": "Ropa",
     "edicion": "Edición estándar",
     "caracteristicas": "Está confeccionado en una mezcla de algodón y poliéster, con una estampa frontal que muestra personajes de la UA Academy (Deku, Todoroki, Bakugo). Tiene interior frizado, capucha con cordones ajustables, puños y cintura elastizados, y está disponible en talles S a XXL."
 
@@ -94,7 +94,7 @@
     "imagen": "backugan_juguete.jpg",
     "imagen_descripcion": "Juguete de backugan",
     "franquicia": "Backugan",
-    "tipo_producto": "Juguete",
+    "categoria": "Juguete",
     "edicion": "Edición estándar",
     "caracteristicas": "Modelo Ultimate Viloch, este juguete incluye 2 bakuganes y 8 cartas exclusivas. Las figuras son transformables de acción, ideales tanto para batallas como para colección. Está fabricado en plástico resistente y es apto para mayores de 6 años."
 
@@ -107,7 +107,7 @@
     "imagen": "pines_demonSlayer.webp",
     "imagen_descripcion": "Set de pines de Demon Slayer",
     "franquicia": "Demon Slayer",
-    "tipo_producto": "Accesorios",
+    "categoria": "Accesorios",
     "edicion": "Edición limitada",
     "caracteristicas": "Incluye 5 pines metálicos con diseño chibi de los personajes Nezuko, Tanjiro, Inosuke, Zenitsu y Rengoku. Cada pin mide aproximadamente 3 cm y tiene acabado brillante con cierre de mariposa. Es una edición limitada ideal para mochilas o ropa."
 
@@ -120,7 +120,7 @@
     "imagen": "reloj_fullmental.jpg",
     "imagen_descripcion": "Reloj de bolsillo Fullmetal Alchemist",
     "franquicia": "Fullmetal Alchemist",
-    "tipo_producto": "Reloj",
+    "categoria": "Reloj",
     "edicion": "Edición coleccionista",
     "caracteristicas": "Esta réplica oficial del reloj de Edward Elric está fabricada en aleación metálica con un color plateado envejecido. Tiene grabado el símbolo de los alquimistas estatales, apertura con botón de resorte, incluye una cadena desmontable y es parte de una edición de coleccionista."
 
@@ -133,7 +133,7 @@
     "imagen": "almohada_nezukoKamado.jpg",
     "imagen_descripcion": "Almohada de Nezuko Kamado",
     "franquicia": "Demon Slayer",
-    "tipo_producto": "Decoración",
+    "categoria": "Decoración",
     "edicion": "Edición estándar",
     "caracteristicas": "Tiene un tamaño de 40 x 40 cm e incluye funda con cierre y relleno. La estampa muestra a Nezuko con fondo de flores de sakura. Está confeccionada en poliéster suave, es apta para lavarropas y resulta ideal para decorar tu cama o sillón."
 
@@ -146,7 +146,7 @@
     "imagen": "gorra_ash.jpg",
     "imagen_descripcion": "Gorra de Ash Ketchum",
     "franquicia": "Pokémon",
-    "tipo_producto": "Ropa",
+    "categoria": "Ropa",
     "edicion": "Edición estándar",
     "caracteristicas": "Fabricada en poliéster y red tipo trucker, esta gorra tiene talle único con cierre ajustable. Su diseño es liviano y cómodo, con estilo clásico y logo blanco. Es ideal tanto para cosplay como para uso diario, e inspirada en la gorra original de Ash."
 

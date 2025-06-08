@@ -53,8 +53,6 @@ $producto = (new Producto)->porId($id);
                     <ul class="list-unstyled text-color">
                         <li><?= $producto->caracteristicas ?></li>
                         <li><strong>Franquicia:</strong> <?= $producto->franquicia ?></li>
-                        <li><strong>Tipo de producto:</strong> <?= $producto->tipo_producto ?></li>
-                        <li><strong>Edición:</strong> <?= $producto->edicion ?></li>
                     </ul>
                 </div>
             </div>
@@ -62,26 +60,27 @@ $producto = (new Producto)->porId($id);
 
     </div>
 </section>
+
 <section class="container mb-5">
         <div class="row">
             <div class="col-md-12">
                 <h2 class="mb-4"> Productos Similares</h2>
                 <div class="row g-4">
                     <?php
-                    // variable para poder filtrar por tipo de edicion
-                    $productosSimilares = (new Producto())->obtenerPorEdicion($producto->edicion);
+                    // variable para poder filtrar por tipo de categoria
+                    $productosSimilares = (new Producto())->obtenerPorCategoria($producto->categoria);
 
-                    foreach ($productosSimilares as $productoEdicion): ?>
+                    foreach ($productosSimilares as $productoCategoria): ?>
                         <div class="col-12 col-sm-6 col-md-6 col-lg-3">
                             <article class="card h-100 shadow-sm">
-                                <img src="assets/imgs/productos/<?= $productoEdicion->imagen; ?>"
+                                <img src="assets/imgs/productos/<?= $productoCategoria->imagen; ?>"
                                     class="card-img-top img-fluid"
-                                    alt="<?= $productoEdicion->imagen_descripcion; ?>">
+                                    alt="<?= $productoCategoria->imagen_descripcion; ?>">
                                 <div class="card-body d-flex flex-column">
-                                    <h2 class="card-title fs-5"><?= $productoEdicion->titulo; ?></h2>
+                                    <h2 class="card-title fs-5"><?= $productoCategoria->titulo; ?></h2>
                                     <p class="card-text fw-bold text-primary mt-auto">
-                                        <strong class="text-black">$<?= number_format($productoEdicion->precio, 2, ',', '.'); ?></strong></p>
-                                    <a href="index.php?seccion=detalle-producto&id=<?= $productoEdicion->producto_id; ?>"
+                                        <strong class="text-black">$<?= number_format($productoCategoria->precio, 2, ',', '.'); ?></strong></p>
+                                    <a href="index.php?seccion=detalle-producto&id=<?= $productoCategoria->producto_id; ?>"
                                         class="btn btn-outline-dark mt-2 w-100">Ver más</a>
                                 </div>
                             </article>

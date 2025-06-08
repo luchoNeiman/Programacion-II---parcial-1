@@ -37,7 +37,7 @@ require_once __DIR__ . '/../classes/Producto.php';
                 <div class="row g-4">
                     <?php
                     // variable para poder filtrar por tipo de edicion
-                    $productosDestacados = (new Producto)->obtenerPorEdicion("Edición limitada", "Edición coleccionista"
+                    $productosDestacados = (new Producto)->obtenerPorCategoria("Ropa", "Figura de acción"
                     );
                     foreach ($productosDestacados as $producto): ?>
                         <div class="col-12 col-sm-6 col-md-6 col-lg-3">

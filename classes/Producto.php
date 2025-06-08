@@ -4,14 +4,14 @@ const PRODUCTOS_JSON = 'productos.json';
 class Producto
 {
     public int $producto_id = 0;
+
     public string $titulo = "";
     public string $descripcion = "";
     public float $precio = 0.0;
     public string $imagen = "";
     public string $imagen_descripcion = "";
     public string $franquicia = "";
-    public string $tipo_producto = "";
-    public string $edicion = "";
+    public string $categoria = "";
     public string $caracteristicas = "";
 
     /**
@@ -30,8 +30,7 @@ class Producto
         $this->imagen = $data['imagen'];
         $this->imagen_descripcion = $data['imagen_descripcion'];
         $this->franquicia = $data['franquicia'];
-        $this->tipo_producto = $data['tipo_producto'];
-        $this->edicion = $data['edicion'];
+        $this->categoria = $data['categoria'];   
         $this->caracteristicas = $data['caracteristicas'];
     }
 
@@ -81,28 +80,28 @@ class Producto
     /**
      * Recupera productos filtrados por tipo de edición (máximo 4 productos).
      *
-     * @param string|null $edicion1 Primera edición a filtrar (opcional)
-     * @param string|null $edicion2 Segunda edición a filtrar (opcional)
+     * @param string|null $categoria1 Primera edición a filtrar (opcional)
+     * @param string|null $categoria2 Segunda edición a filtrar (opcional)
      * @return Producto[] Lista de productos filtrados (máximo 4)
      */
-    public function obtenerPorEdicion(?string $edicion1 = null, ?string $edicion2 = null): array
+    public function obtenerPorCategoria(?string $categoria1 = null, ?string $categoria2 = null): array
     {
         $productos = $this->todosProductos();
 
         // si no se pasa ningun parametro, devvuelve edición estándar
-        if ($edicion1 === null && $edicion2 === null) {
+        if ($categoria1 === null && $categoria2 === null) {
             $filtrados = array_filter($productos, function ($producto) {
-                return $producto->edicion === "Estándar";
+                return $producto->categoria === "Estándar";
             });
         } // Si solo se especifica una edición
-        else if ($edicion2 === null) {
-            $filtrados = array_filter($productos, function ($producto) use ($edicion1) {
-                return $producto->edicion === $edicion1;
+        else if ($categoria2 === null) {
+            $filtrados = array_filter($productos, function ($producto) use ($categoria1) {
+                return $producto->categoria === $categoria1;
             });
-        } // Si se especifican dos ediciones
+        } // Si se especifican dos categoriaes
         else {
-            $filtrados = array_filter($productos, function ($producto) use ($edicion1, $edicion2) {
-                return $producto->edicion === $edicion1 || $producto->edicion === $edicion2;
+            $filtrados = array_filter($productos, function ($producto) use ($categoria1, $categoria2) {
+                return $producto->categoria === $categoria1 || $producto->categoria === $categoria2;
             });
         }
 
