@@ -52,7 +52,7 @@ $producto = (new Producto)->porId($id);
                     <h2 class="fs-4 text-black">Características principales</h2>
                     <ul class="list-unstyled text-color">
                         <li><?= $producto->getCaracteristicas() ?></li>
-                        <li><strong>Franquicia:</strong> <?= $producto->getFranquicia() ?></li>
+                        <li><strong>Franquicia:</strong> <?= $producto->getNombreFranquicia() ?></li>
                     </ul>
                 </div>
             </div>

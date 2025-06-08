@@ -12,7 +12,7 @@ class Producto
     private float $precio = 0.0;
     private ?string $imagen = "";
     private ?string $imagen_descripcion = "";
-    private string $franquicia = "";
+    private string $nombreFranquicia = "";
     private string $categoria = "";
     private string $caracteristicas = "";
 
@@ -31,7 +31,7 @@ class Producto
         $this->precio                   = $data['precio'];
         $this->imagen                   = $data['imagen'];
         $this->imagen_descripcion       = $data['imagen_descripcion'];
-        $this->franquicia               = $data['franquicia'];
+        $this->nombreFranquicia                   = $data['nombreFranquicia'];
         $this->categoria                = $data['categoria'];
         $this->caracteristicas          = $data['caracteristicas'];
     }
@@ -65,8 +65,9 @@ class Producto
     {
         // Traemos el producto desde la base de datos.
         $db = (new DBConexion)->getConexion();
-        $consulta = "SELECT * FROM productos
-                    WHERE producto_id = ?";
+        $consulta = "SELECT productos.*, franquicias.nombreFranquicia FROM productos
+                        INNER JOIN franquicias ON productos.producto_id = franquicias.producto_id
+                        WHERE productos.producto_id = ?";
 
         $stmt = $db->prepare($consulta);
         $stmt->execute([$id]);
@@ -161,14 +162,14 @@ class Producto
         $this->imagen_descripcion = $imagen_descripcion;
     }
 
-    public function getFranquicia(): string
+    public function getNombreFranquicia(): string
     {
-        return $this->franquicia;
+        return $this->nombreFranquicia;
     }
 
-    public function setFranquicia(string $franquicia): void
+    public function setNombreFranquicia(string $nombreFranquicia): void
     {
-        $this->franquicia = $franquicia;
+        $this->nombreFranquicia = $nombreFranquicia;
     }
 
     public function getCategoria(): string
@@ -190,7 +191,7 @@ class Producto
     {
         $this->caracteristicas = $caracteristicas;
     }
-    
+
     /**
      * Recupera productos filtrados por tipo de edición (máximo 4 productos).
      *
