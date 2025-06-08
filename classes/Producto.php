@@ -3,16 +3,17 @@ const PRODUCTOS_JSON = 'productos.json';
 
 class Producto
 {
-    public int $producto_id = 0;
-
-    public string $titulo = "";
-    public string $descripcion = "";
-    public float $precio = 0.0;
-    public string $imagen = "";
-    public string $imagen_descripcion = "";
-    public string $franquicia = "";
-    public string $categoria = "";
-    public string $caracteristicas = "";
+    private int $producto_id = 0;
+    private int $usuario_id = 0;
+    private string $fecha_igreso = '';
+    private string $titulo = "";
+    private string $descripcion = "";
+    private float $precio = 0.0;
+    private ?string $imagen = "";
+    private ?string $imagen_descripcion = "";
+    private string $franquicia = "";
+    private string $categoria = "";
+    private string $caracteristicas = "";
 
     /**
      * Carga los datos de un producto desde un array asociativo.

@@ -50,13 +50,13 @@ SELECT * FROM franquicias;
 
 -- CATEGORIAS
 INSERT INTO categorias(nombre)
-VALUE ('Figura de acción'),('Ropa'),('Taza'),('Poster'),('Llavero'),('Juguete'),('Accesorios'),('Reloj'),('Decoración');
+VALUES ('Figura de acción'),('Ropa'),('Taza'),('Poster'),('Llavero'),('Juguete'),('Accesorios'),('Reloj'),('Decoración');
 
 SELECT * FROM categorias;
 
 -- PRODUCTOS-CATEGORIAS
 INSERT INTO productos_tienen_categorias(producto_fk, categoria_fk)
-VALUE 
+VALUES
 (1,1),
 (2,2),
 (3,3),
@@ -71,7 +71,7 @@ VALUE
 (12,2);
 
 INSERT INTO productos_tienen_categorias(producto_fk, categoria_fk)
-VALUE (5,7);
+VALUES (5,7);
 
 SELECT * FROM productos_tienen_categorias;
 
