@@ -73,11 +73,11 @@ class Producto
 
         $stmt->setFetchMode(PDO::FETCH_CLASS, self::class);
 
-        $noticia = $stmt->fetch();
+        $producto = $stmt->fetch();
 
-        if (!$noticia) return null;
+        if (!$producto) return null;
 
-        return $noticia;
+        return $producto;
     }
 
 
