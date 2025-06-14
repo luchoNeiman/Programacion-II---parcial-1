@@ -67,16 +67,7 @@ class Producto
     {
         // Traemos el producto desde la base de datos.
         $db = (new DBConexion)->getConexion();
-        $consulta = "SELECT 
-                          p.producto_id,
-                          p.titulo,
-                          p.descripcion,
-                          p.precio,
-                          p.imagen,
-                          p.imagen_descripcion,
-                          p.caracteristicas,
-                          f.nombre_franquicia,
-                          GROUP_CONCAT(c.nombre_categoria SEPARATOR ', ') AS categorias
+        $consulta = "SELECT *, f.nombre_franquicia, GROUP_CONCAT(c.nombre_categoria SEPARATOR ', ') AS categorias
                         FROM productos p
                         JOIN franquicias f ON p.franquicia_fk = f.franquicia_id
                         JOIN productos_tienen_categorias ptc ON p.producto_id = ptc.producto_fk
@@ -120,7 +111,7 @@ class Producto
                  JOIN categorias c ON pc.categoria_fk = c.categoria_id
                  WHERE c.nombre_categoria IN ($placeholders)
                  GROUP BY p.producto_id
-                 LIMIT 10";
+                 LIMIT 4";
 
         $stmt = $db->prepare($consulta);
         $stmt->execute($categorias);
