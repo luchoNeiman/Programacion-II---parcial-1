@@ -100,34 +100,36 @@ class Producto
 
         return $producto;
     }
-    public static function obtenerPorCategoria(string $categoria)
+    public static function obtenerPorCategoria(string|array $categorias): array
     {
+        if (is_string($categorias)) {
+            $categorias = [$categorias]; // lo convertimos en array
+        }
+
         $db = (new DBConexion)->getConexion();
+        $placeholders = implode(',', array_fill(0, count($categorias), '?'));
+
         $consulta = "SELECT 
-                          p.producto_id,
-                          p.titulo,
-                          p.precio,
-                          p.imagen,
-                          p.imagen_descripcion
-                        FROM productos p
-                        INNER JOIN productos_tienen_categorias pc ON p.producto_id = pc.producto_fk
-                        INNER JOIN categorias c ON pc.categoria_fk = c.categoria_id
-                        WHERE c.nombre_categoria IN (?, ?, ?)
-                        GROUP BY p.producto_id
-                        LIMIT 10
-                        ";
+                    p.producto_id,
+                    p.titulo,
+                    p.precio,
+                    p.imagen,
+                    p.imagen_descripcion
+                 FROM productos p
+                 JOIN productos_tienen_categorias pc ON p.producto_id = pc.producto_fk
+                 JOIN categorias c ON pc.categoria_fk = c.categoria_id
+                 WHERE c.nombre_categoria IN ($placeholders)
+                 GROUP BY p.producto_id
+                 LIMIT 10";
 
         $stmt = $db->prepare($consulta);
-        $stmt->execute([$categoria]);
+        $stmt->execute($categorias);
 
         $stmt->setFetchMode(PDO::FETCH_CLASS, self::class);
-
-        $producto = $stmt->fetch();
-
-        if (!$producto) return null;
-
-        return $producto;
+        return $stmt->fetchAll();
     }
+
+
 
 
 
