@@ -3,6 +3,7 @@ require_once __DIR__ . '/../classes/Producto.php';
 
 $id = $_GET['id'];
 $producto = (new Producto)->porId($id);
+
 ?>
 
 <section class="container my-5 " >
@@ -13,7 +14,6 @@ $producto = (new Producto)->porId($id);
                 alt="<?= $producto->getImagenDescripcion(); ?>"
                 class="imagen-producto img-hover img-fluid rounded shadow-sm">
         </div>
-
         <!-- Información del producto -->
         <div class="col-12 col-md-6">
             <h1 class="display-6 mb-3"><?= $producto->getTitulo(); ?></h1>
@@ -53,6 +53,8 @@ $producto = (new Producto)->porId($id);
                     <ul class="list-unstyled text-color">
                         <li><?= $producto->getCaracteristicas() ?></li>
                         <li><strong>Franquicia:</strong> <?= $producto->getNombreFranquicia() ?></li>
+                        <li><strong>Categoria:</strong> <?= $producto->getCategoria() ?></li>
+
                     </ul>
                 </div>
             </div>

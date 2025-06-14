@@ -6,7 +6,7 @@ class Usuario
     private int $usuario_id = 0;
     private int $rol_fk = 0;
     private string $email = "";
-    private string $contrasena = "";
+    private string $password = "";
     private string $nombre = "";
     private string $apellido = "";
     private ?string $avatar = "";
@@ -22,7 +22,7 @@ class Usuario
     {
         $this->usuario_id           = $data['usuario_id'];
         $this->email                = $data['email'];
-        $this->contrasena           = $data['contrasena'];
+        $this->password           = $data['password'];
         $this->nombre               = $data['nombre'];
         $this->apellido             = $data['apellido'];
         $this->avatar               = $data['avatar'];
@@ -105,12 +105,12 @@ class Usuario
 
     public function getContrasena(): string
     {
-        return $this->contrasena;
+        return $this->password;
     }
 
-    public function setContrasena(string $contrasena): void
+    public function setContrasena(string $password): void
     {
-        $this->contrasena = $contrasena;
+        $this->password = $password;
     }
 
     public function getNombre(): string

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 11-06-2025 a las 04:52:56
+-- Tiempo de generación: 08-06-2025 a las 16:24:05
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -28,7 +28,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `categorias` (
-  `categoria_id` int(10) UNSIGNED NOT NULL,
+  `id` int(10) UNSIGNED NOT NULL,
   `nombre` varchar(45) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -36,7 +36,7 @@ CREATE TABLE `categorias` (
 -- Volcado de datos para la tabla `categorias`
 --
 
-INSERT INTO `categorias` (`categoria_id`, `nombre`) VALUES
+INSERT INTO `categorias` (`id`, `nombre`) VALUES
 (1, 'Figura de acción'),
 (2, 'Ropa'),
 (3, 'Taza'),
@@ -54,28 +54,28 @@ INSERT INTO `categorias` (`categoria_id`, `nombre`) VALUES
 --
 
 CREATE TABLE `franquicias` (
-  `franquicia_id` int(10) UNSIGNED NOT NULL,
+  `id` int(10) UNSIGNED NOT NULL,
   `producto_id` int(10) UNSIGNED NOT NULL,
-  `nombreFranquicia` varchar(100) DEFAULT NULL
+  `nombre` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `franquicias`
 --
 
-INSERT INTO `franquicias` (`franquicia_id`, `producto_id`, `nombreFranquicia`) VALUES
-(49, 1, 'Dragon Ball Z'),
-(50, 2, 'One piece'),
-(51, 3, 'Naruto'),
-(52, 4, 'Attack on Titan'),
-(53, 5, 'Pokémon'),
-(54, 6, 'Attack on Titan'),
-(55, 7, 'My Hero Academia'),
-(56, 8, 'Backugan'),
-(57, 9, 'Demon slayer'),
-(58, 10, 'Full Metal Alchemist'),
-(59, 11, 'Demon Slayer'),
-(60, 12, 'Pokémon');
+INSERT INTO `franquicias` (`id`, `producto_id`, `nombre`) VALUES
+(1, 1, 'Dragon Ball Z'),
+(2, 2, 'One piece'),
+(3, 3, 'Naruto'),
+(4, 4, 'Attack on Titan'),
+(5, 5, 'Pokémon'),
+(6, 6, 'Attack on Titan'),
+(7, 7, 'My Hero Academia'),
+(8, 8, 'Backugan'),
+(9, 9, 'Demon slayer'),
+(10, 10, 'Full Metal Alchemist'),
+(11, 11, 'Demon Slayer'),
+(12, 12, 'Pokémon');
 
 -- --------------------------------------------------------
 
@@ -84,7 +84,7 @@ INSERT INTO `franquicias` (`franquicia_id`, `producto_id`, `nombreFranquicia`) V
 --
 
 CREATE TABLE `productos` (
-  `producto_id` int(10) UNSIGNED NOT NULL,
+  `id` int(10) UNSIGNED NOT NULL,
   `usuarios_fk` int(10) UNSIGNED NOT NULL,
   `fecha_ingreso` date DEFAULT NULL,
   `titulo` varchar(50) DEFAULT NULL,
@@ -99,7 +99,7 @@ CREATE TABLE `productos` (
 -- Volcado de datos para la tabla `productos`
 --
 
-INSERT INTO `productos` (`producto_id`, `usuarios_fk`, `fecha_ingreso`, `titulo`, `descripcion`, `precio`, `imagen`, `imagen_descripcion`, `caracteristicas`) VALUES
+INSERT INTO `productos` (`id`, `usuarios_fk`, `fecha_ingreso`, `titulo`, `descripcion`, `precio`, `imagen`, `imagen_descripcion`, `caracteristicas`) VALUES
 (1, 1, '2025-05-15', 'Muñeco de Goku Super Saiyan', 'Figura coleccionable de Goku en su forma Super Saiyan, con detalles de alta calidad.', 3999.99, 'gokuSSY.jpg', 'Figura de Goku Super Saiyan', 'Esta figura coleccionable de Goku en su forma Super Saiyan tiene una altura de 18 cm y está fabricada en PVC de alta resistencia. Posee articulaciones móviles en brazos, piernas y torso, y un acabado detallado en el cabello y vestimenta. Incluye una base para exhibición y ha sido pintada a mano.'),
 (2, 1, '2025-05-15', 'Remera de Luffy - One Piece', 'Camiseta de algodón con diseño de Luffy, el protagonista de One Piece.', 9999.99, 'camisetaLuffy.jpg', 'Camiseta de Luffy', 'Confeccionada en 100% algodón, esta camiseta presenta una estampa frontal con diseño Wanted de Monkey D. Luffy. Tiene cuello redondo reforzado, costuras dobles para mayor durabilidad y un tacto suave y liviano. Está disponible en talles S a XXL.'),
 (3, 1, '2025-05-15', 'Taza de Naruto Uzumaki', 'Taza de cerámica con diseño de Naruto Uzumaki', 4500.00, 'tazaNaruto.webp', 'Taza de Naruto Uzumaki', 'Cuenta con una capacidad de 350 ml y está fabricada en cerámica de alta calidad. Es apta para microondas y lavavajillas, y posee una estampa envolvente con el diseño del Equipo 7 (Naruto, Sasuke, Sakura y Kakashi). Tiene un acabado brillante y colores resistentes al desgaste.'),
@@ -169,7 +169,7 @@ INSERT INTO `roles` (`rol_id`, `nombre`) VALUES
 --
 
 CREATE TABLE `usuarios` (
-  `usuario_id` int(10) UNSIGNED NOT NULL,
+  `id` int(10) UNSIGNED NOT NULL,
   `rol_fk` tinyint(3) UNSIGNED NOT NULL,
   `email` varchar(100) NOT NULL,
   `contraseña` varchar(255) NOT NULL,
@@ -182,7 +182,7 @@ CREATE TABLE `usuarios` (
 -- Volcado de datos para la tabla `usuarios`
 --
 
-INSERT INTO `usuarios` (`usuario_id`, `rol_fk`, `email`, `contraseña`, `nombre`, `apellido`, `avatar`) VALUES
+INSERT INTO `usuarios` (`id`, `rol_fk`, `email`, `contraseña`, `nombre`, `apellido`, `avatar`) VALUES
 (1, 1, 'lucianoneiman@gmail.com', '1234', 'Luciano', 'Neiman', NULL),
 (2, 1, 'ricardogarcia@gmail.com', '1234', 'Ricardo', 'Garcia', NULL);
 
@@ -194,20 +194,20 @@ INSERT INTO `usuarios` (`usuario_id`, `rol_fk`, `email`, `contraseña`, `nombre`
 -- Indices de la tabla `categorias`
 --
 ALTER TABLE `categorias`
-  ADD PRIMARY KEY (`categoria_id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indices de la tabla `franquicias`
 --
 ALTER TABLE `franquicias`
-  ADD PRIMARY KEY (`franquicia_id`),
+  ADD PRIMARY KEY (`id`),
   ADD KEY `fk_franquicia_producto_idx` (`producto_id`);
 
 --
 -- Indices de la tabla `productos`
 --
 ALTER TABLE `productos`
-  ADD PRIMARY KEY (`producto_id`),
+  ADD PRIMARY KEY (`id`),
   ADD KEY `fk_producto_usuarios1_idx` (`usuarios_fk`);
 
 --
@@ -228,7 +228,7 @@ ALTER TABLE `roles`
 -- Indices de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  ADD PRIMARY KEY (`usuario_id`),
+  ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `email_UNIQUE` (`email`),
   ADD KEY `usuarios_roles_fk_idx` (`rol_fk`);
 
@@ -240,19 +240,19 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `categorias`
 --
 ALTER TABLE `categorias`
-  MODIFY `categoria_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de la tabla `franquicias`
 --
 ALTER TABLE `franquicias`
-  MODIFY `franquicia_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT de la tabla `productos`
 --
 ALTER TABLE `productos`
-  MODIFY `producto_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT de la tabla `roles`
@@ -264,7 +264,7 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `usuario_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Restricciones para tablas volcadas
@@ -274,20 +274,20 @@ ALTER TABLE `usuarios`
 -- Filtros para la tabla `franquicias`
 --
 ALTER TABLE `franquicias`
-  ADD CONSTRAINT `fk_franquicia_producto` FOREIGN KEY (`producto_id`) REFERENCES `productos` (`producto_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_franquicia_producto` FOREIGN KEY (`producto_id`) REFERENCES `productos` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Filtros para la tabla `productos`
 --
 ALTER TABLE `productos`
-  ADD CONSTRAINT `fk_producto_usuarios` FOREIGN KEY (`usuarios_fk`) REFERENCES `usuarios` (`usuario_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_producto_usuarios` FOREIGN KEY (`usuarios_fk`) REFERENCES `usuarios` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Filtros para la tabla `productos_tienen_categorias`
 --
 ALTER TABLE `productos_tienen_categorias`
-  ADD CONSTRAINT `fk_producto_has_categoria_categoria` FOREIGN KEY (`categoria_fk`) REFERENCES `categorias` (`categoria_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_producto_has_categoria_producto` FOREIGN KEY (`producto_fk`) REFERENCES `productos` (`producto_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_producto_has_categoria_categoria` FOREIGN KEY (`categoria_fk`) REFERENCES `categorias` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_producto_has_categoria_producto` FOREIGN KEY (`producto_fk`) REFERENCES `productos` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Filtros para la tabla `usuarios`

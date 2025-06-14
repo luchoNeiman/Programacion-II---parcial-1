@@ -6,14 +6,15 @@ class Producto
 {
     private int $producto_id = 0;
     private int $usuario_fk = 0;
+    private int $franquicia_fk = 0;
     private string $fecha_ingreso = "";
     private string $titulo = "";
     private string $descripcion = "";
     private float $precio = 0.0;
     private ?string $imagen = "";
     private ?string $imagen_descripcion = "";
-    private string $nombreFranquicia = "";
-    private string $categoria = "";
+    private string $nombre_franquicia = "";
+    private string $categorias = "";
     private string $caracteristicas = "";
 
     /**
@@ -26,13 +27,14 @@ class Producto
     public function cargarDatosArray(array $data): void
     {
         $this->producto_id              = $data['producto_id'];
+        $this->franquicia_fk            = $data['franquicia_fk'];
         $this->titulo                   = $data['titulo'];
         $this->descripcion              = $data['descripcion'];
         $this->precio                   = $data['precio'];
         $this->imagen                   = $data['imagen'];
         $this->imagen_descripcion       = $data['imagen_descripcion'];
-        $this->nombreFranquicia                   = $data['nombreFranquicia'];
-        $this->categoria                = $data['categoria'];
+        $this->nombre_franquicia        = $data['nombre_franquicia'];
+        $this->categorias         = isset($data['categorias']) ? explode(', ', $data['categorias']) : [];
         $this->caracteristicas          = $data['caracteristicas'];
     }
 
@@ -65,9 +67,27 @@ class Producto
     {
         // Traemos el producto desde la base de datos.
         $db = (new DBConexion)->getConexion();
-        $consulta = "SELECT productos.*, franquicias.nombreFranquicia FROM productos
-                        INNER JOIN franquicias ON productos.producto_id = franquicias.producto_id
-                        WHERE productos.producto_id = ?";
+        $consulta = "SELECT 
+                          p.producto_id,
+                          p.titulo,
+                          p.descripcion,
+                          p.precio,
+                          p.imagen,
+                          p.imagen_descripcion,
+                          p.caracteristicas,
+                          f.nombre_franquicia,
+                          GROUP_CONCAT(c.nombre_categoria SEPARATOR ', ') AS categorias
+                        FROM productos p
+                        JOIN franquicias f ON p.franquicia_fk = f.franquicia_id
+                        JOIN productos_tienen_categorias ptc ON p.producto_id = ptc.producto_fk
+                        JOIN categorias c ON ptc.categoria_fk = c.categoria_id
+                        WHERE p.producto_id = ?
+                        GROUP BY p.producto_id;
+                        ";
+
+    /*    $consulta = "SELECT productos.*, franquicias.nombre_franquicia FROM productos
+                        INNER JOIN franquicias ON productos.franquicia_fk = franquicias.franquicia_id
+                        WHERE productos.producto_id = ?";*/
 
         $stmt = $db->prepare($consulta);
         $stmt->execute([$id]);
@@ -80,6 +100,35 @@ class Producto
 
         return $producto;
     }
+    public static function obtenerPorCategoria(string $categoria)
+    {
+        $db = (new DBConexion)->getConexion();
+        $consulta = "SELECT 
+                          p.producto_id,
+                          p.titulo,
+                          p.precio,
+                          p.imagen,
+                          p.imagen_descripcion
+                        FROM productos p
+                        INNER JOIN productos_tienen_categorias pc ON p.producto_id = pc.producto_fk
+                        INNER JOIN categorias c ON pc.categoria_fk = c.categoria_id
+                        WHERE c.nombre_categoria IN (?, ?, ?)
+                        GROUP BY p.producto_id
+                        LIMIT 10
+                        ";
+
+        $stmt = $db->prepare($consulta);
+        $stmt->execute([$categoria]);
+
+        $stmt->setFetchMode(PDO::FETCH_CLASS, self::class);
+
+        $producto = $stmt->fetch();
+
+        if (!$producto) return null;
+
+        return $producto;
+    }
+
 
 
     public function getProductoId(): int
@@ -101,6 +150,17 @@ class Producto
     {
         $this->usuario_fk = $usuario_fk;
     }
+
+    public function getFranquiciaFk(): int
+    {
+        return $this->franquicia_fk;
+    }
+
+    public function setFranquiciaFk(int $franquicia_fk): void
+    {
+        $this->franquicia_fk = $franquicia_fk;
+    }
+
 
     public function getFechaIngreso(): string
     {
@@ -164,22 +224,22 @@ class Producto
 
     public function getNombreFranquicia(): string
     {
-        return $this->nombreFranquicia;
+        return $this->nombre_franquicia;
     }
 
-    public function setNombreFranquicia(string $nombreFranquicia): void
+    public function setNombreFranquicia(string $nombre_franquicia): void
     {
-        $this->nombreFranquicia = $nombreFranquicia;
+        $this->nombre_franquicia = $nombre_franquicia;
     }
 
     public function getCategoria(): string
     {
-        return $this->categoria;
+        return $this->categorias;
     }
 
-    public function setCategoria(string $categoria): void
+    public function setCategoria(string $categorias): void
     {
-        $this->categoria = $categoria;
+        $this->categorias = $categorias;
     }
 
     public function getCaracteristicas(): string
@@ -199,28 +259,4 @@ class Producto
      * @param string|null $categoria2 Segunda edición a filtrar (opcional)
      * @return Producto[] Lista de productos filtrados (máximo 4)
      */
-    public function obtenerPorCategoria(?string $categoria1 = null, ?string $categoria2 = null): array
-    {
-        $productos = $this->todosProductos();
-
-        // si no se pasa ningun parametro, devvuelve edición estándar
-        if ($categoria1 === null && $categoria2 === null) {
-            $filtrados = array_filter($productos, function ($producto) {
-                return $producto->categoria === "Estándar";
-            });
-        } // Si solo se especifica una edición
-        else if ($categoria2 === null) {
-            $filtrados = array_filter($productos, function ($producto) use ($categoria1) {
-                return $producto->categoria === $categoria1;
-            });
-        } // Si se especifican dos categoriaes
-        else {
-            $filtrados = array_filter($productos, function ($producto) use ($categoria1, $categoria2) {
-                return $producto->categoria === $categoria1 || $producto->categoria === $categoria2;
-            });
-        }
-
-        // Convertir a array indexado y obtener solo los primeros 4 elementos
-        return array_slice(array_values($filtrados), 0, 4);
-    }
 }
