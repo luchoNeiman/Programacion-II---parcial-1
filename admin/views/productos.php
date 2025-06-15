@@ -19,7 +19,7 @@ $productos = (new Producto)->todosProductos();
                     <th style="min-width: 150px;">Franquicia</th>
                     <th>Descripción</th>
                     <th>Características</th>
-                    <th>Imagen</th>
+                    <th style="min-width: 100px;" >Imagen</th>
                     <th>Alt imagen</th>
                     <th>Precio</th>
                     <th>Acciones</th>
@@ -36,7 +36,7 @@ $productos = (new Producto)->todosProductos();
                         <td>
                             <?php if ($producto->getImagen()): ?>
                                 <img src="../assets/imgs/productos/<?= $producto->getImagen(); ?>"
-                                     alt="<?= $producto->getImagenDescripcion(); ?>" width="60" class="img-thumbnail">
+                                     alt="<?= $producto->getImagenDescripcion(); ?>" width="150" class="img-thumbnail">
                             <?php else: ?>
                                 <span class="text-muted">Sin imagen</span>
                             <?php endif; ?>
@@ -46,11 +46,11 @@ $productos = (new Producto)->todosProductos();
                         <td>
                             <div class="d-flex justify-content-center gap-2">
                                 <a href="editarProducto.php?id=<?= $producto->getProductoId(); ?>"
-                                   class="btn btn-sm btn-dark rounded-circle" title="Editar">
+                                   class="btn btn-xl btn-dark rounded-circle" title="Editar">
                                     <i class="bi bi-pencil-fill"></i>
                                 </a>
                                 <a href="eliminarProducto.php?id=<?= $producto->getProductoId(); ?>"
-                                   class="btn btn-sm btn-danger rounded-circle"
+                                   class="btn btn-xl btn-danger rounded-circle"
                                    onclick="return confirm('¿Seguro que querés eliminar este producto?')"
                                    title="Eliminar">
                                     <i class="bi bi-trash3-fill"></i>
@@ -83,7 +83,7 @@ $productos = (new Producto)->todosProductos();
                     <?php if ($producto->getImagen()): ?>
                         <img src="../assets/imgs/productos/<?= $producto->getImagen(); ?>"
                              alt="<?= $producto->getImagenDescripcion(); ?>"
-                             class="img-fluid rounded mt-2" style="max-width: 100px;">
+                             class="img-fluid rounded mt-2" style="max-width: 150px;">
                         <p class="text-muted small mt-1"><?= $producto->getImagenDescripcion(); ?></p>
                     <?php endif; ?>
                     <div class="mt-3 row gx-2">
