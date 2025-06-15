@@ -57,12 +57,9 @@ $rutaConfig = $rutas[$seccion];
             </button>
             <div class="collapse navbar-collapse text-white" id="navbarNavAltMarkup">
                 <div class="navbar-nav ms-auto">
-                    <a class="nav-link active text-white fs-6" aria-current="page" href="index.php?seccion=home"><i
-                                class="bi bi-house-door me-2"></i>Inicio</a>
-                    <a class="nav-link text-white fs-6" href="index.php?seccion=productos"><i
-                                class="bi bi-bag me-2"></i>Productos</a>
-                    <a class="nav-link text-white fs-6" href="admin"><i
-                                class="bi bi-bag me-2"></i>Panel Admin</a>
+                    <a class="nav-link active text-white fs-5" aria-current="page" href="index.php?seccion=home">🏠Inicio</a>
+                    <a class="nav-link text-white fs-5" href="index.php?seccion=productos">📦Productos</a>
+                    <a class="nav-link text-white fs-5" href="admin">🔐 Panel Admin</a>
                 </div>
             </div>
         </div>
