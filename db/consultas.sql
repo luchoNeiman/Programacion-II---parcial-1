@@ -7,8 +7,6 @@
 CREATE
 DATABASE `dw3_garcia_neiman` COLLATE utf8mb4_general_ci;
 -- muestra todos los esquemas
-SHOW
-DATABASES;
 
 -- usar la base de datos
 USE
@@ -132,24 +130,92 @@ FROM productos;
 -- PRODUCTOS-CATEGORIAS
 INSERT INTO productos_tienen_categorias(producto_fk, categoria_fk)
 VALUES (1, 1),
-       (2, 2),
+       (2, 7),
        (3, 3),
-       (4, 4),
-       (5, 5),
+       (4, 2),      
+       (5, 7),
        (6, 1),
        (7, 2),
-       (8, 6),
-       (9, 7),
+       (8, 9),
+       (9, 6),
        (10, 8),
        (11, 9),
        (12, 2);
+      
 
-INSERT INTO productos_tienen_categorias(producto_fk, categoria_fk)
-VALUES (5, 7);
 
 SELECT *
 FROM productos_tienen_categorias;
 
+SELECT 
+  p.producto_id,
+  p.titulo,
+  p.descripcion,
+  p.precio,
+  p.imagen,
+  p.imagen_descripcion,
+  p.caracteristicas,
+  f.nombre_franquicia
+FROM productos p
+INNER JOIN franquicias f ON p.franquicia_fk = f.franquicia_id
+WHERE p.producto_id = 1;
+
+
+
+SELECT p.producto_id,
+  p.titulo,
+  p.precio,
+  p.imagen,
+  p.imagen_descripcion
+FROM productos p
+INNER JOIN productos_tienen_categorias pc ON p.producto_id = pc.producto_fk
+INNER JOIN categorias c ON pc.categoria_fk = c.categoria_id
+WHERE c.nombre_categoria = 'Ropa';
+
+SELECT 
+                          p.producto_id,
+                          p.titulo,
+                          p.descripcion,
+                          p.precio,
+                          p.imagen,
+                          p.imagen_descripcion,
+                          p.caracteristicas,
+                          f.nombre_franquicia,
+                          GROUP_CONCAT(c.nombre_categoria SEPARATOR ', ') AS categorias
+                        FROM productos p
+                        JOIN franquicias f ON p.franquicia_fk = f.franquicia_id
+                        JOIN productos_tienen_categorias ptc ON p.producto_id = ptc.producto_fk
+                        JOIN categorias c ON ptc.categoria_fk = c.categoria_id
+                        WHERE p.producto_id = 1
+                        GROUP BY p.producto_id;                        
+                        
+                        SELECT 
+                          p.producto_id,
+                          p.titulo,
+                          p.precio,
+                          p.imagen,
+                          p.imagen_descripcion
+                        FROM productos p
+                        INNER JOIN productos_tienen_categorias pc ON p.producto_id = pc.producto_fk
+                        INNER JOIN categorias c ON pc.categoria_fk = c.categoria_id
+                        WHERE c.nombre_categoria IN (1)
+                        GROUP BY p.producto_id
+                        LIMIT 10;
+                        
+                        SELECT p.producto_id,
+                          p.titulo,
+                          p.descripcion,
+                          p.precio,
+                          p.imagen,
+                          p.imagen_descripcion,
+                          p.caracteristicas,
+                          f.nombre_franquicia AS franquicia,
+                          GROUP_CONCAT(c.nombre_categoria SEPARATOR ', ') AS categorias
+        FROM productos p
+        JOIN franquicias f ON p.franquicia_fk = f.franquicia_id
+        JOIN productos_tienen_categorias ptc ON p.producto_id = ptc.producto_fk
+        JOIN categorias c ON ptc.categoria_fk = c.categoria_id
+        GROUP BY p.producto_id;
 
 
 

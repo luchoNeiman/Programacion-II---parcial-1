@@ -47,7 +47,21 @@ class Producto
         // Vamos a traer los productos de la base de datos.
         $db = (new DBConexion)->getConexion();
 
-        $consulta = "SELECT * FROM productos";
+        $consulta = "SELECT p.producto_id,
+                        p.fecha_ingreso,
+                          p.titulo,
+                          p.descripcion,
+                          p.precio,
+                          p.imagen,
+                          p.imagen_descripcion,
+                          p.caracteristicas,
+                          f.nombre_franquicia,
+                          GROUP_CONCAT(c.nombre_categoria SEPARATOR ', ') AS categorias
+                    FROM productos p
+                    JOIN franquicias f ON p.franquicia_fk = f.franquicia_id
+                    JOIN productos_tienen_categorias ptc ON p.producto_id = ptc.producto_fk
+                    JOIN categorias c ON ptc.categoria_fk = c.categoria_id
+                    GROUP BY p.producto_id;";
         $stmt = $db->prepare($consulta);
         $stmt->execute();
         $stmt->setFetchMode(PDO::FETCH_CLASS, self::class);
