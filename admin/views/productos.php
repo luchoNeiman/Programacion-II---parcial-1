@@ -6,7 +6,7 @@ $productos = (new Producto)->todosProductos();
 <section class="container-fluid mt-5">
     <h1 class="mx-5 mb-4 mt-4">
         🛠️ Administrar productos
-        <a href="nuevoProducto.php" class="btn btn-dark border-light">
+        <a href="index.php?seccion=nuevoProducto" class="btn btn-dark border-light">
             <i class="bi bi-plus-circle me-1"></i> Nuevo producto
         </a>
     </h1>
@@ -21,6 +21,7 @@ $productos = (new Producto)->todosProductos();
                     <th  class="min-th">Fecha de Ingreso</th>
                     <th class="min-th">Título</th>
                     <th class="min-th">Franquicia</th>
+                    <!--<th class="min-th">Categoria</th>-->
                     <th class="min-th">Descripción</th>
                     <th class="min-th">Características</th>
                     <th class="min-th">Imagen</th>
@@ -49,11 +50,12 @@ $productos = (new Producto)->todosProductos();
                         <td>$<?= number_format($producto->getPrecio(), 0, ',', '.'); ?></td>
                         <td class=" align-middle">
                             <div class="d-flex justify-content-center gap-2">
-                                <a href="edicionProducto.php?id=<?= $producto->getProductoId(); ?>"
+                                <a href="index.php?seccion=edicionProducto&id=<?= $producto->getProductoId(); ?>"
                                    class="btn btn-xl btn-dark rounded-circle" title="Editar">
                                     <i class="bi bi-pencil-fill"></i>
                                 </a>
-                                <a href="eliminarProducto.php?id=<?= $producto->getProductoId(); ?>"
+
+                                <a href="index.php?seccion=eliminarProduct&?id=<?= $producto->getProductoId(); ?>"
                                    class="btn btn-xl btn-danger rounded-circle"
                                    onclick="return confirm('¿Seguro que querés eliminar este producto?')"
                                    title="Eliminar">
@@ -92,14 +94,14 @@ $productos = (new Producto)->todosProductos();
                     <?php endif; ?>
                     <div class="mt-3 row gx-2">
                         <div class="col-12 col-sm-6 mb-2 mb-sm-0">
-                            <a href="edicionProducto.php?id=<?= $producto->getProductoId(); ?>"
+                            <a href="index.php?seccion=edicionProducto&id=<?= $producto->getProductoId(); ?>"
                                class="btn btn-dark w-100 d-flex justify-content-center align-items-center"
                                title="Editar">
                                 <i class="bi bi-pencil-fill me-1"></i> Editar
                             </a>
                         </div>
                         <div class="col-12 col-sm-6">
-                            <a href="eliminarProducto.php?id=<?= $producto->getProductoId(); ?>"
+                            <a href="index.php?seccion=eliminarProducto&id=<?= $producto->getProductoId(); ?>"
                                class="btn btn-danger w-100 d-flex justify-content-center align-items-center"
                                onclick="return confirm('¿Eliminar este producto?')" title="Eliminar">
                                 <i class="bi bi-trash me-1"></i> Eliminar
