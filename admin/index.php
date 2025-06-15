@@ -13,7 +13,7 @@ $rutas = [
     'nuevoProducto' => [
         'titulo' => 'Nuevo Producto',
     ],
-    'edicionProductos' => [
+    'edicionProducto' => [
         'titulo' => 'Editar noticia',
     ],
     'confirmarBajaProducto' => [
