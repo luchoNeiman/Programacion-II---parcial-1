@@ -34,7 +34,7 @@ class Producto
         $this->imagen                   = $data['imagen'];
         $this->imagen_descripcion       = $data['imagen_descripcion'];
         $this->nombre_franquicia        = $data['nombre_franquicia'];
-        $this->categorias         = isset($data['categorias']) ? explode(', ', $data['categorias']) : [];
+        $this->categorias               = $data['categorias'];
         $this->caracteristicas          = $data['caracteristicas'];
     }
 
