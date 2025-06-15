@@ -119,6 +119,27 @@ class Producto
         $stmt->setFetchMode(PDO::FETCH_CLASS, self::class);
         return $stmt->fetchAll();
     }
+    public static function obtenerUltimosDelMes(): array
+    {
+        $db = (new DBConexion)->getConexion();
+
+        $consulta = "SELECT 
+                    p.producto_id,
+                    p.titulo,
+                    p.precio,
+                    p.imagen,
+                    p.imagen_descripcion
+                 FROM productos p
+                 WHERE p.fecha_ingreso >= DATE_SUB(CURDATE(), INTERVAL 1 MONTH)
+                 ORDER BY p.fecha_ingreso DESC         
+                                          LIMIT 4";
+
+        $stmt = $db->prepare($consulta);
+        $stmt->execute();
+
+        $stmt->setFetchMode(PDO::FETCH_CLASS, self::class);
+        return $stmt->fetchAll();
+    }
 
 
 

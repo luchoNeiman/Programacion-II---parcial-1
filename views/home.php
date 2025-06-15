@@ -36,9 +36,8 @@ require_once __DIR__ . '/../classes/Producto.php';
                 <h2 class="mb-4 text-center"> Imperdibles del mes</h2>
                 <div class="row g-4">
                     <?php
-                    // variable para poder filtrar por tipo de edicion
-                    $productosDestacados = (new Producto)->obtenerPorCategoria("Ropa", "Figura de acción"
-                    );
+                    // variable para poder filtrar por fecha
+                    $productosDestacados = (new Producto)->obtenerUltimosDelMes();
                     foreach ($productosDestacados as $producto): ?>
                         <div class="col-12 col-sm-6 col-md-6 col-lg-3">
                             <article class="card h-100 shadow">
