@@ -44,7 +44,7 @@ $productos = (new Producto)->todosProductos();
                         <td><?= $producto->getImagenDescripcion(); ?></td>
                         <td>$<?= number_format($producto->getPrecio(), 2, ',', '.'); ?></td>
                         <td>
-                            <div class="d-flex justify-content-center gap-2">
+                            <div class="d-flex gap-2">
                                 <a href="editarProducto.php?id=<?= $producto->getProductoId(); ?>"
                                    class="btn btn-xl btn-dark rounded-circle" title="Editar">
                                     <i class="bi bi-pencil-fill"></i>
@@ -53,7 +53,7 @@ $productos = (new Producto)->todosProductos();
                                    class="btn btn-xl btn-danger rounded-circle"
                                    onclick="return confirm('¿Seguro que querés eliminar este producto?')"
                                    title="Eliminar">
-                                    <i class="bi bi-trash3-fill"></i>
+                                    <i class="bi bi-trash-fill"></i>
                                 </a>
                             </div>
                         </td>
@@ -98,7 +98,7 @@ $productos = (new Producto)->todosProductos();
                             <a href="eliminarProducto.php?id=<?= $producto->getProductoId(); ?>"
                                class="btn btn-danger w-100 d-flex justify-content-center align-items-center"
                                onclick="return confirm('¿Eliminar este producto?')" title="Eliminar">
-                                <i class="bi bi-trash3-fill me-1"></i> Eliminar
+                                <i class="bi bi-trash me-1"></i> Eliminar
                             </a>
                         </div>
                     </div>
