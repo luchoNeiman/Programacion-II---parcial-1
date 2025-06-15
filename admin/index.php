@@ -1,20 +1,23 @@
 <?php
-
+session_start();
 $rutas = [
     'home' => [
-        'titulo' => 'Página principal',
+        'titulo' => 'Ingresar',
+    ],
+    'dashboard' => [
+        'titulo' => 'Tablero',
     ],
     'productos' => [
-        'titulo' => 'Productos',
+        'titulo' => 'Administrar productos',
     ],
-    'detalle-producto' => [
-        'titulo' => 'Detalle Producto',
+    'nuevoProducto' => [
+        'titulo' => 'Nuevo Producto',
     ],
-    'contacto' => [
-        'titulo' => 'Contacto',
+    'edicionProductos' => [
+        'titulo' => 'Editar noticia',
     ],
-    'procesar-form' => [
-        'titulo' => 'Procesar Formulario',
+    'confirmarBajaProducto' => [
+        'titulo' => 'Se requiere cumplir con las confirmaciones para eliminar la noticia.',
     ],
     '404' => [
         'titulo' => 'Página no encontrada',

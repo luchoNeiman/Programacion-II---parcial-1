@@ -116,3 +116,7 @@ body {
     max-height: 450px;
     object-fit: cover;
 }
+
+.min-th{
+    min-width: 150px;
+}

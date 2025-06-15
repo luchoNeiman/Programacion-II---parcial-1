@@ -6,23 +6,27 @@ $productos = (new Producto)->todosProductos();
 <section class="container-fluid mt-5">
     <h1 class="mx-5 mb-4 mt-4">
         🛠️ Administrar productos
+        <a href="nuevoProducto.php" class="btn btn-dark border-light">
+            <i class="bi bi-plus-circle me-1"></i> Nuevo producto
+        </a>
     </h1>
+
 
     <!-- Tabla para escritorio -->
     <div class="mx-5 mb-5 card border-5 shadow-sm d-none d-md-block">
         <div class="table-responsive">
-            <table class="table table-bordered table-striped table-hover mb-0 align-middle text-center">
+            <table class="table table-bordered table-striped table-hover mb-0">
                 <thead class="table-dark">
                 <tr>
-                    <th style="min-width: 150px;">Fecha de Ingreso</th>
-                    <th>Título</th>
-                    <th style="min-width: 150px;">Franquicia</th>
-                    <th>Descripción</th>
-                    <th>Características</th>
-                    <th style="min-width: 100px;" >Imagen</th>
-                    <th>Alt imagen</th>
-                    <th>Precio</th>
-                    <th>Acciones</th>
+                    <th  class="min-th">Fecha de Ingreso</th>
+                    <th class="min-th">Título</th>
+                    <th class="min-th">Franquicia</th>
+                    <th class="min-th">Descripción</th>
+                    <th class="min-th">Características</th>
+                    <th class="min-th">Imagen</th>
+                    <th class="min-th">Alt imagen</th>
+                    <th class="min-th">Precio</th>
+                    <th class="min-th text-center ">Acciones</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -42,10 +46,10 @@ $productos = (new Producto)->todosProductos();
                             <?php endif; ?>
                         </td>
                         <td><?= $producto->getImagenDescripcion(); ?></td>
-                        <td>$<?= number_format($producto->getPrecio(), 2, ',', '.'); ?></td>
-                        <td>
-                            <div class="d-flex gap-2">
-                                <a href="editarProducto.php?id=<?= $producto->getProductoId(); ?>"
+                        <td>$<?= number_format($producto->getPrecio(), 0, ',', '.'); ?></td>
+                        <td class=" align-middle">
+                            <div class="d-flex justify-content-center gap-2">
+                                <a href="edicionProducto.php?id=<?= $producto->getProductoId(); ?>"
                                    class="btn btn-xl btn-dark rounded-circle" title="Editar">
                                     <i class="bi bi-pencil-fill"></i>
                                 </a>
@@ -73,7 +77,7 @@ $productos = (new Producto)->todosProductos();
                     <p class="text-secondary-emphasis mb-1"><strong>Fecha de
                             Ingreso:</strong> <?= $producto->getFechaIngreso(); ?></p>
                     <p class="text-secondary-emphasis mb-1"><strong>Precio:</strong>
-                        $<?= number_format($producto->getPrecio(), 2, ',', '.'); ?></p>
+                        $<?= number_format($producto->getPrecio(), 0, ',', '.'); ?></p>
                     <p class="text-secondary-emphasis mb-1">
                         <strong>Franquicia:</strong> <?= $producto->getNombreFranquicia(); ?></p>
                     <p class="text-secondary-emphasis mb-1">
@@ -88,7 +92,7 @@ $productos = (new Producto)->todosProductos();
                     <?php endif; ?>
                     <div class="mt-3 row gx-2">
                         <div class="col-12 col-sm-6 mb-2 mb-sm-0">
-                            <a href="editarProducto.php?id=<?= $producto->getProductoId(); ?>"
+                            <a href="edicionProducto.php?id=<?= $producto->getProductoId(); ?>"
                                class="btn btn-dark w-100 d-flex justify-content-center align-items-center"
                                title="Editar">
                                 <i class="bi bi-pencil-fill me-1"></i> Editar
