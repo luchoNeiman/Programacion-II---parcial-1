@@ -65,7 +65,7 @@ $rutaConfig = $rutas[$seccion];
                     <a class="nav-link text-white fs-5" href="index.php?seccion=productos">
                         <i class="bi bi-box-seam me-1"></i> Productos
                     </a>
-                    <a class="nav-link text-white fs-5" href="admin">
+                    <a class="nav-link text-white fs-5" href="admin/index.php?seccion=dashboard">
                         <i class="bi bi-lock-fill me-1"></i> Panel Admin
                     </a>
                 </div>
