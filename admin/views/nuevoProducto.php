@@ -1,9 +1,9 @@
 <section class="container mt-5 mb-5">
-    <h1 class="mb-4">➕ Publicar un nuevo producto</h1>
+    <h1 class="mb-4"> <i class="bi bi-plus-lg me-2"></i> Publicar un nuevo producto</h1>
 
     <div class="card shadow border-0">
         <div class="card-body">
-            <form action="crearProducto.php" method="post" enctype="multipart/form-data" class="row g-3">
+            <form action="../acciones/crearProducto.php" method="post" enctype="multipart/form-data" class="row g-3">
 
                 <div class="col-md-6">
                     <label for="titulo" class="form-label text-secondary-emphasis">Título</label>

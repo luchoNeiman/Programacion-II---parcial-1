@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__ . '/../../classes/Producto.php';
+
 $producto = (new Producto())->porId($_GET['id']);
 ?>
 <section class="container mt-5 mb-5">

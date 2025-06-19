@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__ . '/../../classes/Producto.php';
+
 
 $productos = (new Producto)->todosProductos();
 ?>

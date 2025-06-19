@@ -1,5 +1,4 @@
 <?php
-require_once __DIR__ . '/../classes/Producto.php';
 
 $id = $_GET['id'];
 $producto = (new Producto)->porId($id);
