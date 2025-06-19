@@ -7,68 +7,23 @@ class Usuario
     private int $rol_fk = 0;
     private string $email = "";
     private string $password = "";
-    private string $nombre = "";
-    private string $apellido = "";
-    private ?string $avatar = "";
+    private ?string $nombre = null;
+    private ?string $apellido = null;
+    private ?string $avatar = null;
 
-    /**
-     * Carga los datos de un usuario desde un array asociativo.
-     *
-     * @param array $data Array asociativo con los datos del usuario.
-     *
-     * @return void no devuelve nada
-     */
-    public function cargarDatosArray(array $data): void
+
+    public function porEmail(int $email): ?self
     {
-        $this->usuario_id           = $data['usuario_id'];
-        $this->email                = $data['email'];
-        $this->password           = $data['password'];
-        $this->nombre               = $data['nombre'];
-        $this->apellido             = $data['apellido'];
-        $this->avatar               = $data['avatar'];
-    }
-
-    /**
-     * Recupera y devuelve todos los usuarios desde un archivo JSON.
-     * @return self[] Lista de objetos Usuario que representan todos los usuarios disponibles.
-     */
-    public function todosUsuarios(): array
-    {
-        // Vamos a traer los usuarios de la base de datos.
-        $db = (new DBConexion)->getConexion();
-
-        $consulta = "SELECT * FROM usuarios";
-        $stmt = $db->prepare($consulta);
-        $stmt->execute();
-        $stmt->setFetchMode(PDO::FETCH_CLASS, self::class);
-
-        return $stmt->fetchAll();
-    }
-
-    /**
-     * Busca y devuelve un usuario específico por su ID.
-     *
-     * @param int $id El ID del usuario a buscar.
-     *
-     * @return self|null Devuelve una instancia de Usuario si el ID coincide, o null si no se encuentra.
-     */
-
-    public function porId(int $id): ?self
-    {
-        // Traemos el usuario desde la base de datos.
         $db = (new DBConexion)->getConexion();
         $consulta = "SELECT * FROM usuarios
-                    WHERE usuario_id = ?";
+                    WHERE email = ?";
 
         $stmt = $db->prepare($consulta);
-        $stmt->execute([$id]);
-
+        $stmt->execute([$email]);
         $stmt->setFetchMode(PDO::FETCH_CLASS, self::class);
-
         $usuario = $stmt->fetch();
 
         if (!$usuario) return null;
-
         return $usuario;
     }
 
@@ -103,12 +58,12 @@ class Usuario
         $this->email = $email;
     }
 
-    public function getContrasena(): string
+    public function getPassword(): string
     {
         return $this->password;
     }
 
-    public function setContrasena(string $password): void
+    public function setPassword(string $password): void
     {
         $this->password = $password;
     }
