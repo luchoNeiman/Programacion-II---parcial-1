@@ -25,4 +25,11 @@ class Categoria
         $stmt = $this->db->prepare("INSERT INTO categorias (nombre_categoria) VALUES (:nombre)");
         $stmt->execute(['nombre' => $nombre]);
     }
+    public function getCategoriasIds(): array
+    {
+        $db = (new DBConexion)->getConexion();
+        $stmt = $db->prepare("SELECT categoria_fk FROM productos_tienen_categorias WHERE producto_fk = ?");
+        $stmt->execute([$this->producto_id]);
+        return $stmt->fetchAll(PDO::FETCH_COLUMN);
+    }
 }

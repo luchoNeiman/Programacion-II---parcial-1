@@ -116,6 +116,27 @@ body {
     object-fit: cover;
 }
 
-.min-th{
+.min-th {
     min-width: 150px;
+}
+
+select option {
+    padding: 5px;
+}
+
+select option:checked {
+    background-color: rgba(70, 4, 98, 0.75) !important; /* azul seleccionado */
+    color: white !important;
+    padding: 8px;
+}
+
+
+select option:hover {
+    background-color: #343a40;
+    color: #f8f9fa;
+}
+
+select[multiple] {
+    border: 1px solid #000000; /* borde azul */
+    padding: 8px;
 }
