@@ -18,7 +18,7 @@
             </button>
         </div>-->
         <div class="d-grid">
-            <a href="index.php?seccion=productos" class="btn btn-dark">
+            <a href="index.php?seccion=dashboard" class="btn btn-dark">
                 <i class="bi bi-box-arrow-in-right me-1"></i> Ingresar
             </a>
         </div>
