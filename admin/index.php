@@ -1,5 +1,4 @@
 <?php
-require_once __DIR__ . '../../classes/Autenticacion.php';
 require_once __DIR__ . '/../bootstrap/autoload.php';
 
 // Iniciamos la sesión para el admin.
@@ -89,16 +88,33 @@ if (isset($_SESSION['feedback_error'])) {
                     aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                     <i class="bi bi-xl bi-list text-white"></i>
                 </button>
+                <?php
+                if($autenticacion->estaAutenticado()):
+                    ?>
                 <div class="collapse navbar-collapse text-white" id="navbarNavAltMarkup">
+
                     <div class="navbar-nav ms-auto">
-                        <a class="nav-link active text-white fs-5" aria-current="page" href="../index.php?seccion=home">🏠Inicio</a>
-                        <a class="nav-link text-white fs-5" href="../index.php?seccion=productos">📦Productos</a>
+                        <a class="nav-link active text-white fs-5" href="../index.php?seccion=home">Inicio</a>
+                        <a class="nav-link active text-white fs-5" href="../index.php?seccion=home">Tablero</a>
+                        <a class="nav-link text-white fs-5" href="../index.php?seccion=productos">Productos</a>
+                            <form action="acciones/cerrarSesion.php" method="post">
+                                <button type="submit" class="nav-link text-white">Cerrar sesión</button>
+                            </form>
                     </div>
                 </div>
+                <?php
+                endif;
+                ?>
             </div>
         </nav>
     </header>
     <main class="pt-5 bg-degrade">
+        <?php if(isset($feedbackExito)): ?>
+            <div class="msg-success mt-5"><?= $feedbackExito;?></div>
+        <?php endif; ?>
+        <?php if(isset($feedbackError)): ?>
+            <div class="msg-error mt-5"><?= $feedbackError;?></div>
+        <?php endif; ?>
         <?php
         require_once __DIR__ . '/views/' . $seccion . '.php';
         ?>

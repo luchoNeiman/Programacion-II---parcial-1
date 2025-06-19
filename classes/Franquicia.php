@@ -1,5 +1,5 @@
 <?php
-require_once 'DBConexion.php';
+//require_once 'DBConexion.php';
 
 class Franquicia
 {

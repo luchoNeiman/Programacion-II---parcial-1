@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__ . '/DBConexion.php';
+//require_once __DIR__ . '/DBConexion.php';
 
 class Usuario
 {
@@ -12,7 +12,7 @@ class Usuario
     private ?string $avatar = null;
 
 
-    public function porEmail(int $email): ?self
+    public function porEmail(string $email): ?self
     {
         $db = (new DBConexion)->getConexion();
         $consulta = "SELECT * FROM usuarios

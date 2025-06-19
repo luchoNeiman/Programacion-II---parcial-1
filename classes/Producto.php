@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__ . '/DBConexion.php';
+//require_once __DIR__ . '/DBConexion.php';
 
 // const PRODUCTOS_JSON = 'productos.json';
 
@@ -301,12 +301,4 @@ class Producto
     {
         $this->caracteristicas = $caracteristicas;
     }
-
-    /**
-     * Recupera productos filtrados por tipo de edición (máximo 4 productos).
-     *
-     * @param string|null $categoria1 Primera edición a filtrar (opcional)
-     * @param string|null $categoria2 Segunda edición a filtrar (opcional)
-     * @return Producto[] Lista de productos filtrados (máximo 4)
-     */
 }

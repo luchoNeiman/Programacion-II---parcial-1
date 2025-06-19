@@ -1,6 +1,6 @@
 <?php
-require_once __DIR__ . '/DBConexion.php';
-require_once __DIR__ . '/Usuario.php';
+//require_once __DIR__ . '/DBConexion.php';
+//require_once __DIR__ . '/Usuario.php';
 
 class Autenticacion
 {
@@ -17,9 +17,13 @@ class Autenticacion
 
         $this->autenticar($usuario);
         return true;
+
+
     }
 
-    public function autenticar(Usuario $usuario): void
+
+
+public function autenticar(Usuario $usuario): void
     {
         // Para marcar al usuario como autenticado, guardamos en una variable de sesión el id.
         $_SESSION['usuario_id'] = $usuario->getUsuarioId();
