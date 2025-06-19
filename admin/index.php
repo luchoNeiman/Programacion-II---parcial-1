@@ -77,55 +77,77 @@ if (isset($_SESSION['feedback_error'])) {
 </head>
 
 <body>
-    <header class="main-header">
-        <nav class="navbar navbar-expand-lg bg-azul fixed-top border-bottom border-light" data-bs-theme="dark">
-            <div class="container-fluid ">
-                <a class="navbar-brand text-white" href="index.php?seccion=home">
-                    <img src="../assets/imgs/logo.webp" alt="Otaku Mania Logo" height="30" class="me-2">
-                </a>
-                <button class="navbar-toggler white" type="button" data-bs-toggle="collapse"
+<header class="main-header">
+    <nav class="navbar navbar-expand-lg bg-azul fixed-top border-bottom border-light" data-bs-theme="dark">
+        <div class="container-fluid ">
+            <a class="navbar-brand text-white" href="index.php?seccion=home">
+                <img src="../assets/imgs/logo.webp" alt="Otaku Mania Logo" height="30" class="me-2">
+            </a>
+            <button class="navbar-toggler white" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarNavAltMarkup"
                     aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                    <i class="bi bi-xl bi-list text-white"></i>
-                </button>
-                <?php
-                if($autenticacion->estaAutenticado()):
-                    ?>
+                <i class="bi bi-xl bi-list text-white"></i>
+            </button>
+            <?php
+            if ($autenticacion->estaAutenticado()):
+                ?>
+                <?php $usuario = $autenticacion->getUsuario(); ?>
                 <div class="collapse navbar-collapse text-white" id="navbarNavAltMarkup">
 
                     <div class="navbar-nav ms-auto">
-                        <a class="nav-link active text-white fs-5" href="../index.php?seccion=home">Inicio</a>
-                        <a class="nav-link active text-white fs-5" href="../index.php?seccion=home">Tablero</a>
-                        <a class="nav-link text-white fs-5" href="../index.php?seccion=productos">Productos</a>
-                            <form action="acciones/cerrarSesion.php" method="post">
-                                <button type="submit" class="nav-link text-white">Cerrar sesión</button>
-                            </form>
+                        <a class="nav-link active text-white fs-5" href="index.php?seccion=dashboard">
+                            <i class="bi bi-layout-text-sidebar me-1"></i> Tablero
+                        </a>
+
+                        <a class="nav-link text-white fs-5" href="index.php?seccion=productos">
+                            <i class="bi bi-box-seam "></i> Productos
+                        </a>
+                        <div class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle d-flex align-items-center text-white" href="#"
+                               role="button"
+                               data-bs-toggle="dropdown" aria-expanded="false">
+                                <img src="../assets/imgs/avatars/<?= $usuario['avatar'] ?? 'avatar.webp'; ?>"
+                                     alt="Avatar"
+                                     width="32" height="32" class="rounded-circle me-2" style="object-fit: cover;">
+                                <?= htmlspecialchars($usuario['nombre']) ?>
+
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end">
+                                <li>
+                                    <form action="acciones/cerrarSesion.php" method="post" class="d-inline">
+                                        <button type="submit" class="dropdown-item">
+                                            <i class="bi bi-box-arrow-right me-1"></i> Cerrar sesión
+                                        </button>
+                                    </form>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
-                <?php
-                endif;
-                ?>
-            </div>
-        </nav>
-    </header>
-    <main class="pt-5 bg-degrade">
-        <?php if(isset($feedbackExito)): ?>
-            <div class="msg-success mt-5"><?= $feedbackExito;?></div>
-        <?php endif; ?>
-        <?php if(isset($feedbackError)): ?>
-            <div class="msg-error mt-5"><?= $feedbackError;?></div>
-        <?php endif; ?>
-        <?php
-        require_once __DIR__ . '/views/' . $seccion . '.php';
-        ?>
-    </main>
-    <footer class="main-footer bg-azul text-white py-3  border-top border-light">
-        <div class="container text-center">
-            <p class="mb-1">&copy; Da Vinci - 2025</p>
-            <p class="mb-1">Alumnos: Ricardo Garcia, Luciano Neimán</p>
-            <p class="mb-0">Profesor: Santiago Gallino - Materia: Programación 2</p>
+            <?php
+            endif;
+            ?>
         </div>
-    </footer>
+    </nav>
+</header>
+<main class="pt-5 bg-degrade">
+    <?php if (isset($feedbackExito)): ?>
+        <div class="msg-success mt-5"><?= $feedbackExito; ?></div>
+    <?php endif; ?>
+    <?php if (isset($feedbackError)): ?>
+        <div class="msg-error mt-5"><?= $feedbackError; ?></div>
+    <?php endif; ?>
+    <?php
+    require_once __DIR__ . '/views/' . $seccion . '.php';
+    ?>
+</main>
+<footer class="main-footer bg-azul text-white py-3  border-top border-light">
+    <div class="container text-center">
+        <p class="mb-1">&copy; Da Vinci - 2025</p>
+        <p class="mb-1">Alumnos: Ricardo Garcia, Luciano Neimán</p>
+        <p class="mb-0">Profesor: Santiago Gallino - Materia: Programación 2</p>
+    </div>
+</footer>
 
 
 </body>

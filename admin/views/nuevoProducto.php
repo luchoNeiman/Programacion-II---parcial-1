@@ -4,7 +4,7 @@ $franquicias = (new Franquicia)->todasFranquicias();
 ?>
 
 <section class="container mt-5 mb-5">
-    <h1 class="mb-4"><i class="bi bi-plus-lg me-2"></i> Publicar un nuevo producto</h1>
+    <h1 class="mb-4 text-white"><i class="bi bi-plus-lg me-2 text-white"></i> Publicar un nuevo producto</h1>
 
     <form action="../admin/acciones/crearProducto.php" method="post" enctype="multipart/form-data" class="row g-3">
         <div class="card shadow  border-0">
@@ -67,7 +67,7 @@ $franquicias = (new Franquicia)->todasFranquicias();
                         <label for="franquicia_fk" class="form-label  text-secondary-emphasis">
                             Franquicias
                         </label>
-                        <select name="franquicia_fk" id="franquicia_fk" class="form-select" >
+                        <select name="franquicia_fk" id="franquicia_fk" class="form-select">
                             <option class="text-dark" value="">Seleccione franquicia</option>
                             <?php foreach ($franquicias as $franquicia): ?>
                                 <option class="text-secondary" value="<?= $franquicia['franquicia_id'] ?>">
@@ -103,14 +103,16 @@ $franquicias = (new Franquicia)->todasFranquicias();
             </div>
         </div>
         <div class="row">
-            <div class="col-12 mt-4 d-flex justify-content-center gap-3">
-                <a href="index.php?seccion=productos" class="btn btn-secondary border-light w-25">
-                    <i class="bi bi-x-circle me-1"></i> Cancelar
+            <div class="col-12 mt-4 d-flex flex-sm-row justify-content-end gap-3">
+                <a href="index.php?seccion=productos" class="btn btn-light border-light w-50"
+                   onclick="return confirm('¿Estás seguro que querés cancelar? Se perderán los cambios.')">
+                    <i class="bi bi-x-circle me-1 text-dark"></i> Cancelar
                 </a>
-                <button type="submit" class="btn btn-dark border-light w-25">
+                <button type="submit" class="btn btn-dark border-light w-50">
                     <i class="bi bi-check-circle me-1"></i> Guardar producto
                 </button>
             </div>
         </div>
+
     </form>
 </section>

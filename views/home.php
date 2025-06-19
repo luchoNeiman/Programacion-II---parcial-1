@@ -9,12 +9,12 @@
     <div class="container">
         <div class="row py-5">
             <div class="col-md-12">
-                <h1 class=" text-center mb-4">¡Bienvenido!</h1>
-                <p class="fs-5 mb-5"><strong class="text-white">Somos tu tienda de confianza</strong> dedicada a todos los
+                <h1 class=" text-center mb-4 text-white">¡Bienvenido!</h1>
+                <p class="fs-5 mb-5 text-white"><strong class="text-white">Somos tu tienda de confianza</strong> dedicada a todos los
                     fans del anime, manga
                     y la cultura japonesa. Aquí encontrarás todo lo que necesitas para disfrutar de tu pasión por el
                     mundo otaku.</p>
-                <p class="fs-5">
+                <p class="fs-5 text-white">
                     Descubre <strong class="text-white">figuras coleccionables</strong>, <strong class="text-white">ropa
                         temática</strong>, <strong class="text-white">accesorios
                         exclusivos</strong> y mucho más.
@@ -32,7 +32,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h2 class="mb-4 text-center"> Imperdibles del mes</h2>
+                <h2 class="mb-4 text-center text-white"> Imperdibles del mes</h2>
                 <div class="row g-4">
                     <?php
                     // variable para poder filtrar por fecha
@@ -74,8 +74,8 @@
                              alt="Descuento especial 35% off">
                     </div>
                     <div class="card-text justify-content-center bg-morado">
-                        <h2 class="mb-4 text-center">¡Promo Especial!</h2>
-                        <p class="fs-4 text-center px-2 mb-4">No te pierdas esta increíble oportunidad. <strong
+                        <h2 class="mb-4 text-center text-white">¡Promo Especial!</h2>
+                        <p class="fs-4 text-center px-2 mb-4 text-white">No te pierdas esta increíble oportunidad. <strong
                                     class="text-white">¡Obtené un cupón del
                                 35% de descuento!</strong></p>
                     </div>

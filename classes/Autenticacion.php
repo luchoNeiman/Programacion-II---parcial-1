@@ -44,4 +44,23 @@ public function autenticar(Usuario $usuario): void
     {
         return (new Usuario)->porEmail($email);
     }
+
+    public function getUsuario(): ?array
+    {
+        if (!$this->estaAutenticado()) {
+            return null;
+        }
+
+        $usuario = (new Usuario)->porId($_SESSION['usuario_id']);
+
+        if (!$usuario) {
+            return null;
+        }
+
+        return [
+            'nombre' => $usuario->getNombre(),
+            'avatar' => $usuario->getAvatar(),
+        ];
+    }
+
 }

@@ -3,7 +3,10 @@
 $producto = (new Producto())->porId($_GET['id']);
 ?>
 <section class="container mt-5 mb-5">
-    <h1 class="mb-4">📝 Editar un producto</h1>
+    <h1 class="mb-4 text-white">
+        <i class="bi bi-pencil-square me-2"></i> Editar un producto
+    </h1>
+
 
     <div class="card shadow border-0">
         <div class="card-body">

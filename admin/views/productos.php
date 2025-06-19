@@ -4,8 +4,8 @@
 $productos = (new Producto)->todosProductos();
 ?>
 <section class="container-fluid mt-5">
-    <h1 class="mx-5 mb-4 mt-4">
-        🛠️ Administrar productos
+    <h1 class="mx-5 mb-4 mt-4 text-white">
+        <i class="bi bi-box-seam-fill me-2"></i> Administracion de productos
         <a href="index.php?seccion=nuevoProducto" class="btn btn-dark border-light">
             <i class="bi bi-plus-circle me-1"></i> Nuevo producto
         </a>
@@ -18,7 +18,7 @@ $productos = (new Producto)->todosProductos();
             <table class="table table-bordered table-striped table-hover mb-0">
                 <thead class="table-dark">
                 <tr>
-                    <th  class="min-th">Fecha de Ingreso</th>
+                    <th class="min-th">Fecha de Ingreso</th>
                     <th class="min-th">Título</th>
                     <th class="min-th">Franquicia</th>
                     <!--<th class="min-th">Categoria</th>-->
@@ -50,17 +50,22 @@ $productos = (new Producto)->todosProductos();
                         <td>$<?= number_format($producto->getPrecio(), 0, ',', '.'); ?></td>
                         <td class=" align-middle">
                             <div class="d-flex justify-content-center gap-2">
+                                <!-- Botón Editar -->
                                 <a href="index.php?seccion=edicionProducto&id=<?= $producto->getProductoId(); ?>"
                                    class="btn btn-xl btn-dark rounded-circle" title="Editar">
-                                    <i class="bi bi-pencil-fill"></i>
+                                    <i class="bi bi-pencil-square fs-5"></i>
                                 </a>
 
-                                <a href="index.php?seccion=eliminarProduct&?id=<?= $producto->getProductoId(); ?>"
-                                   class="btn btn-xl btn-danger rounded-circle"
-                                   onclick="return confirm('¿Seguro que querés eliminar este producto?')"
-                                   title="Eliminar">
-                                    <i class="bi bi-trash-fill"></i>
+                                <!-- Botón Eliminar -->
+                                <a href="index.php?seccion=eliminarProduct&id=<?= $producto->getProductoId(); ?>"
+                                   class="btn btn-danger rounded-circle d-flex align-items-center justify-content-center shadow-sm"
+                                   style="width: 44px; height: 44px;"
+                                   data-bs-toggle="tooltip" data-bs-placement="top" title="Eliminar producto"
+                                   onclick="return confirm('¿Seguro que querés eliminar este producto?')">
+                                    <i class="bi bi-trash3-fill fs-5"></i>
                                 </a>
+
+
                             </div>
                         </td>
                     </tr>

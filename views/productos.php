@@ -4,8 +4,8 @@ $productos = (new Producto)->todosProductos();
 ?>
 <section class="productos py-5">
     <div class="container">
-        <h1 class="mb-3 text-center">Nuestros Productos</h1>
-        <p class="lead text-center mb-5">Los mejores artículos de tus series favoritas</p>
+        <h1 class="mb-3 text-center text-white">Nuestros Productos</h1>
+        <p class="lead text-center mb-5 text-white">Los mejores artículos de tus series favoritas</p>
         <div class="row g-4">
             <?php foreach ($productos as $producto): ?>
                 <div class="col-12 col-sm-6 col-md-6 col-lg-3">

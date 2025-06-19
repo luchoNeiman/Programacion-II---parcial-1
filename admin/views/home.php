@@ -1,5 +1,8 @@
 <section class="container mt-5" style="max-width: 500px;">
-    <h1 class="text-center mb-4">🔐 Ingresar al panel de administración</h1>
+    <h1 class="text-center mb-4 text-white">
+        <i class="bi bi-shield-lock-fill me-2 text-white"></i> Ingresar al panel de administración
+    </h1>
+
 
     <form action="acciones/iniciarSesion.php" method="POST" class="card shadow p-4 border-0">
         <div class="mb-3">

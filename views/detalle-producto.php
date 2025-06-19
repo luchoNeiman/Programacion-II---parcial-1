@@ -15,17 +15,17 @@ $producto = (new Producto)->porId($id);
         </div>
         <!-- Información del producto -->
         <div class="col-12 col-md-6">
-            <h1 class="display-6 mb-3"><?= $producto->getTitulo(); ?></h1>
-            <p class="lead"><?= $producto->getDescripcion(); ?></p>
-            <h2 class="mt-4 mb-3">
+            <h1 class="display-6 mb-3 text-white"><?= $producto->getTitulo(); ?></h1>
+            <p class="lead text-white"><?= $producto->getDescripcion(); ?></p>
+            <h2 class="mt-4 mb-3 text-white">
                 <strong class="text-white">$<?= number_format($producto->getPrecio(), 2, ',', '.'); ?></strong>
             </h2>
-            <p class="text-naranja-tostado">Hasta 3 cuotas sin interés</p>
-            <p class="text-naranja-tostado">Llega gratis el lunes</p>
+            <p class="text-white">Hasta 3 cuotas sin interés</p>
+            <p class="text-white">Llega gratis el lunes</p>
 
-            <p class="fw-bold">Stock disponible</p>
+            <p class="fw-bold text-white">Stock disponible</p>
             <div class="d-flex align-items-center flex-wrap mb-3">
-                <label for="cantidadModal" class="me-2">Cantidad:</label>
+                <label for="cantidadModal" class="me-2 text-white">Cantidad:</label>
                 <select id="cantidadModal" class="form-select me-2 texto-color w-auto">
                     <option value="1">1 unidad</option>
                     <option value="2">2 unidades</option>
@@ -65,7 +65,7 @@ $producto = (new Producto)->porId($id);
 <section class="container mb-5">
         <div class="row">
             <div class="col-md-12">
-                <h2 class="mb-4"> Productos Similares</h2>
+                <h2 class="mb-4 text-white"> Productos Similares</h2>
                 <div class="row g-4">
                     <?php
                     // variable para poder filtrar por tipo de categoria

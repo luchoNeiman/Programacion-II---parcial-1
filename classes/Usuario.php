@@ -38,6 +38,18 @@ class Usuario
         $this->usuario_id = $usuario_id;
     }
 
+    public function porId(int $id): ?self
+    {
+        $db = (new DBConexion)->getConexion();
+        $consulta = "SELECT * FROM usuarios WHERE usuario_id = ?";
+        $stmt = $db->prepare($consulta);
+        $stmt->execute([$id]);
+        $stmt->setFetchMode(PDO::FETCH_CLASS, self::class);
+        $usuario = $stmt->fetch();
+
+        return $usuario ?: null;
+    }
+
     public function getRolFk(): int
     {
         return $this->rol_fk;

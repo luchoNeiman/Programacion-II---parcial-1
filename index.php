@@ -55,13 +55,22 @@ $rutaConfig = $rutas[$seccion];
                     aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <i class="bi bi-xl bi-list text-white"></i>
             </button>
+            <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+
             <div class="collapse navbar-collapse text-white" id="navbarNavAltMarkup">
                 <div class="navbar-nav ms-auto">
-                    <a class="nav-link active text-white fs-5" aria-current="page" href="index.php?seccion=home">🏠Inicio</a>
-                    <a class="nav-link text-white fs-5" href="index.php?seccion=productos">📦Productos</a>
-                    <a class="nav-link text-white fs-5" href="admin">🔐 Panel Admin</a>
+                    <a class="nav-link active text-white fs-5" aria-current="page" href="index.php?seccion=home">
+                        <i class="bi bi-house-door me-1"></i> Inicio
+                    </a>
+                    <a class="nav-link text-white fs-5" href="index.php?seccion=productos">
+                        <i class="bi bi-box-seam me-1"></i> Productos
+                    </a>
+                    <a class="nav-link text-white fs-5" href="admin">
+                        <i class="bi bi-lock-fill me-1"></i> Panel Admin
+                    </a>
                 </div>
             </div>
+
         </div>
     </nav>
 </header>

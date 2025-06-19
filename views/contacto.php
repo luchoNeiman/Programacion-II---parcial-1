@@ -1,8 +1,8 @@
 <section class="container my-5">
     <div class="row">
         <div class="col-md-12">
-            <h1 class="mb-4 text-center">Reclamá el cupón</h1>
-            <p class="mb-4">
+            <h1 class="mb-4 text-center text-white">Reclamá el cupón</h1>
+            <p class="mb-4 text-white">
                 Estamos aquí para ayudarte. Si tienes alguna pregunta, comentario o necesitas más información, no dudes en <strong class="text-white">ponerte en contacto</strong> con nosotros. Además, completa el formulario para recibir un cupón de <strong class="text-white">descuento del 35% off</strong>.
             </p>
         </div>
