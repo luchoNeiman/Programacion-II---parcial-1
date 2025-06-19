@@ -80,7 +80,7 @@ if (isset($_SESSION['feedback_error'])) {
 <header class="main-header">
     <nav class="navbar navbar-expand-lg bg-azul fixed-top border-bottom border-light" data-bs-theme="dark">
         <div class="container-fluid ">
-            <a class="navbar-brand text-white" href="index.php?seccion=home">
+            <a class="navbar-brand text-white" href="../index.php?seccion=home">
                 <img src="../assets/imgs/logo.webp" alt="Otaku Mania Logo" height="30" class="me-2">
             </a>
             <button class="navbar-toggler white" type="button" data-bs-toggle="collapse"
