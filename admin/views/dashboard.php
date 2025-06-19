@@ -13,7 +13,7 @@
                 <div class="card-body text-center">
                     <i class="bi bi-box-seam display-4"></i>
                     <h5 class="card-title mt-3">Productos</h5>
-                    <p class="card-text">Administrar el catálogo de productos</p>
+                    <p class="card-text text-secondary-emphasis">Administrar el catálogo de productos</p>
                     <a href="index.php?seccion=productos" class="btn btn-dark">
                         <i class="bi bi-arrow-right-circle me-2"></i>Gestionar
                     </a>
@@ -26,7 +26,7 @@
                 <div class="card-body text-center">
                     <i class="bi bi-plus-circle display-4"></i>
                     <h5 class="card-title mt-3">Nuevo Producto</h5>
-                    <p class="card-text">Agregar un nuevo producto al catálogo</p>
+                    <p class="card-text text-secondary-emphasis">Agregar un nuevo producto al catálogo</p>
                     <a href="index.php?seccion=nuevoProducto" class="btn btn-dark">
                         <i class="bi bi-plus-lg me-2"></i>Crear
                     </a>
@@ -39,7 +39,7 @@
                 <div class="card-body text-center">
                     <i class="bi bi-house display-4"></i>
                     <h5 class="card-title mt-3">Sitio Principal</h5>
-                    <p class="card-text">Volver al sitio principal</p>
+                    <p class="card-text text-secondary-emphasis">Volver al sitio principal</p>
                     <a href="../index.php" class="btn btn-dark">
                         <i class="bi bi-box-arrow-left me-2"></i>Ir al sitio
                     </a>
