@@ -6,7 +6,7 @@ $franquicias = (new Franquicia)->todasFranquicias();
 <section class="container mt-5 mb-5">
     <h1 class="mb-4"><i class="bi bi-plus-lg me-2"></i> Publicar un nuevo producto</h1>
 
-    <form action="../acciones/crearProducto.php" method="post" enctype="multipart/form-data" class="row g-3">
+    <form action="../admin/acciones/crearProducto.php" method="post" enctype="multipart/form-data" class="row g-3">
         <div class="card shadow  border-0">
             <div class="card-body py-4">
                 <div class="row">
@@ -67,7 +67,7 @@ $franquicias = (new Franquicia)->todasFranquicias();
                         <label for="franquicia_fk" class="form-label  text-secondary-emphasis">
                             Franquicias
                         </label>
-                        <select name="franquicia_fk" id="franquicia_fk" class="form-select" required>
+                        <select name="franquicia_fk" id="franquicia_fk" class="form-select" >
                             <option class="text-dark" value="">Seleccione franquicia</option>
                             <?php foreach ($franquicias as $franquicia): ?>
                                 <option class="text-secondary" value="<?= $franquicia['franquicia_id'] ?>">
@@ -76,16 +76,12 @@ $franquicias = (new Franquicia)->todasFranquicias();
                             <?php endforeach; ?>
                         </select>
                     </div>
-
-
                     <div class="col-md-6">
                         <label for="nueva_franquicia" class="form-label  text-secondary-emphasis">Nueva
                             franquicia</label>
                         <input id="nueva_franquicia" type="text" name="nueva_franquicia" class="form-control"
                                placeholder="Ingresá una nueva franquicia si no figura en la lista">
                     </div>
-
-
                 </div>
             </div>
         </div>
@@ -98,8 +94,10 @@ $franquicias = (new Franquicia)->todasFranquicias();
                     </div>
 
                     <div class="col-md-6">
-                        <label for="imagen_descripcion" class="form-label  text-secondary-emphasis">Descripción de la imagen</label>
-                        <input type="text" name="imagen_descripcion" id="imagen_descripcion" class="form-control" placeholder="Escribe una breve descripción">
+                        <label for="imagen_descripcion" class="form-label  text-secondary-emphasis">Descripción de la
+                            imagen</label>
+                        <input type="text" name="imagen_descripcion" id="imagen_descripcion" class="form-control"
+                               placeholder="Escribe una breve descripción">
                     </div>
                 </div>
             </div>

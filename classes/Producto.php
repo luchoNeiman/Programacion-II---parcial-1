@@ -1,5 +1,6 @@
 <?php
 require_once __DIR__ . '/DBConexion.php';
+
 // const PRODUCTOS_JSON = 'productos.json';
 
 class Producto
@@ -17,31 +18,21 @@ class Producto
     private string $categorias = "";
     private string $caracteristicas = "";
 
-    /**
-     * Carga los datos de un producto desde un array asociativo.
-     *
-     * @param array $data Array asociativo con los datos del producto.
-     *
-     * @return void no devuelve nada
-     */
-    public function cargarDatosArray(array $data): void
-    {
-        $this->producto_id              = $data['producto_id'];
-        $this->franquicia_fk            = $data['franquicia_fk'];
-        $this->titulo                   = $data['titulo'];
-        $this->descripcion              = $data['descripcion'];
-        $this->precio                   = $data['precio'];
-        $this->imagen                   = $data['imagen'];
-        $this->imagen_descripcion       = $data['imagen_descripcion'];
-        $this->nombre_franquicia        = $data['nombre_franquicia'];
-        $this->categorias               = $data['categorias'];
-        $this->caracteristicas          = $data['caracteristicas'];
-    }
 
-    /**
-     * Recupera y devuelve todos los productos desde un archivo JSON.
-     * @return self[] Lista de objetos Producto que representan todos los productos disponibles.
-     */
+    /* public function cargarDatosArray(array $data): void
+     {
+         $this->producto_id = $data['producto_id'];
+         $this->franquicia_fk = $data['franquicia_fk'];
+         $this->titulo = $data['titulo'];
+         $this->descripcion = $data['descripcion'];
+         $this->precio = $data['precio'];
+         $this->imagen = $data['imagen'];
+         $this->imagen_descripcion = $data['imagen_descripcion'];
+         $this->nombre_franquicia = $data['nombre_franquicia'];
+         $this->categorias = $data['categorias'];
+         $this->caracteristicas = $data['caracteristicas'];
+     }*/
+
     public function todosProductos(): array
     {
         // Vamos a traer los productos de la base de datos.
@@ -90,21 +81,14 @@ class Producto
                         GROUP BY p.producto_id;
                         ";
 
-    /*    $consulta = "SELECT productos.*, franquicias.nombre_franquicia FROM productos
-                        INNER JOIN franquicias ON productos.franquicia_fk = franquicias.franquicia_id
-                        WHERE productos.producto_id = ?";*/
-
         $stmt = $db->prepare($consulta);
         $stmt->execute([$id]);
-
         $stmt->setFetchMode(PDO::FETCH_CLASS, self::class);
-
         $producto = $stmt->fetch();
-
         if (!$producto) return null;
-
         return $producto;
     }
+
     public static function obtenerPorCategoria(string|array $categorias): array
     {
         if (is_string($categorias)) {
@@ -133,6 +117,7 @@ class Producto
         $stmt->setFetchMode(PDO::FETCH_CLASS, self::class);
         return $stmt->fetchAll();
     }
+
     public static function obtenerUltimosDelMes(): array
     {
         $db = (new DBConexion)->getConexion();
@@ -155,6 +140,43 @@ class Producto
         return $stmt->fetchAll();
     }
 
+    public function crear(array $data): void
+    {
+        $db = (new DBConexion)->getConexion();
+
+        // 1. Insertar producto
+        $consulta = "INSERT INTO productos 
+        (usuario_fk, fecha_ingreso, titulo, franquicia_fk, descripcion, precio, imagen, imagen_descripcion, caracteristicas)
+        VALUES (:usuario_fk, NOW(), :titulo, :franquicia_fk, :descripcion, :precio, :imagen, :imagen_descripcion, :caracteristicas)";
+
+        $stmt = $db->prepare($consulta);
+        $stmt->execute([
+            'usuario_fk'           => $data['usuario_fk'],
+            'titulo'               => $data['titulo'],
+            'franquicia_fk'        => $data['franquicia_fk'],
+            'descripcion'          => $data['descripcion'],
+            'precio'               => $data['precio'],
+            'imagen'               => $data['imagen'],
+            'imagen_descripcion'   => $data['imagen_descripcion'],
+            'caracteristicas'      => $data['caracteristicas'],
+        ]);
+
+        // 2. Obtener ID del producto recién insertado
+        $producto_id = $db->lastInsertId();
+
+        // 3. Insertar categorías relacionadas
+        if (!empty($data['categorias']) && is_array($data['categorias'])) {
+            $consultaCategorias = "INSERT INTO productos_tienen_categorias (producto_fk, categoria_fk) VALUES (:producto, :categoria)";
+            $stmtCategoria = $db->prepare($consultaCategorias);
+
+            foreach ($data['categorias'] as $categoria_id) {
+                $stmtCategoria->execute([
+                    'producto'  => $producto_id,
+                    'categoria' => $categoria_id
+                ]);
+            }
+        }
+    }
 
 
 
