@@ -72,13 +72,14 @@ if (isset($_SESSION['data_vieja'])) {
                     <div class="col-md-12">
                         <label for="descripcion" class="form-label text-violeta mt-4 ">Descripción</label>
                         <textarea name="descripcion" id="descripcion" class="form-control" rows="2"
-                                  placeholder="Escriba una descripción breve"></textarea>
+                                  placeholder="Escriba una descripción breve"><?= $dataVieja['descripcion'] ?? null; ?></textarea>
+
                     </div>
                     <div class="col-md-12">
                         <label for="caracteristicas"
                                class="form-label text-violeta mt-4 ">Características</label>
                         <textarea name="caracteristicas" id="caracteristicas" class="form-control" rows="2"
-                                  placeholder="Escribe todas las caracteristicas del producto"></textarea>
+                                  placeholder="Escribe todas las caracteristicas del producto"><?= $dataVieja['caracteristicas'] ?? null; ?></textarea>
                     </div>
 
                 </div>
@@ -112,7 +113,8 @@ if (isset($_SESSION['data_vieja'])) {
                             Nueva categoría
                         </label>
                         <input id="nueva_categoria" type="text" name="nueva_categoria" class="form-control"
-                               placeholder="Ingresá una nueva categoría si no figura en la lista">
+                               placeholder="Ingresá una nueva categoría si no figura en la lista"
+                               value="<?= $dataVieja['precio'] ?? null; ?>">
                         <?php if (isset($errores['categorias'])): ?>
                             <div class="msg-error" id="error-categorias"><i
                                         class="bi bi-exclamation-circle-fill text-danger me-3"></i><?= $errores['categorias']; ?>
@@ -149,7 +151,8 @@ if (isset($_SESSION['data_vieja'])) {
                         <label for="nueva_franquicia" class="form-label text-violeta  ">Nueva
                             franquicia</label>
                         <input id="nueva_franquicia" type="text" name="nueva_franquicia" class="form-control"
-                               placeholder="Ingresá una nueva franquicia si no figura en la lista">
+                               placeholder="Ingresá una nueva franquicia si no figura en la lista"
+                               value="<?= $dataVieja['franquicia'] ?? null; ?>">
                         <?php if (isset($errores['franquicia'])): ?>
                             <div class="msg-error mt-1" id="error-franquicia">
                                 <i class="bi bi-exclamation-circle-fill text-danger me-3"></i>
@@ -169,10 +172,11 @@ if (isset($_SESSION['data_vieja'])) {
                                accept="image/*" <?php if (isset($errores['imagen'])): ?>
                             aria-invalid="true"
                             aria-errormessage="error-imagen"
+                            value="<?= $dataVieja['imagen'] ?? null; ?>"
                         <?php
                         endif;
                         ?>
-                               <?= $dataVieja['imagen'] ?? null; ?>>
+                            <?= $dataVieja['imagen'] ?? null; ?>>
                         <?php if (isset($errores['imagen'])): ?>
                             <div class="msg-error" id="error-imagen"><i
                                         class="bi bi-exclamation-circle-fill text-danger me-3"></i><?= $errores['imagen']; ?>
@@ -184,7 +188,7 @@ if (isset($_SESSION['data_vieja'])) {
                         <label for="imagen_descripcion" class="form-label text-violeta  ">Descripción de la
                             imagen</label>
                         <input type="text" name="imagen_descripcion" id="imagen_descripcion" class="form-control"
-                               placeholder="Escribe una breve descripción">
+                               placeholder="Escribe una breve descripción" value="<?= $dataVieja['imagen_descripcion'] ?? null; ?>">>
                     </div>
                 </div>
             </div>
