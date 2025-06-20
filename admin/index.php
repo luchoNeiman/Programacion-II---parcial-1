@@ -132,11 +132,19 @@ if (isset($_SESSION['feedback_error'])) {
 </header>
 <main class="pt-5 bg-degrade">
     <?php if (isset($feedbackExito)): ?>
-        <div class="msg-success mt-5"><?= $feedbackExito; ?></div>
+        <div class="msg-success mt-5"  id="msg-success">
+            <span><?= $feedbackExito; ?></span>
+            <button class="close-btn" onclick="this.parentElement.style.display='none';">✖</button>
+        </div>
     <?php endif; ?>
+
     <?php if (isset($feedbackError)): ?>
-        <div class="msg-error mt-5"><?= $feedbackError; ?></div>
+        <div class="msg-error mt-5" id="msg-error">
+            <span><?= $feedbackError; ?></span>
+            <button class="close-btn" onclick="this.parentElement.style.display='none';">✖</button>
+        </div>
     <?php endif; ?>
+
     <?php
     require_once __DIR__ . '/views/' . $seccion . '.php';
     ?>
@@ -153,3 +161,21 @@ if (isset($_SESSION['feedback_error'])) {
 </body>
 
 </html>
+
+<script>
+    // Espera 5 segundos y oculta mensajes si existen
+    setTimeout(() => {
+        const successMsg = document.getElementById('msg-success');
+        const errorMsg = document.getElementById('msg-error');
+
+        if (successMsg) {
+            successMsg.style.opacity = 0;
+            setTimeout(() => successMsg.remove(), 500);
+        }
+
+        if (errorMsg) {
+            errorMsg.style.opacity = 0;
+            setTimeout(() => errorMsg.remove(), 500);
+        }
+    }, 5000);
+</script>

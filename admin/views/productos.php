@@ -11,7 +11,6 @@ $productos = (new Producto)->todosProductos();
         </a>
     </h1>
 
-
     <!-- Tabla para escritorio -->
     <div class="mx-5 mb-5 card border-5 shadow-sm d-none d-md-block">
         <div class="table-responsive">
