@@ -177,6 +177,42 @@ class Producto
             }
         }
     }
+    public function editar(int $id, array $data): void
+    {
+        $db = (new DBConexion)->getConexion();
+        $consulta = "UPDATE productos
+                    SET usuario_fk          = :usuario_fk,
+                        titulo              = :titulo,
+                        franquicia_fk       = :franquicia_fk,
+                        descripcion         = :descripcion,
+                        precio              = :precio,
+                        imagen              = :imagen
+                        imagen_descripcion  = :imagen_descripcion,
+                        caracteristicas     = :caracteristicas
+                    WHERE producto_id = :producto_id";
+        $stmt = $db->prepare($consulta);
+        $stmt->execute([
+            'usuario_fk'            => $data['usuario_fk'],
+            'titulo'                => $data['titulo'],
+            'franquicia_fk'         => $data['franquicia_fk'],
+            'descripcion'           => $data['descripcion'],
+            'precio'                => $data['precio'],
+            'imagen'                => $data['imagen'],
+            'imagen_descripcion'    => $data['imagen_descripcion'],
+            'caracteristicas'       => $data['caracteristicas'],
+            'producto_id'           => $id,
+        ]);
+    }
+
+    public function eliminar(int $id): void
+    {
+        $db = (new DBConexion)->getConexion();
+        $consulta = "DELETE FROM productos
+                    WHERE producto_id = ?";
+        $stmt = $db->prepare($consulta);
+        $stmt->execute([$id]);
+    }
+
     public function getCategoriasIds(): array
     {
         $db = (new DBConexion)->getConexion();

@@ -3,6 +3,13 @@ require __DIR__ . '/../../bootstrap/autoload.php';
 
 session_start();
 
+$autenticacion = new Autenticacion;
+if (!$autenticacion->estaAutenticado()) {
+    $_SESSION['feedback_error'] = "Para realizar esta acción es necesario primero iniciar sesión.";
+    header("Location: ../index.php");
+    exit;
+}
+
 $usuario_id = $_SESSION['usuario_id'];
 $producto_id = $_POST['productos_id'];
 $titulo = $_POST['titulo'];
@@ -79,7 +86,7 @@ if (!empty($nueva_franquicia)) {
 }
 
 try {
-    (new Producto())->editar([
+    (new Producto())->editar($producto_id, [
         'usuario_fk' => $usuario_id,
         'franquicia_fk' => $franquicia_fk,
         'titulo' => $titulo,
@@ -94,8 +101,7 @@ try {
     $_SESSION['feedback_exito'] = "Producto creado correctamente.";
     header('Location: ../index.php?seccion=productos');
     exit;
-
 } catch (Throwable $th) {
-    header('Location: ../index.php?seccion=editarProducto' . $producto_id);
+    header('Location: ../index.php?seccion=editarProducto&id=' . $producto_id);
     exit;
 }
