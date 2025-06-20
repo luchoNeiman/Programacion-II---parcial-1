@@ -73,7 +73,7 @@ $producto = (new Producto)->porId($id);
 
                     foreach ($productosSimilares as $productoCategoria): ?>
                         <div class="col-12 col-sm-6 col-md-6 col-lg-3">
-                            <article class="card h-100 shadow-sm">
+                            <article class="card shadow-sm h-100">
                                 <img src="assets/imgs/productos/<?= $productoCategoria->getImagen(); ?>"
                                     class="card-img-top img-fluid"
                                     alt="<?= $productoCategoria->getImagenDescripcion(); ?>">

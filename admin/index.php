@@ -81,7 +81,7 @@ if (isset($_SESSION['feedback_error'])) {
     <nav class="navbar navbar-expand-lg bg-azul fixed-top border-bottom border-light" data-bs-theme="dark">
         <div class="container-fluid ">
             <a class="navbar-brand text-white" href="../index.php?seccion=home">
-                <img src="../assets/imgs/logo.webp" alt="Otaku Mania Logo" height="30" class="me-2">
+                <img src="../assets/imgs/logo.webp" alt="Otaku Mania Logo"  class="me-2">
             </a>
             <button class="navbar-toggler white" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarNavAltMarkup"
@@ -108,7 +108,7 @@ if (isset($_SESSION['feedback_error'])) {
                                data-bs-toggle="dropdown" aria-expanded="false">
                                 <img src="../assets/imgs/avatars/<?= $usuario['avatar'] ?? 'avatar.webp'; ?>"
                                      alt="Avatar"
-                                     width="32" height="32" class="rounded-circle me-2" style="object-fit: cover;">
+                                     width="32" height="32" class="rounded-circle me-2">
                                 <?= htmlspecialchars($usuario['nombre']) ?>
 
                             </a>
@@ -132,14 +132,14 @@ if (isset($_SESSION['feedback_error'])) {
 </header>
 <main class="pt-5 bg-degrade">
     <?php if (isset($feedbackExito)): ?>
-        <div class="msg-success mt-5"  id="msg-success">
+        <div class="msg-success  mt-5 mx-5"  id="msg-success">
             <span><?= $feedbackExito; ?></span>
             <button class="close-btn" onclick="this.parentElement.style.display='none';">✖</button>
         </div>
     <?php endif; ?>
 
     <?php if (isset($feedbackError)): ?>
-        <div class="msg-error mt-5" id="msg-error">
+        <div class="msg-error mt-5 container-fluid  mx-5" id="msg-error">
             <span><?= $feedbackError; ?></span>
             <button class="close-btn" onclick="this.parentElement.style.display='none';">✖</button>
         </div>
@@ -158,10 +158,6 @@ if (isset($_SESSION['feedback_error'])) {
 </footer>
 
 
-</body>
-
-</html>
-
 <script>
     // Espera 5 segundos y oculta mensajes si existen
     setTimeout(() => {
@@ -179,3 +175,7 @@ if (isset($_SESSION['feedback_error'])) {
         }
     }, 5000);
 </script>
+</body>
+
+</html>
+

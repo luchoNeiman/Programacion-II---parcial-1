@@ -172,7 +172,7 @@ if (isset($_SESSION['data_vieja'])) {
                         <?php
                         endif;
                         ?>
-                               value="<?= $dataVieja['imagen'] ?? null; ?>">
+                               <?= $dataVieja['imagen'] ?? null; ?>>
                         <?php if (isset($errores['imagen'])): ?>
                             <div class="msg-error" id="error-imagen"><i
                                         class="bi bi-exclamation-circle-fill text-danger me-3"></i><?= $errores['imagen']; ?>

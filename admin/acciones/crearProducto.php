@@ -3,7 +3,7 @@ require __DIR__ . '/../../bootstrap/autoload.php';
 
 session_start();
 
-$usuarios_fk = $_POST['usuarios_fk'];
+$usuario_id = $_SESSION['usuario_id'];
 $titulo = $_POST['titulo'];
 $descripcion = $_POST['descripcion'];
 $precio = $_POST['precio'];
@@ -79,7 +79,7 @@ if (!empty($nueva_franquicia)) {
 
 try {
     (new Producto())->crear([
-        'usuario_fk' => 1,
+        'usuario_fk' => $usuario_id,
         'franquicia_fk' => $franquicia_fk,
         'titulo' => $titulo,
         'descripcion' => $descripcion,
@@ -90,7 +90,7 @@ try {
         'categorias' => $categorias,
     ]);
 
-    $_SESSION['feedback_exito'] = "✅ Producto creado correctamente.";
+    $_SESSION['feedback_exito'] = "Producto creado correctamente.";
     header('Location: ../index.php?seccion=productos');
     exit;
 
