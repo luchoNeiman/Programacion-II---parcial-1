@@ -20,10 +20,11 @@ class Categoria
     }
 
     // Agregar nueva categoría
-    public function agregar(string $nombre): void
+    public function agregar(string $nombre): int
     {
         $stmt = $this->db->prepare("INSERT INTO categorias (nombre_categoria) VALUES (:nombre)");
         $stmt->execute(['nombre' => $nombre]);
+        return $this->db->lastInsertId();
     }
     public function getCategoriasIds(): array
     {

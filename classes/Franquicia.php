@@ -21,9 +21,10 @@ class Franquicia
     }
 
     // Agregar nueva franquicia
-    public function agregar(string $nombre): void
+    public function agregar(string $nombre): int
     {
         $stmt = $this->db->prepare("INSERT INTO franquicias (nombre_franquicia) VALUES (:nombre)");
         $stmt->execute(['nombre' => $nombre]);
+        return $this->db->lastInsertId();
     }
 }

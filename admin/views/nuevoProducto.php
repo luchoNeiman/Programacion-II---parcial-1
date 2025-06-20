@@ -19,12 +19,13 @@ if (isset($_SESSION['data_vieja'])) {
 <section class="container mt-5 mb-5">
     <h1 class="mb-4 text-white"><i class="bi bi-plus-lg me-2 text-white"></i> Nuevo producto</h1>
 
-    <form action="../admin/acciones/crearProducto.php" method="post">
+    <form action="../admin/acciones/crearProducto.php" method="post" enctype="multipart/form-data">
         <div class="card shadow  border-0">
             <div class="card-body py-4">
                 <div class="row">
                     <div class="col-md-6">
-                        <label for="titulo" class="form-label text-violeta  ">Título <span class="colorRequiaried">*</span></label>
+                        <label for="titulo" class="form-label text-violeta  ">Título <span
+                                    class="colorRequiaried">*</span></label>
                         <input type="text" name="titulo" id="titulo" class="form-control"
                                placeholder="Nombre del producto"
                             <?php if (isset($errores['titulo'])): ?>
@@ -104,15 +105,13 @@ if (isset($_SESSION['data_vieja'])) {
                                 </option>
                             <?php endforeach; ?>
                         </select>
-
-
                         <small class="text-muted">Podés seleccionar más de una opción(ctrl + click)</small>
                     </div>
                     <div class="col-md-6">
                         <label for="nueva_categoria" class="form-label text-violeta  ">
                             Nueva categoría
                         </label>
-                        <input id="nueva_categoria" type="text" name="nueva_categoria"  class="form-control"
+                        <input id="nueva_categoria" type="text" name="nueva_categoria" class="form-control"
                                placeholder="Ingresá una nueva categoría si no figura en la lista">
                         <?php if (isset($errores['categorias'])): ?>
                             <div class="msg-error" id="error-categorias"><i
@@ -126,7 +125,7 @@ if (isset($_SESSION['data_vieja'])) {
         <div class="card shadow mt-5 border-0">
             <div class="card-body py-4">
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-6 ">
                         <label for="franquicia_fk" class="form-label text-violeta"> Franquicias<span
                                     class="colorRequiaried">*</span></label>
                         <div class="position-relative">
@@ -143,23 +142,20 @@ if (isset($_SESSION['data_vieja'])) {
                                     </option>
                                 <?php endforeach; ?>
                             </select>
-
-                            <?php if (isset($errores['franquicia'])): ?>
-                                <i class="bi bi-exclamation-circle-fill text-danger position-absolute top-50 end-0 translate-middle-y me-3"></i>
-                            <?php endif; ?>
                         </div>
 
-                        <?php if (isset($errores['franquicia'])): ?>
-                            <div class="msg-error mt-1" id="error-franquicia">
-                                <?= $errores['franquicia']; ?>
-                            </div>
-                        <?php endif; ?>
                     </div>
                     <div class="col-md-6">
                         <label for="nueva_franquicia" class="form-label text-violeta  ">Nueva
                             franquicia</label>
                         <input id="nueva_franquicia" type="text" name="nueva_franquicia" class="form-control"
                                placeholder="Ingresá una nueva franquicia si no figura en la lista">
+                        <?php if (isset($errores['franquicia'])): ?>
+                            <div class="msg-error mt-1" id="error-franquicia">
+                                <i class="bi bi-exclamation-circle-fill text-danger me-3"></i>
+                                <?= $errores['franquicia']; ?>
+                            </div>
+                        <?php endif; ?>
                     </div>
                 </div>
             </div>
@@ -169,7 +165,19 @@ if (isset($_SESSION['data_vieja'])) {
                 <div class="row">
                     <div class="col-md-6">
                         <label for="imagen" class="form-label text-violeta  ">Imagen</label>
-                        <input type="file" name="imagen" id="imagen" class="form-control" accept="image/*">
+                        <input type="file" name="imagen" id="imagen" class="form-control"
+                               accept="image/*" <?php if (isset($errores['imagen'])): ?>
+                            aria-invalid="true"
+                            aria-errormessage="error-imagen"
+                        <?php
+                        endif;
+                        ?>
+                               value="<?= $dataVieja['imagen'] ?? null; ?>">
+                        <?php if (isset($errores['imagen'])): ?>
+                            <div class="msg-error" id="error-imagen"><i
+                                        class="bi bi-exclamation-circle-fill text-danger me-3"></i><?= $errores['imagen']; ?>
+                            </div>
+                        <?php endif; ?>
                     </div>
 
                     <div class="col-md-6">
@@ -208,9 +216,9 @@ if (isset($_SESSION['data_vieja'])) {
         document.querySelectorAll('.bi-exclamation-circle-fill').forEach(icon => {
             icon.style.transition = 'opacity 0.5s ease';
             icon.style.opacity = 0;
-            setTimeout(() => icon.remove(), 500);
+            setTimeout(() => icon.remove(), 250);
         });
-    }, 5000); // 10 segundos
+    }, 10000); // 10 segundos
 </script>
 
 
