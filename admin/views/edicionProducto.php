@@ -138,6 +138,4 @@ if (isset($_SESSION['data_vieja'])) {
         </div>
 
     </form>
-    </div>
-    </div>
 </section>
