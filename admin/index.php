@@ -81,18 +81,18 @@ if (isset($_SESSION['feedback_error'])) {
     <nav class="navbar navbar-expand-lg bg-azul fixed-top border-bottom border-light" data-bs-theme="dark">
         <div class="container-fluid ">
             <a class="navbar-brand text-white" href="../index.php?seccion=home">
-                <img src="../assets/imgs/logo.webp" alt="Otaku Mania Logo"  class="me-2">
+                <img src="../assets/imgs/logo.webp" alt="Otaku Mania Logo" class="me-2">
             </a>
             <button class="navbar-toggler white" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarNavAltMarkup"
                     aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <i class="bi bi-xl bi-list text-white"></i>
             </button>
-            <?php
-            if ($autenticacion->estaAutenticado()):
-                ?>
-                <?php $usuario = $autenticacion->getUsuario(); ?>
-                <div class="collapse navbar-collapse text-white" id="navbarNavAltMarkup">
+            <div class="collapse navbar-collapse text-white" id="navbarNavAltMarkup">
+                <?php
+                if ($autenticacion->estaAutenticado()):
+                    ?>
+                    <?php $usuario = $autenticacion->getUsuario(); ?>
 
                     <div class="navbar-nav ms-auto">
                         <a class="nav-link active text-white fs-5" href="index.php?seccion=dashboard">
@@ -123,16 +123,16 @@ if (isset($_SESSION['feedback_error'])) {
                             </ul>
                         </div>
                     </div>
-                </div>
-            <?php
-            endif;
-            ?>
+                <?php
+                endif;
+                ?>
+            </div>
         </div>
     </nav>
 </header>
 <main class="pt-5 bg-degrade">
     <?php if (isset($feedbackExito)): ?>
-        <div class="msg-success  mt-5 mx-5"  id="msg-success">
+        <div class="msg-success  mt-5 mx-5" id="msg-success">
             <span><?= $feedbackExito; ?></span>
             <button class="close-btn" onclick="this.parentElement.style.display='none';">✖</button>
         </div>

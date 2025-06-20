@@ -16,7 +16,7 @@
         </div>
 
         <div class="d-grid">
-            <button type="submit href="index.php?seccion=dashboard" class="btn btn-dark">
+            <button type="submit" class="btn btn-dark">
                 <i class="bi bi-box-arrow-in-right me-1"></i> Ingresar
             </button>
         </div>
