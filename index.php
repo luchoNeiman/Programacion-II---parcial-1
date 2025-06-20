@@ -37,8 +37,8 @@ $rutaConfig = $rutas[$seccion];
     <title><?= $rutaConfig['titulo']; ?> - Otaku Mania</title>
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <link rel="stylesheet" href="assets/css/estilos.css">
     <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/estilos.css">
     <script defer src="assets/js/bootstrap.bundle.min.js"></script>
 
 </head>

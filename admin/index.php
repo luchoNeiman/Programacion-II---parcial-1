@@ -71,8 +71,8 @@ if (isset($_SESSION['feedback_error'])) {
     <title><?= $rutaConfig['titulo']; ?> - Otaku Mania</title>
     <link rel="icon" href="../favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <link rel="stylesheet" href="../assets/css/estilos.css">
     <link href="../assets/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/estilos.css">
     <script defer src="../assets/js/bootstrap.bundle.min.js"></script>
 </head>
 
@@ -103,7 +103,7 @@ if (isset($_SESSION['feedback_error'])) {
                             <i class="bi bi-box-seam "></i> Productos
                         </a>
                         <div class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle d-flex align-items-center text-white" href="#"
+                            <a class="nav-link dropdown-toggle d-flex align-items-center text-white fs-5" href="#"
                                role="button"
                                data-bs-toggle="dropdown" aria-expanded="false">
                                 <img src="../assets/imgs/avatars/<?= $usuario['avatar'] ?? 'avatar.webp'; ?>"
@@ -115,7 +115,7 @@ if (isset($_SESSION['feedback_error'])) {
                             <ul class="dropdown-menu dropdown-menu-end">
                                 <li>
                                     <form action="acciones/cerrarSesion.php" method="post" class="d-inline">
-                                        <button type="submit" class="dropdown-item">
+                                        <button type="submit" class="dropdown-item fs-5">
                                             <i class="bi bi-box-arrow-right me-1"></i> Cerrar sesión
                                         </button>
                                     </form>

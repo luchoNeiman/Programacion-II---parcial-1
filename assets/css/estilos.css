@@ -119,13 +119,15 @@ body {
 .min-th {
     min-width: 150px;
 }
-
+input, select, textarea {
+    border: 1px solid rgb(61, 61, 61) !important;
+}
 select option {
     padding: 5px;
 }
 
 select option:checked {
-    background-color: rgba(70, 4, 98, 0.75) !important; /* azul seleccionado */
+    background-color: rgba(70, 4, 98, 0.75) !important;
     color: white !important;
     padding: 8px;
 }
@@ -136,7 +138,41 @@ select option:hover {
     color: #f8f9fa;
 }
 
-select[multiple] {
-    border: 1px solid #000000; /* borde azul */
+select {
+    border: 1px solid #3d3d3d;
     padding: 8px;
+}
+
+.colorRequiaried {
+    color: #d23939;
+}
+
+.msg-error {
+    color: #c25c5a;
+    background-color: #f2dede;
+    border: 1px solid #ebccd1;
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 10px;
+    transition: opacity 0.5s ease;
+}
+.text-violeta {
+    color: #6f42c1;
+    font-weight: 600;
+}
+
+.navbar-nav .nav-link:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+    border-radius: 5px;
+}
+.navbar-brand:hover {
+    transform: scale(1.1);
+    transition: all 0.3s ease;
+}
+
+input[type="file"]::file-selector-button {
+    background-color: #ad87ff;
+    color: #292929;
+    transition: background-color 0.3s ease;
 }

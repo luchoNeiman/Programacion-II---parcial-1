@@ -59,26 +59,25 @@ $nueva_franquicia = $_POST['nueva_franquicia'];
 
 if(empty($titulo)) {
     $errores['titulo'] = 'El título debe tener un valor.';
-} else if(strlen($titulo) < 2) {
-    $errores['titulo'] = 'El título debe tener al menos 2 caracteres.';
+
+} elseif
+(!filter_var($precio, FILTER_VALIDATE_INT) || $precio <= 0){
+$errores['precio'] = 'El precio debe ser un número entero mayor a cero.';
 }
 
-if(empty($sinopsis)) {
-    $errores['sinopsis'] = 'La sinopsis debe tener un valor.';
+if ((empty($categorias) || !is_array($categorias)) && empty($nueva_categoria)) {
+    $errores['categorias'] = 'Debe seleccionar al menos una categoría o crear una nueva.';
 }
 
-if(empty($cuerpo)) {
-    $errores['cuerpo'] = 'El cuerpo debe tener un valor.';
+if (empty($franquicia_fk) && empty($nueva_franquicia)) {
+    $errores['franquicias'] = 'Debe seleccionar al menos una franquicia o crear una nueva.';
 }
 
-// Preguntamos si hubo errores.
 if(count($errores) > 0) {
-    // ¿Cómo pasamos los errores, o cualquier otro valor, de una ejecución de php a otra?
-    // La forma más común de resolver este problema es usando "sesiones" (ver arriba).
+
     $_SESSION['errores'] = $errores;
-    // Además, también sumamos otra variable de sesión que contenga los datos recibidos del formulario.
     $_SESSION['data_vieja'] = $_POST;
-    header("Location: ../index.php?seccion=noticias-publicar");
+    header("Location: ../index.php?seccion=nuevoProducto");
     exit;
 }
 
