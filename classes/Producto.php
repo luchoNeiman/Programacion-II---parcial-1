@@ -186,7 +186,7 @@ class Producto
                         franquicia_fk       = :franquicia_fk,
                         descripcion         = :descripcion,
                         precio              = :precio,
-                        imagen              = :imagen
+                        imagen              = :imagen,
                         imagen_descripcion  = :imagen_descripcion,
                         caracteristicas     = :caracteristicas
                     WHERE producto_id = :producto_id";

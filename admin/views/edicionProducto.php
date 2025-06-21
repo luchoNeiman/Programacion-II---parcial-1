@@ -20,7 +20,8 @@ if (isset($_SESSION['data_vieja'])) {
 }
 ?>
 <section class="container mt-5 mb-5">
-    <h1 class="mb-4 text-white"><i class="bi bi-plus-lg me-2 text-white"></i> Nuevo producto</h1>
+    <h1 class="mb-4 text-white"><i class="bi bi-pencil-square me-2 text-white"></i> Editar producto</h1>
+    <?=    print_r($producto->getProductoId());?>
 
     <form action="../admin/acciones/editarProducto.php?id=<?= $producto->getProductoId(); ?>" method="post"
           enctype="multipart/form-data">
@@ -192,7 +193,7 @@ if (isset($_SESSION['data_vieja'])) {
                             imagen</label>
                         <input type="text" name="imagen_descripcion" id="imagen_descripcion" class="form-control"
                                placeholder="Escribe una breve descripción"
-                               value="<?= $dataVieja['imagen_descripcion'] ?? null ?? $producto->getImagenDescripcion(); ?>">>
+                               value="<?= $dataVieja['imagen_descripcion'] ?? null ?? $producto->getImagenDescripcion(); ?>">
                     </div>
                 </div>
             </div>

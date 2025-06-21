@@ -11,7 +11,7 @@ if (!$autenticacion->estaAutenticado()) {
 }
 
 $usuario_id = $_SESSION['usuario_id'];
-$producto_id = $_POST['productos_id'];
+$producto_id = $_GET['id'];
 $titulo = $_POST['titulo'];
 $descripcion = $_POST['descripcion'];
 $precio = $_POST['precio'];
@@ -67,7 +67,7 @@ if (count($errores) > 0) {
 
     $_SESSION['errores'] = $errores;
     $_SESSION['data_vieja'] = $_POST;
-    header("Location: ../index.php?seccion=nuevoProducto");
+    header("Location: ../index.php?seccion=edicionProducto");
     exit;
 }
 
@@ -102,6 +102,7 @@ try {
     header('Location: ../index.php?seccion=productos');
     exit;
 } catch (Throwable $th) {
+    $_SESSION['feedback_error'] = "Ocurrió un error: " . $th->getMessage();
     header('Location: ../index.php?seccion=editarProducto&id=' . $producto_id);
     exit;
 }
