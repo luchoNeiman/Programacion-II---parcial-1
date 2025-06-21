@@ -24,26 +24,22 @@ $nueva_franquicia = $_POST['nueva_franquicia'];
 /** validaciones */
 $errores = [];
 
-// Manejo de archivo imagen
-$nombreImagen = null;
+$nombreImagen = 'default.png'; // Imagen por defecto
 
 if (isset($_FILES['imagen']) && $_FILES['imagen']['error'] === UPLOAD_ERR_OK) {
+    // Tomamos el nombre original del archivo
     $nombreImagen = basename($_FILES['imagen']['name']);
-    $extension = strtolower(pathinfo($nombreImagen, PATHINFO_EXTENSION));
-    $permitidas = ['jpg', 'jpeg', 'png', 'webp'];
 
-    if (in_array($extension, $permitidas)) {
-        $rutaTemporal = $_FILES['imagen']['tmp_name'];
-        $rutaDestino = __DIR__ . '/../../assets/imgs/productos/' . $nombreImagen;
+    // Ruta temporal y final
+    $rutaTemporal = $_FILES['imagen']['tmp_name'];
+    $rutaDestino = __DIR__ . '/../../assets/imgs/productos/' . $nombreImagen;
 
-        if (!is_dir(dirname($rutaDestino))) {
-            mkdir(dirname($rutaDestino), 0775, true);
-        }
-
-        move_uploaded_file($rutaTemporal, $rutaDestino);
-    } else {
-        $errores['imagen'] = 'Formato de imagen no válido.';
+    // Verificamos que exista la carpeta destino, si no la creamos
+    if (!is_dir(dirname($rutaDestino))) {
+        mkdir(dirname($rutaDestino), 0775, true);
     }
+    // Movemos el archivo
+    move_uploaded_file($rutaTemporal, $rutaDestino);
 }
 
 if (empty($titulo)) {

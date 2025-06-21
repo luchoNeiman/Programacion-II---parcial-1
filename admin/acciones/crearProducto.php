@@ -17,14 +17,15 @@ $nueva_franquicia = $_POST['nueva_franquicia'];
 $errores = [];
 
 // Manejo de archivo imagen
-$nombreImagen = null;
+$nombreImagen = 'default.png'; // Valor por defecto, en caso de que no se suba ninguna imagen válida
 
 if (isset($_FILES['imagen']) && $_FILES['imagen']['error'] === UPLOAD_ERR_OK) {
-    $nombreImagen = basename($_FILES['imagen']['name']);
-    $extension = strtolower(pathinfo($nombreImagen, PATHINFO_EXTENSION));
+    $nombreOriginal = basename($_FILES['imagen']['name']);
+    $extension = strtolower(pathinfo($nombreOriginal, PATHINFO_EXTENSION));
     $permitidas = ['jpg', 'jpeg', 'png', 'webp'];
 
     if (in_array($extension, $permitidas)) {
+        $nombreImagen = uniqid('img_') . '.' . $extension;
         $rutaTemporal = $_FILES['imagen']['tmp_name'];
         $rutaDestino = __DIR__ . '/../../assets/imgs/productos/' . $nombreImagen;
 
@@ -34,9 +35,11 @@ if (isset($_FILES['imagen']) && $_FILES['imagen']['error'] === UPLOAD_ERR_OK) {
 
         move_uploaded_file($rutaTemporal, $rutaDestino);
     } else {
-        $errores['imagen'] = 'Formato de imagen no válido.';
+        // Si el formato no es válido, conservamos default.png pero además avisamos
+        $errores['imagen'] = 'Formato de imagen no válido. Solo se permiten: jpg, jpeg, png y webp.';
     }
 }
+
 
 if (empty($titulo)) {
     $errores['titulo'] = 'El título debe tener un valor.';

@@ -100,14 +100,14 @@ $productos = (new Producto)->todosProductos();
                             <a href="index.php?seccion=edicionProducto&id=<?= $producto->getProductoId(); ?>"
                                class="btn btn-dark w-100 d-flex justify-content-center align-items-center"
                                title="Editar">
-                                <i class="bi bi-pencil-fill me-1"></i> Editar
+                                <i class="bi bi-pencil-square me-1"></i> Editar
                             </a>
                         </div>
                         <div class="col-12 col-sm-6">
-                            <a href="index.php?seccion=eliminarProducto&id=<?= $producto->getProductoId(); ?>"
+                            <a href="index.php?seccion=confirmarBajaProducto&id=<?= $producto->getProductoId(); ?>"
                                class="btn btn-danger w-100 d-flex justify-content-center align-items-center"
                                onclick="return confirm('¿Eliminar este producto?')" title="Eliminar">
-                                <i class="bi bi-trash me-1"></i> Eliminar
+                                <i class="bi bi-trash3-fill me-1"></i> Eliminar
                             </a>
                         </div>
                     </div>

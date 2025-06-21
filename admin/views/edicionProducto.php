@@ -21,7 +21,6 @@ if (isset($_SESSION['data_vieja'])) {
 ?>
 <section class="container mt-5 mb-5">
     <h1 class="mb-4 text-white"><i class="bi bi-pencil-square me-2 text-white"></i> Editar producto</h1>
-    <?=    print_r($producto->getProductoId());?>
 
     <form action="../admin/acciones/editarProducto.php?id=<?= $producto->getProductoId(); ?>" method="post"
           enctype="multipart/form-data">
