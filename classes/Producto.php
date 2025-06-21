@@ -151,14 +151,14 @@ class Producto
 
         $stmt = $db->prepare($consulta);
         $stmt->execute([
-            'usuario_fk'           => $data['usuario_fk'],
-            'titulo'               => $data['titulo'],
-            'franquicia_fk'        => $data['franquicia_fk'],
-            'descripcion'          => $data['descripcion'],
-            'precio'               => $data['precio'],
-            'imagen'               => $data['imagen'],
-            'imagen_descripcion'   => $data['imagen_descripcion'],
-            'caracteristicas'      => $data['caracteristicas'],
+            'usuario_fk' => $data['usuario_fk'],
+            'titulo' => $data['titulo'],
+            'franquicia_fk' => $data['franquicia_fk'],
+            'descripcion' => $data['descripcion'],
+            'precio' => $data['precio'],
+            'imagen' => $data['imagen'],
+            'imagen_descripcion' => $data['imagen_descripcion'],
+            'caracteristicas' => $data['caracteristicas'],
         ]);
 
         // 2. Obtener ID del producto recién insertado
@@ -171,12 +171,13 @@ class Producto
 
             foreach ($data['categorias'] as $categoria_id) {
                 $stmtCategoria->execute([
-                    'producto'  => $producto_id,
+                    'producto' => $producto_id,
                     'categoria' => $categoria_id
                 ]);
             }
         }
     }
+
     public function editar(int $id, array $data): void
     {
         $db = (new DBConexion)->getConexion();
@@ -192,21 +193,26 @@ class Producto
                     WHERE producto_id = :producto_id";
         $stmt = $db->prepare($consulta);
         $stmt->execute([
-            'usuario_fk'            => $data['usuario_fk'],
-            'titulo'                => $data['titulo'],
-            'franquicia_fk'         => $data['franquicia_fk'],
-            'descripcion'           => $data['descripcion'],
-            'precio'                => $data['precio'],
-            'imagen'                => $data['imagen'],
-            'imagen_descripcion'    => $data['imagen_descripcion'],
-            'caracteristicas'       => $data['caracteristicas'],
-            'producto_id'           => $id,
+            'usuario_fk' => $data['usuario_fk'],
+            'titulo' => $data['titulo'],
+            'franquicia_fk' => $data['franquicia_fk'],
+            'descripcion' => $data['descripcion'],
+            'precio' => $data['precio'],
+            'imagen' => $data['imagen'],
+            'imagen_descripcion' => $data['imagen_descripcion'],
+            'caracteristicas' => $data['caracteristicas'],
+            'producto_id' => $id,
         ]);
     }
 
     public function eliminar(int $id): void
     {
         $db = (new DBConexion)->getConexion();
+        $consulta = "DELETE FROM productos_tienen_categorias 
+                     WHERE producto_fk = ?";
+        $stmt = $db->prepare($consulta);
+        $stmt->execute([$id]);
+
         $consulta = "DELETE FROM productos
                     WHERE producto_id = ?";
         $stmt = $db->prepare($consulta);
@@ -220,7 +226,6 @@ class Producto
         $stmt->execute([$this->producto_id]);
         return $stmt->fetchAll(PDO::FETCH_COLUMN);
     }
-
 
 
     public function getProductoId(): int

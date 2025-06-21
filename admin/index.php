@@ -81,7 +81,7 @@ if (isset($_SESSION['feedback_error'])) {
     <nav class="navbar navbar-expand-lg bg-azul fixed-top border-bottom border-light" data-bs-theme="dark">
         <div class="container-fluid ">
             <a class="navbar-brand text-white" href="../index.php?seccion=home">
-                <img src="../assets/imgs/logo.webp" alt="Otaku Mania Logo" class="me-2">
+                <img src="../assets/imgs/logo.webp" alt="Otaku Mania Logo" class="mx-5">
             </a>
             <button class="navbar-toggler white" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarNavAltMarkup"

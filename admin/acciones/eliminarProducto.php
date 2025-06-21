@@ -20,7 +20,6 @@ try {
 } catch (\Throwable $th) {
     // throw $th;
     $_SESSION['feedback_error'] = "Ocurrió un error: " . $th->getMessage();
-    $_SESSION['feedback_error'] = "Ocurrió un error inesperado al tratar de eliminar la producto. Por favor, probá de nuevo más tarde.";
 }
 
 header("Location: ../index.php?seccion=productos");
