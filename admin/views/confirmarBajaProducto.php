@@ -1,30 +1,28 @@
 <?php
 $producto = (new Producto)->porId($_GET['id']);
 ?>
-<section class="container text-white mt-5">
-    <h1>Confirmación necesaria para eliminar producto</h1>
-
-    <p>Estás por eliminar el producto <b><?= htmlspecialchars($producto->getTitulo());?></b> del sistema. A continuación se muestran los detalles del producto.</p>
-    <p>¿Estás seguro que querés continuar? Esta acción es <b>irreversible</b>.</p>
+<section class="baja-section container mt-5">
+    <h1 class="baja-header">¿Estás seguro que deseas eliminar este producto?</h1>
 
     <hr class="mb-1">
 
-    <article class="news-item">
-        <div class="news-item_content">
-            <h2><?= htmlspecialchars($producto->getTitulo());?></h2>
-            <p><?= htmlspecialchars($producto->getCaracteristicas());?></p>
-        </div>
-        <picture class="news-item_imagen">
-            <source srcset="imgs/big-<?= $producto->getImagen();?>" media="all and (min-width: 46.875em)">
-            <img src="imgs/<?= $producto->getImagen();?>" alt="<?= htmlspecialchars($producto->getImagenDescripcion());?>">
-        </picture>
+    <article class="baja-article">
+        <figure>
+            <img class="baja-img" src="../assets/imgs/productos/<?= $producto->getImagen(); ?>" alt="<?= htmlspecialchars($producto->getImagenDescripcion()); ?>">
+        </figure>
 
-        <div><?= htmlspecialchars($producto->getDescripcion());?></div>
+        <div class="baja-details">
+            <h2 class="baja-product-title"><?= htmlspecialchars($producto->getTitulo()) ?></h2>
+            <p class="baja-product-desc"><?= htmlspecialchars($producto->getDescripcion()) ?></p>
+            <span class="baja-product-price">$<?= number_format($producto->getPrecio(), 2) ?></span>
+        </div>
     </article>
 
     <hr class="mb-1">
 
-    <form action="../admin/acciones/eliminarProducto.php?id=<?= $producto->getProductoId();?>" method="post">
-        <button type="submit" class="button">Sí, confirmar la eliminación de `<?= htmlspecialchars($producto->getTitulo());?>`</button>
+    <form action="../admin/acciones/eliminarProducto.php?id=<?= $producto->getProductoId(); ?>" method="post" class="baja-form">
+        <input type="hidden" name="producto_id" value="<?= $producto->getProductoId() ?>">
+        <a href="productos.php" class="baja-btn-cancelar">Cancelar</a>
+        <button type="submit" name="confirmar" class="baja-btn-confirmar">Sí, eliminar</button>
     </form>
 </section>
