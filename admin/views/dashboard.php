@@ -20,7 +20,6 @@
                 </div>
             </div>
         </div>
-
         <div class="col-md-4">
             <div class="card h-100 shadow border-0">
                 <div class="card-body text-center">
@@ -33,7 +32,6 @@
                 </div>
             </div>
         </div>
-
         <div class="col-md-4">
             <div class="card h-100 shadow border-0">
                 <div class="card-body text-center">

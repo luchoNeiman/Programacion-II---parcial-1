@@ -16,10 +16,10 @@ $producto = (new Producto)->porId($id);
 
 try {
     (new Producto)->eliminar($id);
-    $_SESSION['feedback_exito'] = "El producto <b>" . $producto->getTitulo() . "</b> se eliminó con éxito.";
+    $_SESSION['feedback_exito'] = "✅ El producto <b>" . htmlspecialchars($producto->getTitulo()) . "</b> se eliminó con éxito.";
 } catch (\Throwable $th) {
     // throw $th;
-    $_SESSION['feedback_error'] = "Ocurrió un error: " . $th->getMessage();
+    $_SESSION['feedback_error'] = "❌ Error inesperado. Reintentá más tarde.";
 }
 
 header("Location: ../index.php?seccion=productos");

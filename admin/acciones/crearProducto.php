@@ -16,28 +16,25 @@ $nueva_franquicia = $_POST['nueva_franquicia'];
 /** validaciones */
 $errores = [];
 
-// Manejo de archivo imagen
-$nombreImagen = 'default.png'; // Valor por defecto, en caso de que no se suba ninguna imagen válida
+/** Manejo de archivo imagen */
+// Si se sube una imagen nueva, se guarda en la carpeta assets/imgs/productos/
+// Si no se sube ninguna imagen, se mantiene la imagen actual
+$nombreImagen = 'default.png'; // Imagen por defecto
 
 if (isset($_FILES['imagen']) && $_FILES['imagen']['error'] === UPLOAD_ERR_OK) {
-    $nombreOriginal = basename($_FILES['imagen']['name']);
-    $extension = strtolower(pathinfo($nombreOriginal, PATHINFO_EXTENSION));
-    $permitidas = ['jpg', 'jpeg', 'png', 'webp'];
+    // Tomamos el nombre original del archivo
+    $nombreImagen = basename($_FILES['imagen']['name']);
 
-    if (in_array($extension, $permitidas)) {
-        $nombreImagen = uniqid('img_') . '.' . $extension;
-        $rutaTemporal = $_FILES['imagen']['tmp_name'];
-        $rutaDestino = __DIR__ . '/../../assets/imgs/productos/' . $nombreImagen;
+    // Ruta temporal y final
+    $rutaTemporal = $_FILES['imagen']['tmp_name'];
+    $rutaDestino = __DIR__ . '/../../assets/imgs/productos/' . $nombreImagen;
 
-        if (!is_dir(dirname($rutaDestino))) {
-            mkdir(dirname($rutaDestino), 0775, true);
-        }
-
-        move_uploaded_file($rutaTemporal, $rutaDestino);
-    } else {
-        // Si el formato no es válido, conservamos default.png pero además avisamos
-        $errores['imagen'] = 'Formato de imagen no válido. Solo se permiten: jpg, jpeg, png y webp.';
+    // Verificamos que exista la carpeta destino, si no la creamos
+    if (!is_dir(dirname($rutaDestino))) {
+        mkdir(dirname($rutaDestino), 0775, true);
     }
+    // Movemos el archivo
+    move_uploaded_file($rutaTemporal, $rutaDestino);
 }
 
 
@@ -93,12 +90,12 @@ try {
         'categorias' => $categorias,
     ]);
 
-    $_SESSION['feedback_exito'] = "Producto creado correctamente.";
+    $_SESSION['feedback_exito'] = "✅ Producto creado correctamente.";
     header('Location: ../index.php?seccion=productos');
     exit;
 
 } catch (Throwable $th) {
-    $_SESSION['feedback_error'] = "Ocurrió un error: " . $th->getMessage();
+    $_SESSION['feedback_error'] = "❌❌ Ocurrió un error inesperado. Intentá de nuevo.";
     header('Location: ../index.php?seccion=nuevoProducto');
     exit;
 }

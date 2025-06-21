@@ -109,7 +109,7 @@ if (isset($_SESSION['data_vieja'])) {
                                 </option>
                             <?php endforeach; ?>
                         </select>
-                        <small class="text-muted">Podés seleccionar más de una opción(ctrl + click)</small>
+                        <small class="text-violeta">*Usá "Ctrl + clic" para seleccionar o deseleccionar."</small>
                     </div>
                     <div class="col-md-6">
                         <label for="nueva_categoria" class="form-label text-violeta  ">
@@ -117,7 +117,7 @@ if (isset($_SESSION['data_vieja'])) {
                         </label>
                         <input id="nueva_categoria" type="text" name="nueva_categoria" class="form-control"
                                placeholder="Ingresá una nueva categoría si no figura en la lista"
-                               value="<?= $dataVieja['precio'] ?? null; ?>">
+                               value="<?= $dataVieja['nueva_categoria'] ?? null; ?>">
                         <?php if (isset($errores['categorias'])): ?>
                             <div class="msg-error" id="error-categorias"><i
                                         class="bi bi-exclamation-circle-fill text-danger me-3"></i><?= $errores['categorias']; ?>
@@ -148,17 +148,16 @@ if (isset($_SESSION['data_vieja'])) {
                                 <?php endforeach; ?>
                             </select>
                         </div>
-
                     </div>
                     <div class="col-md-6">
                         <label for="nueva_franquicia" class="form-label text-violeta  ">Nueva
                             franquicia</label>
                         <input id="nueva_franquicia" type="text" name="nueva_franquicia" class="form-control"
                                placeholder="Ingresá una nueva franquicia si no figura en la lista"
-                               value="<?= $dataVieja['franquicia'] ?? null; ?>">
+                               value="<?= $dataVieja['nueva_franquicia'] ?? null; ?>">
                         <?php if (isset($errores['franquicia'])): ?>
                             <div class="msg-error mt-1" id="error-franquicia">
-                                <i class="bi bi-exclamation-circle-fill text-danger me-3"></i>
+                                <i class="bi bi-exclamation-circle-fill text-danger"></i>
                                 <?= $errores['franquicia']; ?>
                             </div>
                         <?php endif; ?>
@@ -175,7 +174,7 @@ if (isset($_SESSION['data_vieja'])) {
                                accept="image/*" <?php if (isset($errores['imagen'])): ?>
                             aria-invalid="true"
                             aria-errormessage="error-imagen"
-                            value="<?= $dataVieja['imagen'] ?? null ?? $producto->getImagen(); ?>"
+                            value="<?= $dataVieja['imagen'] ?? null ?? htmlspecialchars($producto->getImagen()); ?>"
                         <?php
                         endif;
                         ?>

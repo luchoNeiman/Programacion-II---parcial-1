@@ -1,8 +1,7 @@
 <?php
-
-
 $productos = (new Producto)->todosProductos();
 ?>
+
 <section class="container-fluid mt-5">
     <h1 class="mx-5 mb-4 mt-4 text-white">
         <i class="bi bi-box-seam-fill me-2"></i> Administracion de productos
@@ -20,7 +19,7 @@ $productos = (new Producto)->todosProductos();
                     <th class="min-th">Fecha de Ingreso</th>
                     <th class="min-th">Título</th>
                     <th class="min-th">Franquicia</th>
-                    <!--<th class="min-th">Categoria</th>-->
+                    <th class="min-th">Categoria</th>
                     <th class="min-th">Descripción</th>
                     <th class="min-th">Características</th>
                     <th class="min-th">Imagen</th>
@@ -33,19 +32,16 @@ $productos = (new Producto)->todosProductos();
                 <?php foreach ($productos as $producto): ?>
                     <tr>
                         <td><?= $producto->getFechaIngreso(); ?></td>
-                        <td><?= $producto->getTitulo(); ?></td>
-                        <td><?= $producto->getNombreFranquicia(); ?></td>
-                        <td><?= $producto->getDescripcion(); ?></td>
-                        <td><?= $producto->getCaracteristicas(); ?></td>
-                        <td>
-                            <?php if ($producto->getImagen()): ?>
-                                <img src="../assets/imgs/productos/<?= $producto->getImagen(); ?>"
-                                     alt="<?= $producto->getImagenDescripcion(); ?>" width="150" class="img-thumbnail">
-                            <?php else: ?>
-                                <span class="text-muted">Sin imagen</span>
-                            <?php endif; ?>
+                        <td><?= htmlspecialchars($producto->getTitulo()); ?></td>
+                        <td><?= htmlspecialchars($producto->getNombreFranquicia()); ?></td>
+                        <td><?= htmlspecialchars($producto->getCategoria()); ?></td>
+                        <td><?= htmlspecialchars($producto->getDescripcion()); ?></td>
+                        <td><?= htmlspecialchars($producto->getCaracteristicas()); ?></td>
+                        <td><img src="../assets/imgs/productos/<?= $producto->getImagen(); ?>"
+                                     alt="<?= htmlspecialchars($producto->getImagenDescripcion()); ?>"
+                                     width="150" class="img-thumbnail">
                         </td>
-                        <td><?= $producto->getImagenDescripcion(); ?></td>
+                        <td><?= htmlspecialchars($producto->getImagenDescripcion()); ?></td>
                         <td>$<?= number_format($producto->getPrecio(), 0, ',', '.'); ?></td>
                         <td class=" align-middle">
                             <div class="d-flex justify-content-center gap-2">
@@ -54,7 +50,6 @@ $productos = (new Producto)->todosProductos();
                                    class="btn btn-xl btn-dark rounded-circle" title="Editar">
                                     <i class="bi bi-pencil-square fs-5"></i>
                                 </a>
-
                                 <!-- Botón Eliminar -->
                                 <a href="index.php?seccion=confirmarBajaProducto&id=<?= $producto->getProductoId(); ?>"
                                    class="btn btn-danger rounded-circle d-flex align-items-center justify-content-center shadow-sm"
@@ -62,8 +57,6 @@ $productos = (new Producto)->todosProductos();
                                    data-bs-toggle="tooltip" data-bs-placement="top" title="Eliminar producto">
                                     <i class="bi bi-trash3-fill fs-5"></i>
                                 </a>
-
-
                             </div>
                         </td>
                     </tr>
@@ -78,23 +71,18 @@ $productos = (new Producto)->todosProductos();
         <?php foreach ($productos as $producto): ?>
             <div class="card mb-4 shadow-sm">
                 <div class="card-body">
-                    <h5 class="card-title"><?= $producto->getTitulo(); ?></h5>
-                    <p class="text-secondary-emphasis mb-1"><strong>Fecha de
-                            Ingreso:</strong> <?= $producto->getFechaIngreso(); ?></p>
-                    <p class="text-secondary-emphasis mb-1"><strong>Precio:</strong>
-                        $<?= number_format($producto->getPrecio(), 0, ',', '.'); ?></p>
-                    <p class="text-secondary-emphasis mb-1">
-                        <strong>Franquicia:</strong> <?= $producto->getNombreFranquicia(); ?></p>
-                    <p class="text-secondary-emphasis mb-1">
-                        <strong>Descripción:</strong> <?= $producto->getDescripcion(); ?></p>
-                    <p class="text-secondary-emphasis mb-1">
-                        <strong>Características:</strong> <?= $producto->getCaracteristicas(); ?></p>
-                    <?php if ($producto->getImagen()): ?>
-                        <img src="../assets/imgs/productos/<?= $producto->getImagen(); ?>"
-                             alt="<?= $producto->getImagenDescripcion(); ?>"
-                             class="img-fluid rounded mt-2" style="max-width: 150px;">
-                        <p class="text-muted small mt-1"><?= $producto->getImagenDescripcion(); ?></p>
-                    <?php endif; ?>
+                    <h5 class="card-title"><?= htmlspecialchars($producto->getTitulo()); ?></h5>
+                    <p><strong>Fecha de Ingreso:</strong> <?= $producto->getFechaIngreso(); ?></p>
+                    <p><strong>Precio:</strong> $<?= number_format($producto->getPrecio(), 0, ',', '.'); ?></p>
+                    <p><strong>Franquicia:</strong> <?= htmlspecialchars($producto->getNombreFranquicia()); ?></p>
+                    <p><strong>Categoria:</strong> <?= htmlspecialchars($producto->getCategoria()); ?></p>
+                    <p><strong>Descripción:</strong> <?= nl2br(htmlspecialchars($producto->getDescripcion())); ?></p>
+                    <p><strong>Características:</strong> <?= nl2br(htmlspecialchars($producto->getCaracteristicas()));?></p>
+                    <img src="../assets/imgs/productos/<?= $producto->getImagen(); ?>"
+                         alt="Imagen del producto"
+                         class="img-fluid mt-2" style="max-width: 150px;">
+                    <p class="text-muted small mt-1"><?= htmlspecialchars($producto->getImagenDescripcion()); ?></p>
+
                     <div class="mt-3 row gx-2">
                         <div class="col-12 col-sm-6 mb-2 mb-sm-0">
                             <a href="index.php?seccion=edicionProducto&id=<?= $producto->getProductoId(); ?>"

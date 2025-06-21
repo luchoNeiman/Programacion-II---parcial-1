@@ -106,7 +106,8 @@ if (isset($_SESSION['data_vieja'])) {
                                 </option>
                             <?php endforeach; ?>
                         </select>
-                        <small class="text-muted">Podés seleccionar más de una opción(ctrl + click)</small>
+                        <small class="text-violeta">*Usá "Ctrl + clic" para seleccionar o deseleccionar."</small>
+
                     </div>
                     <div class="col-md-6">
                         <label for="nueva_categoria" class="form-label text-violeta  ">
@@ -114,10 +115,11 @@ if (isset($_SESSION['data_vieja'])) {
                         </label>
                         <input id="nueva_categoria" type="text" name="nueva_categoria" class="form-control"
                                placeholder="Ingresá una nueva categoría si no figura en la lista"
-                               value="<?= $dataVieja['precio'] ?? null; ?>">
+                               value="<?= $dataVieja['nueva_categoria'] ?? null; ?>">
                         <?php if (isset($errores['categorias'])): ?>
-                            <div class="msg-error" id="error-categorias"><i
-                                        class="bi bi-exclamation-circle-fill text-danger me-3"></i><?= $errores['categorias']; ?>
+                            <div class="msg-error" id="error-categorias">
+                                <i class="bi bi-exclamation-circle-fill text-danger me-3"></i>
+                                <?= $errores['categorias']; ?>
                             </div>
                         <?php endif; ?>
                     </div>
@@ -152,7 +154,7 @@ if (isset($_SESSION['data_vieja'])) {
                             franquicia</label>
                         <input id="nueva_franquicia" type="text" name="nueva_franquicia" class="form-control"
                                placeholder="Ingresá una nueva franquicia si no figura en la lista"
-                               value="<?= $dataVieja['franquicia'] ?? null; ?>">
+                               value="<?= $dataVieja['nueva_franquicia'] ?? null; ?>">
                         <?php if (isset($errores['franquicia'])): ?>
                             <div class="msg-error mt-1" id="error-franquicia">
                                 <i class="bi bi-exclamation-circle-fill text-danger me-3"></i>
@@ -188,7 +190,8 @@ if (isset($_SESSION['data_vieja'])) {
                         <label for="imagen_descripcion" class="form-label text-violeta  ">Descripción de la
                             imagen</label>
                         <input type="text" name="imagen_descripcion" id="imagen_descripcion" class="form-control"
-                               placeholder="Escribe una breve descripción" value="<?= $dataVieja['imagen_descripcion'] ?? null; ?>">>
+                               placeholder="Escribe una breve descripción"
+                               value="<?= $dataVieja['imagen_descripcion'] ?? null; ?>">>
                     </div>
                 </div>
             </div>

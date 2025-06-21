@@ -24,7 +24,10 @@ $nueva_franquicia = $_POST['nueva_franquicia'];
 /** validaciones */
 $errores = [];
 
-$nombreImagen = 'default.png'; // Imagen por defecto
+/** Manejo de archivo imagen */
+// Si se sube una imagen nueva, se guarda en la carpeta assets/imgs/productos/
+// Si no se sube ninguna imagen, se mantiene la imagen actual
+$nombreImagen = $_POST['imagen'] ?? 'default.png';
 
 if (isset($_FILES['imagen']) && $_FILES['imagen']['error'] === UPLOAD_ERR_OK) {
     // Tomamos el nombre original del archivo
@@ -94,11 +97,11 @@ try {
         'categorias' => $categorias,
     ]);
 
-    $_SESSION['feedback_exito'] = "Producto creado correctamente.";
+    $_SESSION['feedback_exito'] = "✅ Producto actualizado correctamente.";
     header('Location: ../index.php?seccion=productos');
     exit;
 } catch (Throwable $th) {
-    $_SESSION['feedback_error'] = "Ocurrió un error: " . $th->getMessage();
+    $_SESSION['feedback_error'] = "❌ Ocurrió un error inesperado. Intentá de nuevo.";
     header('Location: ../index.php?seccion=editarProducto&id=' . $producto_id);
     exit;
 }

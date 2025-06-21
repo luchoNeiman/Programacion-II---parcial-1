@@ -15,6 +15,6 @@ if(!$autenticacion->intentarIngresar($email, $password)) {
     exit;
 }
 
-$_SESSION['feedback_exito'] = "Sesión iniciada con éxito. ¡Hola de nuevo!";
+$_SESSION['feedback_exito'] = "✅ Iniciaste sesión correctamente.";
 header('Location: ../index.php?seccion=dashboard');
 exit;

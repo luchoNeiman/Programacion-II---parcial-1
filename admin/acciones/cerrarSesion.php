@@ -5,6 +5,6 @@ session_start();
 // Cerramos la sesión.
 (new Autenticacion)->cerrarSesion();
 
-$_SESSION['feedback_exito'] = "Sesión cerrada con éxito. ¡Te esperamos pronto de vuelta!";
+$_SESSION['feedback_exito'] = "✅ Cerraste sesión con éxito.";
 header("Location: ../index.php");
 exit;
