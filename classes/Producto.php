@@ -1,7 +1,4 @@
 <?php
-//require_once __DIR__ . '/DBConexion.php';
-
-// const PRODUCTOS_JSON = 'productos.json';
 
 class Producto
 {
@@ -18,7 +15,6 @@ class Producto
     private string $categorias = "";
     private string $caracteristicas = "";
 
-
     /* public function cargarDatosArray(array $data): void
      {
          $this->producto_id = $data['producto_id'];
@@ -32,12 +28,19 @@ class Producto
          $this->categorias = $data['categorias'];
          $this->caracteristicas = $data['caracteristicas'];
      }*/
-
+    /**
+     * Busca y devuelve todos los productos de la base de datos.
+     *
+     * @return array Devuelve una lista de Producto.
+     */
     public function todosProductos(): array
     {
-        // Vamos a traer los productos de la base de datos.
         $db = (new DBConexion)->getConexion();
-
+        /* La siguiente consulta hace lo siguiente:
+         * 1. Se seleccionan todos los productos de la tabla productos.
+         * 2. Se seleccionan las franquicias de la tabla franquicias.
+         * 3. se selecciona las categorias de la tabla categorias.
+         */
         $consulta = "SELECT p.producto_id,
                         p.fecha_ingreso,
                           p.titulo,
@@ -85,19 +88,34 @@ class Producto
         $stmt->execute([$id]);
         $stmt->setFetchMode(PDO::FETCH_CLASS, self::class);
         $producto = $stmt->fetch();
+
         if (!$producto) return null;
         return $producto;
     }
 
+    /**
+     * Obtiene los productos que pertenezcan a las categorías indicadas.
+     *
+     * @param string|array $categorias
+     * @return array
+     *
+     */
     public static function obtenerPorCategoria(string|array $categorias): array
-    {
+    {   /* si es un string, lo convertimos en array
+
+        */
         if (is_string($categorias)) {
-            $categorias = [$categorias]; // lo convertimos en array
+            $categorias = [$categorias];
         }
 
         $db = (new DBConexion)->getConexion();
+        /* La siguiente consulta hace lo siguiente:
+         * 1. Se seleccionan todos los productos de la tabla productos.
+         * 2. Se seleccionan las franquicias de la tabla franquicias.
+         * 3. se selecciona las categorias de la tabla categorias.
+         */
+        /* el placeholders siguierte es para rellenar los valores de las categorias que se van a buscar */
         $placeholders = implode(',', array_fill(0, count($categorias), '?'));
-
         $consulta = "SELECT 
                     p.producto_id,
                     p.titulo,
@@ -118,10 +136,20 @@ class Producto
         return $stmt->fetchAll();
     }
 
+    /**
+     * Obtiene los últimos 4 productos que se hayan ingresado en el último mes.
+     *
+     * @return array Devuelve un array de objetos Producto.
+     */
     public static function obtenerUltimosDelMes(): array
     {
         $db = (new DBConexion)->getConexion();
-
+        /* La siguiente consulta hace lo siguiente:
+        * 1. Se seleccionan los productos de la tabla productos.
+         * 4. Se ordenan por fecha de ingreso.
+         * 5. Se limitan a 4 resultados.
+         * 6. Se ordenan por fecha de ingreso descendente.
+         * */
         $consulta = "SELECT 
                     p.producto_id,
                     p.titulo,
@@ -131,7 +159,7 @@ class Producto
                  FROM productos p
                  WHERE p.fecha_ingreso >= DATE_SUB(CURDATE(), INTERVAL 1 MONTH)
                  ORDER BY p.fecha_ingreso DESC         
-                                          LIMIT 4";
+                 LIMIT 4";
 
         $stmt = $db->prepare($consulta);
         $stmt->execute();
@@ -140,11 +168,23 @@ class Producto
         return $stmt->fetchAll();
     }
 
+    /**
+     * Crea un nuevo producto en la base de datos.
+     *
+     * @param array $data Los datos del producto.
+     *
+     * @return void
+     *
+     * @throws PDOException Si se produce un error al insertar el producto.
+     */
+
     public function crear(array $data): void
     {
         $db = (new DBConexion)->getConexion();
 
-        // 1. Insertar producto
+        /* La siguiente consulta hace lo siguiente:
+         * 1. Insertar producto en la tabla productos.
+         * */
         $consulta = "INSERT INTO productos 
         (usuario_fk, fecha_ingreso, titulo, franquicia_fk, descripcion, precio, imagen, imagen_descripcion, caracteristicas)
         VALUES (:usuario_fk, NOW(), :titulo, :franquicia_fk, :descripcion, :precio, :imagen, :imagen_descripcion, :caracteristicas)";
@@ -160,15 +200,21 @@ class Producto
             'imagen_descripcion' => $data['imagen_descripcion'],
             'caracteristicas' => $data['caracteristicas'],
         ]);
-
-        // 2. Obtener ID del producto recién insertado
         $producto_id = $db->lastInsertId();
 
-        // 3. Insertar categorías relacionadas
+        /*Se valida que la categoria no este vacia, si esta vacia no se hace nada
+         * */
         if (!empty($data['categorias']) && is_array($data['categorias'])) {
-            $consultaCategorias = "INSERT INTO productos_tienen_categorias (producto_fk, categoria_fk) VALUES (:producto, :categoria)";
+            /* La siguiente consulta hace lo siguiente:
+             * 1. Insertar producto en la tabla productos_tienen_categorias.
+             * 2. Seleccionar el ID del producto insertado.
+             */
+            $consultaCategorias = "INSERT INTO productos_tienen_categorias (producto_fk, categoria_fk) 
+                                   VALUES (:producto, :categoria)";
             $stmtCategoria = $db->prepare($consultaCategorias);
-
+            /* Recorre el array de categorías enviado por POST e inserta 
+             * las relaciones entre el producto y las categorías en la tabla productos_tienen_categorias
+             */
             foreach ($data['categorias'] as $categoria_id) {
                 $stmtCategoria->execute([
                     'producto' => $producto_id,
@@ -178,9 +224,21 @@ class Producto
         }
     }
 
+    /** Actualiza los datos de un producto en la base de datos.
+     *
+     * @param int $id El ID del producto a actualizar.
+     * @param array $data Los datos del producto.
+     *
+     * @return void
+     *
+     * @throws PDOException Si se produce un error al actualizar el producto.*
+     */
     public function editar(int $id, array $data): void
     {
         $db = (new DBConexion)->getConexion();
+        /* La siguiente consulta hace lo siguiente:
+         * 1. Actualizar producto en la tabla productos.
+         */
         $consulta = "UPDATE productos
                     SET usuario_fk          = :usuario_fk,
                         titulo              = :titulo,
@@ -193,18 +251,28 @@ class Producto
                     WHERE producto_id = :producto_id";
         $stmt = $db->prepare($consulta);
         $stmt->execute([
-            'usuario_fk' => $data['usuario_fk'],
-            'titulo' => $data['titulo'],
-            'franquicia_fk' => $data['franquicia_fk'],
-            'descripcion' => $data['descripcion'],
-            'precio' => $data['precio'],
-            'imagen' => $data['imagen'],
-            'imagen_descripcion' => $data['imagen_descripcion'],
-            'caracteristicas' => $data['caracteristicas'],
-            'producto_id' => $id,
+            'usuario_fk'            => $data['usuario_fk'],
+            'titulo'                => $data['titulo'],
+            'franquicia_fk'         => $data['franquicia_fk'],
+            'descripcion'           => $data['descripcion'],
+            'precio'                => $data['precio'],
+            'imagen'                => $data['imagen'],
+            'imagen_descripcion'    => $data['imagen_descripcion'],
+            'caracteristicas'       => $data['caracteristicas'],
+            'producto_id'           => $id,
         ]);
     }
 
+    /**
+     * Elimina un producto de la base de datos.
+     *
+     * @param int $id El ID del producto a eliminar.
+     *
+     * @return void
+     *
+     * @throws PDOException Si se produce un error al eliminar el producto.
+     *
+     */
     public function eliminar(int $id): void
     {
         $db = (new DBConexion)->getConexion();
@@ -219,6 +287,12 @@ class Producto
         $stmt->execute([$id]);
     }
 
+    /**
+     * Funcion que devuelve las categorias de un producto
+     *
+     * @return array Devuelve un array con los IDs de las categorias del producto
+     *
+     */
     public function getCategoriasIds(): array
     {
         $db = (new DBConexion)->getConexion();
