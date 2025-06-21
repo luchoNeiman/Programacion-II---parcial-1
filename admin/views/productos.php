@@ -56,11 +56,10 @@ $productos = (new Producto)->todosProductos();
                                 </a>
 
                                 <!-- Botón Eliminar -->
-                                <a href="index.php?seccion=eliminarProduct&id=<?= $producto->getProductoId(); ?>"
+                                <a href="index.php?seccion=confirmarBajaProducto&id=<?= $producto->getProductoId(); ?>"
                                    class="btn btn-danger rounded-circle d-flex align-items-center justify-content-center shadow-sm"
                                    style="width: 44px; height: 44px;"
-                                   data-bs-toggle="tooltip" data-bs-placement="top" title="Eliminar producto"
-                                   onclick="return confirm('¿Seguro que querés eliminar este producto?')">
+                                   data-bs-toggle="tooltip" data-bs-placement="top" title="Eliminar producto">
                                     <i class="bi bi-trash3-fill fs-5"></i>
                                 </a>
 

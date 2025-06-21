@@ -19,6 +19,7 @@ try {
     $_SESSION['feedback_exito'] = "El producto <b>" . $producto->getTitulo() . "</b> se eliminó con éxito.";
 } catch (\Throwable $th) {
     // throw $th;
+    $_SESSION['feedback_error'] = "Ocurrió un error: " . $th->getMessage();
     $_SESSION['feedback_error'] = "Ocurrió un error inesperado al tratar de eliminar la producto. Por favor, probá de nuevo más tarde.";
 }
 

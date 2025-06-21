@@ -1,7 +1,7 @@
 <?php
 $producto = (new Producto)->porId($_GET['id']);
 ?>
-<section>
+<section class="container text-white mt-5">
     <h1>Confirmación necesaria para eliminar producto</h1>
 
     <p>Estás por eliminar el producto <b><?= htmlspecialchars($producto->getTitulo());?></b> del sistema. A continuación se muestran los detalles del producto.</p>
@@ -24,7 +24,7 @@ $producto = (new Producto)->porId($_GET['id']);
 
     <hr class="mb-1">
 
-    <form action="../acciones/eliminarProducto.php?id=<?= $producto->getProductoId();?>" method="post">
+    <form action="../admin/acciones/eliminarProducto.php?id=<?= $producto->getProductoId();?>" method="post">
         <button type="submit" class="button">Sí, confirmar la eliminación de `<?= htmlspecialchars($producto->getTitulo());?>`</button>
     </form>
 </section>
