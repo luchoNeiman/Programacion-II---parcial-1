@@ -130,7 +130,7 @@ if (isset($_SESSION['feedback_error'])) {
         </div>
     </nav>
 </header>
-<main class="pt-5 bg-degrade">
+<main class="pt-5 bg-degrade text-white">
     <?php if (isset($feedbackExito)): ?>
         <div class="msg-success  mt-5 mx-5" id="msg-success">
             <span><?= $feedbackExito; ?></span>

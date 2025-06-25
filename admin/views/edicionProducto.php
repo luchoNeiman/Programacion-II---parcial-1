@@ -1,28 +1,29 @@
-<?php
-$categorias = (new Categoria)->todasCategorias();
-$franquicias = (new Franquicia)->todasFranquicias();
-$producto = (new Producto())->porId($_GET['id']);
-$categoriasSeleccionadas = $producto->getCategoriasIds();
-
-// Recibimos los mensajes de error, si es que los hay.
-if (isset($_SESSION['errores'])) {
-    $errores = $_SESSION['errores'];
-    unset($_SESSION['errores']);
-} else {
-    $errores = [];
-}
-
-if (isset($_SESSION['data_vieja'])) {
-    $dataVieja = $_SESSION['data_vieja'];
-    unset($_SESSION['data_vieja']);
-} else {
-    $dataVieja = [];
-}
-?>
 <section class="container mt-5 mb-5">
-    <h1 class="mb-4 text-white"><i class="bi bi-pencil-square me-2 text-white"></i> Editar producto</h1>
+    <?php
+    $categorias = (new Categoria)->todasCategorias();
+    $franquicias = (new Franquicia)->todasFranquicias();
+    $producto = (new Producto)->porId($_GET['id']);
+    $categoriasSeleccionadas = (new Categoria)->getCategoriasProductosIds($_GET['id']);
 
-    <form action="../admin/acciones/editarProducto.php?id=<?= $producto->getProductoId(); ?>" method="post"
+
+    // Recibimos los mensajes de error, si es que los hay.
+    if (isset($_SESSION['errores'])) {
+        $errores = $_SESSION['errores'];
+        unset($_SESSION['errores']);
+    } else {
+        $errores = [];
+    }
+
+    if (isset($_SESSION['data_vieja'])) {
+        $dataVieja = $_SESSION['data_vieja'];
+        unset($_SESSION['data_vieja']);
+    } else {
+        $dataVieja = [];
+    }
+    ?>
+    <h1 class="mb-4 text-white"><i class="bi bi-pencil-square me-2 text-white"></i> Editar producto</h1>
+    <?php print_r($producto->getProductoId()); ?>
+    <form action="acciones/editarProducto.php?id=<?= ($producto->getProductoId()) ?>" method="POST"
           enctype="multipart/form-data">
         <div class="card shadow  border-0">
             <div class="card-body py-4">
@@ -92,25 +93,30 @@ if (isset($_SESSION['data_vieja'])) {
             <div class="card-body py-4">
                 <div class="row">
                     <div class="col-md-6">
-                        <label for="categorias" class="form-label text-violeta  ">Categorías<span
-                                    class="colorRequiaried">*</span></label>
-                        <select name="categorias[]" id="categorias"
-                                class="form-select" multiple
-                            <?php if (isset($errores['categorias'])): ?>
+                        <label for="categoria_fk" class="form-label text-violeta">Categorías
+                            <span class="colorRequiaried">*</span>
+                        </label>
+                        <select name="categoria_fk[]" id="categoria_fk" class="form-select" multiple
+                            <?php if (isset($errores['categoria_fk'])): ?>
                                 aria-invalid="true"
-                                aria-errormessage="error-categorias"
+                                aria-errormessage="error-categoria_fk"
                             <?php endif; ?>
                         >
                             <?php foreach ($categorias as $categoria): ?>
                                 <option value="<?= $categoria['categoria_id'] ?>"
-                                    <?= (isset($dataVieja['categorias']) && in_array($categoria['categoria_id'], $dataVieja['categorias'])) ? 'selected' : '' ?>
+                                    <?php
+                                    $seleccionadas = $dataVieja['categoria_fk'] ?? $categoriasSeleccionadas;
+                                    if (in_array($categoria['categoria_id'], $seleccionadas)) echo 'selected';
+                                    ?>
                                 >
                                     <?= htmlspecialchars($categoria['nombre_categoria']) ?>
                                 </option>
                             <?php endforeach; ?>
                         </select>
-                        <small class="text-violeta">*Usá "Ctrl + clic" para seleccionar o deseleccionar."</small>
+                        <small class="text-violeta">*Usá "Ctrl + clic" para seleccionar varias o para desmarcar
+                            todas.</small>
                     </div>
+
                     <div class="col-md-6">
                         <label for="nueva_categoria" class="form-label text-violeta  ">
                             Nueva categoría
@@ -139,10 +145,13 @@ if (isset($_SESSION['data_vieja'])) {
                                 aria-invalid="true"
                                 aria-errormessage="error-franquicias"
                             <?php endif; ?>>
-                                <option value="" disabled>Seleccione franquicia</option>
+                                <option value="">Seleccione franquicia</option>
                                 <?php foreach ($franquicias as $franquicia): ?>
                                     <option value="<?= $franquicia['franquicia_id'] ?>"
-                                        <?= (isset($dataVieja['franquicia_fk']) && $dataVieja['franquicia_fk'] == $franquicia['franquicia_id']) ? 'selected' : '' ?>>
+                                        <?= (
+                                            (isset($dataVieja['franquicia_fk']) && $dataVieja['franquicia_fk'] == $franquicia['franquicia_id']) ||
+                                            (!isset($dataVieja['franquicia_fk']) && $producto->getFranquiciaFk() == $franquicia['franquicia_id'])
+                                        ) ? 'selected' : '' ?>>
                                         <?= htmlspecialchars($franquicia['nombre_franquicia']) ?>
                                     </option>
                                 <?php endforeach; ?>

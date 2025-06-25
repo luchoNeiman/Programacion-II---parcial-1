@@ -17,7 +17,7 @@ $descripcion = $_POST['descripcion'];
 $precio = $_POST['precio'];
 $imagen_descripcion = $_POST['imagen_descripcion'];
 $caracteristicas = $_POST['caracteristicas'];
-$categorias = $_POST['categorias'] ?? [];
+$categorias = $_POST['categoria_fk'] ?? [];
 $nueva_categoria = $_POST['nueva_categoria'];
 $nueva_franquicia = $_POST['nueva_franquicia'];
 
@@ -71,7 +71,7 @@ if (count($errores) > 0) {
 
     $_SESSION['errores'] = $errores;
     $_SESSION['data_vieja'] = $_POST;
-    header("Location: ../index.php?seccion=edicionProducto");
+    header('Location: ../index.php?seccion=edicionProducto&id=' . $producto_id);
     exit;
 }
 
@@ -99,14 +99,15 @@ try {
         'precio' => $precio,
         'imagen' => $nombreImagen,
         'imagen_descripcion' => $imagen_descripcion,
-        'categorias' => $categorias,
     ]);
+    (new Categoria()) -> setCategoriasProducto($producto_id, $categorias);
 
     $_SESSION['feedback_exito'] = "✅ Producto actualizado correctamente.";
     header('Location: ../index.php?seccion=productos');
     exit;
 } catch (Throwable $th) {
-    $_SESSION['feedback_error'] = "❌ Ocurrió un error inesperado. Intentá de nuevo.";
-    header('Location: ../index.php?seccion=edicionProducto&id=' .  $producto_id);
+    $_SESSION['feedback_error'] = "Ocurrió un error: " . $th->getMessage();
+//    $_SESSION['feedback_error'] = "❌ Ocurrió un error inesperado. Intentá de nuevo.";
+    header('Location: ../index.php?seccion=edicionProducto&id=' . $producto_id);
     exit;
 }
