@@ -20,10 +20,8 @@ $productos = (new Producto)->todosProductos();
                     <th class="min-th">Título</th>
                     <th class="min-th">Franquicia</th>
                     <th class="min-th">Categoria</th>
-                    <th class="min-th">Descripción</th>
-                    <th class="min-th">Características</th>
                     <th class="min-th">Imagen</th>
-                    <th class="min-th">Alt imagen</th>
+
                     <th class="min-th">Precio</th>
                     <th class="min-th text-center ">Acciones</th>
                 </tr>
@@ -31,18 +29,15 @@ $productos = (new Producto)->todosProductos();
                 <tbody>
                 <?php foreach ($productos as $producto): ?>
                     <tr>
-                        <td><?= $producto->getFechaIngreso(); ?></td>
-                        <td><?= htmlspecialchars($producto->getTitulo()); ?></td>
-                        <td><?= htmlspecialchars($producto->getNombreFranquicia()); ?></td>
-                        <td><?= htmlspecialchars($producto->getCategoria()); ?></td>
-                        <td><?= htmlspecialchars($producto->getDescripcion()); ?></td>
-                        <td><?= htmlspecialchars($producto->getCaracteristicas()); ?></td>
-                        <td><img src="../assets/imgs/productos/<?= $producto->getImagen(); ?>"
+                        <td class="align-middle"><?= $producto->getFechaIngreso(); ?></td>
+                        <td class="align-middle"><?= htmlspecialchars($producto->getTitulo()); ?></td>
+                        <td class="align-middle"><?= htmlspecialchars($producto->getNombreFranquicia()); ?></td>
+                        <td class="align-middle"><?= htmlspecialchars($producto->getCategoria()); ?></td>
+                        <td class="align-middle"><img src="../assets/imgs/productos/<?= $producto->getImagen(); ?>"
                                      alt="<?= htmlspecialchars($producto->getImagenDescripcion()); ?>"
-                                     width="150" class="img-thumbnail">
+                                     width="50" class="img-thumbnail">
                         </td>
-                        <td><?= htmlspecialchars($producto->getImagenDescripcion()); ?></td>
-                        <td>$<?= number_format($producto->getPrecio(), 0, ',', '.'); ?></td>
+                        <td class="align-middle">$<?= number_format($producto->getPrecio(), 0, ',', '.'); ?></td>
                         <td class=" align-middle">
                             <div class="d-flex justify-content-center gap-2">
                                 <!-- Botón Editar -->
@@ -81,14 +76,12 @@ $productos = (new Producto)->todosProductos();
                     <p><strong>Precio:</strong> $<?= number_format($producto->getPrecio(), 0, ',', '.'); ?></p>
                     <p><strong>Franquicia:</strong> <?= htmlspecialchars($producto->getNombreFranquicia()); ?></p>
                     <p><strong>Categoria:</strong> <?= htmlspecialchars($producto->getCategoria()); ?></p>
-                    <p><strong>Descripción:</strong> <?= nl2br(htmlspecialchars($producto->getDescripcion())); ?></p>
-                    <p><strong>Características:</strong> <?= nl2br(htmlspecialchars($producto->getCaracteristicas()));?></p>
+
                     <img src="../assets/imgs/productos/<?= $producto->getImagen(); ?>"
                          alt="Imagen del producto"
                          class="img-fluid mt-2" style="max-width: 150px;">
-                    <p class="text-muted small mt-1"><?= htmlspecialchars($producto->getImagenDescripcion()); ?></p>
 
-                    <div class="mt-3 row gx-2">4re30
+                    <div class="mt-3 row gx-2">
                         <div class="col-12 col-sm-6 mb-2 mb-sm-0">
                             <a href="index.php?seccion=edicionProducto&id=<?= $producto->getProductoId(); ?>"
                                class="btn btn-dark w-100 d-flex justify-content-center align-items-center"
