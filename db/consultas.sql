@@ -4,13 +4,8 @@
 
 
 -- creacion de la base de datos
-CREATE
-DATABASE `dw3_garcia_neiman` COLLATE utf8mb4_general_ci;
--- muestra todos los esquemas
-
--- usar la base de datos
-USE
-dw3_garcia_neiman;
+CREATE DATABASE `dw3_garcia_neiman` COLLATE utf8mb4_general_ci;
+USE dw3_garcia_neiman;
 
 --  cargar datos a la tabla roles
 INSERT INTO roles

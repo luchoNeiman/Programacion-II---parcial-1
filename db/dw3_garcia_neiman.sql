@@ -3,9 +3,11 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 25-06-2025 a las 02:17:46
+-- Tiempo de generación: 25-06-2025 a las 06:07:59
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
+CREATE DATABASE `dw3_garcia_neiman` COLLATE utf8mb4_general_ci;
+USE dw3_garcia_neiman;
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -179,8 +181,8 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`usuario_id`, `rol_fk`, `email`, `password`, `nombre`, `apellido`, `avatar`) VALUES
-(1, 1, 'lucianoneiman@gmail.com', '$2y$10$Njo1/KMCWjWLqaXwhSLJteRiDunyKNw1zyxBm7v6EHLfmdy1K5X.y', 'Luciano', 'Neiman', NULL),
-(2, 1, 'ricardogarcia@gmail.com', '$2y$10$Njo1/KMCWjWLqaXwhSLJteRiDunyKNw1zyxBm7v6EHLfmdy1K5X.y', 'Ricardo', 'Garcia', NULL);
+(1, 1, 'lucianoneiman@gmail.com', '$2y$10$Njo1/KMCWjWLqaXwhSLJteRiDunyKNw1zyxBm7v6EHLfmdy1K5X.y', 'Luciano', 'Neiman', 'luciano.webp'),
+(2, 1, 'ricardogarcia@gmail.com', '$2y$10$Njo1/KMCWjWLqaXwhSLJteRiDunyKNw1zyxBm7v6EHLfmdy1K5X.y', 'Ricardo', 'Garcia', 'ricardo.webp');
 
 --
 -- Índices para tablas volcadas
