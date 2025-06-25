@@ -12,7 +12,7 @@
             <p class="text-center text-black">¡Se recibió el formulario correctamente! En breve recibirás un correo en <strong><?= $mail ?></strong> para confirmar tu cupón de descuento del 35%.</p>
         </div>
         <div class="d-flex justify-content-center align-items-center">
-            <img src="assets/imgs/validaciones/oK.png" alt="Éxito" class="img-fluid rounded">
+            <img src="assets/imgs/validaciones/oK.png" alt="Éxito" class="img-fluid w-25 rounded">
         </div>
     <?php else: ?>
         <div class="alert alert-warning" role="alert">
