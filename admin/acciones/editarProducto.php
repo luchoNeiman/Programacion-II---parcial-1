@@ -12,7 +12,7 @@ if (!$autenticacion->estaAutenticado()) {
 
 $usuario_id = $_SESSION['usuario_id'];
 $producto_id = $_GET['id'];
-$titulo = $_POST['titulo'];
+$titulo = trim($_POST['titulo']);
 $descripcion = $_POST['descripcion'];
 $precio = $_POST['precio'];
 $imagen_descripcion = $_POST['imagen_descripcion'];
@@ -44,9 +44,14 @@ if (isset($_FILES['imagen']) && $_FILES['imagen']['error'] === UPLOAD_ERR_OK) {
     // Movemos el archivo
     move_uploaded_file($rutaTemporal, $rutaDestino);
 }
+// $titulo = trim($titulo);
 
 if (empty($titulo)) {
     $errores['titulo'] = 'El título debe tener un valor.';
+} else {
+    if (strlen($titulo) < 6 || strlen($titulo) > 26) {
+        $errores['titulo'] = 'El título debe tener entre 6 y 26 caracteres.';
+    }
 }
 if (!is_numeric($precio) || $precio <= 0) {
     $errores['precio'] = 'El precio debe ser un número válido mayor a cero.';
@@ -102,6 +107,6 @@ try {
     exit;
 } catch (Throwable $th) {
     $_SESSION['feedback_error'] = "❌ Ocurrió un error inesperado. Intentá de nuevo.";
-    header('Location: ../index.php?seccion=editarProducto&id=' . $producto_id);
+    header('Location: ../index.php?seccion=edicionProducto&id=' .  $producto_id);
     exit;
 }
