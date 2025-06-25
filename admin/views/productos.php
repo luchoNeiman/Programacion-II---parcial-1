@@ -88,7 +88,7 @@ $productos = (new Producto)->todosProductos();
                          class="img-fluid mt-2" style="max-width: 150px;">
                     <p class="text-muted small mt-1"><?= htmlspecialchars($producto->getImagenDescripcion()); ?></p>
 
-                    <div class="mt-3 row gx-2">
+                    <div class="mt-3 row gx-2">4re30
                         <div class="col-12 col-sm-6 mb-2 mb-sm-0">
                             <a href="index.php?seccion=edicionProducto&id=<?= $producto->getProductoId(); ?>"
                                class="btn btn-dark w-100 d-flex justify-content-center align-items-center"
