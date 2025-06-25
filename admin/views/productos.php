@@ -46,6 +46,11 @@ $productos = (new Producto)->todosProductos();
                         <td class=" align-middle">
                             <div class="d-flex justify-content-center gap-2">
                                 <!-- Botón Editar -->
+                                <a href="index.php?seccion=verProducto&id=<?= $producto->getProductoId(); ?>"
+                                   class="btn btn-xl btn-dark rounded-circle" title="Ver">
+                                    <i class="bi bi-eye fs-5"></i>
+                                </a>
+                                <!-- Botón Editar -->
                                 <a href="index.php?seccion=edicionProducto&id=<?= $producto->getProductoId(); ?>"
                                    class="btn btn-xl btn-dark rounded-circle" title="Editar">
                                     <i class="bi bi-pencil-square fs-5"></i>

@@ -1,11 +1,8 @@
 <?php
 //require_once 'DBConexion.php';
 
-class Categoria
-{
-    private int $producto_id = 0;
-    private int $categoria_fk = 0;
-    private string $nombre_categoria = '';
+class Categoria{
+
     private PDO $db;
 
     public function __construct()

@@ -23,6 +23,10 @@ $rutas = [
         'titulo' => 'Editar producto',
         'requiereAutenticacion' => true,
     ],
+    'verProducto' => [
+        'titulo' => 'Ver producto',
+        'requiereAutenticacion' => true,
+    ],
     'confirmarBajaProducto' => [
         'titulo' => 'Se requiere cumplir con las confirmaciones para eliminar la noticia.',
         'requiereAutenticacion' => true,

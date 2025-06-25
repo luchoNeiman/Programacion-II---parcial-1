@@ -106,8 +106,8 @@ if (isset($_SESSION['data_vieja'])) {
                                 </option>
                             <?php endforeach; ?>
                         </select>
-                        <small class="text-violeta">*Usá "Ctrl + clic" para seleccionar o deseleccionar."</small>
-
+                        <small class="text-violeta">*Usá "Ctrl + clic" para seleccionar varias o para desmarcar
+                            todas.</small>
                     </div>
                     <div class="col-md-6">
                         <label for="nueva_categoria" class="form-label text-violeta  ">
@@ -191,7 +191,7 @@ if (isset($_SESSION['data_vieja'])) {
                             imagen</label>
                         <input type="text" name="imagen_descripcion" id="imagen_descripcion" class="form-control"
                                placeholder="Escribe una breve descripción"
-                               value="<?= $dataVieja['imagen_descripcion'] ?? null; ?>">>
+                               value="<?= $dataVieja['imagen_descripcion'] ?? null; ?>">
                     </div>
                 </div>
             </div>

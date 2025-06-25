@@ -23,7 +23,7 @@
     ?>
     <h1 class="mb-4 text-white"><i class="bi bi-pencil-square me-2 text-white"></i> Editar producto</h1>
     <?php print_r($producto->getProductoId()); ?>
-    <form action="acciones/editarProducto.php?id=<?= ($producto->getProductoId()) ?>" method="POST"
+    <form action="../admin/acciones/editarProducto.php?id=<?= ($producto->getProductoId()) ?>" method="POST"
           enctype="multipart/form-data">
         <div class="card shadow  border-0">
             <div class="card-body py-4">
@@ -113,8 +113,7 @@
                                 </option>
                             <?php endforeach; ?>
                         </select>
-                        <small class="text-violeta">*Usá "Ctrl + clic" para seleccionar varias o para desmarcar
-                            todas.</small>
+                        <small class="text-violeta">*Usá "Ctrl + clic" para seleccionar varias o para desmarcar todas.</small>
                     </div>
 
                     <div class="col-md-6">
