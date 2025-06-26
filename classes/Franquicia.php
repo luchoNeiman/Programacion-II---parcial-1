@@ -40,7 +40,7 @@ class Franquicia
         $db = (new DBConexion)->getConexion();
 
         // Verifico si ya existe una franquicia con ese nombre
-        $stmt = $db->prepare("SELECT franquicia_id FROM franquicias WHERE nombre_franquicia = :nombre");
+        $stmt = $db->prepare("SELECT franquicia_id FROM franquicias WHERE LOWER(nombre_franquicia) = LOWER(:nombre)");
         $stmt->execute(['nombre' => $nombre]);
         $resultado = $stmt->fetch(PDO::FETCH_ASSOC);
 
