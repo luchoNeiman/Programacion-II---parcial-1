@@ -1,4 +1,4 @@
-<section class="container text-center py-5">
+<section class="container text-center py-5 text-light">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <img src="assets/imgs/validaciones/error-404.webp" alt="Error 404 - Página no encontrada" class="img-fluid w-50 mb-4">
