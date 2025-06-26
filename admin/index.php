@@ -138,7 +138,7 @@ if (isset($_SESSION['feedback_error'])) {
     <?php endif; ?>
 
     <?php if (isset($feedbackError)): ?>
-        <div class="msg-error mt-5 container-fluid  mx-5" id="msg-error">
+        <div class="msg-error mt-5  mx-5" id="msg-error">
             <span><?= $feedbackError; ?></span>
             <button class="close-btn" onclick="this.parentElement.style.display='none';">✖</button>
         </div>

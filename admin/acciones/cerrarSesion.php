@@ -1,6 +1,6 @@
 <?php
-require_once __DIR__ . '/../../bootstrap/autoload.php';
-session_start();
+require_once __DIR__ . '/../../bootstrap/init.php';
+
 
 // Cerramos la sesión.
 (new Autenticacion)->cerrarSesion();
