@@ -1,5 +1,4 @@
 <?php
-//require_once __DIR__ . '/DBConexion.php';
 
 class Usuario
 {
@@ -12,6 +11,12 @@ class Usuario
     private ?string $avatar = null;
 
 
+    /**
+     * Busca un usuario por su dirección de email en la base de datos
+     *
+     * @param string $email El email del usuario a buscar
+     * @return Usuario|null El usuario encontrado o null si no existe
+     */
     public function porEmail(string $email): ?self
     {
         $db = (new DBConexion)->getConexion();
@@ -27,17 +32,12 @@ class Usuario
         return $usuario;
     }
 
-
-    public function getUsuarioId(): int
-    {
-        return $this->usuario_id;
-    }
-
-    public function setUsuarioId(int $usuario_id): void
-    {
-        $this->usuario_id = $usuario_id;
-    }
-
+    /**
+     * Busca un usuario por su ID en la base de datos
+     *
+     * @param int $id El ID del usuario a buscar
+     * @return Usuario|null El usuario encontrado o null si no existe
+     */
     public function porId(int $id): ?self
     {
         $db = (new DBConexion)->getConexion();
@@ -49,6 +49,17 @@ class Usuario
 
         return $usuario ?: null;
     }
+
+    public function getUsuarioId(): int
+    {
+        return $this->usuario_id;
+    }
+
+    public function setUsuarioId(int $usuario_id): void
+    {
+        $this->usuario_id = $usuario_id;
+    }
+
 
     public function getRolFk(): int
     {
@@ -65,7 +76,7 @@ class Usuario
         return $this->email;
     }
 
-    public function setFechaIngreso(string $email): void
+    public function setEmail(string $email): void
     {
         $this->email = $email;
     }
@@ -80,7 +91,7 @@ class Usuario
         $this->password = $password;
     }
 
-    public function getNombre(): string
+    public function getNombre(): ?string
     {
         return $this->nombre;
     }
@@ -90,7 +101,7 @@ class Usuario
         $this->nombre = $nombre;
     }
 
-    public function getApellido(): string
+    public function getApellido(): ?string
     {
         return $this->apellido;
     }
