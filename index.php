@@ -1,22 +1,22 @@
 <?php
 require_once __DIR__ . '/bootstrap/autoload.php';
 $rutas = [
-    'home' => [
+    'home'               => [
         'titulo' => 'Página principal',
     ],
-    'productos' => [
+    'productos'         => [
         'titulo' => 'Productos',
     ],
-    'detalle-producto' => [
+    'detalle-producto'  => [
         'titulo' => 'Detalle Producto',
     ],
-    'contacto' => [
+    'contacto'          => [
         'titulo' => 'Contacto',
     ],
-    'procesar-form' => [
+    'procesar-form'     => [
         'titulo' => 'Procesar Formulario',
     ],
-    '404' => [
+    '404'               => [
         'titulo' => 'Página no encontrada',
     ],
 ];
@@ -25,7 +25,6 @@ $seccion = $_GET['seccion'] ?? 'home';
 if (!isset($rutas[$seccion])) {
     $seccion = '404';
 }
-
 $rutaConfig = $rutas[$seccion];
 ?>
 <!DOCTYPE html>
@@ -40,7 +39,6 @@ $rutaConfig = $rutas[$seccion];
     <link href="assets/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/estilos.css">
     <script defer src="assets/js/bootstrap.bundle.min.js"></script>
-
 </head>
 
 <body>
@@ -55,7 +53,6 @@ $rutaConfig = $rutas[$seccion];
                     aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <i class="bi bi-xl bi-list text-white"></i>
             </button>
-            <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
 
             <div class="collapse navbar-collapse text-white" id="navbarNavAltMarkup">
                 <div class="navbar-nav ms-auto">
@@ -65,12 +62,12 @@ $rutaConfig = $rutas[$seccion];
                     <a class="nav-link text-white fs-5" href="index.php?seccion=productos">
                         <i class="bi bi-box-seam me-1"></i> Productos
                     </a>
+                    <!-- Para facil acceso al panel(aca va a ocupar el lugar de iniciar sesion/resgistrarse)-->
                     <a class="nav-link text-white fs-5" href="admin/index.php?seccion=dashboard">
                         <i class="bi bi-lock-fill me-1"></i> Panel Admin
                     </a>
                 </div>
             </div>
-
         </div>
     </nav>
 </header>
@@ -86,8 +83,5 @@ $rutaConfig = $rutas[$seccion];
         <p class="mb-0">Profesor: Santiago Gallino - Materia: Programación 2</p>
     </div>
 </footer>
-
-
 </body>
-
 </html>

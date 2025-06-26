@@ -1,8 +1,6 @@
 <?php
-require_once __DIR__ . '/../bootstrap/autoload.php';
+require_once __DIR__ . '/../bootstrap/init.php';
 
-// Iniciamos la sesión para el admin.
-session_start();
 $rutas = [
     'home' => [
         'titulo' => 'Ingresar',
@@ -28,7 +26,7 @@ $rutas = [
         'requiereAutenticacion' => true,
     ],
     'confirmarBajaProducto' => [
-        'titulo' => 'Se requiere cumplir con las confirmaciones para eliminar la noticia.',
+        'titulo' => 'Confirmacion de baja de producto',
         'requiereAutenticacion' => true,
     ],
     '404' => [
@@ -43,14 +41,11 @@ if (!isset($rutas[$seccion])) {
 
 $rutaConfig = $rutas[$seccion];
 
-// Instaciamos la clase de autenticación.
 $autenticacion = new Autenticacion;
 
-// Preguntamos si la ruta requiere autenticación. De así requerirlo, verificamos que el usuario esté autenticado.
-// Si no lo está, entonces lo redireccionamos al login.
 $requiereAutenticacion = $rutaConfig['requiereAutenticacion'] ?? false;
 if ($requiereAutenticacion && !$autenticacion->estaAutenticado()) {
-    $_SESSION['feedback_error'] = "Se requiere haber iniciado sesión para ver este contenido.";
+    $_SESSION['feedback_error'] = "❌ Se requiere haber iniciado sesión para ver este contenido.";
     header("Location: index.php");
     exit;
 }
@@ -96,7 +91,7 @@ if (isset($_SESSION['feedback_error'])) {
                 <?php
                 if ($autenticacion->estaAutenticado()):
                     ?>
-                    <?php $usuario = $autenticacion->getUsuario(); ?>
+                    <?php $usuario = $autenticacion->getUsuarioLogin(); ?>
 
                     <div class="navbar-nav ms-auto">
                         <a class="nav-link active text-white fs-5" href="index.php?seccion=dashboard">
@@ -163,7 +158,7 @@ if (isset($_SESSION['feedback_error'])) {
 
 
 <script>
-    // Espera 5 segundos y oculta mensajes si existen
+    // Espera 5 segundos y oculta las notificaciones de los mensajes si existen
     setTimeout(() => {
         const successMsg = document.getElementById('msg-success');
         const errorMsg = document.getElementById('msg-error');
