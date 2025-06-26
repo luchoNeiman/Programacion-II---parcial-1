@@ -9,25 +9,27 @@ class Producto
     private string $titulo = "";
     private string $descripcion = "";
     private float $precio = 0.0;
-    private ?string $imagen = "";
-    private ?string $imagen_descripcion = "";
+    private ?string $imagen = null;
+    private ?string $imagen_descripcion = null;
     private string $nombre_franquicia = "";
     private string $categorias = "";
     private string $caracteristicas = "";
 
-    /* public function cargarDatosArray(array $data): void
-     {
-         $this->producto_id = $data['producto_id'];
-         $this->franquicia_fk = $data['franquicia_fk'];
-         $this->titulo = $data['titulo'];
-         $this->descripcion = $data['descripcion'];
-         $this->precio = $data['precio'];
-         $this->imagen = $data['imagen'];
-         $this->imagen_descripcion = $data['imagen_descripcion'];
-         $this->nombre_franquicia = $data['nombre_franquicia'];
-         $this->categorias = $data['categorias'];
-         $this->caracteristicas = $data['caracteristicas'];
-     }*/
+
+//    public function cargarDatosArray(array $data): void
+//    {
+//        $this->producto_id = $data['producto_id'];
+//        $this->franquicia_fk = $data['franquicia_fk'];
+//        $this->titulo = $data['titulo'];
+//        $this->descripcion = $data['descripcion'];
+//        $this->precio = $data['precio'];
+//        $this->imagen = $data['imagen'];
+//        $this->imagen_descripcion = $data['imagen_descripcion'];
+//        $this->nombre_franquicia = $data['nombre_franquicia'];
+//        $this->categorias = $data['categorias'];
+//        $this->caracteristicas = $data['caracteristicas'];
+//    }
+
     /**
      * Busca y devuelve todos los productos de la base de datos.
      *
@@ -251,15 +253,15 @@ class Producto
                     WHERE producto_id = :producto_id";
         $stmt = $db->prepare($consulta);
         $stmt->execute([
-            'usuario_fk'            => $data['usuario_fk'],
-            'titulo'                => $data['titulo'],
-            'franquicia_fk'         => $data['franquicia_fk'],
-            'descripcion'           => $data['descripcion'],
-            'precio'                => $data['precio'],
-            'imagen'                => $data['imagen'],
-            'imagen_descripcion'    => $data['imagen_descripcion'],
-            'caracteristicas'       => $data['caracteristicas'],
-            'producto_id'           => $id,
+            'usuario_fk' => $data['usuario_fk'],
+            'titulo' => $data['titulo'],
+            'franquicia_fk' => $data['franquicia_fk'],
+            'descripcion' => $data['descripcion'],
+            'precio' => $data['precio'],
+            'imagen' => $data['imagen'],
+            'imagen_descripcion' => $data['imagen_descripcion'],
+            'caracteristicas' => $data['caracteristicas'],
+            'producto_id' => $id,
         ]);
     }
 
@@ -293,14 +295,6 @@ class Producto
      * @return array Devuelve un array con los IDs de las categorias del producto
      *
      */
-    public function getCategoriasIds(): array
-    {
-        $db = (new DBConexion)->getConexion();
-        $stmt = $db->prepare("SELECT categoria_fk FROM productos_tienen_categorias WHERE producto_fk = ?");
-        $stmt->execute([$this->producto_id]);
-        return $stmt->fetchAll(PDO::FETCH_COLUMN);
-    }
-
 
     public function getProductoId(): int
     {
