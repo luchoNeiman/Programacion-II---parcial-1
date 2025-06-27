@@ -44,24 +44,23 @@ $producto = (new Producto())->porId($producto_id);
             <div class="card-footer">
                 <div class="row">
                     <div class="col-12 d-flex justify-content-end flex-wrap gap-2 ">
+                        <a href="index.php?seccion=confirmarBajaProducto&id=<?= $producto->getProductoId(); ?>"
+                           class="btn btn-danger">
+                            <i class="bi bi-trash3-fill me-1"></i> Eliminar
+                        </a>
                         <a href="index.php?seccion=edicionProducto&id=<?= $producto->getProductoId(); ?>"
                            class="btn btn-dark"
                            title="Editar">
                             <i class="bi bi-pencil-square me-1"></i> Editar
                         </a>
 
-                        <a href="index.php?seccion=confirmarBajaProducto&id=<?= $producto->getProductoId(); ?>"
-                           class="btn btn-danger"
-                           onclick="return confirm('¿Eliminar este producto?')" title="Eliminar">
-                            <i class="bi bi-trash3-fill me-1"></i> Eliminar
-                        </a>
                     </div>
                 </div>
             </div>
         </div>
         <div class="row mb-5 ">
             <div class="col-12 d-flex justify-content-end flex-wrap gap-2 ">
-                <a href="index.php?seccion=productos" class="btn btn-dark">
+                <a href="index.php?seccion=productos" class="btn btn-dark border-light">
                     <i class="bi bi-arrow-left me-1"></i> Volver al listado
                 </a>
             </div>
