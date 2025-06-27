@@ -34,20 +34,20 @@
                      class="img-fluid w-100">
             </div>
             <div class="col-md-6 col-lg-4 ">
-                <div class="card text-center border-5">
+                <div class="card text-center border-3">
                     <div class="card-body bg-morado">
                         <img class="w-75 img-fluid" src="assets/imgs/Banners/banner-descuento.webp"
                              alt="Descuento especial 35% off">
                     </div>
                     <div class="card-text justify-content-center bg-morado">
                         <h2 class="mb-4 text-center text-white">¡Promo Especial!</h2>
-                        <p class="fs-4 text-center px-2 mb-4 text-white">No te pierdas esta increíble oportunidad.
+                        <p class="fs-5 text-center px-2 mb-4 text-white">No te pierdas esta increíble oportunidad.
                             <strong
                                     class="text-white">¡Obtené un cupón del
                                 35% de descuento!</strong></p>
                     </div>
                     <div class="bg-morado pt-3 pb-5">
-                        <a href="index.php?seccion=contacto" class="btn btn-light mb-3 fw-bold">¡Obtené tu cúpon!</a>
+                        <a href="index.php?seccion=contacto" class="btn btn-light mb-3 fw-bold fs-5">¡Obtené tu cúpon!</a>
                     </div>
 
                 </div>
@@ -66,25 +66,28 @@
             <div class="col-md-12">
                 <h2 class="mb-4 text-center text-white"> Imperdibles del mes</h2>
                 <div class="row g-4">
-                    <?php
-                    $productosDestacados = (new Producto)->obtenerUltimosDelMes();
-                    foreach ($productosDestacados as $producto): ?>
-                        <div class="col-12 col-sm-6 col-md-6 col-lg-3">
-                            <article class="card h-100 shadow">
-                                <img src="assets/imgs/productos/<?= $producto->getImagen() ?? 'default.png'; ?>"
-                                     class="card-img-top img-fluid"
-                                     alt="<?= htmlspecialchars($producto->getImagenDescripcion()); ?>">
-                                <div class="card-body d-flex flex-column">
-                                    <h3 class="card-title fs-5"><?= htmlspecialchars($producto->getTitulo()); ?></h3>
-                                    <p class="card-text fw-bold text-primary mt-auto"><strong
-                                                class="text-black">$<?= number_format($producto->getPrecio(), 2, ',', '.'); ?></strong>
-                                    </p>
-                                    <a href="index.php?seccion=detalle-producto&id=<?= $producto->getProductoId(); ?>"
-                                       class="btn btn-outline-dark mt-2 w-100">Ver más</a>
-                                </div>
-                            </article>
-                        </div>
-                    <?php endforeach; ?>
+                  <?php
+                  $productosDestacados = (new Producto)->obtenerUltimosDelMes();
+                  foreach ($productosDestacados as $producto): ?>
+                      <div class="col-12 col-sm-6 col-md-6 col-lg-3">
+                          <a href="index.php?seccion=detalle-producto&id=<?= $producto->getProductoId(); ?>"
+                             class="btn p-0 w-100 h-100 tarjeta">
+                              <article class="card h-100 shadow">
+                                  <img src="assets/imgs/productos/<?= $producto->getImagen() ?? 'default.png'; ?>"
+                                       class="card-img-top img-fluid"
+                                       alt="<?= htmlspecialchars($producto->getImagenDescripcion()); ?>">
+                                  <div class="card-header bg-dark">
+                                      <h2 class="text-white fs-5 rounded-2 m-0"><?= htmlspecialchars($producto->getTitulo()); ?></h2>
+                                  </div>
+                                  <div class="card-footer mt-auto">
+                                      <p class="fs-4 mb-0">
+                                          <strong class="text-black">$<?= number_format($producto->getPrecio(), 2, ',', '.'); ?></strong>
+                                      </p>
+                                  </div>
+                              </article>
+                          </a>
+                      </div>
+                  <?php endforeach; ?>
                 </div>
             </div>
         </div>

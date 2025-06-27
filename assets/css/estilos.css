@@ -61,7 +61,7 @@ body {
 
 .card-img-top {
     height: 300px;
-    object-fit: cover;
+    object-fit:contain;
     object-position: top center;
     /* 👈 centra mejor al personaje */
     border-top-left-radius: 8px;
@@ -78,10 +78,6 @@ body {
 .card,
 .img-hover {
     transition: all 0.3s ease;
-}
-
-.contacto-section {
-    background-color: var(--color-primary);
 }
 
 .texto-color option,
@@ -226,16 +222,10 @@ input[type="file"]::file-selector-button {
 }
 
 
-
-
-
-
-
-
-
-
-
-
+.tarjeta {
+    background: none;
+    border: none;
+}
 
 
 .baja-main {
@@ -342,4 +332,9 @@ input[type="file"]::file-selector-button {
 
 .baja-btn-cancelar:hover {
     background: #cbd5e1;
+}
+
+.mi-tabla-violeta tbody tr:hover {
+    background-color: #d8b4fe !important;
+    color: #222 !important;
 }
