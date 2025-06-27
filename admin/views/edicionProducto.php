@@ -1,9 +1,13 @@
 <section class="container mt-5 mb-5">
   <?php
-  $categorias = (new Categoria)->todasCategorias();
-
-  $franquicias = (new Franquicia)->todasFranquicias();
   $producto = (new Producto)->porId($_GET['id']);
+  //variables para los select
+  $categorias = (new Categoria)->todasCategorias();
+  $franquicias = (new Franquicia)->todasFranquicias();
+
+
+  //se usa para traer los datos de la tabla pivot de categorias en un array para mostrar
+  //las categorias seleccionadas del select
   $categoriasSeleccionadas = (new Categoria)->getCategoriasProductosIds($_GET['id']);
 
 
@@ -156,7 +160,9 @@
                                 aria-invalid="true"
                                 aria-errormessage="error-franquicias"
                             <?php endif; ?>>
-                                <option value="">Seleccione franquicia</option>
+                                <option value=" <?= empty($dataVieja['franquicia_fk']) ? 'selected' : '' ?>">Nueva
+                                    franquicia
+                                </option>
                               <?php foreach ($franquicias as $franquicia): ?>
                                   <option value="<?= $franquicia['franquicia_id'] ?>"
                                     <?= (
@@ -169,12 +175,17 @@
                             </select>
                         </div>
                     </div>
+                    <!--A futuro habilitar este campó cuando selecciona nueva franquicia(hacerlo con js)-->
+                    <!--por ahora solo valido q selecciono nueva franquicia en el select-->
                     <div class="col-md-6">
                         <label for="nueva_franquicia" class="form-label text-violeta  ">Nueva
                             franquicia</label>
                         <input id="nueva_franquicia" type="text" name="nueva_franquicia" class="form-control"
                                placeholder="Ingresá una nueva franquicia si no figura en la lista"
                                value="<?= $dataVieja['nueva_franquicia'] ?? null; ?>">
+                        <small class="text-muted">
+                            *Solo completá este campo si seleccionaste "Nueva franquicia".
+                        </small>
                       <?php if (isset($errores['franquicia'])): ?>
                           <div class="msg-error mt-1" id="error-franquicia">
                               <i class="bi bi-exclamation-circle-fill text-danger"></i>

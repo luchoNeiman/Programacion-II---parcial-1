@@ -100,9 +100,10 @@ if (isset($_SESSION['data_vieja'])) {
                               aria-invalid="true"
                               aria-errormessage="error-categorias"
                           <?php endif; ?>>
-                            <option value="" <?= empty($dataVieja['categoria_id']) ? 'selected' : '' ?>>Nueva
-                                Categoria
-                            </option>
+
+                            <!--<option value="" -->
+                          <?php //= empty($dataVieja['categoria_id']) ? 'selected' : '' ?><!-- >Nueva Categoria-->
+                            <!--</option>-->
 
                             <!-- Por cada categoría en el array $categorias... -->
                             <!-- Se establece el valor de la opción como el ID de la categoría -->
@@ -128,6 +129,7 @@ if (isset($_SESSION['data_vieja'])) {
                         <input id="nueva_categoria" type="text" name="nueva_categoria" class="form-control"
                                placeholder="Ingresá una nueva categoría si no figura en la lista"
                                value="<?= $dataVieja['nueva_categoria'] ?? null; ?>">
+
                       <?php if (isset($errores['categorias'])): ?>
                           <!--Aca se muestran los erroes de las categorias obligando a q cree una nueva categoria o seleccione una-->
                           <div class="msg-error" id="error-categorias">
@@ -176,6 +178,9 @@ if (isset($_SESSION['data_vieja'])) {
                         <input id="nueva_franquicia" type="text" name="nueva_franquicia" class="form-control"
                                placeholder="Ingresá una nueva franquicia si no figura en la lista"
                                value="<?= $dataVieja['nueva_franquicia'] ?? null; ?>">
+                        <small class="text-muted">
+                            *Solo completá este campo si seleccionaste "Nueva franquicia".
+                        </small>
                       <?php if (isset($errores['franquicia'])): ?>
 
                           <!--Muestra si hay error en la franquicia-->
@@ -196,12 +201,11 @@ if (isset($_SESSION['data_vieja'])) {
                     <div class="col-12 col-md-6 mb-3">
                         <label for="imagen" class="form-label text-violeta  ">Seleccione una imagen</label>
                         <input type="file" name="imagen" id="imagen" class="form-control"
-                               accept="image/*" <?php if (isset($errores['imagen'])): ?>
-                            aria-invalid="true"
-                            aria-errormessage="error-imagen"
-                            value="<?= $dataVieja['imagen'] ?? null; ?>"
-                        <?php endif; ?>
-                          <?= $dataVieja['imagen'] ?? null; ?>>
+                               accept="image/*"
+                          <?php if (isset($errores['imagen'])): ?>
+                              aria-invalid="true"
+                              aria-errormessage="error-imagen"
+                          <?php endif; ?> >
                       <?php if (isset($errores['imagen'])): ?>
                           <div class="msg-error" id="error-imagen">
                               <i class="bi bi-exclamation-circle-fill text-danger me-3"> </i>
@@ -236,22 +240,3 @@ if (isset($_SESSION['data_vieja'])) {
 
     </form>
 </section>
-
-<script>
-    // Espera 10 segundos y oculta errores + íconos
-    setTimeout(() => {
-        document.querySelectorAll('.msg-error').forEach(el => {
-            el.style.transition = 'opacity 0.5s ease';
-            el.style.opacity = 0;
-            setTimeout(() => el.remove(), 500);
-        });
-
-        document.querySelectorAll('.bi-exclamation-circle-fill').forEach(icon => {
-            icon.style.transition = 'opacity 0.5s ease';
-            icon.style.opacity = 0;
-            setTimeout(() => icon.remove(), 250);
-        });
-    }, 10000); // 10 segundos
-</script>
-
-
