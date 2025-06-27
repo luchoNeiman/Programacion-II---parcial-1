@@ -1,7 +1,6 @@
 <?php
-require_once __DIR__ . '/../../bootstrap/autoload.php';
+require_once __DIR__ . '/../../bootstrap/init.php';
 
-session_start();
 
 $autenticacion = new Autenticacion;
 if(!$autenticacion->estaAutenticado()) {
@@ -16,6 +15,14 @@ $producto = (new Producto)->porId($id);
 
 try {
     (new Producto)->eliminar($id);
+    $imagenPath = __DIR__ . '/../../imgs/' . $producto->getImagen();
+
+  if($producto->getImagen() !== null && file_exists(imagesPath($producto->getImagen()))) {
+
+    unlink(imagesPath($producto->getImagen()));
+  }
+
+
     $_SESSION['feedback_exito'] = "✅ El producto <b>" . htmlspecialchars($producto->getTitulo()) . "</b> se eliminó con éxito.";
 } catch (\Throwable $th) {
     // throw $th;

@@ -8,7 +8,7 @@ $producto = (new Producto)->porId($_GET['id']);
 
     <article class="baja-article">
         <figure>
-            <img class="baja-img" src="../assets/imgs/productos/<?= $producto->getImagen(); ?>" alt="<?= htmlspecialchars($producto->getImagenDescripcion()); ?>">
+            <img class="baja-img" src="../assets/imgs/productos/<?= $producto->getImagen() ?? 'default.png'; ?>" alt="<?= htmlspecialchars($producto->getImagenDescripcion()); ?>">
         </figure>
 
         <div class="baja-details">
@@ -20,9 +20,9 @@ $producto = (new Producto)->porId($_GET['id']);
 
     <hr class="mb-1">
 
-    <form action="../admin/acciones/eliminarProducto.php?id=<?= $producto->getProductoId(); ?>" method="post" class="baja-form">
+    <form action="acciones/eliminarProducto.php?id=<?= $producto->getProductoId(); ?>" method="post" class="baja-form">
         <input type="hidden" name="producto_id" value="<?= $producto->getProductoId() ?>">
-        <a href="../index.php?seccion=productos" class="baja-btn-cancelar">Cancelar</a>
+        <a href="index.php?seccion=productos" class="baja-btn-cancelar">Cancelar</a>
         <button type="submit" name="confirmar" class="baja-btn-confirmar">Sí, eliminar</button>
     </form>
 </section>
