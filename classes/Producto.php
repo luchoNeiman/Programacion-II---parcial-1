@@ -57,7 +57,8 @@ class Producto
                     JOIN franquicias f ON p.franquicia_fk = f.franquicia_id
                     JOIN productos_tienen_categorias ptc ON p.producto_id = ptc.producto_fk
                     JOIN categorias c ON ptc.categoria_fk = c.categoria_id
-                    GROUP BY p.producto_id;";
+                    GROUP BY p.producto_id
+                    ORDER BY p.fecha_ingreso DESC;";
         $stmt = $db->prepare($consulta);
         $stmt->execute();
         $stmt->setFetchMode(PDO::FETCH_CLASS, self::class);
