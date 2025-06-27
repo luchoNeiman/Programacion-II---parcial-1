@@ -156,7 +156,7 @@
                                     class="colorRequiaried">*</span></label>
                         <div class="position-relative">
                             <select name="franquicia_fk" id="franquicia_fk" size="4"
-                                    class="form-select" <?php if (isset($errores['franquicias'])): ?>
+                                    class="form-select mb-2" <?php if (isset($errores['franquicias'])): ?>
                                 aria-invalid="true"
                                 aria-errormessage="error-franquicias"
                             <?php endif; ?>>
@@ -226,21 +226,21 @@
                                     la
                                     imagen</label>
                                 <input type="text" name="imagen_descripcion" id="imagen_descripcion"
-                                       class="form-control"
+                                       class="form-control mb-2"
                                        placeholder="Escribe una breve descripción"
                                        value="<?= $dataVieja['imagen_descripcion'] ?? null ?? $producto->getImagenDescripcion(); ?>">
                             </div>
                         </div>
                     </div>
                     <div class="col-12 col-md-6">
-                        <p class="m-1 text-violeta">Imagen actual</p>
+                        <p class="m-1 text-violeta">Imagen actual: <small class="text-dark fw-light"><?= htmlspecialchars($producto->getImagenDescripcion()); ?></small></p>
                       <?php if ($producto->getImagen() !== null): ?>
                           <img src="../assets/imgs/productos/<?= $dataVieja['imagen'] ?? null ?? htmlspecialchars($producto->getImagen()); ?>"
-                               alt="Imagen actual"
+                               alt="<?= htmlspecialchars($producto->getImagenDescripcion()); ?>"
                                class="imagen-producto img-fluid rounded border w-25">
                       <?php else: ?>
                           <img src="../assets/imgs/productos/default.png"
-                               alt="Imagen actual"
+                               alt="Imagen por defecto"
                                class="imagen-producto img-fluid rounded border w-25">
                       <?php endif; ?>
                     </div>
