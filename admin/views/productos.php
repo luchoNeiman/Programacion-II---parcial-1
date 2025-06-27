@@ -3,7 +3,7 @@ $productos = (new Producto)->todosProductos();
 ?>
 <!--Idea a furuto poner un filtro collapsible para buscar por categoria o por franquicia y poner un paginador-->
 <section class="container-fluid mt-5">
-    <div class="mx-5 mb-4 pt-5 d-flex flex-wrap align-items-center justify-content-between">
+    <div class="mx-5 mb-4  d-flex flex-wrap align-items-center justify-content-between">
         <h1 class="text-white m-0 d-flex align-items-center mb-1">
             <i class="bi bi-box-seam-fill me-2"></i> Administración de productos
         </h1>
