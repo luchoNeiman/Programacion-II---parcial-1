@@ -72,9 +72,9 @@ $productos = (new Producto)->todosProductos();
     <!-- Cards para móviles -->
     <div class="d-block d-md-none mx-3 mt-4">
         <?php foreach ($productos as $producto): ?>
-            <div class="card mb-4 shadow-sm p-2">
+            <div class="card mb-4 shadow-sm ">
+                    <h5 class="card-header fw-bold bg-dark text-white"><?= htmlspecialchars($producto->getTitulo()); ?></h5>
                 <div class="card-body">
-                    <h5 class="card-title fw-bold"><?= htmlspecialchars($producto->getTitulo()); ?></h5>
                     <p><strong class="text-violeta">Fecha de Ingreso:</strong> <?= $producto->getFechaIngreso(); ?></p>
                     <p><strong class="text-violeta">Precio:</strong>
                         $<?= number_format($producto->getPrecio(), 0, ',', '.'); ?></p>
@@ -86,8 +86,8 @@ $productos = (new Producto)->todosProductos();
                     </p>
 
                     <img src="../assets/imgs/productos/<?= $producto->getImagen() ?? 'default.png'; ?>"
-                         alt="Imagen del producto"
-                         class="img-fluid mt-2">
+                         alt="<?= htmlspecialchars($producto->getImagenDescripcion()); ?>"
+                         class="img-fluid w-75 mt-2">
 
                     <div class="mt-3 row gx-2">
                         <div class="col-12 col-sm-4 mb-2">
