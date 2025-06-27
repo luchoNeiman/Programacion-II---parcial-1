@@ -9,7 +9,7 @@ $producto = (new Producto())->porId($producto_id);
     </h1>
     <div class="px-3">
         <div class="card mb-4 shadow-sm">
-            <h3 class="card-header rounded-top-1 bg-dark text-white"><?= htmlspecialchars($producto->getTitulo()); ?></h3>
+            <h2 class="card-header rounded-top-1 bg-dark text-white fs-3"><?= htmlspecialchars($producto->getTitulo()); ?></h2>
             <div class="card-body">
                 <div class="row">
                     <div class="col-md-8">
