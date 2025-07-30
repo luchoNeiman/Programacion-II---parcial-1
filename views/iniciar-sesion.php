@@ -19,8 +19,8 @@
                         <i class="bi bi-box-arrow-in-right me-1"></i> Ingresar
                     </button>
                 </div>
-                <small>
-                    ¿No tienes cuenta? <a href="index.php?seccion=registrarse"><strong>Regístrate</strong></a>  
+                <small class="mt-1">
+                    ¿No tienes cuenta? <a class="text-decoration-none " href="index.php?seccion=registrarse"><strong class="text-violeta">Regístrate</strong></a>  
                     <!-- para cuando cree el registro cambiar el href del a -->
                 </small>
             </form>
