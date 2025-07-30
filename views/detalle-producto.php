@@ -75,7 +75,7 @@ $producto = (new Producto)->porId($id);
     <div class="row">
 
         <div class="col-md-12">
-            <h2 class="mb-4 text-white"> Productos Similares </h2>
+            <h2 class="mb-4 text-white"> Más productos de <?= htmlspecialchars($producto->getCategoria()) ?></h2>
             <div class="row g-4">
               <?php
               // variable para poder filtrar por tipo de categoria

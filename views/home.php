@@ -49,7 +49,6 @@
                     <div class="bg-morado pt-3 pb-5">
                         <a href="index.php?seccion=contacto" class="btn btn-light mb-3 fw-bold fs-5">¡Obtené tu cúpon!</a>
                     </div>
-
                 </div>
             </div>
             <div class="col-md-3 col-lg-4 d-none d-md-flex justify-content-center align-items-center">
@@ -77,7 +76,7 @@
                                        class="card-img-top img-fluid"
                                        alt="<?= htmlspecialchars($producto->getImagenDescripcion()); ?>">
                                   <div class="card-header bg-dark">
-                                      <h2 class="text-white fs-5 rounded-2 m-0"><?= htmlspecialchars($producto->getTitulo()); ?></h2>
+                                      <h3 class="text-white fs-5 rounded-2 m-0"><?= htmlspecialchars($producto->getTitulo()); ?></h3>
                                   </div>
                                   <div class="card-footer mt-auto">
                                       <p class="fs-4 mb-0">

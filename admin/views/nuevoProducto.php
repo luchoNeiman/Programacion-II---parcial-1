@@ -195,7 +195,7 @@ if (isset($_SESSION['data_vieja'])) {
         </div>
         <!--Imagenes del producto-->
         <div class="card shadow mt-5 ">
-            <h2 class="card-header rounded-top-1 bg-dark text-white fs-3">Imagenes</h2>
+            <h2 class="card-header rounded-top-1 bg-dark text-white fs-3">Imágenes</h2>
             <div class="card-body py-4">
                 <div class="row">
                     <div class="col-12 col-md-6 mb-3">
