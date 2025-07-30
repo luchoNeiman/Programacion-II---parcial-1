@@ -10,6 +10,26 @@ class Usuario
     private ?string $apellido = null;
     private ?string $avatar = null;
 
+    public const ROL_ADMIN = 1;
+    public const ROL_USUARIO = 2;
+
+    // public function __construct(?array $data = null)
+    // {
+    //     if($data) {
+    //         $this->cargarDatosDeArray($data);
+    //     }
+    // }
+
+    // public function cargarDatosDeArray(array $data) 
+    // {
+    //     $this->setUsuarioId($data['estado_publicacion_id'] ?? 0);
+    //     $this->setRolFk($data['rol_fk'] ?? 0);
+    //     $this->setEmail($data['email'] ?? '');
+    //     $this->setPassword($data['password'] ?? '');
+    //     $this->setNombre($data['nombre'] ?? null);
+    //     $this->setApellido($data['apellido'] ?? null);
+    //     $this->setImagen($data['imagen'] ?? null);
+    // }
 
     /**
      * Busca un usuario por su dirección de email en la base de datos
@@ -48,6 +68,19 @@ class Usuario
         $usuario = $stmt->fetch();
 
         return $usuario ?: null;
+    }
+
+    public function crear(array $data): void
+    {
+        $db = DBConexionStatic::getConexion();
+        $consulta = "INSERT INTO usuarios (email, password, rol_fk)
+                    VALUES (:email, :password, :rol_fk)";
+        $stmt = $db->prepare($consulta);
+        $stmt->execute([
+            'email'     => $data['email'],
+            'password'  => $data['password'],
+            'rol_fk'    => $data['rol_fk'],
+        ]);
     }
 
     public function getUsuarioId(): int
