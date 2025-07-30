@@ -8,6 +8,7 @@ $password   = $_POST['password'];
 
 $autenticacion = new Autenticacion;
 
+
 if(!$autenticacion->intentarIngresar($email, $password)) {
     $_SESSION['feedback_error'] = "❌Las credenciales ingresadas no coinciden con nuestros registros.";
     $_SESSION['data_vieja'] = $_POST;
