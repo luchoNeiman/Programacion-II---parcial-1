@@ -1,13 +1,14 @@
+CREATE DATABASE `dw3_garcia_neiman` COLLATE utf8mb4_general_ci;
+USE dw3_garcia_neiman;
+
 -- phpMyAdmin SQL Dump
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 27-06-2025 a las 15:35:33
+-- Tiempo de generación: 30-07-2025 a las 16:57:28
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
-CREATE DATABASE `dw3_garcia_neiman` COLLATE utf8mb4_general_ci;
-USE dw3_garcia_neiman;
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -52,6 +53,29 @@ INSERT INTO `categorias` (`categoria_id`, `nombre_categoria`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `compras`
+--
+
+CREATE TABLE `compras` (
+  `compra_id` int(10) UNSIGNED NOT NULL,
+  `usuario_fk` int(10) UNSIGNED NOT NULL,
+  `fecha` date NOT NULL,
+  `total` decimal(7,2) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `compras_tienen_productos`
+--
+
+CREATE TABLE `compras_tienen_productos` (
+  `compras_tienen_productoscol` varchar(45) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `franquicias`
 --
 
@@ -87,13 +111,13 @@ CREATE TABLE `productos` (
   `producto_id` int(10) UNSIGNED NOT NULL,
   `usuario_fk` int(10) UNSIGNED NOT NULL,
   `franquicia_fk` int(10) UNSIGNED NOT NULL,
-  `fecha_ingreso` date DEFAULT NULL,
-  `titulo` varchar(50) DEFAULT NULL,
-  `descripcion` text DEFAULT NULL,
-  `precio` decimal(7,2) DEFAULT NULL,
+  `fecha_ingreso` date NOT NULL,
+  `titulo` varchar(50) NOT NULL,
+  `descripcion` text NOT NULL,
+  `precio` decimal(7,2) NOT NULL,
   `imagen` text DEFAULT NULL,
   `imagen_descripcion` varchar(50) DEFAULT NULL,
-  `caracteristicas` text DEFAULT NULL
+  `caracteristicas` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -113,14 +137,15 @@ INSERT INTO `productos` (`producto_id`, `usuario_fk`, `franquicia_fk`, `fecha_in
 (10, 1, 9, '2025-05-15', 'Reloj Fullmetal Alchemist', 'Réplica del reloj de bolsillo de Edward Elric.', 14500.00, 'reloj_fullmental.jpg', 'Reloj de bolsillo Fullmetal Alchemist', 'Esta réplica oficial del reloj de Edward Elric está fabricada en aleación metálica con un color plateado envejecido. Tiene grabado el símbolo de los alquimistas estatales, apertura con botón de resorte, incluye una cadena desmontable y es parte de una edición de coleccionista.'),
 (11, 1, 8, '2025-05-15', 'Almohada de Nezuko Kamado', 'Almohada decorativa con diseño de Nezuko Kamado.', 6000.00, 'almohada_nezukoKamado.jpg', 'Almohada de Nezuko Kamado', 'Tiene un tamaño de 40 x 40 cm e incluye funda con cierre y relleno. La estampa muestra a Nezuko con fondo de flores de sakura. Está confeccionada en poliéster suave, es apta para lavarropas y resulta ideal para decorar tu cama o sillón.'),
 (12, 2, 5, '2025-05-15', 'Gorra de Ash Ketchum', 'Gorra oficial con diseño de Ash Ketchum de Pokémon.', 10500.00, 'gorra_ash.jpg', 'Gorra de Ash Ketchum', 'Fabricada en poliéster y red tipo trucker, esta gorra tiene talle único con cierre ajustable. Su diseño es liviano y cómodo, con estilo clásico y logo blanco. Es ideal tanto para cosplay como para uso diario, e inspirada en la gorra original de Ash.'),
-(41, 2, 4, '2025-06-27', 'Figura Eren Jaeger', 'Figura coleccionable de Eren Jaeger, protagonista de Attack on Titan', 24999.00, '20250627143705_eren.png', 'Figura de eren jeager', 'Esta figura coleccionable de Eren Jaeger muestra una pose de batalla inspirada en Attack on Titan y mide aproximadamente 25 cm de altura. Está fabricada en PVC de alta calidad y cuenta con un acabado detallado en el uniforme y el equipo de maniobras. Incluye una base con rocas para exhibición y las espadas son desmontables. La figura ha sido pintada a mano para resaltar cada detalle.'),
+(41, 2, 4, '2025-06-27', 'Figura Eren Jaeger', 'Figura coleccionable de Eren Jaeger, protagonista de Attack on Titan', 24999.00, '20250630043136_fondo-ace.webp', 'Figura de eren jeager', 'Esta figura coleccionable de Eren Jaeger muestra una pose de batalla inspirada en Attack on Titan y mide aproximadamente 25 cm de altura. Está fabricada en PVC de alta calidad y cuenta con un acabado detallado en el uniforme y el equipo de maniobras. Incluye una base con rocas para exhibición y las espadas son desmontables. La figura ha sido pintada a mano para resaltar cada detalle.'),
 (42, 2, 6, '2025-06-27', 'Izuku Midoriya Figura', 'Protagonista de My Hero Academia, en una pose lista para el combate.', 24999.99, '20250627150608_deku.png', 'Figura coleccionable de Izuku Midoriya', 'Esta figura coleccionable de Izuku Midoriya muestra su clásico uniforme de héroe verde y mide aproximadamente 24 cm de altura. Está fabricada en PVC de alta calidad y cuenta con un acabado detallado en su traje y expresiones faciales. Incluye una base con rocas para exhibición y ha sido pintada a mano para resaltar los detalles de su diseño.'),
 (43, 2, 18, '2025-06-27', 'Goku Niño Nube Figura', 'Figura coleccionable de Goku en su versión niño', 25999.99, '20250627150950_goku-kid-nube.png', 'Figura Goku Niño Nube', 'Esta figura coleccionable de Goku niño lo muestra sobre la Nube Voladora y mide aproximadamente 20 cm de altura. Está fabricada en PVC de alta calidad y cuenta con un acabado detallado en el traje, el báculo sagrado y su expresión alegre. Incluye una base para exhibición y ha sido pintada a mano para lograr un aspecto vibrante y lleno de color.'),
 (44, 2, 2, '2025-06-27', 'Chopper Figura One Piece', 'Figura coleccionable de Tony Tony Chopper, el adorable médico de los Sombrero de Paja', 19999.99, '20250627151207_chopper.png', 'Chopper Figura One Piece  Precio:', 'Esta figura coleccionable de Chopper lo muestra con su característico sombrero rosa y mide aproximadamente 15 cm de altura. Está fabricada en PVC de alta calidad y presenta un acabado detallado en sus cuernos, ropa y expresión simpática. Incluye una base para exhibición y ha sido pintada a mano para capturar la esencia del personaje.'),
 (45, 2, 3, '2025-06-27', 'Naruto Rasengan Figura', 'Naruto Uzumaki en su clásica pose con el Rasengan listo para atacar.', 27999.99, '20250627151601_naruto-rasengan.png', 'Figura de Naruto con el Rasengan', 'Esta figura coleccionable de Naruto Uzumaki lo muestra con su traje naranja característico y sosteniendo un Rasengan en la mano. Mide aproximadamente 26 cm de altura y está fabricada en PVC de alta calidad. Incluye una base con diseño de roca para exhibición y presenta un acabado detallado en su ropa, cabello y expresión decidida. Ha sido pintada a mano para resaltar cada detalle épico.'),
 (46, 2, 19, '2025-06-27', 'Ryuk Figura Death Note', 'Figura coleccionable de Ryuk, el shinigami de Death Note', 26999.99, '20250627151729_ryuk.png', 'Figura Ryuk sosteniendo una manzana', 'Esta figura coleccionable de Ryuk lo muestra sosteniendo una manzana y mide aproximadamente 28 cm de altura. Fabricada en PVC de alta calidad, presenta un acabado detallado en su rostro, alas y atuendo oscuro. Incluye una base para exhibición y ha sido pintada a mano para capturar su aura inquietante.'),
 (47, 2, 8, '2025-06-27', 'Tanjiro Danza Fuego', 'Figura coleccionable de Tanjiro Kamado', 28999.99, '20250627151940_tanjiro-danza.png', 'Tanjiro en plena Danza del Dios del Fuego', 'Esta figura coleccionable de Tanjiro lo muestra en plena Danza del Dios del Fuego, rodeado de llamas, y mide aproximadamente 24 cm de altura. Está fabricada en PVC de alta calidad con detalles precisos en su kimono y katana. Incluye base con efecto rocas y ha sido pintada a mano para resaltar la intensidad del ataque.'),
-(48, 2, 1, '2025-06-27', 'Vegeta Figura DBZ', 'Figura coleccionable de Vegeta en su clásica armadura Saiyajin', 26999.99, '20250627152233_vegeta.png', 'Figura de vegeta', 'Esta figura coleccionable de Vegeta lo muestra con su traje Saiyajin y mide aproximadamente 24 cm de altura. Está fabricada en PVC de alta calidad y cuenta con un acabado detallado en el cabello, armadura y expresión desafiante. Incluye base con diseño rocoso para exhibición y ha sido pintada a mano para destacar cada músculo y detalle épico.');
+(48, 2, 1, '2025-06-27', 'Vegeta Figura DBZ', 'Figura coleccionable de Vegeta en su clásica armadura Saiyajin', 26999.99, '20250627152233_vegeta.png', 'Figura de vegeta', 'Esta figura coleccionable de Vegeta lo muestra con su traje Saiyajin y mide aproximadamente 24 cm de altura. Está fabricada en PVC de alta calidad y cuenta con un acabado detallado en el cabello, armadura y expresión desafiante. Incluye base con diseño rocoso para exhibición y ha sido pintada a mano para destacar cada músculo y detalle épico.'),
+(51, 2, 19, '2025-07-30', 'Muñeco de SSJ', '', 3242.00, NULL, '', '');
 
 -- --------------------------------------------------------
 
@@ -159,7 +184,8 @@ INSERT INTO `productos_tienen_categorias` (`producto_fk`, `categoria_fk`) VALUES
 (45, 1),
 (46, 1),
 (47, 1),
-(48, 1);
+(48, 1),
+(51, 1);
 
 -- --------------------------------------------------------
 
@@ -215,6 +241,13 @@ ALTER TABLE `categorias`
   ADD PRIMARY KEY (`categoria_id`);
 
 --
+-- Indices de la tabla `compras`
+--
+ALTER TABLE `compras`
+  ADD PRIMARY KEY (`compra_id`),
+  ADD KEY `fk_compras_usuarios1_idx` (`usuario_fk`);
+
+--
 -- Indices de la tabla `franquicias`
 --
 ALTER TABLE `franquicias`
@@ -260,6 +293,12 @@ ALTER TABLE `categorias`
   MODIFY `categoria_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
+-- AUTO_INCREMENT de la tabla `compras`
+--
+ALTER TABLE `compras`
+  MODIFY `compra_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT de la tabla `franquicias`
 --
 ALTER TABLE `franquicias`
@@ -269,7 +308,7 @@ ALTER TABLE `franquicias`
 -- AUTO_INCREMENT de la tabla `productos`
 --
 ALTER TABLE `productos`
-  MODIFY `producto_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
+  MODIFY `producto_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
 
 --
 -- AUTO_INCREMENT de la tabla `roles`
@@ -286,6 +325,12 @@ ALTER TABLE `usuarios`
 --
 -- Restricciones para tablas volcadas
 --
+
+--
+-- Filtros para la tabla `compras`
+--
+ALTER TABLE `compras`
+  ADD CONSTRAINT `fk_compras_usuarios1` FOREIGN KEY (`usuario_fk`) REFERENCES `usuarios` (`usuario_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Filtros para la tabla `productos`
