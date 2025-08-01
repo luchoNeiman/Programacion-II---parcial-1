@@ -19,6 +19,10 @@ $rutas = [
   'carrito-compras' => [
     'titulo' => 'Carrito de compras',
   ],
+  'checkout' => [
+    'titulo' => 'finalizar compra',
+  ],
+
 
   'registrarse' => [
     'titulo' => 'Crear una cuenta',
@@ -78,6 +82,10 @@ $autenticacion = new Autenticacion;
                     <a class="nav-link text-white fs-5" href="admin/index.php?seccion=dashboard">
                         <i class="bi bi-lock-fill me-1"></i> Panel Admin
                     </a>
+                    <a class="nav-link text-white fs-5" href="index.php?seccion=carrito-compras">
+                        <i class="bi bi-cart me-1"></i>
+                    </a>
+
 
 
                     <div class="nav-item dropdown">
