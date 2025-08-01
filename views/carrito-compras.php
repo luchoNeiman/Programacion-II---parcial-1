@@ -80,14 +80,23 @@
                     </table>
 
                     <!-- Botones -->
-                    <div class="d-flex justify-content-between mt-4 mb-2">
-                        <a href="index.php?seccion=productos" class="btn btn-outline-dark ms-1">
-                            <i class="bi bi-arrow-left me-1"></i>Seguir comprando
+                    <div class="d-flex justify-content-between mt-2 mb-2">
+                        <!-- Botón Vaciar Carrito a la izquierda -->
+                        <a href="#" class="btn btn-danger ms-1">
+                            <i class="bi bi-credit-card me-1"></i>Vaciar Carrito
                         </a>
-                        <a href="index.php?seccion=checkout" class="btn btn-dark me-1">
-                            <i class="bi bi-credit-card me-1"></i>Finalizar compra
-                        </a>
+
+                        <!-- Contenedor para los otros dos botones alineados a la derecha -->
+                        <div class="d-flex">
+                            <a href="index.php?seccion=productos" class="btn btn-outline-dark me-2">
+                                <i class="bi bi-arrow-left me-1"></i>Seguir comprando
+                            </a>
+                            <a href="index.php?seccion=checkout" class="btn btn-dark me-1">
+                                <i class="bi bi-credit-card me-1"></i>Finalizar compra
+                            </a>
+                        </div>
                     </div>
+
                 </div>
             </div>
         </div>
