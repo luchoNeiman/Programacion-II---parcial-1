@@ -6,15 +6,23 @@
             </h1>
             <form action="acciones/crear-cuenta.php" method="POST" class="card shadow p-4 border-0">
                 <div class="mb-3">
-                    <label for="nombre" class="form-label text-violeta">Nombre Completo</label>
-                    <input type="text" class="form-control" id="nombre" name="nombre" required autofocus>
+                    <div class="row">
+                        <div class="col-6">
+                            <label for="nombre" class="form-label text-violeta">Nombre</label>
+                            <input type="text" class="form-control" id="nombre" name="nombre" required autofocus>
+                        </div>
+                        <div class="col-6">
+                            <label for="apellido" class="form-label text-violeta">Apellido</label>
+                            <input type="text" class="form-control" id="apellido" name="apellido" required>
+                        </div>
+                    </div>
                 </div>
                 <div class="mb-3">
                     <label for="email" class="form-label text-violeta">Correo electrónico</label>
                     <input type="email" class="form-control" id="email" name="email" required autofocus>
                 </div>
                 <div class="mb-3">
-                    <label for="email" class="form-label text-violeta">Confirmar Correo electrónico</label>
+                    <label for="emailconfirmed" class="form-label text-violeta">Confirmar Correo electrónico</label>
                     <input type="email" class="form-control" id="emailconfirmed" name="emailconfirmed" required autofocus>
                 </div>
                 <div class="mb-3">
@@ -22,7 +30,7 @@
                     <input type="password" class="form-control" id="password" name="password" required>
                 </div>
                 <div class="mb-3">
-                    <label for="password" class="form-label text-violeta">Confirmar Contraseña</label>
+                    <label for="passwordconfirmed" class="form-label text-violeta">Confirmar Contraseña</label>
                     <input type="password" class="form-control" id="passwordconfirmed" name="passwordconfirmed" required>
                 </div>
                 <div class="d-grid">
@@ -37,5 +45,3 @@
                 </small>
             </form>
         </div>
-    </div>
-</section>
