@@ -1,17 +1,19 @@
-<div class="container-fluid text-white py-5">
-    <h2 class="text-center mb-5"><i class="bi bi-cart-fill me-2"></i>Carrito de Compras</h2>
+<div class="container py-5">
+    <h2 class="text-center text-white mb-5"><i class="bi bi-cart-fill me-2"></i>Carrito de Compras</h2>
 
     <!-- Si el carrito está vacío -->
 
-    <div class="text-center">
-        <i class="bi bi-cart-x display-1 text-muted"></i>
-        <p class="fs-4 mt-3">Tu carrito está vacío.</p>
-        <a href="index.php?seccion=productos" class="btn btn-outline-dark mt-3">
-            <i class="bi bi-arrow-left"></i> Ver productos
-        </a>
+    <div class="container ">
+        <div class="text-center bg-light p-5 rounded shadow-sm">
+            <i class="bi bi-cart-x text-secondary display-1 mb-4"></i>
+            <h3 class="mb-3">Tu carrito está vacío</h3>
+            <p class="fs-5 text-muted">Parece que todavía no agregaste ningún producto.</p>
+            <a href="index.php?seccion=productos" class="btn btn-dark mt-3">
+                <i class="bi bi-arrow-left me-1"></i> Seguir comprando
+            </a>
+        </div>
     </div>
-
-
+    <div class="my-5"  ></div>
     <div class="row justify-content-center">
         <div class="col-md-10">
             <div class="mx-5 mb-5 card shadow-sm d-none d-md-block">
@@ -30,7 +32,7 @@
                         <!-- Producto -->
                         <tr>
                             <td class="align-middle text-center">
-                                <button class="btn btn btn-outline-danger">
+                                <button class="btn btn-sm btn-outline-danger">
                                     <i class="bi bi-x-lg"></i>
                                 </button>
                             </td>
@@ -68,7 +70,7 @@
                         </tr>
 
                         </tbody>
-                        <tfoot>
+                        <tfoot class="table-dark">
                         <tr class="fw-bold">
                             <td colspan="3" class="text-end">Total:</td>
                             <td class="text-end">$6.500</td>
