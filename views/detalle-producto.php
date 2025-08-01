@@ -46,7 +46,7 @@ $producto = (new Producto)->porId($id);
                             <i class="bi bi-arrow-left bi-lg ms-2"></i> Volver a productos
                         </a>
                         <a href="#" class="btn btn-dark flex-fill">
-                            <i class="bi bi-cart bi-lg"></i> Comprar ahora
+                            <i class="bi bi-cart bi-lg"></i> Agregar al carrito
                         </a>
                     </div>
                 </div>
