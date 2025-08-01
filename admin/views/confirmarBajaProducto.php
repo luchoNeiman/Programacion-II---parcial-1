@@ -8,7 +8,8 @@ $producto = (new Producto)->porId($_GET['id']);
 
     <article class="baja-article">
         <figure>
-            <img class="baja-img" src="../assets/imgs/productos/<?= $producto->getImagen() ?? 'default.png'; ?>" alt="<?= htmlspecialchars($producto->getImagenDescripcion()); ?>">
+            <img class="baja-img" src="../assets/imgs/productos/<?= $producto->getImagen() ?? 'default.png'; ?>"
+                 alt="<?= htmlspecialchars($producto->getImagenDescripcion()); ?>">
         </figure>
 
         <div class="baja-details">

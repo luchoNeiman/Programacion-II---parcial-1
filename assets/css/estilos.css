@@ -1,5 +1,7 @@
+/* ======================================
+   🎨 Variables globales de colores
+====================================== */
 :root {
-
     --color-morado-oscuro: #1E032B;
     --color-morado-intenso: #7907AD;
     --color-lila: #9B4DCA;
@@ -7,44 +9,11 @@
     --color-morado-gris: #6B4D7B;
     --color-azul-oscuro: #001E45;
     --color-azul-claro: #0048A3;
-
 }
 
-/* Clases de background */
-.bg-degrade {
-    background: linear-gradient(to bottom, #1E032B, rgba(94, 13, 134, 0.75));
-}
-
-
-.bg-morado {
-    background-color: var(--color-morado-oscuro);
-}
-
-.bg-morado-2 {
-    background-color: var(--color-morado-intenso);
-}
-
-.bg-lila {
-    background-color: var(--color-lila);
-}
-
-.bg-lila-2 {
-    background-color: var(--color-lila-claro);
-}
-
-.bg-morado-3 {
-    background-color: var(--color-morado-gris);
-}
-
-.bg-azul {
-    background: linear-gradient(to bottom, #001E45, rgb(0, 72, 163));
-}
-
-.bg-azul-2 {
-    background-color: var(--color-azul-claro);
-}
-
-
+/* ======================================
+   🧱 Reset general y layout base
+====================================== */
 * {
     margin: 0;
     padding: 0;
@@ -59,36 +28,39 @@ body {
     grid-template-rows: auto 1fr auto;
 }
 
-.card-img-top {
-    height: 300px;
-    object-fit:contain;
-    object-position: top center;
-    /* 👈 centra mejor al personaje */
-    border-top-left-radius: 8px;
-    border-top-right-radius: 8px;
+/* ======================================
+   🌈 Fondos y degradados
+====================================== */
+.bg-degrade {
+    background: linear-gradient(to bottom, #1E032B, rgba(94, 13, 134, 0.75));
 }
 
-.card:hover,
-.img-hover:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
-    transition: all 0.3s ease;
+.bg-azul {
+    background: linear-gradient(to bottom, #001E45, rgb(0, 72, 163));
 }
 
-.card,
-.img-hover {
-    transition: all 0.3s ease;
+.bg-morado {
+    background-color: var(--color-morado-oscuro);
 }
 
-.texto-color option,
-li,
-.texto-color label,
-strong {
-    color: #000000;
+.bg-morado-2 {
+    background-color: var(--color-morado-intenso);
 }
 
-.seccion-productos {
-    background-color: #f5f5f5;
+.bg-morado-3 {
+    background-color: var(--color-morado-gris);
+}
+
+.bg-lila {
+    background-color: var(--color-lila);
+}
+
+.bg-lila-2 {
+    background-color: var(--color-lila-claro);
+}
+
+.bg-azul-2 {
+    background-color: var(--color-azul-claro);
 }
 
 .fondo-promo {
@@ -96,10 +68,65 @@ strong {
     background-size: cover;
 }
 
+/* ======================================
+   🧩 Tarjetas y productos
+====================================== */
+.card-img-top {
+    height: 300px;
+    object-fit: contain;
+    object-position: top center;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+.card,
+.img-hover {
+    transition: all 0.3s ease;
+}
+
+.card:hover,
+.img-hover:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+}
+
+.tarjeta {
+    background: none;
+    border: none;
+}
+
+.seccion-productos,
 .detalle-caracteristicas-producto {
     background-color: #f5f5f5;
 }
 
+.imagen-producto {
+    max-height: 450px;
+    object-fit: cover;
+}
+
+/* ======================================
+   📝 Tipografías y colores de texto
+====================================== */
+.texto-color option,
+li,
+.texto-color label,
+strong {
+    color: #000000;
+}
+
+.text-violeta {
+    color: #4C209D;
+    font-weight: 600;
+}
+
+.colorRequiaried {
+    color: #d23939;
+}
+
+/* ======================================
+   🔘 Botones
+====================================== */
 .btn-azul {
     background-color: transparent;
     color: white;
@@ -115,19 +142,25 @@ strong {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
-.imagen-producto {
-    max-height: 450px;
-    object-fit: cover;
+/* Botón dentro del input file */
+input[type="file"]::file-selector-button {
+    background-color: #ad87ff;
+    color: #292929;
+    transition: background-color 0.3s ease;
 }
 
-.min-th {
-    min-width: 150px;
-}
-
+/* ======================================
+   📩 Formularios y selects
+====================================== */
 input,
 select,
 textarea {
     border: 1px solid rgb(61, 61, 61) !important;
+}
+
+select {
+    border: 1px solid #3d3d3d;
+    padding: 8px;
 }
 
 select option {
@@ -140,55 +173,28 @@ select option:checked {
     padding: 8px;
 }
 
-
 select option:hover {
     background-color: #343a40;
     color: #f8f9fa;
 }
 
-select {
-    border: 1px solid #3d3d3d;
-    padding: 8px;
+/* ======================================
+   📦 Tablas
+====================================== */
+.min-th {
+    min-width: 150px;
 }
 
-.colorRequiaried {
-    color: #d23939;
+.mi-tabla-violeta tbody tr:hover {
+    background-color: #d8b4fe !important;
+    color: #222 !important;
 }
 
-.msg-error {
-    color: #c25c5a;
-    background-color: #f2dede;
-    border: 1px solid #ebccd1;
-    padding: 10px;
-    border-radius: 5px;
-    margin-top: 10px;
-    transition: opacity 0.5s ease;
-}
-
-.text-violeta {
-    color: #4C209D;
-    font-weight: 600;
-}
-
-.navbar-nav .nav-link:hover {
-    background-color: rgba(255, 255, 255, 0.1);
-    transition: all 0.3s ease;
-    border-radius: 5px;
-}
-
-.navbar-brand:hover {
-    transform: scale(1.1);
-    transition: all 0.3s ease;
-}
-
-input[type="file"]::file-selector-button {
-    background-color: #ad87ff;
-    color: #292929;
-    transition: background-color 0.3s ease;
-}
-
-.msg-success,
-.msg-error {
+/* ======================================
+   🚨 Mensajes (errores / éxito)
+====================================== */
+.msg-error,
+.msg-success {
     position: relative;
     display: flex;
     align-items: center;
@@ -220,13 +226,34 @@ input[type="file"]::file-selector-button {
     margin-left: 12px;
 }
 
-
-.tarjeta {
-    background: none;
-    border: none;
+/* Otra variante */
+.msg-error {
+    color: #c25c5a;
+    background-color: #f2dede;
+    border: 1px solid #ebccd1;
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 10px;
+    transition: opacity 0.5s ease;
 }
 
+/* ======================================
+   🔧 Navbar
+====================================== */
+.navbar-nav .nav-link:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+    border-radius: 5px;
+}
 
+.navbar-brand:hover {
+    transform: scale(1.1);
+    transition: all 0.3s ease;
+}
+
+/* ======================================
+   📦 Baja producto - Layout especial
+====================================== */
 .baja-main {
     min-height: 100vh;
     background: #f8fafc;
@@ -331,9 +358,4 @@ input[type="file"]::file-selector-button {
 
 .baja-btn-cancelar:hover {
     background: #cbd5e1;
-}
-
-.mi-tabla-violeta tbody tr:hover {
-    background-color: #d8b4fe !important;
-    color: #222 !important;
 }

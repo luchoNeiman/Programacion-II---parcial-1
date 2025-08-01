@@ -35,9 +35,9 @@ $productos = (new Producto)->todosProductos();
                         <td class="align-middle"><?= htmlspecialchars($producto->getNombreFranquicia()); ?></td>
                         <td class="align-middle"><?= htmlspecialchars($producto->getCategoria()); ?></td>
                         <td class="align-middle"><img
-                            src="../assets/imgs/productos/<?= $producto->getImagen() ?? 'default.png'; ?>"
-                            alt="<?= htmlspecialchars($producto->getImagenDescripcion()); ?>"
-                            width="50" class="img-thumbnail">
+                                    src="../assets/imgs/productos/<?= $producto->getImagen() ?? 'default.png'; ?>"
+                                    alt="<?= htmlspecialchars($producto->getImagenDescripcion()); ?>"
+                                    width="50" class="img-thumbnail">
                         </td>
                         <td class="align-middle text-end">
                             $<?= number_format($producto->getPrecio(), 2, ',', '.'); ?></td>
@@ -71,50 +71,50 @@ $productos = (new Producto)->todosProductos();
 
     <!-- Cards para móviles -->
     <div class="d-block d-md-none mx-3 mt-4">
-        <?php foreach ($productos as $producto): ?>
-            <div class="card mb-4 shadow-sm ">
-                    <h5 class="card-header fw-bold bg-dark text-white"><?= htmlspecialchars($producto->getTitulo()); ?></h5>
-                <div class="card-body">
-                    <p><strong class="text-violeta">Fecha de Ingreso:</strong> <?= $producto->getFechaIngreso(); ?></p>
-                    <p><strong class="text-violeta">Precio:</strong>
-                        $<?= number_format($producto->getPrecio(), 0, ',', '.'); ?></p>
-                    <p>
-                        <strong class="text-violeta">Franquicia:</strong> <?= htmlspecialchars($producto->getNombreFranquicia()); ?>
-                    </p>
-                    <p>
-                        <strong class="text-violeta">Categoria:</strong> <?= htmlspecialchars($producto->getCategoria()); ?>
-                    </p>
+      <?php foreach ($productos as $producto): ?>
+          <div class="card mb-4 shadow-sm ">
+              <h5 class="card-header fw-bold bg-dark text-white"><?= htmlspecialchars($producto->getTitulo()); ?></h5>
+              <div class="card-body">
+                  <p><strong class="text-violeta">Fecha de Ingreso:</strong> <?= $producto->getFechaIngreso(); ?></p>
+                  <p><strong class="text-violeta">Precio:</strong>
+                      $<?= number_format($producto->getPrecio(), 0, ',', '.'); ?></p>
+                  <p>
+                      <strong class="text-violeta">Franquicia:</strong> <?= htmlspecialchars($producto->getNombreFranquicia()); ?>
+                  </p>
+                  <p>
+                      <strong class="text-violeta">Categoria:</strong> <?= htmlspecialchars($producto->getCategoria()); ?>
+                  </p>
 
-                    <img src="../assets/imgs/productos/<?= $producto->getImagen() ?? 'default.png'; ?>"
-                         alt="<?= htmlspecialchars($producto->getImagenDescripcion()); ?>"
-                         class="img-fluid w-75 mt-2">
+                  <img src="../assets/imgs/productos/<?= $producto->getImagen() ?? 'default.png'; ?>"
+                       alt="<?= htmlspecialchars($producto->getImagenDescripcion()); ?>"
+                       class="img-fluid w-75 mt-2">
 
-                    <div class="mt-3 row gx-2">
-                        <div class="col-12 col-sm-4 mb-2">
-                            <a href="index.php?seccion=verProducto&id=<?= $producto->getProductoId(); ?>"
-                               class="btn btn-dark w-100 d-flex justify-content-center align-items-center"
-                               title="Editar">
-                                <i class="bi bi-eye me-2 "></i> Ver
-                            </a>
-                        </div>
-                        <div class="col-12 col-sm-4 mb-2">
-                            <a href="index.php?seccion=edicionProducto&id=<?= $producto->getProductoId(); ?>"
-                               class="btn btn-dark w-100 d-flex justify-content-center align-items-center"
-                               title="Editar">
-                                <i class="bi bi-pencil-square me-2 "></i> Editar
-                            </a>
-                        </div>
-                        <div class="col-12 col-sm-4">
-                            <a href="index.php?seccion=confirmarBajaProducto&id=<?= $producto->getProductoId(); ?>"
-                               class="btn btn-danger w-100 d-flex justify-content-center align-items-center"
+                  <div class="mt-3 row gx-2">
+                      <div class="col-12 col-sm-4 mb-2">
+                          <a href="index.php?seccion=verProducto&id=<?= $producto->getProductoId(); ?>"
+                             class="btn btn-dark w-100 d-flex justify-content-center align-items-center"
+                             title="Editar">
+                              <i class="bi bi-eye me-2 "></i> Ver
+                          </a>
+                      </div>
+                      <div class="col-12 col-sm-4 mb-2">
+                          <a href="index.php?seccion=edicionProducto&id=<?= $producto->getProductoId(); ?>"
+                             class="btn btn-dark w-100 d-flex justify-content-center align-items-center"
+                             title="Editar">
+                              <i class="bi bi-pencil-square me-2 "></i> Editar
+                          </a>
+                      </div>
+                      <div class="col-12 col-sm-4">
+                          <a href="index.php?seccion=confirmarBajaProducto&id=<?= $producto->getProductoId(); ?>"
+                             class="btn btn-danger w-100 d-flex justify-content-center align-items-center"
 
-                               data-bs-toggle="tooltip" data-bs-placement="top" title="Eliminar producto">
-                                <i class="bi bi-trash3-fill me-2"></i> Eliminar
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        <?php endforeach; ?>
+                             data-bs-toggle="tooltip" data-bs-placement="top" title="Eliminar producto">
+                              <i class="bi bi-trash3-fill me-2"></i> Eliminar
+                          </a>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      <?php endforeach; ?>
     </div>
 </section>
