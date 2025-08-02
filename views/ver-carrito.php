@@ -1,3 +1,6 @@
+<?php $carrito = new Carrito();
+$productos = $carrito->getItems();
+?>
 <div class="container py-5">
     <h2 class="text-center text-white mb-5"><i class="bi bi-cart-fill me-2"></i>Carrito de Compras</h2>
 
@@ -29,6 +32,7 @@
                         </tr>
                         </thead>
                         <tbody>
+                        <?php foreach ($carrito->getItems() as $producto): ?>
                         <!-- Producto -->
                         <tr>
                             <td class="align-middle text-center">
@@ -41,48 +45,47 @@
                                     <img src="assets/imgs/productos/20250627151940_tanjiro-danza.png" alt="Producto"
                                          width="60" class="img-fluid rounded me-3">
                                     <div>
-                                        <h6 class="mb-0">Figura de Tanjiro</h6>
+                                        <h6 class="mb-0"><?= htmlspecialchars($producto['titulo']) ?></h6>
                                     </div>
                                 </div>
                             </td>
                             <td class="align-middle text-center">
-                                <form action="acciones/carrito.php" method="post" class="d-inline">
+                                <form action="acciones/carrito-procesar.php" method="post" class="d-inline">
                                     <input type="hidden" name="accion" value="sumar">
-                                    <input type="hidden" name="id" value="1">
+                                    <input type="hidden" name="id" value="<?= $producto['producto_id']; ?>">
                                     <button type="submit" class="btn btn-sm btn-outline-success">
                                         <i class="bi bi-plus"></i>
                                     </button>
                                 </form>
 
-                                <span class="mx-2">1</span>
+                                <span class="mx-2">$<?= $producto['cantidad'] ?></span>
 
-                                <form action="acciones/carrito.php" method="post" class="d-inline">
+                                <form action="acciones/carrito-procesar.php" method="post" class="d-inline">
                                     <input type="hidden" name="accion" value="restar">
-                                    <input type="hidden" name="id" value="1">
+                                    <input type="hidden" name="id" value="<?= $producto['producto_id']; ?>">
                                     <button type="submit" class="btn btn-sm btn-outline-secondary">
                                         <i class="bi bi-dash"></i>
                                     </button>
                                 </form>
                             </td>
 
-                            <td class="align-middle text-end">$6.500</td>
-                            <td class="align-middle text-end">$6.500</td>
+                            <td class="align-middle text-end">$<?= $producto['precio_unitario'] ?></td>
+                            <td class="align-middle text-end"><?= $producto['precio_unitario'] * $producto['cantidad'] ?></td>
                         </tr>
 
                         </tbody>
                         <tfoot class="table-dark">
                         <tr class="fw-bold">
                             <td colspan="3" class="text-end">Total:</td>
-                            <td class="text-end">$6.500</td>
-                            <td></td>
+                            <td class="text-end">$<?= $carrito->calcularTotal(); ?></td>                            <td></td>
                         </tr>
                         </tfoot>
                     </table>
-
+                    <?php endforeach; ?>
                     <!-- Botones -->
                     <div class="d-flex justify-content-between mt-2 mb-2">
                         <!-- Botón Vaciar Carrito a la izquierda -->
-                        <a href="#" class="btn btn-danger ms-1">
+                        <a href="" class="btn btn-danger ms-1">
                             <i class="bi bi-credit-card me-1"></i>Vaciar Carrito
                         </a>
 

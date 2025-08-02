@@ -45,12 +45,13 @@ $producto = (new Producto)->porId($id);
                         <a href="index.php?seccion=productos" class="btn btn-outline-dark flex-fill">
                             <i class="bi bi-arrow-left bi-lg ms-2"></i> Volver a productos
                         </a>
-                        <a href="#" class="btn btn-dark flex-fill">
-                            <i class="bi bi-cart bi-lg"></i> Agregar al carrito
-                        </a>
+                        <form action="acciones/carrito.php" method="post" class="d-inline">
+                            <button type="submit"  class="btn btn-dark flex-fill">
+                                <i class="bi bi-cart bi-lg"></i> Agregar al carrito
+                            </button>
+                        </form>
                     </div>
                 </div>
-
             </div>
         </div>
     </div>
@@ -77,30 +78,30 @@ $producto = (new Producto)->porId($id);
         <div class="col-md-12">
             <h2 class="mb-4 text-white"> Más productos de <?= htmlspecialchars($producto->getCategoria()) ?></h2>
             <div class="row g-4">
-              <?php
-              // variable para poder filtrar por tipo de categoria
-              $productosSimilares = (new Producto())->obtenerPorCategoria($producto->getCategoria());
+                <?php
+                // variable para poder filtrar por tipo de categoria
+                $productosSimilares = (new Producto())->obtenerPorCategoria($producto->getCategoria());
 
-              foreach ($productosSimilares as $productoCategoria): ?>
-                  <div class="col-12 col-sm-6 col-lg-3 d-flex align-items-stretch mb-4">
-                      <a href="index.php?seccion=detalle-producto&id=<?= $productoCategoria->getProductoId(); ?>"
-                         class="btn p-0 w-100 h-100 tarjeta">
-                          <article class="card shadow-sm h-100 ">
-                              <img src="assets/imgs/productos/<?= $productoCategoria->getImagen(); ?>"
-                                   class="card-img-top img-fluid "
-                                   alt="<?= $productoCategoria->getImagenDescripcion(); ?>">
-                              <div class="card-header bg-dark">
-                                  <h2 class="text-white fs-5 rounded-2 m-0"><?= $productoCategoria->getTitulo(); ?></h2>
-                              </div>
-                              <div class="card-footer mt-auto">
-                                  <p class="fs-4 mb-0">
-                                      <strong class="text-black">$<?= number_format($producto->getPrecio(), 2, ',', '.'); ?></strong>
-                                  </p>
-                              </div>
-                          </article>
-                      </a>
-                  </div>
-              <?php endforeach; ?>
+                foreach ($productosSimilares as $productoCategoria): ?>
+                    <div class="col-12 col-sm-6 col-lg-3 d-flex align-items-stretch mb-4">
+                        <a href="index.php?seccion=detalle-producto&id=<?= $productoCategoria->getProductoId(); ?>"
+                           class="btn p-0 w-100 h-100 tarjeta">
+                            <article class="card shadow-sm h-100 ">
+                                <img src="assets/imgs/productos/<?= $productoCategoria->getImagen(); ?>"
+                                     class="card-img-top img-fluid "
+                                     alt="<?= $productoCategoria->getImagenDescripcion(); ?>">
+                                <div class="card-header bg-dark">
+                                    <h2 class="text-white fs-5 rounded-2 m-0"><?= $productoCategoria->getTitulo(); ?></h2>
+                                </div>
+                                <div class="card-footer mt-auto">
+                                    <p class="fs-4 mb-0">
+                                        <strong class="text-black">$<?= number_format($producto->getPrecio(), 2, ',', '.'); ?></strong>
+                                    </p>
+                                </div>
+                            </article>
+                        </a>
+                    </div>
+                <?php endforeach; ?>
             </div>
         </div>
     </div>
