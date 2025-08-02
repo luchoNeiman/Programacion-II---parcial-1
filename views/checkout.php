@@ -7,11 +7,10 @@
 
     <div class="row justify-content-center">
         <div class="col-md-10">
-            <div class="card shadow border-0">
-                <div class="card-body">
-                    <h4 class="mb-4"><i class="bi bi-bag-check me-2"></i>Resumen de tu compra</h4>
-
-                    <table class="table align-middle">
+            <div class="card shadow border-0 rounded shadow-sm">
+                <h4 class="card-header rounded-top-1 bg-dark text-white fs-3"><i class="bi bi-bag-check me-2"></i>Resumen de tu compra</h4>
+                <div class="card-body border-5 shadow-sm">
+                    <table class="table table-bordered table-striped table-hover mi-tabla-violeta mb-0 align-middle">
                         <thead class="table-dark">
                         <tr>
                             <th>Producto</th>
@@ -52,8 +51,8 @@
                             <td class="text-end">$3.200</td>
                         </tr>
                         </tbody>
-                        <tfoot>
-                        <tr class="fw-bold">
+                        <tfoot >
+                        <tr class="fw-bold bg-dark">
                             <td colspan="3" class="text-end">Total pagado:</td>
                             <td class="text-end">$16.200</td>
                         </tr>
