@@ -1,76 +1,50 @@
 <?php
 
-class Carrito
-{
-    private array $items = [];
+class Carrito {
+    public function agregarProducto($id, $titulo, $precio, $cantidad = 1) {
+        if (!isset($_SESSION['carrito'])) {
+            $_SESSION['carrito'] = [];
+        }
 
-    public function __construct()
-    {
-        session_start();
-        $this->items = $_SESSION['carrito'] ?? [];
-    }
-
-    public function getItems(): array
-    {
-        return $this->items;
-    }
-
-    public function setItems(array $items): void
-    {
-        $this->items = $items;
-        $_SESSION['carrito'] = $this->items;
-    }
-
-    public function agregarProducto(int $producto_id, string $titulo, float $precio_unitario, int $cantidad = 1): void
-    {
-        foreach ($this->items as &$item) {
-            if ($item['producto_id'] === $producto_id) {
+        foreach ($_SESSION['carrito'] as &$item) {
+            if ($item['producto_id'] === $id) {
                 $item['cantidad'] += $cantidad;
-                $_SESSION['carrito'] = $this->items;
                 return;
             }
         }
 
-        $this->items[] = [
-            'producto_id' => $producto_id,
+        $_SESSION['carrito'][] = [
+            'producto_id' => $id,
             'titulo' => $titulo,
-            'precio_unitario' => $precio_unitario,
+            'precio_unitario' => $precio,
             'cantidad' => $cantidad
         ];
-
-        $_SESSION['carrito'] = $this->items;
     }
 
-    public function quitarProducto(int $producto_id): void
-    {
-        $this->items = array_filter($this->items, function ($item) use ($producto_id) {
-            return $item['producto_id'] !== $producto_id;
-        });
-        $this->items = array_values($this->items);
-        $_SESSION['carrito'] = $this->items;
+    public function getItems() {
+        return $_SESSION['carrito'] ?? [];
     }
 
-    public function vaciar(): void
-    {
-        $this->items = [];
+    public function setItems($items) {
+        $_SESSION['carrito'] = $items;
+    }
+
+    public function quitarProducto($id) {
+        if (isset($_SESSION['carrito'])) {
+            $_SESSION['carrito'] = array_filter($_SESSION['carrito'], fn($item) => $item['producto_id'] !== $id);
+        }
+    }
+
+    public function vaciar() {
         unset($_SESSION['carrito']);
     }
 
-    public function calcularTotal(): float
-    {
+    public function calcularTotal() {
         $total = 0;
-        foreach ($this->items as $item) {
+        foreach ($this->getItems() as $item) {
             $total += $item['precio_unitario'] * $item['cantidad'];
         }
         return $total;
     }
-
-    public function cantidadTotal(): int
-    {
-        $total = 0;
-        foreach ($this->items as $item) {
-            $total += $item['cantidad'];
-        }
-        return $total;
-    }
 }
+

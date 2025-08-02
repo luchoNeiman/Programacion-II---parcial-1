@@ -5,7 +5,7 @@ $productos = $carrito->getItems();
     <h2 class="text-center text-white mb-5"><i class="bi bi-cart-fill me-2"></i>Carrito de Compras</h2>
 
     <!-- Si el carrito está vacío -->
-
+    <?php if (empty($productos)): ?>
     <div class="container ">
         <div class="text-center bg-light p-5 rounded shadow-sm">
             <i class="bi bi-cart-x text-secondary display-1 mb-4"></i>
@@ -16,7 +16,8 @@ $productos = $carrito->getItems();
             </a>
         </div>
     </div>
-    <div class="my-5"  ></div>
+    <?php else: ?>
+    <div class="my-5"></div>
     <div class="row justify-content-center">
         <div class="col-md-10">
             <div class="mx-5 mb-5 card shadow-sm d-none d-md-block">
@@ -72,6 +73,7 @@ $productos = $carrito->getItems();
                             <td class="align-middle text-end">$<?= $producto['precio_unitario'] ?></td>
                             <td class="align-middle text-end"><?= $producto['precio_unitario'] * $producto['cantidad'] ?></td>
                         </tr>
+                        <?php endforeach; ?>
 
                         </tbody>
                         <tfoot class="table-dark">
@@ -81,7 +83,6 @@ $productos = $carrito->getItems();
                         </tr>
                         </tfoot>
                     </table>
-                    <?php endforeach; ?>
                     <!-- Botones -->
                     <div class="d-flex justify-content-between mt-2 mb-2">
                         <!-- Botón Vaciar Carrito a la izquierda -->
@@ -104,4 +105,5 @@ $productos = $carrito->getItems();
             </div>
         </div>
     </div>
+    <?php endif; ?>
 </div>

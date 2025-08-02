@@ -45,7 +45,7 @@ $producto = (new Producto)->porId($id);
                         <a href="index.php?seccion=productos" class="btn btn-outline-dark flex-fill">
                             <i class="bi bi-arrow-left bi-lg ms-2"></i> Volver a productos
                         </a>
-                        <form action="acciones/carrito.php" method="post" class="d-inline">
+                        <form action="acciones/carrito-procesar.php" method="post" class="d-inline">
                             <button type="submit"  class="btn btn-dark flex-fill">
                                 <i class="bi bi-cart bi-lg"></i> Agregar al carrito
                             </button>
