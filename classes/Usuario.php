@@ -39,7 +39,7 @@ class Usuario
      */
     public function porEmail(string $email): ?self
     {
-        $db = (new DBConexion)->getConexion();
+        $db = (new DBConexionStatic)->getConexion();
         $consulta = "SELECT * FROM usuarios
                     WHERE email = ?";
 
@@ -60,7 +60,7 @@ class Usuario
      */
     public function porId(int $id): ?self
     {
-        $db = (new DBConexion)->getConexion();
+        $db = (new DBConexionStatic)->getConexion();
         $consulta = "SELECT * FROM usuarios WHERE usuario_id = ?";
         $stmt = $db->prepare($consulta);
         $stmt->execute([$id]);
@@ -73,10 +73,12 @@ class Usuario
     public function crear(array $data): void
     {
         $db = DBConexionStatic::getConexion();
-        $consulta = "INSERT INTO usuarios (email, password, rol_fk)
-                    VALUES (:email, :password, :rol_fk)";
+        $consulta = "INSERT INTO usuarios (nombre, apellido, email, password, rol_fk)
+                    VALUES (:nombre, :apellido, :email, :password, :rol_fk)";
         $stmt = $db->prepare($consulta);
         $stmt->execute([
+            'nombre'    => $data['nombre'],
+            'apellido'  => $data['apellido'],
             'email'     => $data['email'],
             'password'  => $data['password'],
             'rol_fk'    => $data['rol_fk'],

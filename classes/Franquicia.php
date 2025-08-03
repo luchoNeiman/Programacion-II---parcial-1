@@ -1,5 +1,5 @@
 <?php
-//require_once 'DBConexion.php';
+//require_once 'DBConexionStatic.php';
 
 class Franquicia
 {
@@ -18,7 +18,7 @@ class Franquicia
 
     public function todasFranquicias(): array
     {
-        $db = (new DBConexion)->getConexion();
+        $db = (new DBConexionStatic)->getConexion();
         $consulta = "SELECT franquicia_id, nombre_franquicia FROM franquicias ORDER BY nombre_franquicia ASC;";
         $stmt = $db->prepare($consulta);
         $stmt->execute();
@@ -37,7 +37,7 @@ class Franquicia
      */
     public function agregar(string $nombre): int
     {
-        $db = (new DBConexion)->getConexion();
+        $db = (new DBConexionStatic)->getConexion();
 
         // Verifico si ya existe una franquicia con ese nombre
         $stmt = $db->prepare("SELECT franquicia_id FROM franquicias WHERE LOWER(nombre_franquicia) = LOWER(:nombre)");

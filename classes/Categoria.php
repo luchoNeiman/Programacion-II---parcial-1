@@ -1,5 +1,5 @@
 <?php
-//require_once 'DBConexion.php';
+//require_once 'DBConexionStatic.php';
 
 class Categoria
 {
@@ -16,7 +16,7 @@ class Categoria
      */
     public function todasCategorias(): array
     {
-        $db = (new DBConexion)->getConexion();
+        $db = (new DBConexionStatic)->getConexion();
         $consulta = "SELECT categoria_id, nombre_categoria FROM categorias ORDER BY nombre_categoria ASC";
         $stmt = $db->prepare($consulta); // <--- CORREGIDO ACÁ
         $stmt->execute();
@@ -36,7 +36,7 @@ class Categoria
 
     public function agregar(string $nombre): int
     {
-        $db = (new DBConexion)->getConexion();
+        $db = (new DBConexionStatic)->getConexion();
 
         // Verificar si ya existe una categoría con ese nombre
         $stmt = $db->prepare("SELECT categoria_id FROM categorias WHERE LOWER(nombre_categoria) = LOWER(:nombre) LIMIT 1;");
@@ -66,7 +66,7 @@ class Categoria
      */
     public function getCategoriasProductosIds(int $producto_id): array
     {
-        $db = (new DBConexion)->getConexion();
+        $db = (new DBConexionStatic)->getConexion();
         $stmt = $db->prepare("SELECT categoria_fk FROM productos_tienen_categorias WHERE producto_fk = ?");
         $stmt->execute([$producto_id]);
         return $stmt->fetchAll(PDO::FETCH_COLUMN);
@@ -84,7 +84,7 @@ class Categoria
      */
     public function setCategoriasProducto(int $producto_id, array $categorias_ids): void
     {
-        $db = (new DBConexion)->getConexion();
+        $db = (new DBConexionStatic)->getConexion();
 
         // Primero eliminamos las categorías actuales del producto
         $stmt = $db->prepare("DELETE FROM productos_tienen_categorias WHERE producto_fk = ?");

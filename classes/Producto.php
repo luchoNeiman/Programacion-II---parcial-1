@@ -37,7 +37,7 @@ class Producto
      */
     public function todosProductos(): array
     {
-        $db = (new DBConexion)->getConexion();
+        $db = (new DBConexionStatic)->getConexion();
         /* La siguiente consulta hace lo siguiente:
          * 1. Se seleccionan todos los productos de la tabla productos.
          * 2. Se seleccionan las franquicias de la tabla franquicias.
@@ -77,7 +77,7 @@ class Producto
     public function porId(int $id): ?self
     {
         // Traemos el producto desde la base de datos.
-        $db = (new DBConexion)->getConexion();
+        $db = (new DBConexionStatic)->getConexion();
         $consulta = "SELECT *, f.nombre_franquicia, GROUP_CONCAT(c.nombre_categoria SEPARATOR ', ') AS categorias
                         FROM productos p
                         JOIN franquicias f ON p.franquicia_fk = f.franquicia_id
@@ -112,7 +112,7 @@ class Producto
             $categorias = [$categorias];
         }
 
-        $db = (new DBConexion)->getConexion();
+        $db = (new DBConexionStatic)->getConexion();
         /* La siguiente consulta hace lo siguiente:
          * 1. Se seleccionan todos los productos de la tabla productos.
          * 2. Se seleccionan las franquicias de la tabla franquicias.
@@ -147,7 +147,7 @@ class Producto
      */
     public static function obtenerUltimosDelMes(): array
     {
-        $db = (new DBConexion)->getConexion();
+        $db = (new DBConexionStatic)->getConexion();
         /* La siguiente consulta hace lo siguiente:
         * 1. Se seleccionan los productos de la tabla productos.
          * 4. Se ordenan por fecha de ingreso.
@@ -184,7 +184,7 @@ class Producto
 
     public function crear(array $data): void
     {
-        $db = (new DBConexion)->getConexion();
+        $db = (new DBConexionStatic)->getConexion();
 
         /* La siguiente consulta hace lo siguiente:
          * 1. Insertar producto en la tabla productos.
@@ -239,7 +239,7 @@ class Producto
      */
     public function editar(int $id, array $data): void
     {
-        $db = (new DBConexion)->getConexion();
+        $db = (new DBConexionStatic)->getConexion();
         /* La siguiente consulta hace lo siguiente:
          * 1. Actualizar producto en la tabla productos.
          */
@@ -279,7 +279,7 @@ class Producto
      */
     public function eliminar(int $id): void
     {
-        $db = (new DBConexion)->getConexion();
+        $db = (new DBConexionStatic)->getConexion();
         $consulta = "DELETE FROM productos_tienen_categorias 
                      WHERE producto_fk = ?";
         $stmt = $db->prepare($consulta);

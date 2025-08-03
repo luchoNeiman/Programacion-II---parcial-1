@@ -36,12 +36,10 @@
                 <div class="d-grid">
                     <button type="submit" class="btn btn-dark">
                         <i class="bi bi-box-arrow-in-right me-1"></i> Registrarse  
-                        <!-- cambiar icono -->
                     </button>
                 </div>
                 <small class="mt-1">
-                    ¿ya tienes cuenta? <a class="text-decoration-none " href="index.php?seccion=iniciar-sesion"><strong class="text-violeta">Iniciar sesión</strong></a>  
-                    <!-- para cuando cree el registro cambiar el href del a -->
+                    ¿ya tienes cuenta? <a class="text-decoration-none" href="index.php?seccion=iniciar-sesion"><strong class="text-violeta">Iniciar sesión</strong></a>  
                 </small>
             </form>
         </div>

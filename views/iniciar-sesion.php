@@ -5,7 +5,7 @@
                 <!-- <i class="bi bi-shield-lock-fill me-2 text-white"></i> Iniciar sesión en tu cuenta -->
                 <i class="bi bi-person-circle me-1 text-white"></i> Iniciar sesión en tu cuenta
             </h1>
-            <form action="acciones/iniciar-sesion.php" method="POST" class="card shadow p-4 border-0">
+            <form action="acciones/procesar_iniciar-sesion.php" method="POST" class="card shadow p-4 border-0">
                 <div class="mb-3">
                     <label for="email" class="form-label text-violeta">Correo electrónico</label>
                     <input type="email" class="form-control" id="email" name="email" required autofocus>
@@ -21,7 +21,6 @@
                 </div>
                 <small class="mt-1">
                     ¿No tienes cuenta? <a class="text-decoration-none " href="index.php?seccion=registrarse"><strong class="text-violeta">Regístrate</strong></a>  
-                    <!-- para cuando cree el registro cambiar el href del a -->
                 </small>
             </form>
         </div>
