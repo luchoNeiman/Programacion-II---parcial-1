@@ -88,11 +88,11 @@ if (isset($_SESSION['feedback_error'])) {
                 <img src="../assets/imgs/logo.webp" alt="Otaku Mania Logo" class="mx-2">
             </a>
             <button class="navbar-toggler white" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarNavAltMarkup"
-                    aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                    data-bs-target="#navbarNavAltMarkupAdmin"
+                    aria-controls="navbarNavAltMarkupAdmin" aria-expanded="false" aria-label="Toggle navigation">
                 <i class="bi bi-xl bi-list text-white"></i>
             </button>
-            <div class="collapse navbar-collapse text-white" id="navbarNavAltMarkup">
+            <div class="collapse navbar-collapse text-white" id="navbarNavAltMarkupAdmin">
               <?php
               if ($autenticacion->estaAutenticado()):
                 ?>
@@ -110,10 +110,10 @@ if (isset($_SESSION['feedback_error'])) {
                           <a class="nav-link dropdown-toggle d-flex align-items-center text-white fs-5" href="#"
                              role="button"
                              data-bs-toggle="dropdown" aria-expanded="false">
-                              <img src="../assets/imgs/avatars/<?= $usuario['avatar'] ?? 'avatar.webp'; ?>"
+                              <img src="../assets/imgs/avatars/<?= $usuario->getAvatar() ?? 'avatar.webp'; ?>"
                                    alt="Avatar"
                                    width="32" height="32" class="rounded-circle me-2">
-                            <?= htmlspecialchars($usuario['nombre']) ?>
+                            <?= htmlspecialchars($usuario->getNombre()) ?>
 
                           </a>
                           <ul class="dropdown-menu dropdown-menu-end">

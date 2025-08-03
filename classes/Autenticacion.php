@@ -2,6 +2,8 @@
 
 class Autenticacion
 {
+    private ?Usuario $usuario = null;
+
     /**
      * Intenta autenticar a un usuario con sus credenciales de email y password
      *
@@ -11,16 +13,16 @@ class Autenticacion
      */
     public function intentarIngresar(string $email, string $password): bool
     {
-        $usuario = $this->traerUsuarioPorEmail($email);
-        if (!$usuario) {
+        $this->usuario = $this->traerUsuarioPorEmail($email);
+        if (!$this->usuario) {
             return false; // El usuario no existe.
         }
 
-        if (!password_verify($password, $usuario->getPassword())) {
+        if (!password_verify($password, $this->usuario->getPassword())) {
             return false; // El password no coincide.
         }
 
-        $this->autenticar($usuario);
+        $this->autenticar($this->usuario);
         return true;
     }
 
@@ -54,6 +56,13 @@ class Autenticacion
         return isset($_SESSION['usuario_id']);
     }
 
+    public function getId(): ?int
+    {
+        if (!$this->estaAutenticado()) return null;
+
+        return $_SESSION['usuario_id'];
+    }
+
     /**
      * Busca un usuario por su email en la base de datos
      * @param string $email Email del usuario a buscar
@@ -69,24 +78,14 @@ class Autenticacion
      * @param int $id id del usuario a buscar
      * @return Usuario|null Retorna nombre y avatar para el enlace login si existe, null si no
      */
-    public function getUsuarioLogin(): ?array
+    public function getUsuarioLogin(): ?Usuario
     {
-        // Si el usuario no está autenticado, retornar null
-        if (!$this->estaAutenticado()) {
-            return null;
+        if (!$this->estaAutenticado()) return null;
+
+        if (!$this->usuario) {
+            $this->usuario = (new Usuario)->porId($this->getId());
         }
-        // Obtener el usuario por el ID almacenado en la sesión
-        $usuario = (new Usuario)->porId($_SESSION['usuario_id']);
-        //Si no existe el usuario retornar null
-        if (!$usuario) {
-            return null;
-        }
-        // Retornar array con nombre y avatar del usuario
-        return [
-            'nombre' => $usuario->getNombre(),
-            'avatar' => $usuario->getAvatar(),
-        ];
+
+        return $this->usuario;
     }
-
-
 }
