@@ -63,6 +63,17 @@ class Autenticacion
         return $_SESSION['usuario_id'];
     }
 
+    public function getUsuario(): ?Usuario
+    {
+        if (!$this->estaAutenticado()) return null;
+
+        if (!$this->usuario) {
+            $this->usuario = (new Usuario)->porId($this->getId());
+        }
+
+        return $this->usuario;
+    }
+
     /**
      * Busca un usuario por su email en la base de datos
      * @param string $email Email del usuario a buscar

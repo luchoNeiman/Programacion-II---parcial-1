@@ -13,43 +13,22 @@ class Usuario
     public const ROL_ADMIN = 1;
     public const ROL_USUARIO = 2;
 
-    // public function __construct(?array $data = null)
-    // {
-    //     if($data) {
-    //         $this->cargarDatosDeArray($data);
-    //     }
-    // }
-
-    // public function cargarDatosDeArray(array $data) 
-    // {
-    //     $this->setUsuarioId($data['estado_publicacion_id'] ?? 0);
-    //     $this->setRolFk($data['rol_fk'] ?? 0);
-    //     $this->setEmail($data['email'] ?? '');
-    //     $this->setPassword($data['password'] ?? '');
-    //     $this->setNombre($data['nombre'] ?? null);
-    //     $this->setApellido($data['apellido'] ?? null);
-    //     $this->setImagen($data['imagen'] ?? null);
-    // }
-
-    /**
-     * Busca un usuario por su dirección de email en la base de datos
-     *
-     * @param string $email El email del usuario a buscar
-     * @return Usuario|null El usuario encontrado o null si no existe
-     */
-    public function porEmail(string $email): ?self
+    public function __construct(?array $data = null)
     {
-        $db = (new DBConexionStatic)->getConexion();
-        $consulta = "SELECT * FROM usuarios
-                    WHERE email = ?";
+        if ($data) {
+            $this->cargarDatosDeArray($data);
+        }
+    }
 
-        $stmt = $db->prepare($consulta);
-        $stmt->execute([$email]);
-        $stmt->setFetchMode(PDO::FETCH_CLASS, self::class);
-        $usuario = $stmt->fetch();
-
-        if (!$usuario) return null;
-        return $usuario;
+    public function cargarDatosDeArray(array $data)
+    {
+        $this->setUsuarioId($data['usuario_id'] ?? 0);
+        $this->setRolFk($data['rol_fk'] ?? 0);
+        $this->setEmail($data['email'] ?? '');
+        $this->setPassword($data['password'] ?? '');
+        $this->setNombre($data['nombre'] ?? null);
+        $this->setApellido($data['apellido'] ?? null);
+        $this->setAvatar($data['avatar'] ?? null);
     }
 
     /**
@@ -70,6 +49,28 @@ class Usuario
         return $usuario ?: null;
     }
 
+    /**
+     * Busca un usuario por su dirección de email en la base de datos
+     *
+     * @param string $email El email del usuario a buscar
+     * @return Usuario|null El usuario encontrado o null si no existe
+     */
+
+    public function porEmail(string $email): ?self
+    {
+        $db = DBConexionStatic::getConexion();
+        $consulta = "SELECT * FROM usuarios
+                    WHERE email = ?";
+        $stmt = $db->prepare($consulta);
+        $stmt->execute([$email]);
+        $stmt->setFetchMode(PDO::FETCH_CLASS, self::class);
+        $usuario = $stmt->fetch();
+
+        if (!$usuario) return null;
+        return $usuario;
+    }
+
+
     public function crear(array $data): void
     {
         $db = DBConexionStatic::getConexion();
@@ -83,6 +84,11 @@ class Usuario
             'password'  => $data['password'],
             'rol_fk'    => $data['rol_fk'],
         ]);
+    }
+
+    public function esAdmin(): bool
+    {
+        return $this->getRolFk() === self::ROL_ADMIN;
     }
 
     public function getUsuarioId(): int
