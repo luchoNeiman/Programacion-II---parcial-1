@@ -93,11 +93,15 @@ if (isset($_SESSION['feedback_error'])) {
                         <i class="bi bi-box-seam me-1"></i> Productos
                     </a>
                     <!-- Para facil acceso al panel(aca va a ocupar el lugar de iniciar sesion/resgistrarse)-->
-                    <a class="nav-link text-white fs-5" href="admin/index.php?seccion=dashboard">
+                    <a class="nav-link text-white fs-5 " href="admin/index.php?seccion=dashboard">
                         <i class="bi bi-lock-fill me-1"></i> Panel Admin
                     </a>
-                    <a class="nav-link text-white fs-5" href="index.php?seccion=ver-carrito">
-                        <i class="bi bi-cart me-1"></i>
+
+                    <a class="nav-link text-white fs-5 me-3 position-relative" href="index.php?seccion=ver-carrito">
+                        <i class="bi bi-cart bi-xl me-1"></i>
+                        <span class="position-absolute top-10 start-100 translate-middle badge rounded-pill bg-success">
+                            <?php echo (new Carrito)->getTotalItems(); ?>
+                        </span>
                     </a>
 
                     <div class="nav-item dropdown">

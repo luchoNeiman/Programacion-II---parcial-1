@@ -48,5 +48,13 @@ class Carrito {
         }
         return $total;
     }
+    public function getTotalItems(): int
+    {
+        $total = 0;
+        foreach ($this->getItems() as $item) {
+            $total += $item['cantidad'];
+        }
+        return $total;
+    }
 }
 

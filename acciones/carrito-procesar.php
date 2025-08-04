@@ -62,7 +62,6 @@ switch ($accion) {
 }
 
 // Redirecciona a la vista del carrito (para ver los cambios aplicados)
-header('Location: ../index.php?seccion=ver-carrito');
-
+header('Location: ' . $_SERVER['HTTP_REFERER']);
 // Corta la ejecución del script
 exit;
