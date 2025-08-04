@@ -47,7 +47,7 @@ $productos = $carrito->getItems();
                             </td>
                             <td>
                                 <div class="d-flex align-items-center">
-                                    <img src="../assets/imgs/productos/<?= $producto['imagen'] ?>" alt="Producto"
+                                    <img src="assets/imgs/productos/<?= $producto['imagen'] ?>" alt="Producto"
                                          width="60" class="img-fluid rounded me-3">
 
                                     <div>
