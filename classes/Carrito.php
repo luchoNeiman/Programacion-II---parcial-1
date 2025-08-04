@@ -1,7 +1,7 @@
 <?php
 
 class Carrito {
-    public function agregarProducto($id, $titulo, $precio, $cantidad = 1) {
+    public function agregarProducto($id, $titulo, $precio, $cantidad = 1, $imagen = '') {
         if (!isset($_SESSION['carrito'])) {
             $_SESSION['carrito'] = [];
         }
@@ -17,7 +17,9 @@ class Carrito {
             'producto_id' => $id,
             'titulo' => $titulo,
             'precio_unitario' => $precio,
-            'cantidad' => $cantidad
+            'cantidad' => $cantidad,
+            'imagen' => $imagen,
+
         ];
     }
 

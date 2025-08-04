@@ -24,7 +24,7 @@ $producto = (new Producto)->porId($id);
                         <strong>$<?= number_format($producto->getPrecio(), 2, ',', '.'); ?></strong>
                     </h2>
                     <p>Hasta 3 cuotas sin interés</p>
-                    <p>Llega gratis el lunes</p>
+                     <p>Llega gratis el lunes</p>
 
                     <p class="fw-bold">Stock disponible</p>
                     <div class="d-flex align-items-center flex-wrap mb-3">
@@ -46,7 +46,14 @@ $producto = (new Producto)->porId($id);
                             <i class="bi bi-arrow-left bi-lg ms-2"></i> Volver a productos
                         </a>
                         <form action="acciones/carrito-procesar.php" method="post" class="d-inline">
-                            <button type="submit"  class="btn btn-dark flex-fill">
+                            <input type="hidden" name="accion" value="agregar">
+                            <input type="hidden" name="id" value="<?= $producto->getProductoId(); ?>">
+                            <input type="hidden" name="titulo" value="<?= htmlspecialchars($producto->getTitulo()); ?>">
+                            <input type="hidden" name="precio" value="<?= $producto->getPrecio(); ?>">
+                            <input type="hidden" name="cantidad" id="cantidadSeleccionada" value="1">
+                            <input type="hidden" name="imagen" value="<?= $producto->getImagen(); ?>">
+
+                            <button type="submit" class="btn btn-dark flex-fill">
                                 <i class="bi bi-cart bi-lg"></i> Agregar al carrito
                             </button>
                         </form>

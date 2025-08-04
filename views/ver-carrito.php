@@ -37,20 +37,34 @@ $productos = $carrito->getItems();
                         <!-- Producto -->
                         <tr>
                             <td class="align-middle text-center">
-                                <button class="btn btn-sm btn-outline-danger">
+                                <form action="acciones/carrito-procesar.php" method="post" class="d-inline">
+                                <input type="hidden" name="accion" value="eliminar">
+                                <input type="hidden" name="id" value="<?= $producto['producto_id']; ?>">
+                                <button type="submit" class="btn btn-sm btn-outline-danger">
                                     <i class="bi bi-x-lg"></i>
                                 </button>
+                                </form>
                             </td>
                             <td>
                                 <div class="d-flex align-items-center">
-                                    <img src="assets/imgs/productos/20250627151940_tanjiro-danza.png" alt="Producto"
+                                    <img src="../assets/imgs/productos/<?= $producto['imagen'] ?>" alt="Producto"
                                          width="60" class="img-fluid rounded me-3">
+
                                     <div>
                                         <h6 class="mb-0"><?= htmlspecialchars($producto['titulo']) ?></h6>
                                     </div>
                                 </div>
                             </td>
                             <td class="align-middle text-center">
+                                <form action="acciones/carrito-procesar.php" method="post" class="d-inline">
+                                    <input type="hidden" name="accion" value="restar">
+                                    <input type="hidden" name="id" value="<?= $producto['producto_id']; ?>">
+                                    <button type="submit" class="btn btn-sm btn-outline-secondary">
+                                        <i class="bi bi-dash"></i>
+                                    </button>
+                                </form>
+                                <span class="mx-2"><?= $producto['cantidad'] ?></span>
+
                                 <form action="acciones/carrito-procesar.php" method="post" class="d-inline">
                                     <input type="hidden" name="accion" value="sumar">
                                     <input type="hidden" name="id" value="<?= $producto['producto_id']; ?>">
@@ -59,15 +73,9 @@ $productos = $carrito->getItems();
                                     </button>
                                 </form>
 
-                                <span class="mx-2">$<?= $producto['cantidad'] ?></span>
 
-                                <form action="acciones/carrito-procesar.php" method="post" class="d-inline">
-                                    <input type="hidden" name="accion" value="restar">
-                                    <input type="hidden" name="id" value="<?= $producto['producto_id']; ?>">
-                                    <button type="submit" class="btn btn-sm btn-outline-secondary">
-                                        <i class="bi bi-dash"></i>
-                                    </button>
-                                </form>
+
+
                             </td>
 
                             <td class="align-middle text-end">$<?= $producto['precio_unitario'] ?></td>
@@ -79,16 +87,20 @@ $productos = $carrito->getItems();
                         <tfoot class="table-dark">
                         <tr class="fw-bold">
                             <td colspan="3" class="text-end">Total:</td>
-                            <td class="text-end">$<?= $carrito->calcularTotal(); ?></td>                            <td></td>
+                            <td class="text-end">$<?= $carrito->calcularTotal(); ?></td>
+                            <td></td>
                         </tr>
                         </tfoot>
                     </table>
                     <!-- Botones -->
                     <div class="d-flex justify-content-between mt-2 mb-2">
                         <!-- Botón Vaciar Carrito a la izquierda -->
-                        <a href="" class="btn btn-danger ms-1">
+                        <form action="acciones/carrito-procesar.php" method="post" class="d-inline">
+                        <input type="hidden" name="accion" value="vaciar">
+                        <button type="submit" class="btn btn-danger ms-1">
                             <i class="bi bi-credit-card me-1"></i>Vaciar Carrito
-                        </a>
+                        </button>
+                        </form>
 
                         <!-- Contenedor para los otros dos botones alineados a la derecha -->
                         <div class="d-flex">

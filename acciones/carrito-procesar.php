@@ -1,24 +1,32 @@
 <?php
 require_once __DIR__ . '/../bootstrap/init.php';
-session_start();
 
 $carrito = new Carrito();
 
+// Toma la acción que se mandó por POST, si no hay nada, queda como null
 $accion = $_POST['accion'] ?? null;
+
+
+// Obtiene el ID del producto desde POST, lo castea a entero. Si no está, usa 0
 $id = isset($_POST['id']) ? (int)$_POST['id'] : 0;
 
 switch ($accion) {
     case 'agregar':
+        // Si se quiere agregar un producto, se obtienen los datos necesarios
         $cantidad = (int)($_POST['cantidad'] ?? 1);
         $titulo = $_POST['titulo'] ?? 'Producto';
         $precio = (float)($_POST['precio'] ?? 0);
+        $imagen = $_POST['imagen'] ?? '';
 
-        $carrito->agregarProducto($id, $titulo, $precio, $cantidad);
+        // Agrega el producto al carrito
+        $carrito->agregarProducto($id, $titulo, $precio, $cantidad, $imagen);
         break;
 
     case 'sumar':
+        // Busca el producto en el carrito y le suma uno más
         foreach ($carrito->getItems() as $item) {
             if ($item['producto_id'] === $id) {
+                // Reutiliza el método agregarProducto para sumarle una unidad
                 $carrito->agregarProducto($id, $item['titulo'], $item['precio_unitario'], 1);
                 break;
             }
@@ -26,15 +34,19 @@ switch ($accion) {
         break;
 
     case 'restar':
+        // Resta uno a la cantidad de un producto o lo elimina si ya hay solo uno
         $items = $carrito->getItems();
         foreach ($items as $index => $item) {
             if ($item['producto_id'] === $id) {
                 if ($item['cantidad'] > 1) {
+                    // Si hay más de uno, se resta uno
                     $items[$index]['cantidad']--;
                 } else {
+                    // Si hay uno solo, se saca del array
                     unset($items[$index]);
                 }
-                $carrito->setItems(array_values($items));
+                // Actualiza el carrito con los nuevos items
+                $carrito->setItems(array_values($items)); // Reindexa el array para evitar saltos de índice
                 break;
             }
         }
@@ -49,6 +61,8 @@ switch ($accion) {
         break;
 }
 
-header('Location: ' . $_SERVER['HTTP_REFERER']);
+// Redirecciona a la vista del carrito (para ver los cambios aplicados)
+header('Location: ../index.php?seccion=ver-carrito');
 
+// Corta la ejecución del script
 exit;
