@@ -105,6 +105,32 @@ if (isset($_SESSION['feedback_error'])) {
             <?php $usuario = $autenticacion->getUsuarioLogin(); ?>
 
             <div class="navbar-nav ms-auto">
+                <div class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle d-flex align-items-center text-white fs-5" href="#"
+                       role="button"
+                       data-bs-toggle="dropdown" aria-expanded="false">
+                        <img src="../assets/imgs/avatars/<?= $usuario->getAvatar() ?? 'avatar.webp'; ?>"
+                             alt="Avatar"
+                             width="32" height="32" class="rounded-circle me-2">
+                        <?= htmlspecialchars($usuario->getNombre()) ?>
+
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                        <li>
+                            <a href="index.php?seccion=miPerfil" class="dropdown-item fs-5">
+                                <i class="bi bi-person-circle me-2"></i> Mi perfil
+                            </a>
+
+                        </li>
+                        <li>
+                            <form action="acciones/cerrarSesion.php" method="post" class="d-inline">
+                                <button type="submit" class="dropdown-item fs-5">
+                                    <i class="bi bi-box-arrow-right me-1"></i> Cerrar sesión
+                                </button>
+                            </form>
+                        </li>
+                    </ul>
+                </div>
               <a class="nav-link active text-white fs-5" href="index.php?seccion=dashboard">
                 <i class="bi bi-layout-text-sidebar me-1"></i> Tablero
               </a>
@@ -112,32 +138,7 @@ if (isset($_SESSION['feedback_error'])) {
               <a class="nav-link text-white fs-5" href="index.php?seccion=productos">
                 <i class="bi bi-box-seam "></i> Productos
               </a>
-              <div class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle d-flex align-items-center text-white fs-5" href="#"
-                  role="button"
-                  data-bs-toggle="dropdown" aria-expanded="false">
-                  <img src="../assets/imgs/avatars/<?= $usuario->getAvatar() ?? 'avatar.webp'; ?>"
-                    alt="Avatar"
-                    width="32" height="32" class="rounded-circle me-2">
-                  <?= htmlspecialchars($usuario->getNombre()) ?>
 
-                </a>
-                <ul class="dropdown-menu dropdown-menu-end">
-                  <li>
-                    <a href="index.php?seccion=miPerfil" class="dropdown-item fs-5">
-                      <i class="bi bi-person-circle me-2"></i> Mi perfil
-                    </a>
-
-                  </li>
-                  <li>
-                    <form action="acciones/cerrarSesion.php" method="post" class="d-inline">
-                      <button type="submit" class="dropdown-item fs-5">
-                        <i class="bi bi-box-arrow-right me-1"></i> Cerrar sesión
-                      </button>
-                    </form>
-                  </li>
-                </ul>
-              </div>
             </div>
           <?php
           endif;

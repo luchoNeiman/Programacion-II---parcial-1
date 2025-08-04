@@ -86,6 +86,58 @@ if (isset($_SESSION['feedback_error'])) {
 
             <div class="collapse navbar-collapse text-white" id="navbarNavAltMarkup">
                 <div class="navbar-nav ms-auto">
+                    <div class="nav-item dropdown">
+                        <!-- aca va el else -->
+                        <?php
+                        if ($autenticacion->estaAutenticado()):
+                            ?>
+                            <?php $usuario = $autenticacion->getUsuarioLogin(); ?>
+                            <a class="nav-link dropdown-toggle d-flex align-items-center text-white fs-5" href="#"
+                               role="button"
+                               data-bs-toggle="dropdown" aria-expanded="false">
+                                <img src="assets/imgs/avatars/<?= $usuario->getAvatar() ?? 'avatar.webp'; ?>"
+                                     alt="Avatar"
+                                     width="32" height="32" class="rounded-circle me-2">
+                                <?= htmlspecialchars($usuario->getNombre()) ?>
+                            </a>
+
+                            <ul class="dropdown-menu dropdown-menu-end">
+                                <li>
+                                    <a href="index.php?seccion=miPerfil" class="dropdown-item fs-5">
+                                        <i class="bi bi-person-circle me-2"></i> Mi perfil
+                                    </a>
+
+                                </li>
+                                <li>
+                                    <form action="acciones/cerrar-sesion.php" method="post" class="d-inline">
+                                        <button type="submit" class="dropdown-item fs-5">
+                                            <i class="bi bi-box-arrow-right me-1"></i> Cerrar sesión
+                                        </button>
+                                    </form>
+                                </li>
+                            </ul>
+
+                        <?php else:; ?>
+                            <a class="nav-link dropdown-toggle d-flex align-items-center text-white fs-5" href="#"
+                               role="button"
+                               data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="bi bi-person-circle me-1"></i> Mi cuenta
+                            </a>
+
+                            <ul class="dropdown-menu dropdown-menu-end">
+                                <li>
+                                    <a href="index.php?seccion=iniciar-sesion" class="dropdown-item fs-5">
+                                        Iniciar sesión
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="index.php?seccion=registrarse" class="dropdown-item fs-5">
+                                        Registrarse
+                                    </a>
+                                </li>
+                            </ul>
+                        <?php endif; ?>
+                    </div>
                     <a class="nav-link active text-white fs-5" aria-current="page" href="index.php?seccion=home">
                         <i class="bi bi-house-door me-1"></i> Inicio
                     </a>
@@ -97,66 +149,13 @@ if (isset($_SESSION['feedback_error'])) {
                         <i class="bi bi-lock-fill me-1"></i> Panel Admin
                     </a>
 
-                    <a class="nav-link text-white fs-5 me-3 position-relative" href="index.php?seccion=ver-carrito">
-                        <i class="bi bi-cart bi-xl me-1"></i>
+                    <a class="nav-link text-white fs-5 me-2 position-relative" href="index.php?seccion=ver-carrito">
+                        <i class="bi bi-cart me-1 px-2"></i>
                         <span class="position-absolute top-10 start-100 translate-middle badge rounded-pill bg-success">
                             <?php echo (new Carrito)->getTotalItems(); ?>
                         </span>
                     </a>
 
-                    <div class="nav-item dropdown">
-                        <!-- aca va el else -->
-
-                        <?php
-                        if ($autenticacion->estaAutenticado()):
-                            ?>
-                            <?php $usuario = $autenticacion->getUsuarioLogin(); ?>
-                        <a class="nav-link dropdown-toggle d-flex align-items-center text-white fs-5" href="#"
-                           role="button"
-                           data-bs-toggle="dropdown" aria-expanded="false">
-                            <img src="assets/imgs/avatars/<?= $usuario->getAvatar() ?? 'avatar.webp'; ?>"
-                                 alt="Avatar"
-                                 width="32" height="32" class="rounded-circle me-2">
-                            <?= htmlspecialchars($usuario->getNombre()) ?>
-                        </a>
-
-                        <ul class="dropdown-menu dropdown-menu-end">
-                            <li>
-                                <a href="index.php?seccion=miPerfil" class="dropdown-item fs-5">
-                                    <i class="bi bi-person-circle me-2"></i> Mi perfil
-                                </a>
-
-                            </li>
-                            <li>
-                                <form action="acciones/cerrar-sesion.php" method="post" class="d-inline">
-                                    <button type="submit" class="dropdown-item fs-5">
-                                        <i class="bi bi-box-arrow-right me-1"></i> Cerrar sesión
-                                    </button>
-                                </form>
-                            </li>
-                        </ul>
-
-                    <?php else:; ?>
-                        <a class="nav-link dropdown-toggle d-flex align-items-center text-white fs-5" href="#"
-                           role="button"
-                           data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class="bi bi-person-circle me-1"></i> Mi cuenta
-                        </a>
-
-                        <ul class="dropdown-menu dropdown-menu-end">
-                            <li>
-                                <a href="index.php?seccion=iniciar-sesion" class="dropdown-item fs-5">
-                                    Iniciar sesión
-                                </a>
-                            </li>
-                            <li>
-                                <a href="index.php?seccion=registrarse" class="dropdown-item fs-5">
-                                    Registrarse
-                                </a>
-                            </li>
-                        </ul>
-                        <?php endif; ?>
-                    </div>
                 </div>
             </div>
         </div>

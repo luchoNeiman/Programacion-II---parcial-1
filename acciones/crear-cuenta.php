@@ -3,8 +3,8 @@ require_once __DIR__ . '/../bootstrap/init.php';
 
 $email = $_POST['email'];
 $password = $_POST['password'];
-$nombre = $_POST['nombre'];
-$apellido = $_POST['apellido'];
+$nombre = ucfirst(strtolower($_POST['nombre']));//pone la primer letra en mayuscula
+$apellido = ucfirst(strtolower($_POST['apellido']));
 
 // TODO: Validar...
 
