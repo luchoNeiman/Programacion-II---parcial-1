@@ -10,7 +10,7 @@ $usuario = (new Usuario())->porId($usuario_id);
         <h4 class="mb-0 card-header bg-dark text-white text-center"><i class="bi bi-person-circle me-2"></i>Mi Perfil
         </h4>
         <div class="card-body text-center">
-            <img src="../assets/imgs/avatars/<?= htmlspecialchars($usuario->getAvatar() ?? 'avatar.webp') ?>"
+            <img src="assets/imgs/avatars/<?= htmlspecialchars($usuario->getAvatar() ?? 'avatar.webp') ?>"
                  alt="Avatar"
                  width="180" height="180"
                  class="rounded-circle mb-4 shadow">

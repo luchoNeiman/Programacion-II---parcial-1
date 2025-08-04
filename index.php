@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__ . '/bootstrap/autoload.php';
+require_once __DIR__ . '../bootstrap/init.php';
 $rutas = [
     'home' => [
         'titulo' => 'Página principal',
@@ -43,7 +43,7 @@ if (!isset($rutas[$seccion])) {
 }
 $rutaConfig = $rutas[$seccion];
 
-$autenticacion2 = new Autenticacion;
+$autenticacion = new Autenticacion;
 
 
 // Capturamos el mensaje de feedback, si existe.
@@ -100,19 +100,13 @@ if (isset($_SESSION['feedback_error'])) {
                         <i class="bi bi-cart me-1"></i>
                     </a>
 
-
-
-
-
                     <div class="nav-item dropdown">
                         <!-- aca va el else -->
-                        <pre>
-                            <?php var_dump( !$autenticacion2->estaAutenticado()); ?>
-                        </pre>
+
                         <?php
-                        if (!$autenticacion2->estaAutenticado()):
+                        if ($autenticacion->estaAutenticado()):
                             ?>
-                            <?php $usuario = $autenticacion2->getUsuarioLogin(); ?>
+                            <?php $usuario = $autenticacion->getUsuarioLogin(); ?>
                         <a class="nav-link dropdown-toggle d-flex align-items-center text-white fs-5" href="#"
                            role="button"
                            data-bs-toggle="dropdown" aria-expanded="false">
