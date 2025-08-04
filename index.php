@@ -20,7 +20,10 @@ $rutas = [
         'titulo' => 'Carrito de compras',
     ],
     'checkout' => [
-        'titulo' => 'finalizar compra',
+        'titulo' => 'Checkout compra',
+    ],
+    'gracias' => [
+        'titulo' => 'Finalizar compra',
     ],
     'registrarse' => [
         'titulo' => 'Crear una cuenta',
@@ -150,7 +153,7 @@ if (isset($_SESSION['feedback_error'])) {
                     </a>
 
                     <a class="nav-link text-white fs-5 me-2 position-relative" href="index.php?seccion=ver-carrito">
-                        <i class="bi bi-cart me-1 px-2"></i>
+                        <i class="bi bi-cart4 me-1 px-2"></i>
                         <span class="position-absolute top-10 start-100 translate-middle badge rounded-pill bg-success">
                             <?php echo (new Carrito)->getTotalItems(); ?>
                         </span>
