@@ -31,8 +31,8 @@ $usuario = (new Usuario())->porId($usuario_id);
             </ul>
         </div>
         <div class="card-footer text-end">
-            <a href="index.php?seccion=dashboard" class="btn btn-dark">
-                <i class="bi bi-arrow-left me-2"></i>Volver al panel
+            <a href="index.php?seccion=home" class="btn btn-dark">
+                <i class="bi bi-arrow-left me-2"></i>Volver al inicio
             </a>
         </div>
     </div>
