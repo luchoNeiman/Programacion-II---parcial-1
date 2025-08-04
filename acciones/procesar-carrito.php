@@ -61,7 +61,7 @@ switch ($accion) {
         break;
 }
 
-// Redirecciona a la vista del carrito (para ver los cambios aplicados)
+
 header('Location: ' . $_SERVER['HTTP_REFERER']);
-// Corta la ejecución del script
+
 exit;

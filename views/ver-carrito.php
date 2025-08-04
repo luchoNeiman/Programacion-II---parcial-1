@@ -37,7 +37,7 @@ $productos = $carrito->getItems();
                         <!-- Producto -->
                         <tr>
                             <td class="align-middle text-center">
-                                <form action="acciones/carrito-procesar.php" method="post" class="d-inline">
+                                <form action="acciones/procesar-carrito.php" method="post" class="d-inline">
                                 <input type="hidden" name="accion" value="eliminar">
                                 <input type="hidden" name="id" value="<?= $producto['producto_id']; ?>">
                                 <button type="submit" class="btn btn-sm btn-outline-danger">
@@ -56,7 +56,7 @@ $productos = $carrito->getItems();
                                 </div>
                             </td>
                             <td class="align-middle text-center">
-                                <form action="acciones/carrito-procesar.php" method="post" class="d-inline">
+                                <form action="acciones/procesar-carrito.php" method="post" class="d-inline">
                                     <input type="hidden" name="accion" value="restar">
                                     <input type="hidden" name="id" value="<?= $producto['producto_id']; ?>">
                                     <button type="submit" class="btn btn-sm btn-outline-secondary">
@@ -65,7 +65,7 @@ $productos = $carrito->getItems();
                                 </form>
                                 <span class="mx-2"><?= $producto['cantidad'] ?></span>
 
-                                <form action="acciones/carrito-procesar.php" method="post" class="d-inline">
+                                <form action="acciones/procesar-carrito.php" method="post" class="d-inline">
                                     <input type="hidden" name="accion" value="sumar">
                                     <input type="hidden" name="id" value="<?= $producto['producto_id']; ?>">
                                     <button type="submit" class="btn btn-sm btn-outline-success">
@@ -95,7 +95,7 @@ $productos = $carrito->getItems();
                     <!-- Botones -->
                     <div class="d-flex justify-content-between mt-2 mb-2">
                         <!-- Botón Vaciar Carrito a la izquierda -->
-                        <form action="acciones/carrito-procesar.php" method="post" class="d-inline">
+                        <form action="acciones/procesar-carrito.php" method="post" class="d-inline">
                         <input type="hidden" name="accion" value="vaciar">
                         <button type="submit" class="btn btn-danger ms-1">
                             <i class="bi bi-credit-card me-1"></i>Vaciar Carrito

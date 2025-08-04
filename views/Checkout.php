@@ -7,10 +7,6 @@ $items = $carrito->getItems();
 
 <div class="container my-5">
     <h2 class="text-center mb-4 text-white"><i class="bi bi-bag-check-fill me-2"></i>Finalizar compra</h2>
-
-    <?php if (empty($items)): ?>
-        <div class="alert alert-warning text-center">Tu carrito está vacío. <a href="index.php?seccion=productos">Volver a productos</a></div>
-    <?php else: ?>
         <div class="row">
             <!-- Resumen del carrito -->
             <div class="col-md-6 mb-4">
@@ -37,6 +33,10 @@ $items = $carrito->getItems();
                         </li>
                     </ul>
                 </div>
+                <!-- BOTON QUE VUELVE AL CARRITO-->
+                <a href="index.php?seccion=ver-carrito" class="btn btn-dark border-light w-100 mt-2">
+                    <i class="bi bi-arrow-left-circle me-1"></i>Volver al carrito
+                </a>
             </div>
 
             <!-- Formulario de compra -->
@@ -76,5 +76,4 @@ $items = $carrito->getItems();
                 </div>
             </div>
         </div>
-    <?php endif; ?>
 </div>

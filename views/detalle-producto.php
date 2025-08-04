@@ -26,26 +26,15 @@ $producto = (new Producto)->porId($id);
                     <p>Hasta 3 cuotas sin interés</p>
                      <p>Llega gratis el lunes</p>
 
-                    <p class="fw-bold">Stock disponible</p>
-                    <div class="d-flex align-items-center flex-wrap mb-3">
-                        <label for="cantidadModal" class="me-2">Cantidad:</label>
-                        <select id="cantidadModal" class="form-select me-2 texto-color w-auto">
-                            <option value="1">1 unidad</option>
-                            <option value="2">2 unidades</option>
-                            <option value="3">3 unidades</option>
-                            <option value="4">4 unidades</option>
-                            <option value="5">5 unidades</option>
-                            <option value="6">6 unidades</option>
-                        </select>
-                        <small class="mt-1">(+10 disponibles)</small>
-                    </div>
+                    <p class="fw-bold text-violeta">Stock disponible</p>
+
                 </div>
                 <div class="card-footer">
                     <div class="d-flex flex-wrap flex-column flex-sm-row gap-2">
-                        <a href="index.php?seccion=productos" class="btn btn-outline-dark flex-fill">
+                        <a href="index.php?seccion=productos" class="btn btn-outline-dark ">
                             <i class="bi bi-arrow-left bi-lg ms-2"></i> Volver a productos
                         </a>
-                        <form action="acciones/carrito-procesar.php" method="post" class="d-inline">
+                        <form action="acciones/procesar-carrito.php" method="post" class="d-inline">
                             <input type="hidden" name="accion" value="agregar">
                             <input type="hidden" name="id" value="<?= $producto->getProductoId(); ?>">
                             <input type="hidden" name="titulo" value="<?= htmlspecialchars($producto->getTitulo()); ?>">
