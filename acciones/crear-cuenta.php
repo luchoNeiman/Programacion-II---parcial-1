@@ -1,25 +1,60 @@
 <?php
 require_once __DIR__ . '/../bootstrap/init.php';
+// Capturamos los datos.
+$nombre            = trim($_POST['nombre'] ?? '');
+$apellido          = trim($_POST['apellido'] ?? '');
+$email             = trim($_POST['email'] ?? '');
+$emailconfirmed    = trim($_POST['emailconfirmed'] ?? '');
+$password          = trim($_POST['password'] ?? '');
+$passwordconfirmed = trim($_POST['passwordconfirmed'] ?? '');
 
-$email = $_POST['email'];
-$password = $_POST['password'];
-$nombre = ucfirst(strtolower($_POST['nombre']));//pone la primer letra en mayuscula
-$apellido = ucfirst(strtolower($_POST['apellido']));
+$errores = [];
 
 // TODO: Validar...
+// Validaciones
+if ($nombre === '') {
+    $errores['nombre'] = 'El nombre es obligatorio.';
+}
+if ($apellido === '') {
+    $errores['apellido'] = 'El apellido es obligatorio.';
+}
+if ($email === '') {
+    $errores['email'] = 'El correo electrónico es obligatorio.';
+} elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    $errores['email'] = 'El correo electrónico no es válido.';
+}
+if ($emailconfirmed === '') {
+    $errores['emailconfirmed'] = 'Debes confirmar tu correo electrónico.';
+} elseif ($email !== $emailconfirmed) {
+    $errores['emailconfirmed'] = 'Los correos electrónicos no coinciden.';
+}
+if ($password === '') {
+    $errores['password'] = 'La contraseña es obligatoria.';
+}
+if ($passwordconfirmed === '') {
+    $errores['passwordconfirmed'] = 'Debes confirmar tu contraseña.';
+} elseif ($password !== $passwordconfirmed) {
+    $errores['passwordconfirmed'] = 'Las contraseñas no coinciden.';
+}
+
+// Si hay errores, redirigir y guardar errores y datos viejos
+if (!empty($errores)) {
+    $_SESSION['feedback_error'] = "Por favor, corregí los errores e intentá de nuevo.";
+    $_SESSION['errores'] = $errores;
+    $_SESSION['data_vieja'] = $_POST;
+    header("Location: ../index.php?seccion=registrarse");
+    exit;
+}
 
 try {
     (new Usuario)->crear([
-        'nombre' => $nombre,
-        'apellido' => $apellido,
+        'nombre' => ucfirst(strtolower($nombre)),
+        'apellido' => ucfirst(strtolower($apellido)),
         'email' => $email,
         // No olvidarnos de hashear el password.
         'password' => password_hash($password, PASSWORD_DEFAULT),
         'rol_fk' => Usuario::ROL_USUARIO, // Importante que acá hardcodeemos que es un usuario común.
     ]);
-
-    // TODO: Completar el autenticar.
-    // (new Autenticacion)->autenticar($usuario);
 
     $_SESSION['feedback_exito'] = "¡Cuenta creada con éxito!";
     header("Location: ../index.php?seccion=home");
