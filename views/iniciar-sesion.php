@@ -33,13 +33,19 @@ $email = $data_vieja['email'] ?? '';
                 </div>
                 <div class="mb-3">
                     <label for="password" class="form-label text-violeta">Contraseña</label>
-                    <div>
+                    <div class="input-group">
                         <input type="password" class="form-control <?php if (isset($errores['password'])) echo 'is-invalid'; ?>" id="password" name="password" required>
                         <button type="button" class="btn btn-outline-secondary" tabindex="-1"
                             onclick="const p=document.getElementById('password'); p.type=p.type==='password'?'text':'password'; this.querySelector('i').classList.toggle('bi-eye'); this.querySelector('i').classList.toggle('bi-eye-slash'); return false;">
                             <i class="bi bi-eye"></i>
                         </button>
+                        <?php if (isset($errores['credenciales'])): ?>
+                            <div class="alert alert-danger mt-2">
+                                <?= $errores['credenciales'] ?>
+                            </div>
+                        <?php endif; ?>
                     </div>
+
                     <?php if (isset($errores['password'])): ?>
                         <div class="invalid-feedback d-block">
                             <?= $errores['password'] ?>

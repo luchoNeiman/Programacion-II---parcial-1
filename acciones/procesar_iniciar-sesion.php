@@ -11,7 +11,6 @@ $password   = trim($_POST['password'] ?? '');
 $errores = [];
 
 // TODO: Validar...
-// Validaciones
 if ($email === '') {
     $errores['email'] = 'El correo electrónico es obligatorio.';
 } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
@@ -34,7 +33,8 @@ if (!empty($errores)) {
 $autenticacion = new Autenticacion;
 
 if (!$autenticacion->intentarIngresar($email, $password)) {
-    $_SESSION['feedback_error'] = "Las credenciales ingresadas no coinciden con nuestros registros.";
+    $errores['credenciales'] = "Las credenciales ingresadas no coinciden con nuestros registros.";
+    $_SESSION['errores'] = $errores;
     $_SESSION['data_vieja'] = $_POST;
     header('Location: ../index.php?seccion=iniciar-sesion');
     exit;
