@@ -1,35 +1,15 @@
 <?php
 
-$email = '';
-$errores = [];
+// Recuperar errores y datos viejos de la sesión si existen
+$errores = $_SESSION['errores'] ?? [];
+$data_vieja = $_SESSION['data_vieja'] ?? [];
+$feedback_error = $_SESSION['feedback_error'] ?? null;
 
-// Procesar el formulario si se envió por POST
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Trim a los campos
-    $email = trim($_POST['email'] ?? '');
-    $password = trim($_POST['password'] ?? '');
+// Limpiar errores y datos viejos de la sesión para que no persistan
+unset($_SESSION['errores'], $_SESSION['data_vieja'], $_SESSION['feedback_error']);
 
-    // Validaciones
-    if ($email === '') {
-        $errores['email'] = 'El correo electrónico es obligatorio.';
-    } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        $errores['email'] = 'El correo electrónico no es válido.';
-    }
-
-    if ($password === '') {
-        $errores['password'] = 'La contraseña es obligatoria.';
-    }
-
-    // Si no hay errores, procesar el login (puedes redirigir o incluir tu lógica aquí)
-    if (empty($errores)) {
-        // Aquí iría tu lógica de autenticación, por ejemplo:
-        // header('Location: index.php?seccion=home');
-        // exit;
-    }
-}
+$email = $data_vieja['email'] ?? '';
 ?>
-
-
 
 
 <section class="container mt-5 d-flex align-items-center justify-content-center">
@@ -38,6 +18,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <h1 class="text-center mb-4 text-white">
                 <i class="bi bi-person-circle me-1 text-white"></i> Iniciar sesión en tu cuenta
             </h1>
+            <?php if ($feedback_error): ?>
+                <div class="alert alert-danger"><?= $feedback_error ?></div>
+            <?php endif; ?>
             <form action="acciones/procesar_iniciar-sesion.php" method="POST" class="card shadow p-4 border-0" novalidate>
                 <div class="mb-3">
                     <label for="email" class="form-label text-violeta">Correo electrónico</label>
