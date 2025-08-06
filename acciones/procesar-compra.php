@@ -16,7 +16,7 @@ $email      = $_POST['email'] ?? '';
 $direccion  = $_POST['direccion'] ?? '';
 $metodoPago = $_POST['metodo_pago'] ?? '';
 
-// (opcional) Podés validar que no estén vacíos, pero por ahora seguimos
+// validar que no estén vacíos
 
 // Simular "procesamiento"
 $_SESSION['compra'] = [

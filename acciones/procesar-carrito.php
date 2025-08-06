@@ -4,11 +4,11 @@ require_once __DIR__ . '/../bootstrap/init.php';
 $carrito = new Carrito();
 
 // Toma la acción que se mandó por POST, si no hay nada, queda como null
-$accion = $_POST['accion'] ?? null;
+$accion = $_POST['accion'] ?? $_GET['accion'];
 
 
 // Obtiene el ID del producto desde POST, lo castea a entero. Si no está, usa 0
-$id = isset($_POST['id']) ? (int)$_POST['id'] : 0;
+$id = isset($_GET['id']) ? (int)$_GET['id'] : 0;
 
 switch ($accion) {
     case 'agregar':
