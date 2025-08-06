@@ -86,6 +86,15 @@ class Usuario
         ]);
     }
 
+    public function actualizarAvatar(string $nombreArchivo): void
+    {
+        $db = (new DBConexionStatic)->getConexion();
+        $consulta = "UPDATE usuarios SET avatar = ? WHERE usuario_id = ?";
+        $stmt = $db->prepare($consulta);
+        $stmt->execute([$nombreArchivo, $this->getUsuarioId()]);
+        $this->setAvatar($nombreArchivo);
+    }
+
     public function esAdmin(): bool
     {
         return $this->getRolFk() === self::ROL_ADMIN;
