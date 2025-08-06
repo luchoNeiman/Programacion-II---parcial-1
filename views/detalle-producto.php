@@ -1,8 +1,10 @@
 <?php
-$id = $_GET['id'];
+$id = $_GET['id'] ?? null;
 $producto = (new Producto)->porId($id);
-
-?>
+if(!$producto) {
+  echo "<div class='alert alert-danger'>El producto no existe.</div>";
+  exit;
+}?>
 
 <section class="container my-5 ">
     <div class="row">
@@ -34,18 +36,25 @@ $producto = (new Producto)->porId($id);
                         <a href="index.php?seccion=productos" class="btn btn-outline-dark ">
                             <i class="bi bi-arrow-left bi-lg ms-2"></i> Volver a productos
                         </a>
-                        <form action="acciones/procesar-carrito.php" method="post" class="d-inline">
-                            <input type="hidden" name="accion" value="agregar">
-                            <input type="hidden" name="id" value="<?= $producto->getProductoId(); ?>">
-                            <input type="hidden" name="titulo" value="<?= htmlspecialchars($producto->getTitulo()); ?>">
-                            <input type="hidden" name="precio" value="<?= $producto->getPrecio(); ?>">
-                            <input type="hidden" name="cantidad" id="cantidadSeleccionada" value="1">
-                            <input type="hidden" name="imagen" value="<?= $producto->getImagen(); ?>">
 
-                            <button type="submit" class="btn btn-dark flex-fill">
-                                <i class="bi bi-cart bi-lg"></i> Agregar al carrito
-                            </button>
-                        </form>
+                      <?php
+                      if ((new Autenticacion)->estaAutenticado()): ?>
+
+                          <form action="acciones/procesar-carrito.php" method="post">
+                              <input type="number" name="cantidad" value="1" min="1" class="form-control" style="max-width: 90px; display:inline-block;">
+                              <button type="submit" name="accion" value="agregar_<?= $producto->getProductoId() ?>" class="btn btn-dark ms-2">
+                                  <i class="bi bi-cart-plus"></i> Agregar al carrito
+                              </button>
+                          </form>
+                      <?php else: ?>
+                          <a href="index.php?seccion=iniciar-sesion&from=<?= urlencode($_SERVER['REQUEST_URI']) ?>" class="btn btn-dark ms-2">
+                              <i class="bi bi-person"></i> Iniciá sesión para comprar
+                          </a>
+
+                      <?php endif; ?>
+
+
+
                     </div>
                 </div>
             </div>

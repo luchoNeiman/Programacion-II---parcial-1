@@ -20,11 +20,30 @@ $productos = (new Producto)->todosProductos();
                           <div class="card-body flex-grow-1 mb-0">
                               <p class="card-text text-black"><?= htmlspecialchars($producto->getDescripcion()); ?></p>
                           </div>
-                          <div class="card-footer mt-auto">
+                          <div class="card-footer mt-auto d-flex justify-content-between align-items-center">
+                            <?php if ((new Autenticacion)->estaAutenticado()): ?>
+                                <form action="acciones/procesar-carrito.php" method="post" class="d-flex align-items-center ms-2">
+                                    <div class="input-group" style="max-width: 100px;">
+                                        <button type="button" class="btn btn-dark btn-sm"
+                                                onclick="this.parentNode.querySelector('input').stepDown()">-
+                                        </button>
+                                        <input type="number" name="cantidad" value="1" min="1" readonly
+                                               class="form-control form-control-sm text-center">
+                                        <button type="button" class="btn btn-dark btn-sm"
+                                                onclick="this.parentNode.querySelector('input').stepUp()">+
+                                        </button>
+                                    </div>
+                                    <button type="submit" name="accion" value="agregar_<?= $producto->getProductoId() ?>"
+                                            class="btn btn-dark btn-sm">
+                                        <i class="bi bi-cart-plus"></i>
+                                    </button>
+                                </form>
+                            <?php endif; ?>
                               <p class="fs-4 mb-0">
                                   <strong class="text-black">$<?= number_format($producto->getPrecio(), 2, ',', '.'); ?></strong>
                               </p>
                           </div>
+
                       </article>
                   </a>
               </div>
