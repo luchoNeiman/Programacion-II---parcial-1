@@ -103,8 +103,8 @@ class Producto
      * @return array
      *
      */
-    public static function obtenerPorCategoria( $categorias): array
-    //public static function obtenerPorCategoria(string|array $categorias): array
+
+    public static function obtenerPorCategoria(string|array $categorias): array
     {   /* si es un string, lo convertimos en array
 
         */
