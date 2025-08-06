@@ -41,5 +41,12 @@ if (!$autenticacion->intentarIngresar($email, $password)) {
 }
 
 $_SESSION['feedback_exito'] = "Sesión iniciada con éxito. ¡Hola de nuevo!";
+if (isset($_SESSION['after_login_redirect'])) {
+  $redir = $_SESSION['after_login_redirect'];
+  unset($_SESSION['after_login_redirect']);
+  header('Location: ' . $redir);
+  exit;
+}
+// Si no, redirigí al home u otra por defecto
 header('Location: ../index.php?seccion=home');
 exit;

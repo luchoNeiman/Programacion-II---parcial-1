@@ -1,5 +1,7 @@
 <?php
-
+if (isset($_GET['from'])) {
+  $_SESSION['after_login_redirect'] = $_GET['from'];
+}
 // Recuperar errores y datos viejos de la sesión si existen
 $errores = $_SESSION['errores'] ?? [];
 $data_vieja = $_SESSION['data_vieja'] ?? [];
