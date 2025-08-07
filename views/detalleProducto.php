@@ -41,8 +41,19 @@ if (!$producto) {
                       if ((new Autenticacion)->estaAutenticado()): ?>
 
                           <form action="acciones/procesar-carrito.php" method="post">
-                              <input type="number" name="cantidad" value="1" min="1" class="form-control"
-                                     style="max-width: 90px; display:inline-block;">
+                              <div class="input-group me-1">
+                                  <!-- Botón menos -->
+                                  <button type="button" class="btn btn-dark btn-sm"
+                                          onclick="this.parentNode.querySelector('input').stepDown()">-
+                                  </button>
+                                  <!-- Cantidad a agregar (readonly, cambia con los botones) -->
+                                  <input type="number" name="cantidad" value="1" min="1" readonly
+                                         class="form-control form-control-sm text-center">
+                                  <!-- Botón más -->
+                                  <button type="button" class="btn btn-dark btn-sm"
+                                          onclick="this.parentNode.querySelector('input').stepUp()">+
+                                  </button>
+                              </div>
                               <button type="submit" name="accion" value="agregar_<?= $producto->getProductoId() ?>"
                                       class="btn btn-dark ms-2">
                                   <i class="bi bi-cart-plus"></i> Agregar al carrito

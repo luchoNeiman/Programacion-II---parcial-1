@@ -1,20 +1,23 @@
 <?php
+// Si no está autenticado, lo mando a login y guardo la URL actual para redireccionar después
 if (!(new Autenticacion)->estaAutenticado()) {
   $actualUrl = $_SERVER['REQUEST_URI'];
   header('Location: index.php?seccion=iniciar-sesion&from=' . urlencode($actualUrl));
   exit;
 }
 
-
+// Saco el usuario logueado (si por alguna razón no está, queda null)
 $usuarioId = $_SESSION['usuario_id'] ?? null;
+
+// Instancio el carrito para traer los productos
 $carrito = new Carrito();
 $productos = $carrito->getItems($usuarioId);
-
 ?>
+
 <div class="container py-5">
     <h2 class="text-center text-white mb-5"><i class="bi bi-cart-fill me-2"></i>Carrito de Compras</h2>
 
-    <!-- Si el carrito está vacío -->
+    <!-- Si el carrito está vacío, muestro mensaje canchero -->
   <?php if (empty($productos)): ?>
       <div class="container ">
           <div class="text-center bg-light p-5 rounded shadow-sm">
@@ -27,9 +30,11 @@ $productos = $carrito->getItems($usuarioId);
           </div>
       </div>
   <?php else: ?>
+      <!-- Si hay productos, armo la tabla piola -->
       <div class="my-5"></div>
       <div class="row justify-content-center">
           <div class="col-md-10">
+              <!-- Card de la tabla (escondo en mobile para hacerla más responsive) -->
               <div class="mx-5 mb-5 card shadow-sm d-none d-md-block">
                   <div class="table-responsive">
                       <table class="table table-bordered table-striped table-hover mi-tabla-violeta mb-0">
@@ -45,6 +50,7 @@ $productos = $carrito->getItems($usuarioId);
                           <tbody>
                           <?php foreach ($productos as $producto): ?>
                               <tr>
+                                  <!-- Botón para eliminar producto -->
                                   <td class="align-middle text-center">
                                       <form action="acciones/procesar-carrito.php" method="post" class="d-inline">
                                           <button type="submit" name="accion"
@@ -56,6 +62,7 @@ $productos = $carrito->getItems($usuarioId);
                                   </td>
                                   <td>
                                       <div class="d-flex align-items-center">
+                                          <!-- Imagen del producto -->
                                           <img src="assets/imgs/productos/<?= $producto['imagen'] ?>" alt="Producto"
                                                width="60" class="img-fluid rounded me-3">
                                           <div>
@@ -63,7 +70,9 @@ $productos = $carrito->getItems($usuarioId);
                                           </div>
                                       </div>
                                   </td>
+                                  <!-- Acciones para sumar/restar cantidad -->
                                   <td class="align-middle text-center">
+                                      <!-- Botón restar -->
                                       <form action="acciones/procesar-carrito.php" method="post" class="d-inline">
                                           <button type="submit" name="accion"
                                                   value="restar_<?= $producto['producto_id'] ?>"
@@ -72,6 +81,7 @@ $productos = $carrito->getItems($usuarioId);
                                           </button>
                                       </form>
                                       <span class="mx-2"><?= $producto['cantidad'] ?></span>
+                                      <!-- Botón sumar -->
                                       <form action="acciones/procesar-carrito.php" method="post" class="d-inline">
                                           <button type="submit" name="accion"
                                                   value="sumar_<?= $producto['producto_id'] ?>"
@@ -80,12 +90,15 @@ $productos = $carrito->getItems($usuarioId);
                                           </button>
                                       </form>
                                   </td>
+                                  <!-- Precio unitario del producto -->
                                   <td class="align-middle text-end">$<?= $producto['precio_unitario'] ?></td>
+                                  <!-- Subtotal (precio x cantidad) -->
                                   <td class="align-middle text-end">
                                       $<?= $producto['precio_unitario'] * $producto['cantidad'] ?></td>
                               </tr>
                           <?php endforeach; ?>
                           </tbody>
+                          <!-- Footer con el total de la compra -->
                           <tfoot class="table-dark">
                           <tr class="fw-bold">
                               <td colspan="3" class="text-end">Total:</td>
@@ -94,7 +107,7 @@ $productos = $carrito->getItems($usuarioId);
                           </tr>
                           </tfoot>
                       </table>
-                      <!-- Botones -->
+                      <!-- Botones de acción del carrito -->
                       <div class="d-flex justify-content-between mt-2 mb-2">
                           <!-- Botón Vaciar Carrito a la izquierda -->
                           <form action="acciones/procesar-carrito.php" method="post" class="d-inline">
@@ -105,9 +118,11 @@ $productos = $carrito->getItems($usuarioId);
 
                           <!-- Contenedor para los otros dos botones alineados a la derecha -->
                           <div class="d-flex">
+                              <!-- Seguir comprando -->
                               <a href="index.php?seccion=productos" class="btn btn-outline-dark me-2">
                                   <i class="bi bi-arrow-left me-1"></i>Seguir comprando
                               </a>
+                              <!-- Finalizar compra -->
                               <form action="acciones/procesar-compra.php" method="post" class="d-inline">
                                   <button type="submit" class="btn btn-success me-1">
                                       <i class="bi bi-check-circle me-1"></i> Finalizar compra

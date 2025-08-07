@@ -7,13 +7,13 @@ $rutas = [
   'productos' => [
     'titulo' => 'Productos',
   ],
-  'detalle-producto' => [
+  'detalleProducto' => [
     'titulo' => 'Detalle Producto',
   ],
   'contacto' => [
     'titulo' => 'Contacto',
   ],
-  'procesar-form' => [
+  'procesar-contacto' => [
     'titulo' => 'Procesar Formulario',
   ],
   'ver-carrito' => [
