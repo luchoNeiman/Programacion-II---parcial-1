@@ -1,10 +1,10 @@
 <?php
 $id = $_GET['id'] ?? null;
 $producto = (new Producto)->porId($id);
-if(!$producto) {
+if (!$producto) {
   echo "<div class='alert alert-danger'>El producto no existe.</div>";
   exit;
-}?>
+} ?>
 
 <section class="container my-5 ">
     <div class="row">
@@ -26,7 +26,7 @@ if(!$producto) {
                         <strong>$<?= number_format($producto->getPrecio(), 2, ',', '.'); ?></strong>
                     </h2>
                     <p>Hasta 3 cuotas sin interés</p>
-                     <p>Llega gratis el lunes</p>
+                    <p>Llega gratis el lunes</p>
 
                     <p class="fw-bold text-violeta">Stock disponible</p>
 
@@ -41,18 +41,20 @@ if(!$producto) {
                       if ((new Autenticacion)->estaAutenticado()): ?>
 
                           <form action="acciones/procesar-carrito.php" method="post">
-                              <input type="number" name="cantidad" value="1" min="1" class="form-control" style="max-width: 90px; display:inline-block;">
-                              <button type="submit" name="accion" value="agregar_<?= $producto->getProductoId() ?>" class="btn btn-dark ms-2">
+                              <input type="number" name="cantidad" value="1" min="1" class="form-control"
+                                     style="max-width: 90px; display:inline-block;">
+                              <button type="submit" name="accion" value="agregar_<?= $producto->getProductoId() ?>"
+                                      class="btn btn-dark ms-2">
                                   <i class="bi bi-cart-plus"></i> Agregar al carrito
                               </button>
                           </form>
                       <?php else: ?>
-                          <a href="index.php?seccion=iniciar-sesion&from=<?= urlencode($_SERVER['REQUEST_URI']) ?>" class="btn btn-dark ms-2">
+                          <a href="index.php?seccion=iniciar-sesion&from=<?= urlencode($_SERVER['REQUEST_URI']) ?>"
+                             class="btn btn-dark ms-2">
                               <i class="bi bi-person"></i> Iniciá sesión para comprar
                           </a>
 
                       <?php endif; ?>
-
 
 
                     </div>
@@ -83,30 +85,30 @@ if(!$producto) {
         <div class="col-md-12">
             <h2 class="mb-4 text-white"> Más productos de <?= htmlspecialchars($producto->getCategoria()) ?></h2>
             <div class="row g-4">
-                <?php
-                // variable para poder filtrar por tipo de categoria
-                $productosSimilares = (new Producto())->obtenerPorCategoria($producto->getCategoria());
+              <?php
+              // variable para poder filtrar por tipo de categoria
+              $productosSimilares = (new Producto())->obtenerPorCategoria($producto->getCategoria());
 
-                foreach ($productosSimilares as $productoCategoria): ?>
-                    <div class="col-12 col-sm-6 col-lg-3 d-flex align-items-stretch mb-4">
-                        <a href="index.php?seccion=detalle-producto&id=<?= $productoCategoria->getProductoId(); ?>"
-                           class="btn p-0 w-100 h-100 tarjeta">
-                            <article class="card shadow-sm h-100 ">
-                                <img src="assets/imgs/productos/<?= $productoCategoria->getImagen(); ?>"
-                                     class="card-img-top img-fluid "
-                                     alt="<?= $productoCategoria->getImagenDescripcion(); ?>">
-                                <div class="card-header bg-dark">
-                                    <h2 class="text-white fs-5 rounded-2 m-0"><?= $productoCategoria->getTitulo(); ?></h2>
-                                </div>
-                                <div class="card-footer mt-auto">
-                                    <p class="fs-4 mb-0">
-                                        <strong class="text-black">$<?= number_format($producto->getPrecio(), 2, ',', '.'); ?></strong>
-                                    </p>
-                                </div>
-                            </article>
-                        </a>
-                    </div>
-                <?php endforeach; ?>
+              foreach ($productosSimilares as $productoCategoria): ?>
+                  <div class="col-12 col-sm-6 col-lg-3 d-flex align-items-stretch mb-4">
+                      <a href="index.php?seccion=detalle-producto&id=<?= $productoCategoria->getProductoId(); ?>"
+                         class="btn p-0 w-100 h-100 tarjeta">
+                          <article class="card shadow-sm h-100 ">
+                              <img src="assets/imgs/productos/<?= $productoCategoria->getImagen(); ?>"
+                                   class="card-img-top img-fluid "
+                                   alt="<?= $productoCategoria->getImagenDescripcion(); ?>">
+                              <div class="card-header bg-dark">
+                                  <h2 class="text-white fs-5 rounded-2 m-0"><?= $productoCategoria->getTitulo(); ?></h2>
+                              </div>
+                              <div class="card-footer mt-auto">
+                                  <p class="fs-4 mb-0">
+                                      <strong class="text-black">$<?= number_format($producto->getPrecio(), 2, ',', '.'); ?></strong>
+                                  </p>
+                              </div>
+                          </article>
+                      </a>
+                  </div>
+              <?php endforeach; ?>
             </div>
         </div>
     </div>

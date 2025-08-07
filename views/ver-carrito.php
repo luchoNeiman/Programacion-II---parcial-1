@@ -1,4 +1,3 @@
-
 <?php
 if (!(new Autenticacion)->estaAutenticado()) {
   $actualUrl = $_SERVER['REQUEST_URI'];
@@ -48,7 +47,8 @@ $productos = $carrito->getItems($usuarioId);
                               <tr>
                                   <td class="align-middle text-center">
                                       <form action="acciones/procesar-carrito.php" method="post" class="d-inline">
-                                          <button type="submit" name="accion" value="eliminar_<?= $producto['producto_id'] ?>"
+                                          <button type="submit" name="accion"
+                                                  value="eliminar_<?= $producto['producto_id'] ?>"
                                                   class="btn btn-sm btn-outline-danger" title="Eliminar del carrito">
                                               <i class="bi bi-x-lg"></i>
                                           </button>
@@ -65,21 +65,24 @@ $productos = $carrito->getItems($usuarioId);
                                   </td>
                                   <td class="align-middle text-center">
                                       <form action="acciones/procesar-carrito.php" method="post" class="d-inline">
-                                          <button type="submit" name="accion" value="restar_<?= $producto['producto_id'] ?>"
+                                          <button type="submit" name="accion"
+                                                  value="restar_<?= $producto['producto_id'] ?>"
                                                   class="btn btn-sm btn-outline-secondary" title="Restar uno">
                                               <i class="bi bi-dash"></i>
                                           </button>
                                       </form>
                                       <span class="mx-2"><?= $producto['cantidad'] ?></span>
                                       <form action="acciones/procesar-carrito.php" method="post" class="d-inline">
-                                          <button type="submit" name="accion" value="sumar_<?= $producto['producto_id'] ?>"
+                                          <button type="submit" name="accion"
+                                                  value="sumar_<?= $producto['producto_id'] ?>"
                                                   class="btn btn-sm btn-outline-success" title="Sumar uno">
                                               <i class="bi bi-plus"></i>
                                           </button>
                                       </form>
                                   </td>
                                   <td class="align-middle text-end">$<?= $producto['precio_unitario'] ?></td>
-                                  <td class="align-middle text-end">$<?= $producto['precio_unitario'] * $producto['cantidad'] ?></td>
+                                  <td class="align-middle text-end">
+                                      $<?= $producto['precio_unitario'] * $producto['cantidad'] ?></td>
                               </tr>
                           <?php endforeach; ?>
                           </tbody>

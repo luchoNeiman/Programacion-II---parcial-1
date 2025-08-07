@@ -47,7 +47,8 @@
                                 35% de descuento!</strong></p>
                     </div>
                     <div class="bg-morado pt-3 pb-5">
-                        <a href="index.php?seccion=contacto" class="btn btn-light mb-3 fw-bold fs-5">¡Obtené tu cúpon!</a>
+                        <a href="index.php?seccion=contacto" class="btn btn-light mb-3 fw-bold fs-5">¡Obtené tu
+                            cúpon!</a>
                     </div>
                 </div>
             </div>

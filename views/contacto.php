@@ -3,15 +3,17 @@
         <div class="col-md-12">
             <h1 class="mb-4 text-center text-white">Reclamá el cupón</h1>
             <p class="mb-4 text-white">
-                Estamos aquí para ayudarte. Si tienes alguna pregunta, comentario o necesitas más información, no dudes en <strong class="text-white">ponerte en contacto</strong> con nosotros. Además, completa el formulario para recibir un cupón de <strong class="text-white">descuento del 35% off</strong>.
+                Estamos aquí para ayudarte. Si tienes alguna pregunta, comentario o necesitas más información, no dudes
+                en <strong class="text-white">ponerte en contacto</strong> con nosotros. Además, completa el formulario
+                para recibir un cupón de <strong class="text-white">descuento del 35% off</strong>.
             </p>
         </div>
-    
+
         <div class="col-md-3">
             <div class="card text-center d-none d-md-flex">
                 <div class="card-body ">
                     <img class="w-100 img-fluid" src="assets/imgs/Banners/banner-descuento.webp"
-                        alt="Descuento especial 35% off">
+                         alt="Descuento especial 35% off">
                 </div>
             </div>
         </div>
@@ -27,7 +29,7 @@
                         <label for="email" class="form-label fw-bold">Correo electrónico</label>
                         <input type="email" class="form-control border-secondary" id="email" name="email" required>
                     </div>
-            
+
 
                     <div class="mb-3">
                         <label for="mensaje" class="form-label fw-bold">Mensaje</label>
@@ -47,10 +49,10 @@
             <div class="card text-center">
                 <div class="card-body ">
                     <img class="w-100 img-fluid" src="assets/imgs/Banners/banner-descuento.webp"
-                        alt="Descuento especial 35% off">
+                         alt="Descuento especial 35% off">
                 </div>
             </div>
         </div>
-    
+
     </div>
 </section>
