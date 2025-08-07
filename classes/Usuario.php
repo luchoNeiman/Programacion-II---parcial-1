@@ -95,6 +95,15 @@ class Usuario
         $this->setAvatar($nombreArchivo);
     }
 
+    public function traerUsuarios(): array
+    {
+        $db = DBConexionStatic::getConexion();
+        $consulta = "SELECT * FROM usuarios ORDER BY usuario_id DESC";
+        $stmt = $db->query($consulta);
+        $stmt->setFetchMode(PDO::FETCH_CLASS, self::class);
+        return $stmt->fetchAll();
+    }
+
     public function esAdmin(): bool
     {
         return $this->getRolFk() === self::ROL_ADMIN;

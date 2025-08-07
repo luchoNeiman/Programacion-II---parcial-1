@@ -34,6 +34,14 @@ $rutas = [
     'titulo' => 'Confirmacion de baja de producto',
     'requiereAutenticacion' => true,
   ],
+  'usuarios' => [
+    'titulo' => 'Administrar usuarios',
+    'requiereAutenticacion' => true,
+  ],
+  'verCompras' => [
+    'titulo' => 'Ver compras',
+    'requiereAutenticacion' => true,
+  ],
   '404' => [
     'titulo' => 'Página no encontrada',
   ],
