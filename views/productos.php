@@ -31,40 +31,42 @@ $productos = (new Producto)->todosProductos();
                       </a>
 
                       <!-- Footer con acciones y precio -->
+                    <?php if ((new Autenticacion)->estaAutenticado()): ?>
                       <div class="card-footer mt-auto d-flex justify-content-between align-items-center">
-                        <?php if ((new Autenticacion)->estaAutenticado()): ?>
-                            <!-- Si está logueado, muestro el form para agregar al carrito -->
-                            <form action="acciones/procesar-carrito.php" method="post"
-                                  class="d-flex align-items-center ms-2">
-                                <div class="input-group me-1">
-                                    <!-- Botón menos -->
-                                    <button type="button" class="btn btn-dark btn-sm"
-                                            onclick="this.parentNode.querySelector('input').stepDown()">-
-                                    </button>
-                                    <!-- Cantidad a agregar (readonly, cambia con los botones) -->
-                                    <input type="number" name="cantidad" value="1" min="1" readonly
-                                           class="form-control form-control-sm text-center">
-                                    <!-- Botón más -->
-                                    <button type="button" class="btn btn-dark btn-sm"
-                                            onclick="this.parentNode.querySelector('input').stepUp()">+
-                                    </button>
-                                </div>
-                                <!-- Botón para agregar al carrito -->
-                                <button type="submit" name="accion" value="agregar_<?= $producto->getProductoId() ?>"
-                                        class="btn btn-dark btn-sm me-1">
-                                    <i class="bi bi-cart-plus"></i>
-                                </button>
-                            </form>
-                        <?php endif; ?>
+                          <!-- Si está logueado, muestro el form para agregar al carrito -->
+                          <form action="acciones/procesar-carrito.php" method="post"
+                                class="d-flex align-items-center ms-2">
+                              <div class="input-group me-1">
+                                  <!-- Botón menos -->
+                                  <button type="button" class="btn btn-dark btn-sm"
+                                          onclick="this.parentNode.querySelector('input').stepDown()">-
+                                  </button>
+                                  <!-- Cantidad a agregar (readonly, cambia con los botones) -->
+                                  <input type="number" name="cantidad" value="1" min="1" readonly
+                                         class="form-control form-control-sm text-center">
+                                  <!-- Botón más -->
+                                  <button type="button" class="btn btn-dark btn-sm"
+                                          onclick="this.parentNode.querySelector('input').stepUp()">+
+                                  </button>
+                              </div>
+                              <!-- Botón para agregar al carrito -->
+                              <button type="submit" name="accion" value="agregar_<?= $producto->getProductoId() ?>"
+                                      class="btn btn-dark btn-sm me-1">
+                                  <i class="bi bi-cart-plus"></i>
+                              </button>
+                          </form>
 
                           <!-- Línea divisoria vertical (para separar del precio) -->
                           <div class="vr mx-1" style="height: 2rem;"></div>
-
-                          <!-- Precio del producto -->
-                          <p class="fs-4 mb-0">
-                              <strong class="text-black">$<?= number_format($producto->getPrecio(), 2, ',', '.'); ?></strong>
-                          </p>
-                      </div>
+                        <?php else:
+                        ?>
+                          <div class="card-footer mt-auto d-flex justify-content-center">
+                            <?php endif; ?>
+                              <!-- Precio del producto -->
+                              <p class="fs-5 mb-0">
+                                  <strong class="text-black">$<?= number_format($producto->getPrecio(), 2, ',', '.'); ?></strong>
+                              </p>
+                          </div>
 
                   </article>
               </div>

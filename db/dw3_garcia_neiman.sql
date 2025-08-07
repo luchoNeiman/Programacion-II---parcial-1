@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 06-08-2025 a las 20:52:41
+-- Tiempo de generación: 07-08-2025 a las 20:54:14
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -24,58 +24,59 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `usuarios`
+-- Estructura de tabla para la tabla `compras`
 --
 
-CREATE TABLE `usuarios` (
-  `usuario_id` int(10) UNSIGNED NOT NULL,
-  `rol_fk` tinyint(3) UNSIGNED NOT NULL,
-  `email` varchar(100) NOT NULL,
-  `password` varchar(255) NOT NULL,
-  `nombre` varchar(60) DEFAULT NULL,
-  `apellido` varchar(60) DEFAULT NULL,
-  `avatar` varchar(255) DEFAULT NULL
+CREATE TABLE `compras` (
+  `compra_id` int(10) UNSIGNED NOT NULL,
+  `usuario_fk` int(10) UNSIGNED NOT NULL,
+  `fecha` date NOT NULL,
+  `total_compra` decimal(9,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Volcado de datos para la tabla `usuarios`
+-- Volcado de datos para la tabla `compras`
 --
 
-INSERT INTO `usuarios` (`usuario_id`, `rol_fk`, `email`, `password`, `nombre`, `apellido`, `avatar`) VALUES
-(1, 1, 'lucianoneiman@gmail.com', '$2y$10$Njo1/KMCWjWLqaXwhSLJteRiDunyKNw1zyxBm7v6EHLfmdy1K5X.y', 'Luciano', 'Neiman', 'luciano.webp'),
-(2, 1, 'ricardogarcia@gmail.com', '$2y$10$Njo1/KMCWjWLqaXwhSLJteRiDunyKNw1zyxBm7v6EHLfmdy1K5X.y', 'Ricardo', 'Garcia', 'ricardo.webp');
+INSERT INTO `compras` (`compra_id`, `usuario_fk`, `fecha`, `total_compra`) VALUES
+(10, 2, '2025-08-06', 670696.77),
+(11, 2, '2025-08-06', 11997.00),
+(12, 2, '2025-08-06', 57999.98),
+(13, 2, '2025-08-06', 28999.99),
+(14, 2, '2025-08-06', 19995.00),
+(15, 2, '2025-08-06', 28999.99),
+(16, 2, '2025-08-07', 144999.95);
 
 --
 -- Índices para tablas volcadas
 --
 
 --
--- Indices de la tabla `usuarios`
+-- Indices de la tabla `compras`
 --
-ALTER TABLE `usuarios`
-  ADD PRIMARY KEY (`usuario_id`),
-  ADD UNIQUE KEY `email_UNIQUE` (`email`),
-  ADD KEY `usuarios_roles_fk_idx` (`rol_fk`);
+ALTER TABLE `compras`
+  ADD PRIMARY KEY (`compra_id`),
+  ADD KEY `fk_compras_usuarios1_idx` (`usuario_fk`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
 --
 
 --
--- AUTO_INCREMENT de la tabla `usuarios`
+-- AUTO_INCREMENT de la tabla `compras`
 --
-ALTER TABLE `usuarios`
-  MODIFY `usuario_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+ALTER TABLE `compras`
+  MODIFY `compra_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- Restricciones para tablas volcadas
 --
 
 --
--- Filtros para la tabla `usuarios`
+-- Filtros para la tabla `compras`
 --
-ALTER TABLE `usuarios`
-  ADD CONSTRAINT `usuarios_tiene_roles_fk` FOREIGN KEY (`rol_fk`) REFERENCES `roles` (`rol_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+ALTER TABLE `compras`
+  ADD CONSTRAINT `fk_compras_usuarios1` FOREIGN KEY (`usuario_fk`) REFERENCES `usuarios` (`usuario_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
