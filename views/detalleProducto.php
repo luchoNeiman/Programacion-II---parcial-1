@@ -17,8 +17,11 @@ if (!$producto) {
         <!-- Información del producto -->
         <div class="col-12 col-md-8">
             <div class="card mt-2">
-                <div class="card-header bg-dark">
-                    <h1 class="fs-2 text-white mb-0"><?= htmlspecialchars($producto->getTitulo()); ?></h1>
+                <div class="card-header bg-dark d-flex justify-content-between align-items-center">                    <h1 class="fs-2 text-white mb-0"><?= htmlspecialchars($producto->getTitulo()); ?></h1>
+                    <!-- Botón para volver al listado, siempre visible -->
+                    <a href="index.php?seccion=productos" class="btn btn-light">
+                        <i class="bi bi-arrow-left bi-lg ms-2"></i> Volver a productos
+                    </a>
                 </div>
                 <div class="card-body">
                     <p class="lead"><?= htmlspecialchars($producto->getDescripcion()); ?></p>
@@ -32,44 +35,46 @@ if (!$producto) {
 
                 </div>
                 <div class="card-footer">
-                    <div class="d-flex flex-wrap flex-column flex-sm-row gap-2">
-                        <a href="index.php?seccion=productos" class="btn btn-outline-dark ">
-                            <i class="bi bi-arrow-left bi-lg ms-2"></i> Volver a productos
-                        </a>
+                    <!-- Contenedor flex que se adapta de columna a fila según el tamaño de pantalla -->
+                    <div class="d-flex flex-wrap align-items-center gap-2">
 
-                      <?php
-                      if ((new Autenticacion)->estaAutenticado()): ?>
 
-                          <form action="acciones/procesar-carrito.php" method="post">
-                              <div class="input-group me-1">
+
+                      <?php if ((new Autenticacion)->estaAutenticado()): ?>
+                          <!-- Si el usuario está logueado, muestro el form para agregar al carrito -->
+                          <form action="acciones/procesar-carrito.php" method="post"
+                                class="d-flex align-items-center p-0 m-0">
+                              <!-- Controles para la cantidad -->
+                              <div class="input-group" style="width: 110px;">
                                   <!-- Botón menos -->
-                                  <button type="button" class="btn btn-dark btn-sm"
+                                  <button type="button" class="btn btn-dark "
                                           onclick="this.parentNode.querySelector('input').stepDown()">-
                                   </button>
-                                  <!-- Cantidad a agregar (readonly, cambia con los botones) -->
+                                  <!-- Input de cantidad (readonly, solo con los botones) -->
                                   <input type="number" name="cantidad" value="1" min="1" readonly
-                                         class="form-control form-control-sm text-center">
+                                         class="form-control form-control-sm text-center" style="max-width: 60px;">
                                   <!-- Botón más -->
-                                  <button type="button" class="btn btn-dark btn-sm"
+                                  <button type="button" class="btn btn-dark "
                                           onclick="this.parentNode.querySelector('input').stepUp()">+
                                   </button>
                               </div>
+                              <!-- Botón para agregar el producto al carrito -->
                               <button type="submit" name="accion" value="agregar_<?= $producto->getProductoId() ?>"
                                       class="btn btn-dark ms-2">
                                   <i class="bi bi-cart-plus"></i> Agregar al carrito
                               </button>
                           </form>
                       <?php else: ?>
+                          <!-- Si NO está logueado, muestro botón para iniciar sesión -->
                           <a href="index.php?seccion=iniciar-sesion&from=<?= urlencode($_SERVER['REQUEST_URI']) ?>"
                              class="btn btn-dark ms-2">
                               <i class="bi bi-person"></i> Iniciá sesión para comprar
                           </a>
-
                       <?php endif; ?>
-
 
                     </div>
                 </div>
+
             </div>
         </div>
     </div>
