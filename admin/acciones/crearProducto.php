@@ -115,7 +115,7 @@ try {
     'descripcion' => $descripcion,
     'caracteristicas' => $caracteristicas,
     'precio' => $precio,
-    'imagen' => $imagen,
+    'imagen' => $nombreImagen,
     'imagen_descripcion' => $imagen_descripcion,
     'categorias' => $categorias,
   ]);
