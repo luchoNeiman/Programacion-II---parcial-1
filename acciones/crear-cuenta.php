@@ -11,7 +11,6 @@ $passwordconfirmed = trim($_POST['passwordconfirmed'] ?? '');
 $errores = [];
 
 // TODO: Validar...
-// Validaciones
 if ($nombre === '') {
     $errores['nombre'] = 'El nombre es obligatorio.';
 }
@@ -37,6 +36,11 @@ if ($passwordconfirmed === '') {
     $errores['passwordconfirmed'] = 'Las contraseñas no coinciden.';
 }
 
+// Validar si el email ya está registrado
+if ((new Usuario())->existeEmail($email)) {
+    $errores['email'] = 'El correo electrónico ya está registrado.';
+}
+
 // Si hay errores, redirigir y guardar errores y datos viejos
 if (!empty($errores)) {
     $_SESSION['feedback_error'] = "Por favor, corregí los errores e intentá de nuevo.";
@@ -57,7 +61,7 @@ try {
     ]);
 
     $_SESSION['feedback_exito'] = "¡Cuenta creada con éxito!";
-    header("Location: ../index.php?seccion=home");
+    header("Location: ../index.php?seccion=iniciar-sesion");
     exit;
 } catch (\Throwable $th) {
     $_SESSION['feedback_error'] = "Ocurrió un error. La cuenta no pudo ser creada.";
