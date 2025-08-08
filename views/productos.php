@@ -1,7 +1,4 @@
-<?php
-// Traigo todos los productos desde la clase Producto
-$productos = (new Producto)->todosProductos();
-?>
+<?php $productos = (new Producto)->todosProductos(); ?>
 <section class="productos py-5">
     <div class="container">
         <!-- Título y bajada -->
@@ -10,10 +7,10 @@ $productos = (new Producto)->todosProductos();
 
         <div class="row g-4">
           <?php foreach ($productos as $producto): ?>
-              <div class="col-12 col-sm-6 col-lg-3 d-flex align-items-stretch mb-4">
+              <div id="<?= $producto->getProductoId(); ?>"
+                   class="col-12 col-sm-6 col-lg-3 d-flex align-items-stretch mb-4">
 
                   <article class="card shadow-sm h-100 d-flex flex-column">
-                      <!-- Link a detalle de producto, toda la card es clickeable -->
                       <a href="index.php?seccion=detalleProducto&id=<?= $producto->getProductoId(); ?>"
                          class="btn p-0 w-100 h-100 tarjeta">
                           <!-- Imagen del producto -->
@@ -41,7 +38,7 @@ $productos = (new Producto)->todosProductos();
                                   <button type="button" class="btn btn-dark btn-sm"
                                           onclick="this.parentNode.querySelector('input').stepDown()">-
                                   </button>
-                                  <!-- Cantidad a agregar (readonly, cambia con los botones) -->
+                                  <!-- Cantidad a agregar-->
                                   <input type="number" name="cantidad" value="1" min="1" readonly
                                          class="form-control form-control-sm text-center">
                                   <!-- Botón más -->
@@ -55,11 +52,8 @@ $productos = (new Producto)->todosProductos();
                                   <i class="bi bi-cart-plus"></i>
                               </button>
                           </form>
-
-                          <!-- Línea divisoria vertical (para separar del precio) -->
                           <div class="vr mx-1" style="height: 2rem;"></div>
-                        <?php else:
-                        ?>
+                        <?php else: ?>
                           <div class="card-footer mt-auto d-flex justify-content-center">
                             <?php endif; ?>
                               <!-- Precio del producto -->
@@ -67,7 +61,6 @@ $productos = (new Producto)->todosProductos();
                                   <strong class="text-black">$<?= number_format($producto->getPrecio(), 2, ',', '.'); ?></strong>
                               </p>
                           </div>
-
                   </article>
               </div>
           <?php endforeach; ?>

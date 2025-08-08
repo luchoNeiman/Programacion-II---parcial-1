@@ -26,7 +26,7 @@ class Compra
     $this->setTotalCompra($data['total_compra'] ?? 0);
     $this->setPrecioUnitario($data['precio_unitario'] ?? 0);
     $this->setCantidad($data['cantidad'] ?? 0);
-    $this->setTotal($data['subtotal'] ?? 0);
+    $this->setSubtotal($data['subtotal'] ?? 0);
     $this->setTitulo($data['titulo'] ?? '');
   }
 

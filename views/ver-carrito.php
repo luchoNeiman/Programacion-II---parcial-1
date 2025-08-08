@@ -6,10 +6,8 @@ if (!(new Autenticacion)->estaAutenticado()) {
   exit;
 }
 
-// Saco el usuario logueado (si por alguna razón no está, queda null)
 $usuarioId = $_SESSION['usuario_id'] ?? null;
 
-// Instancio el carrito para traer los productos
 $carrito = new Carrito();
 $productos = $carrito->getItems($usuarioId);
 ?>
@@ -17,7 +15,7 @@ $productos = $carrito->getItems($usuarioId);
 <div class="container py-5">
     <h2 class="text-center text-white mb-5"><i class="bi bi-cart-fill me-2"></i>Carrito de Compras</h2>
 
-    <!-- Si el carrito está vacío, muestro mensaje canchero -->
+    <!-- Si el carrito está vacío -->
   <?php if (empty($productos)): ?>
       <div class="container ">
           <div class="text-center bg-light p-5 rounded shadow-sm">
@@ -54,7 +52,7 @@ $productos = $carrito->getItems($usuarioId);
                                   <td class="align-middle text-center">
                                       <form action="acciones/procesar-carrito.php" method="post" class="d-inline">
                                           <button type="submit" name="accion"
-                                                  value="eliminar_<?= $producto['producto_id'] ?>"
+                                                  value="eliminar_<?= $producto->getProductoId() ?>"
                                                   class="btn btn-sm btn-outline-danger" title="Eliminar del carrito">
                                               <i class="bi bi-x-lg"></i>
                                           </button>
@@ -63,10 +61,11 @@ $productos = $carrito->getItems($usuarioId);
                                   <td>
                                       <div class="d-flex align-items-center">
                                           <!-- Imagen del producto -->
-                                          <img src="assets/imgs/productos/<?= $producto['imagen'] ?>" alt="Producto"
+                                          <img src="assets/imgs/productos/<?= $producto->getImagen() ?? 'default.png' ?>"
+                                               alt="Producto de <?= htmlspecialchars($producto->getTitulo()) ?>"
                                                width="60" class="img-fluid rounded me-3">
                                           <div>
-                                              <h6 class="mb-0"><?= htmlspecialchars($producto['titulo']) ?></h6>
+                                              <h6 class="mb-0"><?= htmlspecialchars($producto->getTitulo()) ?></h6>
                                           </div>
                                       </div>
                                   </td>
@@ -75,26 +74,31 @@ $productos = $carrito->getItems($usuarioId);
                                       <!-- Botón restar -->
                                       <form action="acciones/procesar-carrito.php" method="post" class="d-inline">
                                           <button type="submit" name="accion"
-                                                  value="restar_<?= $producto['producto_id'] ?>"
+                                                  value="restar_<?= $producto->getProductoId() ?>
+"
                                                   class="btn btn-sm btn-outline-secondary" title="Restar uno">
                                               <i class="bi bi-dash"></i>
                                           </button>
                                       </form>
-                                      <span class="mx-2"><?= $producto['cantidad'] ?></span>
+                                      <span class="mx-2"><?= $producto->getCantidad()
+                                        ?></span>
                                       <!-- Botón sumar -->
                                       <form action="acciones/procesar-carrito.php" method="post" class="d-inline">
                                           <button type="submit" name="accion"
-                                                  value="sumar_<?= $producto['producto_id'] ?>"
+                                                  value="sumar_<?= $producto->getProductoId() ?>
+"
                                                   class="btn btn-sm btn-outline-success" title="Sumar uno">
                                               <i class="bi bi-plus"></i>
                                           </button>
                                       </form>
                                   </td>
                                   <!-- Precio unitario del producto -->
-                                  <td class="align-middle text-end">$<?= $producto['precio_unitario'] ?></td>
+                                  <td class="align-middle text-end">$<?= $producto->getPrecioUnitario() ?>
+                                  </td>
                                   <!-- Subtotal (precio x cantidad) -->
                                   <td class="align-middle text-end">
-                                      $<?= $producto['precio_unitario'] * $producto['cantidad'] ?></td>
+                                      $<?= $producto->getPrecioUnitario() * $producto->getCantidad() ?>
+                                  </td>
                               </tr>
                           <?php endforeach; ?>
                           </tbody>

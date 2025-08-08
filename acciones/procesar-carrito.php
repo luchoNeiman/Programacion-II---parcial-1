@@ -44,6 +44,6 @@ if ($accion) {
   }
 }
 
-// Siempre redirijo a la página anterior para mantener la UX (actualiza la vista)
+// Siempre redirijo a la página anterior para mantener la UX
 header('Location: ' . $_SERVER['HTTP_REFERER']);
 exit;

@@ -2,175 +2,293 @@
 
 class Carrito
 {
+  // === Props privadas ===
+  private int $producto_id = 0;
+  private string $titulo = '';
+  private string $imagen = '';
+  private float $precio_unitario = 0.0;
+  private int $cantidad = 0;
 
-  // Trae todos los productos del carrito de un usuario
-  public function getItems($usuarioId)
+  // (opcionales, si las usás en detalle de compra)
+  private int $compra_id = 0;
+
+  public function __construct(?array $data = null)
   {
-    // Conecto a la base
-    $db = DBConexionStatic::getConexion();
-
-    // Armo la query para traer los productos del carrito con toda la info piola
-    $sql = "SELECT 
-                    p.producto_id,
-                    p.titulo,
-                    p.imagen,
-                    p.precio AS precio_unitario,
-                    c.cantidad
-                FROM carrito c
-                JOIN productos p ON c.producto_fk = p.producto_id
-                WHERE c.usuario_fk = :usuario_id";
-    // Preparo la consulta
-    $stmt = $db->prepare($sql);
-    // Ejecuto con el usuario actual
-    $stmt->execute([':usuario_id' => $usuarioId]);
-    // Devuelvo todo en un array
-    return $stmt->fetchAll(PDO::FETCH_ASSOC);
-  }
-
-  // Calcula el total del carrito de un usuario
-  public function calcularTotal($usuarioId)
-  {
-    // Traigo todos los items primero
-    $items = $this->getItems($usuarioId);
-    $total = 0;
-    // Sumo precio x cantidad de cada item
-    foreach ($items as $item) {
-      $total += $item['precio_unitario'] * $item['cantidad'];
-    }
-    // Devuelvo el total final
-    return $total;
-  }
-
-  // Agrega producto al carrito (si ya está, suma cantidad)
-  public function agregarProducto($usuarioId, $productoId, $cantidad = 1)
-  {
-    // Conecto a la base
-    $db = DBConexionStatic::getConexion();
-    // Veo si el producto ya existe en el carrito del usuario
-    $sql = "SELECT cantidad FROM carrito WHERE usuario_fk = :usuario_id AND producto_fk = :producto_id";
-    $stmt = $db->prepare($sql);
-    $stmt->execute([':usuario_id' => $usuarioId, ':producto_id' => $productoId]);
-    $actual = $stmt->fetchColumn();
-
-    if ($actual !== false) {
-      // Si ya existe, le sumo la cantidad nueva
-      $sql = "UPDATE carrito SET cantidad = cantidad + :cantidad WHERE usuario_fk = :usuario_id AND producto_fk = :producto_id";
-      $stmt = $db->prepare($sql);
-      $stmt->execute([
-        ':cantidad' => $cantidad,
-        ':usuario_id' => $usuarioId,
-        ':producto_id' => $productoId
-      ]);
-    } else {
-      // Si no está, lo inserto como nuevo
-      $sql = "INSERT INTO carrito (usuario_fk, producto_fk, cantidad) VALUES (:usuario_id, :producto_id, :cantidad)";
-      $stmt = $db->prepare($sql);
-      $stmt->execute([
-        ':usuario_id' => $usuarioId,
-        ':producto_id' => $productoId,
-        ':cantidad' => $cantidad
-      ]);
+    if ($data) {
+      $this->cargarDatosDeArray($data);
     }
   }
 
-  // Suma uno a un producto (igual que agregarProducto con cantidad 1)
-  public function sumar($usuarioId, $productoId)
+  public function cargarDatosDeArray(array $data): void
   {
-    // Llamo directo a agregarProducto con cantidad 1, pa' no repetir código
-    $this->agregarProducto($usuarioId, $productoId, 1);
+    $this->setProductoId((int)($data['producto_id'] ?? 0));
+    $this->setTitulo((string)($data['titulo'] ?? ''));
+    $this->setImagen((string)($data['imagen'] ?? ''));
+    $this->setPrecioUnitario((float)($data['precio_unitario'] ?? $data['precio'] ?? 0));
+    $this->setCantidad((int)($data['cantidad'] ?? 0));
+    $this->setCompraId((int)($data['compra_id'] ?? 0));
   }
 
-  // Resta uno, si queda 0 elimina
-  public function restar($usuarioId, $productoId)
+  // ===== Getters =====
+  public function getProductoId(): int
+  {
+    return $this->producto_id;
+  }
+
+  public function getTitulo(): string
+  {
+    return $this->titulo;
+  }
+
+  public function getImagen(): string
+  {
+    return $this->imagen;
+  }
+
+  public function getPrecioUnitario(): float
+  {
+    return $this->precio_unitario;
+  }
+
+  public function getCantidad(): int
+  {
+    return $this->cantidad;
+  }
+
+  public function getCompraId(): int
+  {
+    return $this->compra_id;
+  }
+
+  // ===== Setters =====
+  public function setProductoId(int $id): void
+  {
+    $this->producto_id = $id;
+  }
+
+  public function setTitulo(string $t): void
+  {
+    $this->titulo = $t;
+  }
+
+  public function setImagen(string $i): void
+  {
+    $this->imagen = $i;
+  }
+
+  public function setPrecioUnitario(float $p): void
+  {
+    $this->precio_unitario = $p;
+  }
+
+  public function setCantidad(int $c): void
+  {
+    $this->cantidad = $c;
+  }
+
+  public function setCompraId(int $c): void
+  {
+    $this->compra_id = $c;
+  }
+
+  // ==========================
+  // Lecturas (hidratan con FETCH_ASSOC)
+  // ==========================
+
+  /** @return Carrito[] */
+  public function getItems(int $usuarioId): array
   {
     $db = DBConexionStatic::getConexion();
-    // Veo cuántos hay de ese producto en el carrito
-    $sql = "SELECT cantidad FROM carrito WHERE usuario_fk = :usuario_id AND producto_fk = :producto_id";
-    $stmt = $db->prepare($sql);
-    $stmt->execute([':usuario_id' => $usuarioId, ':producto_id' => $productoId]);
-    $actual = $stmt->fetchColumn();
 
-    if ($actual !== false) {
-      if ($actual > 1) {
-        // Si hay más de uno, le resto uno
-        $sql = "UPDATE carrito SET cantidad = cantidad - 1 WHERE usuario_fk = :usuario_id AND producto_fk = :producto_id";
-        $stmt = $db->prepare($sql);
-        $stmt->execute([
-          ':usuario_id' => $usuarioId,
-          ':producto_id' => $productoId
-        ]);
-      } else {
-        // Si queda en cero, chau producto
-        $this->eliminarProducto($usuarioId, $productoId);
+    $sql = "
+            SELECT 
+                p.producto_id,
+                p.titulo,
+                p.imagen,
+                p.precio AS precio_unitario,
+                c.cantidad
+            FROM carrito c
+            INNER JOIN productos p ON p.producto_id = c.producto_fk
+            WHERE c.usuario_fk = :usuarioId
+            ORDER BY p.titulo ASC
+        ";
+    $st = $db->prepare($sql);
+    $st->execute([':usuarioId' => $usuarioId]);
+    $rows = $st->fetchAll(PDO::FETCH_ASSOC);
+
+    return array_map(fn($r) => new self($r), $rows);
+  }
+
+  public function calcularTotalCarrito(int $usuarioId): float
+  {
+    $db = DBConexionStatic::getConexion();
+
+    $st = $db->prepare("
+            SELECT SUM(p.precio * c.cantidad) AS total
+            FROM carrito c
+            INNER JOIN productos p ON p.producto_id = c.producto_fk
+            WHERE c.usuario_fk = :usuarioId
+        ");
+    $st->execute([':usuarioId' => $usuarioId]);
+    return (float)($st->fetchColumn() ?: 0);
+  }
+
+  public function getTotalItems(int $usuarioId): int
+  {
+    $db = DBConexionStatic::getConexion();
+
+    $st = $db->prepare("
+            SELECT COALESCE(SUM(cantidad),0) 
+            FROM carrito
+            WHERE usuario_fk = :usuarioId
+        ");
+    $st->execute([':usuarioId' => $usuarioId]);
+    return (int)($st->fetchColumn() ?: 0);
+  }
+
+  /** @return Carrito[] */
+  public function getCompraDetalle(int $compraId, int $usuarioId): array
+  {
+    $db = DBConexionStatic::getConexion();
+
+
+    $check = $db->prepare("
+            SELECT 1 FROM compras 
+            WHERE compra_id = :cid AND usuario_fk = :uid LIMIT 1
+        ");
+    $check->execute([':cid' => $compraId, ':uid' => $usuarioId]);
+    if (!$check->fetchColumn()) return [];
+
+    $st = $db->prepare("
+            SELECT 
+                ct.compra_fk AS compra_id,
+                p.producto_id,
+                p.titulo,
+                p.imagen,
+                p.precio AS precio_unitario,
+                ct.cantidad
+            FROM compras_tienen_productos ct
+            INNER JOIN productos p ON p.producto_id = ct.producto_fk
+            WHERE ct.compra_fk = :cid
+            ORDER BY p.titulo ASC
+        ");
+    $st->execute([':cid' => $compraId]);
+    $rows = $st->fetchAll(PDO::FETCH_ASSOC);
+
+    return array_map(fn($r) => new self($r), $rows);
+  }
+
+  // ==========================
+  // Mutaciones (sin cambios, devuelven bool)
+  // ==========================
+
+  public function agregarProducto(int $usuarioId, int $productoId, int $cantidad = 1): bool
+  {
+    if ($cantidad < 1) $cantidad = 1;
+    $db = DBConexionStatic::getConexion();
+
+
+    $upd = $db->prepare("
+            UPDATE carrito
+               SET cantidad = cantidad + :cantidad
+             WHERE usuario_fk = :uid AND producto_fk = :pid
+        ");
+    $upd->execute([':cantidad' => $cantidad, ':uid' => $usuarioId, ':pid' => $productoId]);
+
+    if ($upd->rowCount() > 0) return true;
+
+    $ins = $db->prepare("
+            INSERT INTO carrito (usuario_fk, producto_fk, cantidad)
+            VALUES (:uid, :pid, :cantidad)
+        ");
+    return $ins->execute([':uid' => $usuarioId, ':pid' => $productoId, ':cantidad' => $cantidad]);
+  }
+
+  public function sumar(int $usuarioId, int $productoId): bool
+  {
+    $db = DBConexionStatic::getConexion();
+
+    $st = $db->prepare("
+            UPDATE carrito SET cantidad = cantidad + 1
+            WHERE usuario_fk = :uid AND producto_fk = :pid
+        ");
+    $st->execute([':uid' => $usuarioId, ':pid' => $productoId]);
+    return $st->rowCount() > 0;
+  }
+
+  public function restar(int $usuarioId, int $productoId): bool
+  {
+    $db = DBConexionStatic::getConexion();
+
+    $db->beginTransaction();
+    try {
+      $q = $db->prepare("
+                SELECT cantidad FROM carrito
+                WHERE usuario_fk = :uid AND producto_fk = :pid
+                FOR UPDATE
+            ");
+      $q->execute([':uid' => $usuarioId, ':pid' => $productoId]);
+      $cant = $q->fetchColumn();
+      if ($cant === false) {
+        $db->rollBack();
+        return false;
       }
+
+      $cant = (int)$cant - 1;
+      if ($cant <= 0) {
+        $del = $db->prepare("
+                    DELETE FROM carrito WHERE usuario_fk = :uid AND producto_fk = :pid
+                ");
+        $del->execute([':uid' => $usuarioId, ':pid' => $productoId]);
+      } else {
+        $upd = $db->prepare("
+                    UPDATE carrito SET cantidad = :c
+                    WHERE usuario_fk = :uid AND producto_fk = :pid
+                ");
+        $upd->execute([':c' => $cant, ':uid' => $usuarioId, ':pid' => $productoId]);
+      }
+      $db->commit();
+      return true;
+    } catch (Throwable $e) {
+      if ($db->inTransaction()) $db->rollBack();
+      return false;
     }
   }
 
-  // Elimina un producto del carrito
-  public function eliminarProducto($usuarioId, $productoId)
+  public function eliminarProducto(int $usuarioId, int $productoId): bool
   {
     $db = DBConexionStatic::getConexion();
-    // Delete del producto ese, chau chau
-    $sql = "DELETE FROM carrito WHERE usuario_fk = :usuario_id AND producto_fk = :producto_id";
-    $stmt = $db->prepare($sql);
-    $stmt->execute([
-      ':usuario_id' => $usuarioId,
-      ':producto_id' => $productoId
-    ]);
+
+    $st = $db->prepare("
+            DELETE FROM carrito
+            WHERE usuario_fk = :uid AND producto_fk = :pid
+        ");
+    $st->execute([':uid' => $usuarioId, ':pid' => $productoId]);
+    return $st->rowCount() > 0;
   }
 
-  // Vacía el carrito del usuario
-  public function vaciar($usuarioId)
+  public function vaciar(int $usuarioId): bool
   {
     $db = DBConexionStatic::getConexion();
-    // Borro todo el carrito para ese usuario, vacío total
-    $sql = "DELETE FROM carrito WHERE usuario_fk = :usuario_id";
-    $stmt = $db->prepare($sql);
-    $stmt->execute([':usuario_id' => $usuarioId]);
+
+    $st = $db->prepare("DELETE FROM carrito WHERE usuario_fk = :uid");
+    $st->execute([':uid' => $usuarioId]);
+    return true;
   }
 
-  // Devuelve la suma de todos los items (cantidad total de productos)
-  public function getTotalItems($usuarioId)
+  public function calcularSubtotal(): float
   {
-    $db = DBConexionStatic::getConexion();
-    $sql = "SELECT SUM(cantidad) as total FROM carrito WHERE usuario_fk = :usuario_id";
-    $stmt = $db->prepare($sql);
-    $stmt->execute([':usuario_id' => $usuarioId]);
-    $row = $stmt->fetch(PDO::FETCH_ASSOC);
-    // Si no hay nada, devuelvo 0
-    return (int)($row['total'] ?? 0);
+    return $this->precio_unitario * $this->cantidad;
   }
 
-  // Trae detalle de una compra ya realizada (con chequeo de usuario)
-  public function getCompraDetalle($compraId, $usuarioId)
+  public function calcularTotal($usuarioId): float
   {
-    $db = DBConexionStatic::getConexion();
-
-    // Primero chequeo que la compra exista y sea del usuario
-    $sql = "SELECT * FROM compras WHERE compra_id = :id AND usuario_fk = :usuario_id";
-    $stmt = $db->prepare($sql);
-    $stmt->execute([':id' => $compraId, ':usuario_id' => $usuarioId]);
-    $compraRaw = $stmt->fetch(PDO::FETCH_ASSOC);
-
-    if (!$compraRaw) {
-      // Si no existe o no es del usuario, devuelvo null
-      return null;
+    $subtotal = 0;
+    foreach ($this->getItems($usuarioId) as $item) {
+      $subtotal += $item->calcularSubtotal();
     }
+    return $subtotal;
 
-    // Ahora traigo los productos de esa compra
-    $sqlProd = "SELECT p.titulo, p.imagen, ctp.cantidad, ctp.precio_unitario
-                FROM compras_tienen_productos ctp
-                JOIN productos p ON ctp.producto_fk = p.producto_id
-                WHERE ctp.compra_fk = :id";
-    $stmtProd = $db->prepare($sqlProd);
-    $stmtProd->execute([':id' => $compraId]);
-    $productos = $stmtProd->fetchAll(PDO::FETCH_ASSOC);
-
-    // Devuelvo toda la data armada piola
-    return [
-      'compra' => $compraRaw,
-      'productos' => $productos
-    ];
   }
-
 }
+

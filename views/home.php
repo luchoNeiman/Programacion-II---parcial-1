@@ -2,28 +2,24 @@
     <img src="assets/imgs/Banners/banner-principal.webp" alt="OTAKUMANIA - Merchandaising y Figuras" height="450"
          class="img-fluid">
 </div>
-<section class="">
-    <div class="container">
-        <div class="row py-5">
-            <div class="col-md-12">
-                <h1 class=" text-center mb-4 text-white">¡Bienvenido!</h1>
-                <p class="fs-5 mb-5 text-white"><strong class="text-white">Somos tu tienda de confianza</strong>
-                    dedicada a todos los
-                    fans del anime, manga
-                    y la cultura japonesa. Aquí encontrarás todo lo que necesitas para disfrutar de tu pasión por el
-                    mundo otaku.</p>
-                <p class="fs-5 text-white">
-                    Descubre <strong class="text-white">figuras coleccionables</strong>, <strong class="text-white">ropa
-                        temática</strong>, <strong class="text-white">accesorios
-                        exclusivos</strong> y mucho más.
-                    Nuestro objetivo es ofrecer productos de calidad para que vivas al máximo tu afición con artículos
-                    que realmente te encanten.
-                </p>
-            </div>
+<section class="container">
+    <div class="row py-5">
+        <div class="col-md-12">
+            <h1 class=" text-center mb-4 text-white">¡Bienvenido!</h1>
+            <p class="fs-5 mb-5 text-white"><strong class="text-white">Somos tu tienda de confianza</strong>
+                dedicada a todos los
+                fans del anime, manga
+                y la cultura japonesa. Aquí encontrarás todo lo que necesitas para disfrutar de tu pasión por el
+                mundo otaku.</p>
+            <p class="fs-5 text-white">
+                Descubre <strong class="text-white">figuras coleccionables</strong>, <strong class="text-white">ropa
+                    temática</strong>, <strong class="text-white">accesorios
+                    exclusivos</strong> y mucho más.
+                Nuestro objetivo es ofrecer productos de calidad para que vivas al máximo tu afición con artículos
+                que realmente te encanten.
+            </p>
         </div>
-
     </div>
-
 </section>
 <section class="py-5 fondo-promo">
     <div class="container">
