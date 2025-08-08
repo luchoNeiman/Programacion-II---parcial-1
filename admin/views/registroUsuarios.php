@@ -25,7 +25,7 @@ $usuarios = (new Usuario())->traerUsuarios();
                 <tbody>
                     <?php foreach ($usuarios as $usuario): ?>
                         <tr>
-                            <td class="align-middle"><?= $usuario->getNombre(); ?></td>
+                            <td class="align-middle"><?= htmlspecialchars($usuario->getNombre()); ?></td>
                             <td class="align-middle"><?= htmlspecialchars($usuario->getApellido()); ?></td>
                             <td class="align-middle"><?= htmlspecialchars($usuario->getEmail()); ?></td>
                             <td class="align-middle"><img

@@ -95,6 +95,30 @@ class Usuario
         return $stmt->fetchColumn() > 0;
     }
 
+    public function traerCompras(): ?array
+    {
+        $db = DBConexionStatic::getConexion();
+        $consulta = "SELECT * FROM compras WHERE usuario_fk = ?";
+        $stmt = $db->prepare($consulta);
+        $stmt->execute([$this->getUsuarioId()]);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC) ?: null;
+    }
+
+    public function traerDetalleCompras(int $compra_id): ?array
+    {
+        $db = DBConexionStatic::getConexion();
+        $consulta = "SELECT 
+                cp.*,
+                p.nombre AS producto_nombre
+             FROM compras_tienen_productos cp
+             JOIN productos p ON cp.producto_fk = p.producto_id
+             WHERE cp.compra_fk = :compra_id";
+
+        $stmt = $db->prepare($consulta);
+        $stmt->execute([':compra_id' => $compra_id]);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC) ?: null;
+    }
+
     public function actualizarAvatar(string $nombreArchivo): void
     {
         $db = (new DBConexionStatic)->getConexion();
