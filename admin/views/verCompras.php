@@ -33,7 +33,7 @@ $compras = (new Compra)->traerCompras($usuario->getUsuarioId());
           </div>
         <?php foreach ($compras as $compra): ?>
           <?php $collapseId = 'collapseCompra_' . $compra->getCompraId(); ?>
-              <div class="col-md-8">
+              <div class="col-md-6">
                   <div class="card border-0 shadow-sm my-3">
                       <div class="card-header p-0 border-0">
                           <a class="d-block text-decoration-none text-white"
@@ -64,7 +64,7 @@ $compras = (new Compra)->traerCompras($usuario->getUsuarioId());
                         <?php $detalles = $compra->traerDetalleCompras($compra->getCompraId()); ?>
                           <div class="card-body">
                               <div class="row justify-content-center">
-                                  <div class="col-md-12">
+                                  <div class="col-12">
                                     <?php if (!$detalles): ?>
                                         <div class="alert alert-warning mb-0">
                                             No hay información de compra para mostrar.
