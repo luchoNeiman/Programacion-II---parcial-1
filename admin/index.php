@@ -142,11 +142,6 @@ if (isset($_SESSION['feedback_error'])) {
               <a class="nav-link active text-white fs-5" href="index.php?seccion=dashboard">
                 <i class="bi bi-layout-text-sidebar me-1"></i> Tablero
               </a>
-
-              <a class="nav-link text-white fs-5" href="index.php?seccion=productos">
-                <i class="bi bi-box-seam "></i> Productos
-              </a>
-
             </div>
           <?php
           endif;
