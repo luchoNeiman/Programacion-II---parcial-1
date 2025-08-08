@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 08-08-2025 a las 18:36:05
+-- Tiempo de generación: 08-08-2025 a las 20:25:30
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -73,6 +73,13 @@ CREATE TABLE `compras` (
   `total_compra` decimal(9,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Volcado de datos para la tabla `compras`
+--
+
+INSERT INTO `compras` (`compra_id`, `usuario_fk`, `fecha`, `total_compra`) VALUES
+(42, 2, '2025-08-08', 86999.97);
+
 -- --------------------------------------------------------
 
 --
@@ -86,6 +93,13 @@ CREATE TABLE `compras_tienen_productos` (
   `precio_unitario` decimal(9,2) NOT NULL,
   `subtotal` decimal(9,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `compras_tienen_productos`
+--
+
+INSERT INTO `compras_tienen_productos` (`producto_fk`, `compra_fk`, `cantidad`, `precio_unitario`, `subtotal`) VALUES
+(47, 42, 3, 28999.99, 86999.97);
 
 -- --------------------------------------------------------
 
@@ -158,8 +172,7 @@ INSERT INTO `productos` (`producto_id`, `franquicia_fk`, `fecha_ingreso`, `titul
 (45, 3, '2025-06-27', 'Naruto Rasengan Figura', 'Naruto Uzumaki en su clásica pose con el Rasengan listo para atacar.', 27999.99, '20250627151601_naruto-rasengan.png', 'Figura de Naruto con el Rasengan', 'Esta figura coleccionable de Naruto Uzumaki lo muestra con su traje naranja característico y sosteniendo un Rasengan en la mano. Mide aproximadamente 26 cm de altura y está fabricada en PVC de alta calidad. Incluye una base con diseño de roca para exhibición y presenta un acabado detallado en su ropa, cabello y expresión decidida. Ha sido pintada a mano para resaltar cada detalle épico.'),
 (46, 19, '2025-06-27', 'Ryuk Figura Death Note', 'Figura coleccionable de Ryuk, el shinigami de Death Note', 26999.99, '20250627151729_ryuk.png', 'Figura Ryuk sosteniendo una manzana', 'Esta figura coleccionable de Ryuk lo muestra sosteniendo una manzana y mide aproximadamente 28 cm de altura. Fabricada en PVC de alta calidad, presenta un acabado detallado en su rostro, alas y atuendo oscuro. Incluye una base para exhibición y ha sido pintada a mano para capturar su aura inquietante.'),
 (47, 8, '2025-07-27', 'Tanjiro Danza Fuego', 'Figura coleccionable de Tanjiro Kamado', 28999.99, '20250627151940_tanjiro-danza.png', 'Tanjiro en plena Danza del Dios del Fuego', 'Esta figura coleccionable de Tanjiro lo muestra en plena Danza del Dios del Fuego, rodeado de llamas, y mide aproximadamente 24 cm de altura. Está fabricada en PVC de alta calidad con detalles precisos en su kimono y katana. Incluye base con efecto rocas y ha sido pintada a mano para resaltar la intensidad del ataque.'),
-(48, 1, '2025-06-27', 'Vegeta Figura DBZ', 'Figura coleccionable de Vegeta en su clásica armadura Saiyajin', 26999.99, '20250627152233_vegeta.png', 'Figura de vegeta', 'Esta figura coleccionable de Vegeta lo muestra con su traje Saiyajin y mide aproximadamente 24 cm de altura. Está fabricada en PVC de alta calidad y cuenta con un acabado detallado en el cabello, armadura y expresión desafiante. Incluye base con diseño rocoso para exhibición y ha sido pintada a mano para destacar cada músculo y detalle épico.'),
-(53, 20, '2025-08-08', 'Muñeco de Goku Super', '', 343.00, 'Array', '', '');
+(48, 1, '2025-06-27', 'Vegeta Figura DBZ', 'Figura coleccionable de Vegeta en su clásica armadura Saiyajin', 26999.99, '20250627152233_vegeta.png', 'Figura de vegeta', 'Esta figura coleccionable de Vegeta lo muestra con su traje Saiyajin y mide aproximadamente 24 cm de altura. Está fabricada en PVC de alta calidad y cuenta con un acabado detallado en el cabello, armadura y expresión desafiante. Incluye base con diseño rocoso para exhibición y ha sido pintada a mano para destacar cada músculo y detalle épico.');
 
 -- --------------------------------------------------------
 
@@ -198,8 +211,7 @@ INSERT INTO `productos_tienen_categorias` (`producto_fk`, `categoria_fk`) VALUES
 (45, 1),
 (46, 1),
 (47, 1),
-(48, 1),
-(53, 22);
+(48, 1);
 
 -- --------------------------------------------------------
 
@@ -325,7 +337,7 @@ ALTER TABLE `categorias`
 -- AUTO_INCREMENT de la tabla `compras`
 --
 ALTER TABLE `compras`
-  MODIFY `compra_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `compra_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 
 --
 -- AUTO_INCREMENT de la tabla `franquicias`
@@ -337,7 +349,7 @@ ALTER TABLE `franquicias`
 -- AUTO_INCREMENT de la tabla `productos`
 --
 ALTER TABLE `productos`
-  MODIFY `producto_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
+  MODIFY `producto_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
 
 --
 -- AUTO_INCREMENT de la tabla `roles`
