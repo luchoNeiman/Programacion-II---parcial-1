@@ -26,13 +26,13 @@ $compras = (new Compra)->traerCompras($usuario->getUsuarioId());
               </div>
           </div>
       <?php else: ?>
+          <div class="col-md-8 mb-4">
+              <a href="index.php?seccion=registroUsuarios" class="btn btn-dark border-light">
+                  <i class="bi bi-arrow-left me-2"></i> Volver al registro de usuarios
+              </a>
+          </div>
         <?php foreach ($compras as $compra): ?>
           <?php $collapseId = 'collapseCompra_' . $compra->getCompraId(); ?>
-              <div class="col-md-8 mb-4">
-                  <a href="index.php?seccion=registroUsuarios" class="btn btn-dark border-light">
-                      <i class="bi bi-arrow-left me-2"></i> Volver al registro de usuarios
-                  </a>
-              </div>
               <div class="col-md-8">
                   <div class="card border-0 shadow-sm my-3">
                       <div class="card-header p-0 border-0">
