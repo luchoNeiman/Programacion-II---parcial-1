@@ -110,7 +110,6 @@ try {
 $producto = (new Producto)->porId($producto_id);
 try {
     (new Producto())->editar($producto_id, [
-        'usuario_fk' => $usuario_id,
         'franquicia_fk' => $franquicia_fk,
         'titulo' => $titulo,
         'descripcion' => $descripcion,

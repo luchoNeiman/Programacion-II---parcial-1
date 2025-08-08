@@ -189,12 +189,11 @@ class Producto
          * 1. Insertar producto en la tabla productos.
          * */
         $consulta = "INSERT INTO productos 
-        (usuario_fk, fecha_ingreso, titulo, franquicia_fk, descripcion, precio, imagen, imagen_descripcion, caracteristicas)
-        VALUES (:usuario_fk, NOW(), :titulo, :franquicia_fk, :descripcion, :precio, :imagen, :imagen_descripcion, :caracteristicas)";
+        (fecha_ingreso, titulo, franquicia_fk, descripcion, precio, imagen, imagen_descripcion, caracteristicas)
+        VALUES (NOW(), :titulo, :franquicia_fk, :descripcion, :precio, :imagen, :imagen_descripcion, :caracteristicas)";
 
         $stmt = $db->prepare($consulta);
         $stmt->execute([
-            'usuario_fk' => $data['usuario_fk'],
             'titulo' => $data['titulo'],
             'franquicia_fk' => $data['franquicia_fk'],
             'descripcion' => $data['descripcion'],
@@ -242,8 +241,7 @@ class Producto
         /* La siguiente consulta hace lo siguiente:
          * 1. Actualizar producto en la tabla productos.
          */
-        $consulta = "UPDATE productos
-                    SET usuario_fk          = :usuario_fk,
+        $consulta = "UPDATE productos                    SET 
                         titulo              = :titulo,
                         franquicia_fk       = :franquicia_fk,
                         descripcion         = :descripcion,
@@ -254,7 +252,6 @@ class Producto
                     WHERE producto_id = :producto_id";
         $stmt = $db->prepare($consulta);
         $stmt->execute([
-            'usuario_fk' => $data['usuario_fk'],
             'titulo' => $data['titulo'],
             'franquicia_fk' => $data['franquicia_fk'],
             'descripcion' => $data['descripcion'],

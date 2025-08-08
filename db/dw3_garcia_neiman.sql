@@ -3,12 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 07-08-2025 a las 21:08:45
+-- Tiempo de generación: 08-08-2025 a las 18:36:05
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
-
-CREATE DATABASE `dw3_garcia_neiman` COLLATE utf8mb4_general_ci;
-USE dw3_garcia_neiman;
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -36,13 +33,6 @@ CREATE TABLE `carrito` (
   `cantidad` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Volcado de datos para la tabla `carrito`
---
-
-INSERT INTO `carrito` (`usuario_fk`, `producto_fk`, `cantidad`) VALUES
-(4, 47, 5);
-
 -- --------------------------------------------------------
 
 --
@@ -67,7 +57,8 @@ INSERT INTO `categorias` (`categoria_id`, `nombre_categoria`) VALUES
 (6, 'Juguete'),
 (7, 'Accesorios'),
 (8, 'Reloj'),
-(9, 'Decoración');
+(9, 'Decoración'),
+(22, 'Joyeria');
 
 -- --------------------------------------------------------
 
@@ -82,19 +73,6 @@ CREATE TABLE `compras` (
   `total_compra` decimal(9,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Volcado de datos para la tabla `compras`
---
-
-INSERT INTO `compras` (`compra_id`, `usuario_fk`, `fecha`, `total_compra`) VALUES
-(10, 2, '2025-08-06', 670696.77),
-(11, 2, '2025-08-06', 11997.00),
-(12, 2, '2025-08-06', 57999.98),
-(13, 2, '2025-08-06', 28999.99),
-(14, 2, '2025-08-06', 19995.00),
-(15, 2, '2025-08-06', 28999.99),
-(16, 2, '2025-08-07', 144999.95);
-
 -- --------------------------------------------------------
 
 --
@@ -106,27 +84,8 @@ CREATE TABLE `compras_tienen_productos` (
   `compra_fk` int(10) UNSIGNED NOT NULL,
   `cantidad` int(11) NOT NULL,
   `precio_unitario` decimal(9,2) NOT NULL,
-  `total` decimal(9,2) NOT NULL
+  `subtotal` decimal(9,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Volcado de datos para la tabla `compras_tienen_productos`
---
-
-INSERT INTO `compras_tienen_productos` (`producto_fk`, `compra_fk`, `cantidad`, `precio_unitario`, `total`) VALUES
-(1, 10, 2, 3999.00, 7998.00),
-(1, 11, 3, 3999.00, 11997.00),
-(1, 14, 5, 3999.00, 19995.00),
-(2, 10, 3, 900.00, 2700.00),
-(41, 10, 1, 24999.00, 24999.00),
-(42, 10, 1, 24999.99, 24999.99),
-(43, 10, 7, 25999.99, 181999.93),
-(45, 10, 7, 27999.99, 195999.93),
-(47, 10, 8, 28999.99, 231999.92),
-(47, 12, 2, 28999.99, 57999.98),
-(47, 13, 1, 28999.99, 28999.99),
-(47, 15, 1, 28999.99, 28999.99),
-(47, 16, 5, 28999.99, 144999.95);
 
 -- --------------------------------------------------------
 
@@ -154,7 +113,8 @@ INSERT INTO `franquicias` (`franquicia_id`, `nombre_franquicia`) VALUES
 (8, 'Demon slayer'),
 (9, 'Full Metal Alchemist'),
 (18, 'Dragon Ball'),
-(19, 'Death Note');
+(19, 'Death Note'),
+(20, 'Overload');
 
 -- --------------------------------------------------------
 
@@ -192,13 +152,14 @@ INSERT INTO `productos` (`producto_id`, `franquicia_fk`, `fecha_ingreso`, `titul
 (11, 8, '2025-05-15', 'Almohada de Nezuko Kamado', 'Almohada decorativa con diseño de Nezuko Kamado.', 6000.00, 'almohada_nezukoKamado.jpg', 'Almohada de Nezuko Kamado', 'Tiene un tamaño de 40 x 40 cm e incluye funda con cierre y relleno. La estampa muestra a Nezuko con fondo de flores de sakura. Está confeccionada en poliéster suave, es apta para lavarropas y resulta ideal para decorar tu cama o sillón.'),
 (12, 5, '2025-05-15', 'Gorra de Ash Ketchum', 'Gorra oficial con diseño de Ash Ketchum de Pokémon.', 10500.00, 'gorra_ash.jpg', 'Gorra de Ash Ketchum', 'Fabricada en poliéster y red tipo trucker, esta gorra tiene talle único con cierre ajustable. Su diseño es liviano y cómodo, con estilo clásico y logo blanco. Es ideal tanto para cosplay como para uso diario, e inspirada en la gorra original de Ash.'),
 (41, 4, '2025-07-27', 'Figura Eren Jaeger', 'Figura coleccionable de Eren Jaeger, protagonista de Attack on Titan', 24999.00, '20250627143705_eren.png', 'Figura de eren jeager', 'Esta figura coleccionable de Eren Jaeger muestra una pose de batalla inspirada en Attack on Titan y mide aproximadamente 25 cm de altura. Está fabricada en PVC de alta calidad y cuenta con un acabado detallado en el uniforme y el equipo de maniobras. Incluye una base con rocas para exhibición y las espadas son desmontables. La figura ha sido pintada a mano para resaltar cada detalle.'),
-(42, 6, '2025-07-27', 'Izuku Midoriya Figura', 'Protagonista de My Hero Academia, en una pose lista para el combate.', 24999.99, '20250627150608_deku.png', 'Figura coleccionable de Izuku Midoriya', 'Esta figura coleccionable de Izuku Midoriya muestra su clásico uniforme de héroe verde y mide aproximadamente 24 cm de altura. Está fabricada en PVC de alta calidad y cuenta con un acabado detallado en su traje y expresiones faciales. Incluye una base con rocas para exhibición y ha sido pintada a mano para resaltar los detalles de su diseño.'),
+(42, 6, '2025-07-27', 'Izuku Midoriya Figura', 'Protagonista de My Hero Academia, en una pose lista para el combate.', 30000.00, '20250627150608_deku.png', 'Figura coleccionable de Izuku Midoriya', 'Esta figura coleccionable de Izuku Midoriya muestra su clásico uniforme de héroe verde y mide aproximadamente 24 cm de altura. Está fabricada en PVC de alta calidad y cuenta con un acabado detallado en su traje y expresiones faciales. Incluye una base con rocas para exhibición y ha sido pintada a mano para resaltar los detalles de su diseño.'),
 (43, 18, '2025-06-27', 'Goku Niño Nube Figura', 'Figura coleccionable de Goku en su versión niño', 25999.99, '20250627150950_goku-kid-nube.png', 'Figura Goku Niño Nube', 'Esta figura coleccionable de Goku niño lo muestra sobre la Nube Voladora y mide aproximadamente 20 cm de altura. Está fabricada en PVC de alta calidad y cuenta con un acabado detallado en el traje, el báculo sagrado y su expresión alegre. Incluye una base para exhibición y ha sido pintada a mano para lograr un aspecto vibrante y lleno de color.'),
 (44, 2, '2025-06-27', 'Chopper Figura One Piece', 'Figura coleccionable de Tony Tony Chopper, el adorable médico de los Sombrero de Paja', 19999.99, '20250627151207_chopper.png', 'Chopper Figura One Piece  Precio:', 'Esta figura coleccionable de Chopper lo muestra con su característico sombrero rosa y mide aproximadamente 15 cm de altura. Está fabricada en PVC de alta calidad y presenta un acabado detallado en sus cuernos, ropa y expresión simpática. Incluye una base para exhibición y ha sido pintada a mano para capturar la esencia del personaje.'),
 (45, 3, '2025-06-27', 'Naruto Rasengan Figura', 'Naruto Uzumaki en su clásica pose con el Rasengan listo para atacar.', 27999.99, '20250627151601_naruto-rasengan.png', 'Figura de Naruto con el Rasengan', 'Esta figura coleccionable de Naruto Uzumaki lo muestra con su traje naranja característico y sosteniendo un Rasengan en la mano. Mide aproximadamente 26 cm de altura y está fabricada en PVC de alta calidad. Incluye una base con diseño de roca para exhibición y presenta un acabado detallado en su ropa, cabello y expresión decidida. Ha sido pintada a mano para resaltar cada detalle épico.'),
 (46, 19, '2025-06-27', 'Ryuk Figura Death Note', 'Figura coleccionable de Ryuk, el shinigami de Death Note', 26999.99, '20250627151729_ryuk.png', 'Figura Ryuk sosteniendo una manzana', 'Esta figura coleccionable de Ryuk lo muestra sosteniendo una manzana y mide aproximadamente 28 cm de altura. Fabricada en PVC de alta calidad, presenta un acabado detallado en su rostro, alas y atuendo oscuro. Incluye una base para exhibición y ha sido pintada a mano para capturar su aura inquietante.'),
 (47, 8, '2025-07-27', 'Tanjiro Danza Fuego', 'Figura coleccionable de Tanjiro Kamado', 28999.99, '20250627151940_tanjiro-danza.png', 'Tanjiro en plena Danza del Dios del Fuego', 'Esta figura coleccionable de Tanjiro lo muestra en plena Danza del Dios del Fuego, rodeado de llamas, y mide aproximadamente 24 cm de altura. Está fabricada en PVC de alta calidad con detalles precisos en su kimono y katana. Incluye base con efecto rocas y ha sido pintada a mano para resaltar la intensidad del ataque.'),
-(48, 1, '2025-06-27', 'Vegeta Figura DBZ', 'Figura coleccionable de Vegeta en su clásica armadura Saiyajin', 26999.99, '20250627152233_vegeta.png', 'Figura de vegeta', 'Esta figura coleccionable de Vegeta lo muestra con su traje Saiyajin y mide aproximadamente 24 cm de altura. Está fabricada en PVC de alta calidad y cuenta con un acabado detallado en el cabello, armadura y expresión desafiante. Incluye base con diseño rocoso para exhibición y ha sido pintada a mano para destacar cada músculo y detalle épico.');
+(48, 1, '2025-06-27', 'Vegeta Figura DBZ', 'Figura coleccionable de Vegeta en su clásica armadura Saiyajin', 26999.99, '20250627152233_vegeta.png', 'Figura de vegeta', 'Esta figura coleccionable de Vegeta lo muestra con su traje Saiyajin y mide aproximadamente 24 cm de altura. Está fabricada en PVC de alta calidad y cuenta con un acabado detallado en el cabello, armadura y expresión desafiante. Incluye base con diseño rocoso para exhibición y ha sido pintada a mano para destacar cada músculo y detalle épico.'),
+(53, 20, '2025-08-08', 'Muñeco de Goku Super', '', 343.00, 'Array', '', '');
 
 -- --------------------------------------------------------
 
@@ -237,7 +198,8 @@ INSERT INTO `productos_tienen_categorias` (`producto_fk`, `categoria_fk`) VALUES
 (45, 1),
 (46, 1),
 (47, 1),
-(48, 1);
+(48, 1),
+(53, 22);
 
 -- --------------------------------------------------------
 
@@ -280,9 +242,7 @@ CREATE TABLE `usuarios` (
 
 INSERT INTO `usuarios` (`usuario_id`, `rol_fk`, `email`, `password`, `nombre`, `apellido`, `avatar`) VALUES
 (1, 1, 'lucianoneiman@gmail.com', '$2y$10$Njo1/KMCWjWLqaXwhSLJteRiDunyKNw1zyxBm7v6EHLfmdy1K5X.y', 'Luciano', 'Neiman', 'luciano.webp'),
-(2, 1, 'ricardogarcia@gmail.com', '$2y$10$Njo1/KMCWjWLqaXwhSLJteRiDunyKNw1zyxBm7v6EHLfmdy1K5X.y', 'Ricardo', 'Garcia', 'ricardo.webp'),
-(4, 2, 'ricardogarci4@gmail.com', '$2y$10$KRh1tkNj6eiw67IV/xmgKOfxUz4bubieKU8CFow.cd0VV4xpheGJ6', 'Ricardo', 'Garcia', 'avatar_4_1754522433.png'),
-(7, 2, 'ricardogarcia2@gmail.com', '$2y$10$hNOrDT75cZ.tW4VIwh7aROezet5KD.qw/QAq/jUVmPpnCC41ahkuS', 'Ricardo', 'Rodolfo', 'avatar_7_1754522103.png');
+(2, 1, 'ricardogarcia@gmail.com', '$2y$10$Njo1/KMCWjWLqaXwhSLJteRiDunyKNw1zyxBm7v6EHLfmdy1K5X.y', 'Ricardo', 'Garcia', 'ricardo.webp');
 
 --
 -- Índices para tablas volcadas
@@ -359,25 +319,25 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `categorias`
 --
 ALTER TABLE `categorias`
-  MODIFY `categoria_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `categoria_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT de la tabla `compras`
 --
 ALTER TABLE `compras`
-  MODIFY `compra_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `compra_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
 -- AUTO_INCREMENT de la tabla `franquicias`
 --
 ALTER TABLE `franquicias`
-  MODIFY `franquicia_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `franquicia_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT de la tabla `productos`
 --
 ALTER TABLE `productos`
-  MODIFY `producto_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
+  MODIFY `producto_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
 
 --
 -- AUTO_INCREMENT de la tabla `roles`
@@ -389,7 +349,7 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `usuario_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `usuario_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- Restricciones para tablas volcadas

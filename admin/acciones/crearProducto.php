@@ -110,13 +110,12 @@ try {
 
 try {
   (new Producto())->crear([
-    'usuario_fk' => $usuario_id,
     'franquicia_fk' => $franquicia_fk,
     'titulo' => $titulo,
     'descripcion' => $descripcion,
     'caracteristicas' => $caracteristicas,
     'precio' => $precio,
-    'imagen' => $nombreImagen,
+    'imagen' => $imagen,
     'imagen_descripcion' => $imagen_descripcion,
     'categorias' => $categorias,
   ]);
@@ -125,8 +124,12 @@ try {
   header('Location: ../index.php?seccion=productos');
   exit;
 
-} catch (Throwable $th) {
-  $_SESSION['feedback_error'] = "❌ Ocurrió un error inesperado. Intentá de nuevo.";
+}catch (Throwable $th) {
+  error_log("Error al crear producto: " . $th->getMessage());
+  error_log("Datos del producto: " . print_r($_POST, true));
+
+  // Mensaje real para depuración/desarrollo
+  $_SESSION['feedback_error'] = "❌ Ocurrió un error inesperado: " . $th->getMessage();
   header('Location: ../index.php?seccion=nuevoProducto');
   exit;
 }

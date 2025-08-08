@@ -1,9 +1,7 @@
 <?php
-// Incluye el bootstrap del proyecto (autoload, conexión a DB, sesiones, helpers, etc.)
 require_once __DIR__ . '/../bootstrap/init.php';
 
 // ====== Tabla de rutas del panel admin ======
-// Cada clave es la vista a cargar y su metadata (título y si requiere autenticación admin)
 $rutas = [
   'home' => ['titulo' => 'Ingresar'],
   'dashboard' => ['titulo' => 'Tablero', 'requiereAutenticacion' => true],
@@ -21,28 +19,20 @@ $rutas = [
   '404' => ['titulo' => 'Página no encontrada'],
 ];
 
-// Sección solicitada por query string (?seccion=...), por defecto 'home'
 $seccion = $_GET['seccion'] ?? 'home';
-// Si no existe la sección, forzamos 404
 if (!isset($rutas[$seccion])) {
   $seccion = '404';
 }
-// Config actual de la sección (título, flags, etc.)
 $rutaConfig = $rutas[$seccion];
 
 // Instancia el manejador de autenticación
 $autenticacion = new Autenticacion;
 
-// ====== Guardia de seguridad para vistas protegidas ======
 // Si la vista requiere autenticación y/o rol admin, validamos
 $requiereAutenticacion = $rutaConfig['requiereAutenticacion'] ?? false;
 if (
   $requiereAutenticacion &&
-  (
-    !$autenticacion->estaAutenticado() // no logueado
-    || !$autenticacion->getUsuario()->esAdmin() // no es admin
-  )
-) {
+  (!$autenticacion->estaAutenticado() || !$autenticacion->getUsuario()->esAdmin())) {
   // Feedback y redirección al login del panel
   $_SESSION['feedback_error'] = " Se requiere haber iniciado sesión como administrador para ver este contenido.";
   header("Location: index.php");
