@@ -183,7 +183,7 @@ if (isset($_SESSION['feedback_error'])) {
   <footer class="main-footer bg-azul text-white py-3  border-top border-light">
     <div class="container text-center">
       <p class="mb-1">&copy; Da Vinci - 2025</p>
-      <p class="mb-1">Alumnos: Ricardo Garcia, Luciano Neimán</p>
+      <p class="mb-1">Alumnos: Ricardo Garcia, Luciano Neiman</p>
       <p class="mb-0">Profesor: Santiago Gallino - Materia: Programación 2</p>
     </div>
   </footer>
