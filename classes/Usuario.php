@@ -86,6 +86,15 @@ class Usuario
         ]);
     }
 
+    public function existeEmail(string $email): bool
+    {
+        $db = DBConexionStatic::getConexion();
+        $consulta = "SELECT COUNT(*) FROM usuarios WHERE email = ?";
+        $stmt = $db->prepare($consulta);
+        $stmt->execute([$email]);
+        return $stmt->fetchColumn() > 0;
+    }
+
     public function actualizarAvatar(string $nombreArchivo): void
     {
         $db = (new DBConexionStatic)->getConexion();
