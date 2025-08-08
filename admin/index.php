@@ -34,7 +34,7 @@ $rutas = [
     'titulo' => 'Confirmacion de baja de producto',
     'requiereAutenticacion' => true,
   ],
-  'usuarios' => [
+  'registroUsuarios' => [
     'titulo' => 'Administrar usuarios',
     'requiereAutenticacion' => true,
   ],
