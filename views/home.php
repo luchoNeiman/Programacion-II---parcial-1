@@ -70,7 +70,7 @@
                   $productosDestacados = (new Producto)->obtenerUltimosDelMes();
                   foreach ($productosDestacados as $producto): ?>
                       <div class="col-12 col-sm-6 col-md-6 col-lg-3">
-                          <a href="index.php?seccion=detalle-producto&id=<?= $producto->getProductoId(); ?>"
+                          <a href="index.php?seccion=detalleProducto&id=<?= $producto->getProductoId(); ?>"
                              class="btn p-0 w-100 h-100 tarjeta">
                               <article class="card h-100 shadow">
                                   <img src="assets/imgs/productos/<?= $producto->getImagen() ?? 'default.png'; ?>"

@@ -17,7 +17,8 @@ if (!$producto) {
         <!-- Información del producto -->
         <div class="col-12 col-md-8">
             <div class="card mt-2">
-                <div class="card-header bg-dark d-flex justify-content-between align-items-center">                    <h1 class="fs-2 text-white mb-0"><?= htmlspecialchars($producto->getTitulo()); ?></h1>
+                <div class="card-header bg-dark d-flex justify-content-between align-items-center"><h1
+                            class="fs-2 text-white mb-0"><?= htmlspecialchars($producto->getTitulo()); ?></h1>
                     <!-- Botón para volver al listado, siempre visible -->
                     <a href="index.php?seccion=productos" class="btn btn-light">
                         <i class="bi bi-arrow-left bi-lg ms-2"></i> Volver a productos
@@ -37,7 +38,6 @@ if (!$producto) {
                 <div class="card-footer">
                     <!-- Contenedor flex que se adapta de columna a fila según el tamaño de pantalla -->
                     <div class="d-flex flex-wrap align-items-center gap-2">
-
 
 
                       <?php if ((new Autenticacion)->estaAutenticado()): ?>
@@ -97,7 +97,6 @@ if (!$producto) {
 
 <section class="container mb-5">
     <div class="row">
-
         <div class="col-md-12">
             <h2 class="mb-4 text-white"> Más productos de <?= htmlspecialchars($producto->getCategoria()) ?></h2>
             <div class="row g-4">
@@ -107,7 +106,7 @@ if (!$producto) {
 
               foreach ($productosSimilares as $productoCategoria): ?>
                   <div class="col-12 col-sm-6 col-lg-3 d-flex align-items-stretch mb-4">
-                      <a href="index.php?seccion=detalle-producto&id=<?= $productoCategoria->getProductoId(); ?>"
+                      <a href="index.php?seccion=detalleProducto&id=<?= $productoCategoria->getProductoId(); ?>"
                          class="btn p-0 w-100 h-100 tarjeta">
                           <article class="card shadow-sm h-100 ">
                               <img src="assets/imgs/productos/<?= $productoCategoria->getImagen(); ?>"
