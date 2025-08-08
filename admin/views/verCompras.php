@@ -50,14 +50,14 @@ $compras = (new Compra)->traerCompras($usuario->getUsuarioId());
                                 <?php else: ?>
                                     <ul class="list-group list-group-flush">
                                       <?php foreach ($detalles as $detalle): ?>
-                                        <?php $subtotal = $detalle->total; ?>
+
                                           <li class="list-group-item d-flex justify-content-between align-items-center ">
                                               <div>
-                                                  <strong><?= htmlspecialchars($detalle->titulo) ?></strong><br>
-                                                  <small><?= (int)$detalle->cantidad ?> x
-                                                      $<?= number_format($detalle->precio_unitario, 2, ',', '.') ?></small>
+                                                  <strong><?= htmlspecialchars($detalle->getTitulo()) ?></strong><br>
+                                                  <small><?= (int)$detalle->getCantidad() ?> x
+                                                      $<?= number_format($detalle->getPrecioUnitario(), 2, ',', '.') ?></small>
                                               </div>
-                                              <span class="fw-bold">$<?= number_format($subtotal, 2, ',', '.') ?></span>
+                                              <span class="fw-bold">$<?= number_format($detalle->getSubtotal(), 2, ',', '.') ?></span>
                                           </li>
                                       <?php endforeach; ?>
                                     </ul>
