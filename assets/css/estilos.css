@@ -1,5 +1,5 @@
 /* ======================================
-   🎨 Variables globales de colores
+   Variables globales de colores
 ====================================== */
 :root {
     --color-morado-oscuro: #1E032B;
@@ -12,7 +12,7 @@
 }
 
 /* ======================================
-   🧱 Reset general y layout base
+   Reset general y layout base
 ====================================== */
 * {
     margin: 0;
@@ -29,7 +29,7 @@ body {
 }
 
 /* ======================================
-   🌈 Fondos y degradados
+  Fondos y degradados
 ====================================== */
 .bg-degrade {
     background: linear-gradient(to bottom, #1E032B, rgba(94, 13, 134, 0.75));
@@ -69,7 +69,7 @@ body {
 }
 
 /* ======================================
-   🧩 Tarjetas y productos
+   Tarjetas y productos
 ====================================== */
 .card-img-top {
     height: 300px;
@@ -106,7 +106,7 @@ body {
 }
 
 /* ======================================
-   📝 Tipografías y colores de texto
+   Tipografías y colores de texto
 ====================================== */
 .texto-color option,
 li,
@@ -125,7 +125,7 @@ strong {
 }
 
 /* ======================================
-   🔘 Botones
+   Botones
 ====================================== */
 .btn-azul {
     background-color: transparent;
@@ -150,7 +150,7 @@ input[type="file"]::file-selector-button {
 }
 
 /* ======================================
-   📩 Formularios y selects
+   Formularios y selects
 ====================================== */
 input,
 select,
@@ -179,7 +179,7 @@ select option:hover {
 }
 
 /* ======================================
-   📦 Tablas
+   Tablas
 ====================================== */
 .min-th {
     min-width: 150px;
@@ -191,7 +191,7 @@ select option:hover {
 }
 
 /* ======================================
-   🚨 Mensajes (errores / éxito)
+   Mensajes (errores / éxito)
 ====================================== */
 .msg-error,
 .msg-success {
@@ -238,7 +238,7 @@ select option:hover {
 }
 
 /* ======================================
-   🔧 Navbar
+   Navbar
 ====================================== */
 .navbar-nav .nav-link:hover {
     background-color: rgba(255, 255, 255, 0.1);
@@ -252,7 +252,7 @@ select option:hover {
 }
 
 /* ======================================
-   📦 Baja producto - Layout especial
+   Baja producto - Layout especial
 ====================================== */
 .baja-main {
     min-height: 100vh;
@@ -358,4 +358,10 @@ select option:hover {
 
 .baja-btn-cancelar:hover {
     background: #cbd5e1;
+}
+/* ======================================
+   compras
+====================================== */
+.compra-header {
+    border: 2px solid #fff !important;
 }

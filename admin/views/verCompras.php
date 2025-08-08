@@ -5,8 +5,18 @@ $compras = (new Compra)->traerCompras($usuario->getUsuarioId());
 
 ?>
 
-<div class="container py-5">
-    <div class="row justify-content-center">
+<div class="container  py-5">
+    <h1 class="text-center text-white mb-5">
+        <i class="bi bi-receipt me-2"></i>
+        Detalles de compras de <?= htmlspecialchars($usuario->getNombre()); ?>
+    </h1>
+    <!-- Botón volver -->
+    <div class="  row justify-content-center">
+        <div class="col-md-8  mb-4">
+            <a href="index.php?seccion=registroUsuarios" class="btn btn-dark border-light">
+                <i class="bi bi-arrow-left me-2"></i> Volver al registro de usuarios
+            </a>
+        </div>
       <?php foreach ($compras as $compra): ?>
         <?php $collapseId = 'collapseCompra_' . $compra->getCompraId(); ?>
           <div class="col-md-8">
@@ -20,20 +30,21 @@ $compras = (new Compra)->traerCompras($usuario->getUsuarioId());
                          aria-expanded="false"
                          aria-controls="<?= $collapseId ?>">
 
-                          <div class="p-3 bg-dark d-flex justify-content-between align-items-center rounded-top">
+                          <div class="p-3 bg-dark d-flex justify-content-between align-items-center rounded compra-header">
                               <div class="d-flex align-items-center">
-                                  <i class="bi bi-table me-2"></i>
+                                  <i class="bi bi-table me-2 text-white"></i>
                                   <strong class="text-white">Orden de Compra #<?= $compra->getCompraId(); ?></strong>
                               </div>
                               <div class="text-end">
-                            <span class="small text-white me-3">
-                                <i class="bi bi-calendar-event me-1"></i><?= htmlspecialchars($compra->getFecha()); ?>
-                            </span>
+                                <span class="small text-white me-3">
+                                    <i class="bi bi-calendar-event me-1"></i><?= htmlspecialchars($compra->getFecha()); ?>
+                                </span>
                                   <span class="small text-white">
-                                <i class="bi bi-currency-dollar me-1"></i><?= htmlspecialchars($compra->getTotalCompra()); ?>
-                            </span>
+                                    <i class="bi bi-currency-dollar me-1"></i> <?= number_format(htmlspecialchars($compra->getTotalCompra()), 2, ',', '.') ?>
+                                </span>
                               </div>
                           </div>
+
                       </a>
                   </div>
 
