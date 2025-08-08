@@ -1,3 +1,9 @@
+<?php
+
+
+$usuario_id = $_SESSION['usuario_id'];
+$usuario = (new Usuario())->porId($usuario_id);
+?>
 <div class="container mt-5 d-flex justify-content-center">
   <div class="card shadow-lg" style="max-width: 600px; width: 100%;">
     <h4 class="mb-0 card-header bg-dark text-white text-center"><i class="bi bi-person-circle me-2"></i>Mi Perfil

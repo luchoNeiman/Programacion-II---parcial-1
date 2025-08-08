@@ -1,10 +1,7 @@
 <?php
-
-
 $usuario_id = $_SESSION['usuario_id'];
 $usuario = (new Usuario())->porId($usuario_id);
 ?>
-
 <div class="container mt-5 d-flex justify-content-center">
     <div class="card shadow-lg" style="max-width: 600px; width: 100%;">
         <h4 class="mb-0 card-header bg-dark text-white text-center"><i class="bi bi-person-circle me-2"></i>Mi Perfil
@@ -14,6 +11,16 @@ $usuario = (new Usuario())->porId($usuario_id);
                  alt="Avatar"
                  width="180" height="180"
                  class="rounded-circle mb-4 shadow">
+
+            <form action="acciones/procesar_mi-perfil.php" method="post" enctype="multipart/form-data" class="mb-4">
+                <label for="avatar" class="form-label fw-bold">Subí tu imagen de perfil:</label>
+                <input type="file" name="avatar" id="avatar" class="form-control mb-2" accept=".jpg,.jpeg,.png,.webp"
+                       required>
+                <button type="submit" class="btn btn-dark">Actualizar avatar</button>
+              <?php if (isset($errorAvatar)): ?>
+                  <div class="alert alert-danger mt-2"><?= $errorAvatar ?></div>
+              <?php endif; ?>
+            </form>
 
             <ul class="list-group list-group-flush text-start">
                 <li class="list-group-item">
