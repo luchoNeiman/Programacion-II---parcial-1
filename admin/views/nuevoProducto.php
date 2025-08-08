@@ -147,28 +147,27 @@ if (isset($_SESSION['data_vieja'])) {
             <div class="card-body py-4">
                 <div class="row">
                     <div class="col-md-6 ">
-                        <label for="franquicia_fk" class="form-label text-violeta"> Selecciona una franquicia<span
-                                    class="colorRequiaried">*</span></label>
+                        <label for="franquicia_fk" class="form-label text-violeta"> Selecciona una franquicia
+                            <span class="colorRequiaried">*</span>
+                        </label>
                         <div class="position-relative">
-                            <select name="franquicia_fk" id="franquicia_fk" size="4"
-                                    class="form-select mb-3" <?php if (isset($errores['franquicias'])): ?>
-                                aria-invalid="true"
-                                aria-errormessage="error-franquicias"
-                            <?php endif; ?>>
-                                <!--el valor queda por defecto para q puede crear una nueva franquicia-->
-                                <option value="" <?= empty($dataVieja['franquicia_fk']) ? 'selected' : '' ?>>Nueva
-                                    franquicia
+                            <select name="franquicia_fk" id="franquicia_fk" size="4" class="form-select mb-3"
+                              <?php if (isset($errores['franquicias'])): ?> aria-invalid="true" aria-errormessage="error-franquicias" <?php endif; ?>>
+
+                                <!-- Opción por defecto: Nueva franquicia -->
+                                <option value="" <?= empty($dataVieja['franquicia_fk']) ? 'selected' : '' ?>>
+                                    Nueva franquicia
                                 </option>
-                                <!--Listado de todas las franquicias en select-->
+
                               <?php foreach ($franquicias as $franquicia): ?>
-                                  <option value="<?= $franquicia['franquicia_id'] ?>">
-                                      <!--Verifica si existe un valor previamente seleccionado para 'franquicia_fk' en los datos viejos del formulario y luego marca la opción como seleccionada si el usuario había elegido previamente esta franquicia en el formulario-->
-                                    <?= (isset($dataVieja['franquicia_fk']) && $dataVieja['franquicia_fk'] == $franquicia['franquicia_id']) ? 'selected' : '' ?>
+                                  <option value="<?= $franquicia['franquicia_id'] ?>"
+                                    <?= (isset($dataVieja['franquicia_fk']) && (string)$dataVieja['franquicia_fk'] === (string)$franquicia['franquicia_id']) ? 'selected' : '' ?>>
                                     <?= htmlspecialchars($franquicia['nombre_franquicia']) ?>
                                   </option>
                               <?php endforeach; ?>
                             </select>
                         </div>
+
                     </div>
 
                     <!--Nueva franquicia si selecciono nueva franquicia-->
