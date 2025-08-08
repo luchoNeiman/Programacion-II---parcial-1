@@ -2,6 +2,7 @@
 
 class Compra
 {
+  // === Propiedades privadas ===
   private int $compra_id = 0;
   private int $usuario_fk = 0;
   private string $titulo = "";
@@ -11,6 +12,9 @@ class Compra
   private int $cantidad = 0;
   private float $subtotal = 0;
 
+  /**
+   * Constructor que opcionalmente hidrata el objeto con un array de datos.
+   */
   public function __construct(?array $data = null)
   {
     if ($data) {
@@ -18,6 +22,9 @@ class Compra
     }
   }
 
+  /**
+   * Carga datos desde un array asociativo a las propiedades del objeto.
+   */
   public function cargarDatosDeArray(array $data)
   {
     $this->setCompraId($data['compra_id'] ?? 0);
@@ -30,6 +37,10 @@ class Compra
     $this->setTitulo($data['titulo'] ?? '');
   }
 
+  /**
+   * Registra una nueva compra en la base de datos.
+   * Devuelve el ID generado.
+   */
   public function registrarCompra(int $usuarioId, float $totalCompra): int
   {
     $db = DBConexionStatic::getConexion();
@@ -43,6 +54,10 @@ class Compra
     return (int)$db->lastInsertId();
   }
 
+  /**
+   * Registra todos los productos asociados a una compra.
+   * $items debe ser un array con producto_id, cantidad y precio_unitario.
+   */
   public function registrarProductosCompra(int $compraId, array $items): void
   {
     $db = DBConexionStatic::getConexion();
@@ -54,16 +69,19 @@ class Compra
 
     foreach ($items as $item) {
       $stmt->execute([
-        ':producto_fk'     => $item['producto_id'],
-        ':compra_fk'       => $compraId,
-        ':cantidad'        => $item['cantidad'],
+        ':producto_fk' => $item['producto_id'],
+        ':compra_fk' => $compraId,
+        ':cantidad' => $item['cantidad'],
         ':precio_unitario' => $item['precio_unitario'],
-        ':subtotal'        => $item['precio_unitario'] * $item['cantidad']
+        ':subtotal' => $item['precio_unitario'] * $item['cantidad']
       ]);
     }
   }
 
-
+  /**
+   * Trae todas las compras realizadas por un usuario.
+   * Devuelve un array de objetos Compra.
+   */
   public function traerCompras(int $usuarioId): ?array
   {
     $db = DBConexionStatic::getConexion();
@@ -73,6 +91,10 @@ class Compra
     return $stmt->fetchAll(PDO::FETCH_CLASS, self::class);
   }
 
+  /**
+   * Trae el detalle de una compra específica.
+   * Incluye productos, cantidad y precios.
+   */
   public function traerDetalleCompras(int $compra_id): ?array
   {
     $db = DBConexionStatic::getConexion();
@@ -88,6 +110,8 @@ class Compra
     return $stmt->fetchAll(PDO::FETCH_CLASS, self::class) ?: null;
   }
 
+  // ===== Getters & Setters =====
+
   public function getCompraId(): int
   {
     return $this->compra_id;
@@ -97,7 +121,6 @@ class Compra
   {
     $this->compra_id = $compra_id;
   }
-
 
   public function getUsuarioFk(): int
   {

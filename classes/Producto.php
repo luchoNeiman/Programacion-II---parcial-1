@@ -106,7 +106,6 @@ class Producto
 
     public static function obtenerPorCategoria(string|array $categorias): array
     {   /* si es un string, lo convertimos en array
-
         */
         if (is_string($categorias)) {
             $categorias = [$categorias];

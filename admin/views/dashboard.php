@@ -38,7 +38,7 @@
                     <i class="bi bi-person display-4 text-secondary-emphasis"></i>
                     <h5 class="card-title text-violeta my-3"><?= count($usuarios) ?> Usuarios</h5>
                     <a href="index.php?seccion=registroUsuarios" class="btn btn-dark">
-                        <i class="bi bi-person me-2"></i>Gestionar
+                        <i class="bi bi-person me-2"></i>Ver Usuarios registrados
                     </a>
                 </div>
             </div>

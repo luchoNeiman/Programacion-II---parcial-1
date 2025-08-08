@@ -28,12 +28,12 @@ $productos = $carrito->getItems($usuarioId);
           </div>
       </div>
   <?php else: ?>
-      <!-- Si hay productos, armo la tabla piola -->
+      <!-- Si hay productos, armo la tabla -->
       <div class="my-5"></div>
       <div class="row justify-content-center">
           <div class="col-md-10">
-              <!-- Card de la tabla (escondo en mobile para hacerla más responsive) -->
-              <div class="mx-5 mb-5 card shadow-sm d-none d-md-block">
+              <!-- Card de la tabla -->
+              <div class="mx-5 mb-5 card shadow-sm">
                   <div class="table-responsive">
                       <table class="table table-bordered table-striped table-hover mi-tabla-violeta mb-0">
                           <thead class="table-dark">

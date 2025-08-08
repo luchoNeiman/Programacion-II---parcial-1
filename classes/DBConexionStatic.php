@@ -16,7 +16,6 @@ class DBConexionStatic
 
         if (!self::$db) {
             try {
-                // echo "Abriendo una NUEVA conexión con MySQL<br>";
                 self::$db = new PDO($db_dsn, self::DB_USER, self::DB_PASS);
             } catch (Throwable $th) {
                 echo "Ocurrió un error: " . $th->getMessage();

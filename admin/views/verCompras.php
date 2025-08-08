@@ -6,12 +6,12 @@ $compras = (new Compra)->traerCompras($usuario->getUsuarioId());
 ?>
 
 <div class="container  py-5">
-    <h1 class="text-center text-white mb-5">
+    <h1 class="text-white mb-5">
         <i class="bi bi-receipt me-2"></i>
         Detalles de compras de <?= htmlspecialchars($usuario->getNombre()); ?>
     </h1>
     <!-- Botón volver -->
-    <div class="row justify-content-center">
+    <div class="row">
       <?php if (empty($compras)): ?>
           <div class="col-md-8">
               <div class="text-center bg-light p-5 rounded shadow-sm">
@@ -26,8 +26,8 @@ $compras = (new Compra)->traerCompras($usuario->getUsuarioId());
               </div>
           </div>
       <?php else: ?>
-          <div class="col-md-8 mb-4">
-              <a href="index.php?seccion=registroUsuarios" class="btn btn-dark border-light">
+          <div class="col-12 mb-4">
+              <a href="index.php?seccion=registroUsuarios" class="btn btn-light font-weight-bold">
                   <i class="bi bi-arrow-left me-2"></i> Volver al registro de usuarios
               </a>
           </div>
